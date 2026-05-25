@@ -1,1 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lightning (1952) 稲妻 — Mikio Naruse | JPN/FST 266</title>
+<style>
+  :root{
+    --rose-deep:#9c4a5e;      /* block title bar */
+    --rose-mid:#c98aa0;       /* lighter accents */
+    --rose-body:#f7e9ee;      /* block body bg */
+    --alert-bar:#b1374b;      /* alertblock title bar */
+    --alert-body:#fbeef1;     /* alertblock body bg */
+    --hl:#d12e2e;             /* \red emphasis */
+    --ink:#241a1d;
+    --muted:#6b5a60;
+    --bar:#7e3a4c;            /* footer / header bars */
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:#3a2c31;
+    color:var(--ink);
+    font-family:"Hoefler Text",Georgia,"Times New Roman","Yu Mincho","Hiragino Mincho ProN",serif;
+    -webkit-font-smoothing:antialiased;
+    display:flex;align-items:center;justify-content:center;
+  }
+  /* CJK fallback */
+  ruby,.cjk{font-family:"Yu Gothic","Hiragino Kaku Gothic ProN","Hiragino Sans","MS Gothic",inherit;}
+
+  #deck{width:100%;max-width:1040px;height:100vh;display:flex;flex-direction:column;}
+  .topbar{
+    background:var(--bar);color:#fff;font-size:13px;letter-spacing:.02em;
+    padding:6px 16px;display:flex;justify-content:space-between;align-items:center;
+    font-family:Georgia,serif;
+  }
+  .topbar .t-title{opacity:.95}
+  .topbar .t-sec{opacity:.8;font-style:italic}
+
+  .stage{flex:1;overflow:auto;background:#fff;}
+  .slide{display:none;padding:26px 34px 30px;min-height:100%;}
+  .slide.active{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:.35}to{opacity:1}}
+
+  h1.deck-title{font-size:30px;line-height:1.25;margin:0 0 6px;color:var(--rose-deep);text-align:center}
+  .frametitle{font-size:23px;color:var(--rose-deep);margin:2px 0 14px;font-weight:600;border-bottom:2px solid var(--rose-mid);padding-bottom:6px}
+
+  /* title slide */
+  .title-slide{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%;gap:4px}
+  .title-slide .sub{font-size:18px;color:var(--ink);margin-top:18px}
+  .title-slide .inst{font-size:16px;color:var(--muted);font-style:italic}
+  .title-slide .date{font-size:16px;color:var(--muted);margin-top:10px}
+  .title-slide .badge{margin-top:26px;font-size:12px;color:var(--muted);font-family:Georgia,serif;
+    border:1px solid var(--rose-mid);border-radius:20px;padding:4px 14px}
+
+  /* blocks */
+  .block,.alertblock{border-radius:6px;overflow:hidden;margin:0 0 14px;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+  .block>.head{background:var(--rose-deep);color:#fff;padding:7px 14px;font-size:16px;font-weight:600}
+  .block>.body{background:var(--rose-body);padding:12px 16px}
+  .alertblock>.head{background:var(--alert-bar);color:#fff;padding:7px 14px;font-size:16px;font-weight:600}
+  .alertblock>.body{background:var(--alert-body);padding:12px 16px}
+
+  .lead{font-size:15px;line-height:1.5;margin:0 0 8px}
+  ul.pts{margin:6px 0 4px;padding-left:22px}
+  ul.pts>li{font-size:14.5px;line-height:1.5;margin-bottom:9px}
+  .small{font-size:13.5px;line-height:1.5}
+
+  .hl{color:var(--hl)}
+  .cite{color:var(--muted);font-style:italic;white-space:nowrap}
+  em{font-style:italic}
+
+  .imgrow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+  .imgrow img{height:130px;width:auto;border:1px solid #d9c4cc;border-radius:3px;background:#eee;object-fit:cover}
+  .imgrow.small img{height:104px}
+
+  /* controls */
+  .controls{background:var(--bar);color:#fff;display:flex;align-items:center;justify-content:space-between;
+    padding:7px 14px;font-family:Georgia,serif;font-size:13px}
+  .controls .who{opacity:.9}
+  .controls .nav{display:flex;align-items:center;gap:8px}
+  .controls button{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.4);
+    border-radius:5px;padding:4px 12px;font-size:14px;cursor:pointer;font-family:inherit}
+  .controls button:hover{background:rgba(255,255,255,.30)}
+  .controls .count{min-width:54px;text-align:center}
+
+  /* print: one slide per page */
+  @media print{
+    body{background:#fff}
+    #deck{max-width:none;height:auto}
+    .topbar,.controls{display:none}
+    .stage{overflow:visible}
+    .slide{display:block !important;page-break-after:always;min-height:0}
+  }
+</style>
+</head>
+<body>
+<div id="deck">
+
+  <div class="topbar">
+    <span class="t-title">JPN/FST 266 — Lightning (1952) <span class="cjk">稲妻</span></span>
+    <span class="t-sec">Mikio Naruse</span>
+  </div>
+
+  <div class="stage" id="stage">
+
+    <!-- ===== TITLE ===== -->
+    <section class="slide active">
+      <div class="title-slide">
+        <h1 class="deck-title">Week 04: Lightning (1952)<br>
+          <ruby>稲妻<rt>inazuma</rt></ruby> by Mikio Naruse</h1>
+        <div class="sub">JPN/FST 266 &mdash; Prof. Tomoyuki Yabe</div>
+        <div class="inst">GRAMELAC, Miami Univ. / <span class="cjk">マイアミ大学</span></div>
+        <div class="date">Fall 2026</div>
+        <div class="badge">Slides annotated with Catherine Russell, <em>The Cinema of Naruse Mikio</em> (pp.&nbsp;227&ndash;247)</div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 1 ===== -->
+    <section class="slide">
+      <div class="frametitle">Mellow Drama in a perfect mise-en-sc&egrave;ne</div>
+      <div class="alertblock">
+        <div class="head">Two adjacent rooms: a studio set of a Japanese house.</div>
+        <div class="body">
+          <p class="lead">Naruse and <span class="hl">his studio set designer meticulously calculated details and always succeeded in creating avenues where melodrama</span> (many of his films are based on novels by Fumiko Hayashi, a female author known for writing about women&rsquo;s lives with unworthy men) is successfully cinematized.</p>
+          <ul class="pts">
+            <li>Naruse delicately depicts women&rsquo;s stories, making effective use of the film set. This space often consists of <span class="hl">two adjacent rooms</span>, typically a living/dining room and a futon room. Shigehiko Hasumi notes that Naruse uses the space of two adjacent rooms as a device to depict the protagonists of his films. This space sometimes represents the protagonists&rsquo; economic status or emotional state.</li>
+            <li>A good description of Naruse&rsquo;s filmmaking also comes from a film critic, Sadao Yamane, who observes that Naruse&rsquo;s films maintain <span class="hl">a steady and rhythmic organization through the totality of shots, editing, sound effects, lighting, and more, which he calls the &lsquo;rhythm of emotions.&rsquo;</span> Film scholar Catherine Russell unpacks the same phrase: this rhythm is <span class="hl">&ldquo;constructed through subtle patterns of editing, lighting, performance style, and set design,&rdquo;</span> and is created through <span class="hl">&ldquo;a fairly regular shot length of eight to ten seconds&rdquo;</span> for shot-reverse-shot dialogue <span class="cite">(Russell, p.&nbsp;227)</span>.</li>
+            <li>Hayashi&rsquo;s novels were serialized in magazines and newspapers; for all their formal poetry, Russell stresses that they <span class="hl">&ldquo;were key contributions to the popular culture of postwar Japan&rdquo;</span> <span class="cite">(Russell, p.&nbsp;227)</span>. Naruse&rsquo;s realist style, she adds, is <span class="hl">&ldquo;instilled with a poetry of awakening, recognition, and the beauty of small things &hellip; it partakes of the aesthetics of haiku&rdquo;</span> <span class="cite">(Russell, p.&nbsp;227)</span>.</li>
+          </ul>
+          <div class="imgrow">
+            <img src="item/05.png" alt="Naruse two-room set 05">
+            <img src="item/15.png" alt="Naruse two-room set 15">
+            <img src="item/16.png" alt="Naruse two-room set 16">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 2 ===== -->
+    <section class="slide">
+      <div class="frametitle"><em>Inazuma</em>: Kiyoko&rsquo;s position in the two-room space</div>
+      <div class="block">
+        <div class="head">Naruse uses the <span style="color:#ffd9e2">two-room space</span> to display Kiyoko&rsquo;s emotional positions towards her family</div>
+        <div class="body">
+          <ul class="pts">
+            <li>Although it is a common interior feature in post-WWII living spaces in Japan, Naruse cultivates this ubiquitous two-room setup cinematically. The two rooms, usually living and futon/bedrooms, are juxtaposed adjacently. <span class="hl">Naruse depicts intricate human relationships through shots taken within, across, and outside this two-room format studio set.</span> Naruse seems to be very attentive to <span class="hl">how characters are placed in the two-room space, considering their facing direction, location, and position, including whether they are sitting, standing, or leaving</span>.</li>
+            <li><em>Inazuma</em> is also based on Hayashi&rsquo;s novel. It is a story about family and relationships between women and men. The protagonist, Kiyoko, is the youngest sister among four siblings who do not share the same father. Kiyoko often feels disdain for her family, especially for her two sisters, who are involved with the same man. <span class="hl">Her mother&rsquo;s house, particularly the ground floor living room, is the stage where family affairs take place or are discussed. Naruse uses Kiyoko&rsquo;s positioning around the two-room space to enhance the cinematic narrative of <em>Inazuma</em></span>.</li>
+            <li>Russell describes Naruse&rsquo;s sets &mdash; regularly shaped rooms, thresholds, shoji panels, tatami seating, cramped entryways &mdash; as <span class="hl">&ldquo;a kind of vernacular language of space that is fully integrated into Naruse&rsquo;s narrative style&rdquo;</span> <span class="cite">(Russell, p.&nbsp;235)</span>. Windows and doorways in particular set up objective framings that <span class="hl">&ldquo;oscillate with the more subjective dimensions of performance&rdquo;</span> and <span class="hl">&ldquo;function as symbols of entrapment and containment&rdquo;</span> <span class="cite">(Russell, p.&nbsp;234)</span>.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 3 ===== -->
+    <section class="slide">
+      <div class="frametitle">Kiyoko in mother&rsquo;s place</div>
+      <div class="block">
+        <div class="head">Kiyoko finds no space in mother&rsquo;s place</div>
+        <div class="body">
+          <ul class="pts">
+            <li>Kiyoko&rsquo;s mother&rsquo;s living room is where the family gathers and family affairs take place. Kiyoko often despises what happens and is discussed in this room. When she is there with family members, she appears unsettled and never happy. <span class="hl">The camera never captures Kiyoko at the center of the room; instead, she is often shown standing, facing outward, or positioned at the edges of the space</span>. She frequently retreats to the upstairs area, half of which is rented to a woman pursuing a career as an editor. When Kiyoko is upstairs, she appears happier and more at ease, especially when talking to the tenant. She is soon called back down to the first-floor living room. She is also upstairs when she finally decides to move out and find a place of her own.</li>
+            <li>The mother&rsquo;s house sits in the <em>shitamachi</em>: Russell notes <em>Lightning</em> is <span class="hl">&ldquo;punctuated throughout with passing peddlers &hellip; itinerant musicians (<em>chindonya</em>), and children playing in the street&rdquo;</span> <span class="cite">(Russell, p.&nbsp;243)</span>. This dense social texture is exactly what makes the living room feel inescapable for Kiyoko.</li>
+            <li>The performance style depends on <span class="hl">&ldquo;a subtlety, containment, and &lsquo;holding back&rsquo;&rdquo;</span> <span class="cite">(Russell, p.&nbsp;230)</span>. Actresses perfect the <span class="hl">&ldquo;dropped eyes&rdquo; technique</span> for sorrow, yet keep <span class="hl">&ldquo;a good stare, often directed straight at the camera, that indicates a level of resistance&rdquo;</span> <span class="cite">(Russell, p.&nbsp;231)</span> &mdash; restraint that maps precisely onto Kiyoko&rsquo;s edged, outward-facing positions.</li>
+          </ul>
+          <div class="imgrow">
+            <img src="item/05.png" alt="Kiyoko at the edges 05">
+            <img src="item/06.png" alt="Kiyoko at the edges 06">
+            <img src="item/07.png" alt="Kiyoko at the edges 07">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 4 ===== -->
+    <section class="slide">
+      <div class="frametitle">Kiyoko in her own place</div>
+      <div class="block">
+        <div class="head">Kiyoko gets her own place</div>
+        <div class="body">
+          <ul class="pts">
+            <li class="small">Kiyoko disappears from her mother&rsquo;s home and moves into her own place in the suburbs of Tokyo. She now has her own two-room space and feels content. Sooner or later, she lets her family know her whereabouts. One of her sisters visits, and her mother does too, separately. In her own upstairs space, Kiyoko speaks her mind. During her mother&rsquo;s visit, her mother complains about Kiyoko&rsquo;s sisters, who are both involved with the same man who runs their businesses. Kiyoko sits on the balcony/bay window, attached to the living room, as if she is once again being pushed away (off of the living room) by her family&rsquo;s affairs. This time, however, Kiyoko tells her mother everything on her mind, including her feelings about her mom. They both end up crying. It happens at the edge of her newly acquired living room, on the outskirts of Tokyo. We get the impression that she cannot run away anymore. Then, lightning strikes in the sky, visible from Kiyoko&rsquo;s room. The mood changes suddenly. She seems to accept that there are things beyond her control. Naruse translates the whole dynamics into a cinematic image.</li>
+            <li>Russell calls this ten-minute scene one of the finest in Naruse&rsquo;s oeuvre: as the mother cries, <span class="hl">&ldquo;a lightning flash seems to crystallize the break Kiyoko has made with her past&rdquo;</span> <span class="cite">(Russell, p.&nbsp;245)</span>. The flash is not merely mood &mdash; it is <span class="hl">&ldquo;linked directly to Kiyoko&rsquo;s gaze and therefore signifies her interiority, her subjectivity, and her desire for happiness&rdquo;</span> <span class="cite">(Russell, p.&nbsp;245)</span>.</li>
+            <li>In the suburbs Kiyoko is <span class="hl">&ldquo;stranded between the ideal represented by &hellip; the Musashino neighbors and her crude shitamachi family&rdquo;</span> <span class="cite">(Russell, p.&nbsp;244)</span>. Russell&rsquo;s emblem image: Takamine Hideko <span class="hl">&ldquo;looking out over a railing, poised on a kind of threshold of domestic space, is emblematic of the emergence of female subjectivity inscribed within Naruse&rsquo;s cinema&rdquo;</span> <span class="cite">(Russell, p.&nbsp;245)</span>. <em>Cf.</em> the mother&rsquo;s line Russell quotes: <span class="hl">&ldquo;Happiness is a concept that was invented in the modern world&rdquo;</span> <span class="cite">(Russell, p.&nbsp;244)</span>.</li>
+          </ul>
+          <div class="imgrow small">
+            <img src="item/01.png" alt="Kiyoko own place 01">
+            <img src="item/02.png" alt="Kiyoko own place 02">
+            <img src="item/03.png" alt="Kiyoko own place 03">
+            <img src="item/04.png" alt="Kiyoko own place 04">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 5 ===== -->
+    <section class="slide">
+      <div class="frametitle">Naruse&rsquo;s Cinematic Space</div>
+      <div class="alertblock">
+        <div class="head">Kiyoko in Cinematic Space:</div>
+        <div class="body">
+          <p class="lead">Naruse delicately depicts Kiyoko&rsquo;s emotions through cinematic images, using the everyday living spaces of Japanese housing as a cinematic space. By highlighting the differences in Kiyoko&rsquo;s spatial engagements within the two-room setup, her shifting emotional states are effectively conveyed as part of the cinematic narrative. Miriam Hansen&rsquo;s notion of <span class="hl">&ldquo;vernacular modernism&rdquo;</span> fits Naruse exactly: his is <span class="hl">&ldquo;a classical cinema without classical editing&rdquo;</span> <span class="cite">(Russell, p.&nbsp;235)</span>, folding the details of Japanese domestic architecture into a modernist rendering of the everyday as a site of female subjectivity.</p>
+        </div>
+      </div>
+      <div class="block">
+        <div class="head">Two Adjacent Rooms in Naruse Films</div>
+        <div class="body">
+          <p class="small">The two-room setup is prevalent in Naruse&rsquo;s films. Whether the story revolves around a middle-class family or a struggling couple, Naruse uses this mise-en-sc&egrave;ne device to depict the characters&rsquo; emotional states by varying their placement and position within the space. In a well-off family&rsquo;s house, both rooms may open to the yard, whereas in an average house, only one room typically does. Naruse often places a female character by a second-floor bay window to visually express her emotions as part of the cinematic presentation, as something visible on the screen. As Russell puts it, the home <span class="hl">&ldquo;is like a stage on which the women perform their roles; but the home often opens onto a garden, or a view of the city &hellip; offering a constant reminder of the world that lies outside the home&rdquo;</span> <span class="cite">(Russell, p.&nbsp;245)</span>.</p>
+          <div class="imgrow">
+            <img src="item/04.png" alt="Cinematic space 04">
+            <img src="item/17.png" alt="Cinematic space 17">
+            <img src="item/20.png" alt="Cinematic space 20">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 6 ===== -->
+    <section class="slide">
+      <div class="frametitle">Cinematic Spaces in movies</div>
+      <div class="alertblock">
+        <div class="head">Francis Coppola and a dining table:</div>
+        <div class="body">
+          <ul class="pts">
+            <li class="small">Francis Coppola&rsquo;s use of dining tables in <em>The Godfather</em> series and the initially edited-out French colonialist in Cambodia sequence from <em>Apocalypse Now</em> is noteworthy. There are basically two types of occasions where a dining table appears: business and family affairs. It may be common sense that, when gangster families conspire, their conversations are closed-in, unlike family affairs that are open to the world. Coppola seems to make sure to include an extended saloon to the dining hall where a dining table is placed, or windows where the outside light comes in for a family dining table sequence. But in business sequences, we see no image that connects the table with the outside. The contrast echoes Russell&rsquo;s reading of Naruse, where the home <span class="hl">&ldquo;opens onto a garden, or a view of the city &hellip; a constant reminder of the world that lies outside&rdquo;</span> <span class="cite">(Russell, p.&nbsp;245)</span>: openness onto the world marks the family scene, while enclosure marks affairs of power.
+              <div class="imgrow small" style="margin-top:8px">
+                <img src="item/21.png" alt="Godfather table 21">
+                <img src="item/22.png" alt="Godfather table 22">
+                <img src="item/23.png" alt="Godfather table 23">
+                <img src="item/24.png" alt="Godfather table 24">
+              </div>
+            </li>
+            <li class="small">Coppola also introduces a dining table in the French colonialist sequence set in Cambodia in <em>Apocalypse Now</em> (which was edited out of the original version but included in a later release). Though the dining table scene does not recur in the film, Coppola uses it to depict a family-like group who, while sharing the same fate, exhibit fragmented mental states and abrupt, disjointed behavior. As the scene progresses, each character gradually drifts away from the table, perhaps cinematically reflecting how the French colonists left French Indochina.
+              <div class="imgrow small" style="margin-top:8px">
+                <img src="item/31.png" alt="Apocalypse Now table 31">
+                <img src="item/32.png" alt="Apocalypse Now table 32">
+                <img src="item/33.png" alt="Apocalypse Now table 33">
+                <img src="item/34.png" alt="Apocalypse Now table 34">
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /stage -->
+
+  <div class="controls">
+    <span class="who">JPN/FST 266 &mdash; Prof. Tomoyuki Yabe</span>
+    <span class="nav">
+      <button id="prev" aria-label="Previous slide">&larr; Prev</button>
+      <span class="count" id="count">1 / 7</span>
+      <button id="next" aria-label="Next slide">Next &rarr;</button>
+      <button id="fs" aria-label="Toggle fullscreen">&#9974; Full</button>
+    </span>
+  </div>
+
+</div><!-- /deck -->
+
+<script>
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var stage  = document.getElementById('stage');
+  var count  = document.getElementById('count');
+  var i = 0;
+  function show(n){
+    i = Math.max(0, Math.min(slides.length-1, n));
+    slides.forEach(function(s,k){ s.classList.toggle('active', k===i); });
+    count.textContent = (i+1) + ' / ' + slides.length;
+    stage.scrollTop = 0;
+  }
+  document.getElementById('next').onclick = function(){ show(i+1); };
+  document.getElementById('prev').onclick = function(){ show(i-1); };
+  document.getElementById('fs').onclick = function(){
+    if(!document.fullscreenElement){ document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); }
+    else { document.exitFullscreen && document.exitFullscreen(); }
+  };
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ show(i+1); e.preventDefault(); }
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){ show(i-1); e.preventDefault(); }
+    else if(e.key==='Home'){ show(0); }
+    else if(e.key==='End'){ show(slides.length-1); }
+  });
+  show(0);
+</script>
+</body>
+</html>
 
