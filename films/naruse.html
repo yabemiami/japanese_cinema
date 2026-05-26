@@ -30,7 +30,7 @@
 
   #deck{width:100%;max-width:1040px;height:100vh;display:flex;flex-direction:column;}
   .topbar{
-    background:var(--bar);color:#fff;font-size:13px;letter-spacing:.02em;
+    background:var(--bar);color:#fff;font-size:15px;letter-spacing:.02em;
     padding:6px 16px;display:flex;justify-content:space-between;align-items:center;
     font-family:Georgia,serif;
   }
@@ -42,44 +42,44 @@
   .slide.active{display:block;animation:fade .25s ease}
   @keyframes fade{from{opacity:.35}to{opacity:1}}
 
-  h1.deck-title{font-size:30px;line-height:1.25;margin:0 0 6px;color:var(--rose-deep);text-align:center}
-  .frametitle{font-size:23px;color:var(--rose-deep);margin:2px 0 14px;font-weight:600;border-bottom:2px solid var(--rose-mid);padding-bottom:6px}
+  h1.deck-title{font-size:36px;line-height:1.25;margin:0 0 6px;color:var(--rose-deep);text-align:center}
+  .frametitle{font-size:28px;color:var(--rose-deep);margin:2px 0 14px;font-weight:600;border-bottom:2px solid var(--rose-mid);padding-bottom:6px}
 
   /* title slide */
   .title-slide{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%;gap:4px}
-  .title-slide .sub{font-size:18px;color:var(--ink);margin-top:18px}
-  .title-slide .inst{font-size:16px;color:var(--muted);font-style:italic}
-  .title-slide .date{font-size:16px;color:var(--muted);margin-top:10px}
-  .title-slide .badge{margin-top:26px;font-size:12px;color:var(--muted);font-family:Georgia,serif;
+  .title-slide .sub{font-size:22px;color:var(--ink);margin-top:18px}
+  .title-slide .inst{font-size:19px;color:var(--muted);font-style:italic}
+  .title-slide .date{font-size:19px;color:var(--muted);margin-top:10px}
+  .title-slide .badge{margin-top:26px;font-size:14px;color:var(--muted);font-family:Georgia,serif;
     border:1px solid var(--rose-mid);border-radius:20px;padding:4px 14px}
 
   /* blocks */
   .block,.alertblock{border-radius:6px;overflow:hidden;margin:0 0 14px;box-shadow:0 1px 3px rgba(0,0,0,.12)}
-  .block>.head{background:var(--rose-deep);color:#fff;padding:7px 14px;font-size:16px;font-weight:600}
+  .block>.head{background:var(--rose-deep);color:#fff;padding:7px 14px;font-size:19px;font-weight:600}
   .block>.body{background:var(--rose-body);padding:12px 16px}
-  .alertblock>.head{background:var(--alert-bar);color:#fff;padding:7px 14px;font-size:16px;font-weight:600}
+  .alertblock>.head{background:var(--alert-bar);color:#fff;padding:7px 14px;font-size:19px;font-weight:600}
   .alertblock>.body{background:var(--alert-body);padding:12px 16px}
 
-  .lead{font-size:15px;line-height:1.5;margin:0 0 8px}
+  .lead{font-size:18px;line-height:1.5;margin:0 0 8px}
   ul.pts{margin:6px 0 4px;padding-left:22px}
-  ul.pts>li{font-size:14.5px;line-height:1.5;margin-bottom:9px}
-  .small{font-size:13.5px;line-height:1.5}
+  ul.pts>li{font-size:17.5px;line-height:1.5;margin-bottom:9px}
+  .small{font-size:16px;line-height:1.5}
 
   .hl{color:var(--hl)}
   .cite{color:var(--muted);font-style:italic;white-space:nowrap}
   em{font-style:italic}
 
   .imgrow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
-  .imgrow img{height:130px;width:auto;border:1px solid #d9c4cc;border-radius:3px;background:#eee;object-fit:cover}
-  .imgrow.small img{height:104px}
+  .imgrow img{height:166px;width:auto;border:1px solid #d9c4cc;border-radius:3px;background:#eee;object-fit:cover}
+  .imgrow.small img{height:132px}
 
   /* controls */
   .controls{background:var(--bar);color:#fff;display:flex;align-items:center;justify-content:space-between;
-    padding:7px 14px;font-family:Georgia,serif;font-size:13px}
+    padding:7px 14px;font-family:Georgia,serif;font-size:15px}
   .controls .who{opacity:.9}
   .controls .nav{display:flex;align-items:center;gap:8px}
   .controls button{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.4);
-    border-radius:5px;padding:4px 12px;font-size:14px;cursor:pointer;font-family:inherit}
+    border-radius:5px;padding:5px 13px;font-size:15px;cursor:pointer;font-family:inherit}
   .controls button:hover{background:rgba(255,255,255,.30)}
   .controls .count{min-width:54px;text-align:center}
 
@@ -98,7 +98,7 @@
 
   <div class="topbar">
     <span class="t-title">JPN/FST 266 — Lightning (1952) <span class="cjk">稲妻</span></span>
-    <span class="t-sec">Mikio Naruse</span>
+    <span class="t-sec">Mikio Naruse - 成瀬巳喜男</span>
   </div>
 
   <div class="stage" id="stage">
@@ -123,9 +123,9 @@
         <div class="body">
           <p class="lead">Naruse and <span class="hl">his studio set designer meticulously calculated details and always succeeded in creating avenues where melodrama</span> (many of his films are based on novels by Fumiko Hayashi, a female author known for writing about women&rsquo;s lives with unworthy men) is successfully cinematized.</p>
           <ul class="pts">
-            <li>Naruse delicately depicts women&rsquo;s stories, making effective use of the film set. This space often consists of <span class="hl">two adjacent rooms</span>, typically a living/dining room and a futon room. Shigehiko Hasumi notes that Naruse uses the space of two adjacent rooms as a device to depict the protagonists of his films. This space sometimes represents the protagonists&rsquo; economic status or emotional state.</li>
+            <li>Naruse delicately depicts women&rsquo;s stories, making effective use of the film/studio set. This space often consists of <span class="hl">two adjacent rooms</span>, typically a living/dining room and a futon room. Shigehiko Hasumi notes that Naruse uses the space of two adjacent rooms as a device to depict the protagonists of his films. This space sometimes represents the protagonists&rsquo; economic status or emotional state.</li>
             <li>A good description of Naruse&rsquo;s filmmaking also comes from a film critic, Sadao Yamane, who observes that Naruse&rsquo;s films maintain <span class="hl">a steady and rhythmic organization through the totality of shots, editing, sound effects, lighting, and more, which he calls the &lsquo;rhythm of emotions.&rsquo;</span> Film scholar Catherine Russell unpacks the same phrase: this rhythm is <span class="hl">&ldquo;constructed through subtle patterns of editing, lighting, performance style, and set design,&rdquo;</span> and is created through <span class="hl">&ldquo;a fairly regular shot length of eight to ten seconds&rdquo;</span> for shot-reverse-shot dialogue <span class="cite">(Russell, p.&nbsp;227)</span>.</li>
-            <li>Hayashi&rsquo;s novels were serialized in magazines and newspapers; for all their formal poetry, Russell stresses that they <span class="hl">&ldquo;were key contributions to the popular culture of postwar Japan&rdquo;</span> <span class="cite">(Russell, p.&nbsp;227)</span>. Naruse&rsquo;s realist style, she adds, is <span class="hl">&ldquo;instilled with a poetry of awakening, recognition, and the beauty of small things &hellip; it partakes of the aesthetics of haiku&rdquo;</span> <span class="cite">(Russell, p.&nbsp;227)</span>.</li>
+            <li>Hayashi&rsquo;s novels were serialized in magazines and newspapers; for all their formal poetry, Russell stresses that they <span class="hl">&ldquo;were key contributions to the popular culture of postwar Japan&rdquo;</span> <span class="cite">(Russell, p.&nbsp;227)</span>. Naruse&rsquo;s realist style, she adds, is <span class="hl">&ldquo;instilled with a poetry of awakening, recognition, and the beauty of small things &hellip; &rdquo;</span> <span class="cite">(Russell, p.&nbsp;227)</span>.</li>
           </ul>
           <div class="imgrow">
             <img src="naruse_item/05.png" alt="Naruse two-room set 05">
@@ -144,8 +144,14 @@
         <div class="body">
           <ul class="pts">
             <li>Although it is a common interior feature in post-WWII living spaces in Japan, Naruse cultivates this ubiquitous two-room setup cinematically. The two rooms, usually living and futon/bedrooms, are juxtaposed adjacently. <span class="hl">Naruse depicts intricate human relationships through shots taken within, across, and outside this two-room format studio set.</span> Naruse seems to be very attentive to <span class="hl">how characters are placed in the two-room space, considering their facing direction, location, and position, including whether they are sitting, standing, or leaving</span>.</li>
+              
+            <li>Russell describes Naruse&rsquo;s sets as regularly shaped rooms with; thresholds; shoji panels; tatami seating, cramped entryways, as <span class="hl">&ldquo;a kind of vernacular language of space that is fully integrated into Naruse&rsquo;s narrative style&rdquo;</span> <span class="cite">(Russell, p.&nbsp;235)</span>. Windows and doorways in particular set up objective framings that <span class="hl">&ldquo;oscillate with the more subjective dimensions of performance&rdquo;</span> and <span class="hl">&ldquo;function as symbols of entrapment and containment&rdquo;</span> <span class="cite">(Russell, p.&nbsp;234)</span>.</li>
+
+            <li>While Russell describes the framing elements of Naruse&rsquo;s mise-en-sc&egrave;ne &mdash; windows, doorways, thresholds &mdash; as <span class="hl">&ldquo;symbols,&rdquo;</span> symbolism tends to rely on the cultural knowledge an audience brings to the image. Naruse&rsquo;s meanings, by contrast, are generated entirely within his perfectly calibrated mise-en-sc&egrave;ne, so <span class="hl">&ldquo;metaphor&rdquo;</span> may capture his art more precisely: his protagonists&rsquo; stories are not pointed to by external symbols but embodied in the cinematic space he builds through fine adjustments to every expressive element &mdash; shots, editing, sound, and lighting alike. This is what Yamane named the &lsquo;rhythm of emotions&rsquo;: a meaning that becomes complete only in the ensemble of cinematic elements we experience on screen and on the soundtrack.</li>
+            
             <li><em>Inazuma</em> is also based on Hayashi&rsquo;s novel. It is a story about family and relationships between women and men. The protagonist, Kiyoko, is the youngest sister among four siblings who do not share the same father. Kiyoko often feels disdain for her family, especially for her two sisters, who are involved with the same man. <span class="hl">Her mother&rsquo;s house, particularly the ground floor living room, is the stage where family affairs take place or are discussed. Naruse uses Kiyoko&rsquo;s positioning around the two-room space to enhance the cinematic narrative of <em>Inazuma</em></span>.</li>
-            <li>Russell describes Naruse&rsquo;s sets &mdash; regularly shaped rooms, thresholds, shoji panels, tatami seating, cramped entryways &mdash; as <span class="hl">&ldquo;a kind of vernacular language of space that is fully integrated into Naruse&rsquo;s narrative style&rdquo;</span> <span class="cite">(Russell, p.&nbsp;235)</span>. Windows and doorways in particular set up objective framings that <span class="hl">&ldquo;oscillate with the more subjective dimensions of performance&rdquo;</span> and <span class="hl">&ldquo;function as symbols of entrapment and containment&rdquo;</span> <span class="cite">(Russell, p.&nbsp;234)</span>.</li>
+            
+              
           </ul>
         </div>
       </div>
@@ -180,7 +186,7 @@
           <ul class="pts">
             <li class="small">Kiyoko disappears from her mother&rsquo;s home and moves into her own place in the suburbs of Tokyo. She now has her own two-room space and feels content. Sooner or later, she lets her family know her whereabouts. One of her sisters visits, and her mother does too, separately. In her own upstairs space, Kiyoko speaks her mind. During her mother&rsquo;s visit, her mother complains about Kiyoko&rsquo;s sisters, who are both involved with the same man who runs their businesses. Kiyoko sits on the balcony/bay window, attached to the living room, as if she is once again being pushed away (off of the living room) by her family&rsquo;s affairs. This time, however, Kiyoko tells her mother everything on her mind, including her feelings about her mom. They both end up crying. It happens at the edge of her newly acquired living room, on the outskirts of Tokyo. We get the impression that she cannot run away anymore. Then, lightning strikes in the sky, visible from Kiyoko&rsquo;s room. The mood changes suddenly. She seems to accept that there are things beyond her control. Naruse translates the whole dynamics into a cinematic image.</li>
             <li>Russell calls this ten-minute scene one of the finest in Naruse&rsquo;s oeuvre: as the mother cries, <span class="hl">&ldquo;a lightning flash seems to crystallize the break Kiyoko has made with her past&rdquo;</span> <span class="cite">(Russell, p.&nbsp;245)</span>. The flash is not merely mood &mdash; it is <span class="hl">&ldquo;linked directly to Kiyoko&rsquo;s gaze and therefore signifies her interiority, her subjectivity, and her desire for happiness&rdquo;</span> <span class="cite">(Russell, p.&nbsp;245)</span>.</li>
-            <li>In the suburbs Kiyoko is <span class="hl">&ldquo;stranded between the ideal represented by &hellip; the Musashino neighbors and her crude shitamachi family&rdquo;</span> <span class="cite">(Russell, p.&nbsp;244)</span>. Russell&rsquo;s emblem image: Takamine Hideko <span class="hl">&ldquo;looking out over a railing, poised on a kind of threshold of domestic space, is emblematic of the emergence of female subjectivity inscribed within Naruse&rsquo;s cinema&rdquo;</span> <span class="cite">(Russell, p.&nbsp;245)</span>. <em>Cf.</em> the mother&rsquo;s line Russell quotes: <span class="hl">&ldquo;Happiness is a concept that was invented in the modern world&rdquo;</span> <span class="cite">(Russell, p.&nbsp;244)</span>.</li>
+            <li>In the suburbs Kiyoko is <span class="hl">&ldquo;stranded between the ideal represented by &hellip; the Musashino neighbors and her crude shitamachi family&rdquo;</span> <span class="cite">(Russell, p.&nbsp;244)</span>. Russell&rsquo;s emblem image: Takamine Hideko <span class="hl">&ldquo;looking out over a railing, poised on a kind of threshold of domestic space, is emblematic of the emergence of female subjectivity inscribed within Naruse&rsquo;s cinema&rdquo;</span> <span class="cite">(Russell, p.&nbsp;245)</span>. Cf. the mother&rsquo;s line Russell quotes: <span class="hl">&ldquo;Happiness is a concept that was invented in the modern world&rdquo;</span> <span class="cite">(Russell, p.&nbsp;244)</span>.</li>
           </ul>
           <div class="imgrow small">
             <img src="naruse_item/01.png" alt="Kiyoko own place 01">
@@ -208,8 +214,9 @@
           <div class="imgrow">
             <img src="naruse_item/04.png" alt="Cinematic space 04">
             <img src="naruse_item/17.png" alt="Cinematic space 17">
-            <img src="naruse_item/20.png" alt="Cinematic space 20">
+            <img src="naruse_item/20.png" alt="Cinematic space 20"> 
           </div>
+            <p class="small">While Russell describes the framing elements of Naruse's mise-en-scène, windows, doorways, and thresholds, as "symbols," symbolism tends to rely on the cultural knowledge an audience brings to the image. Naruse's meanings, by contrast, are generated internally through his perfectly calibrated mise-en-scène, so "metaphor" (immanent figuration) may capture the effect of the cinematic devices in his art more precisely. Two-room setups, bay windows, and thresholds do not point outward toward externally legible symbolic meanings; rather, the protagonists' stories become embodied within the cinematic space constructed through fine adjustments to every expressive element: shots, editing, sound, and lighting alike. This is what Sadao Yamane named the "rhythm of emotions," a meaning that becomes complete only through the ensemble of cinematic elements experienced onscreen and in the soundtrack.</p> 
         </div>
       </div>
     </section>
