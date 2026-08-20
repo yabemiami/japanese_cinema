@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grave of the Fireflies (1988) 火垂るの墓 — Isao Takahata | JPN/FST 266</title>
+<style>
+  :root{
+    --ember-deep:#6e2a1a;       /* block title bar (charred ember) */
+    --ember-mid:#c08458;        /* lighter ember accent */
+    --ember-body:#f4ead7;       /* block body bg (warm ash parchment) */
+    --alert-bar:#3a1a14;        /* alertblock title bar (deep sumi) */
+    --alert-body:#f6ecdb;       /* alertblock body bg */
+    --hl:#b8431a;               /* firefly-orange emphasis for \red */
+    --ink:#2a1d18;
+    --muted:#6b5547;
+    --bar:#4a2a1f;              /* footer / header bars (cremation brown) */
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:#a8927a;         /* smoky ash surround */
+    color:var(--ink);
+    font-family:"Hoefler Text",Georgia,"Times New Roman","Yu Mincho","Hiragino Mincho ProN",serif;
+    -webkit-font-smoothing:antialiased;
+    display:flex;align-items:center;justify-content:center;
+  }
+  ruby,.cjk{font-family:"Yu Gothic","Hiragino Kaku Gothic ProN","Hiragino Sans","MS Gothic",inherit;}
+
+  #deck{width:100%;max-width:1040px;height:100vh;display:flex;flex-direction:column;}
+  .topbar{
+    background:var(--bar);color:#fff;font-size:15px;letter-spacing:.02em;
+    padding:6px 16px;display:flex;justify-content:space-between;align-items:center;
+    font-family:Georgia,serif;
+  }
+  .topbar .t-title{opacity:.95}
+  .topbar .t-sec{opacity:.8;font-style:italic}
+
+  .stage{flex:1;overflow:auto;background:#fff;}
+  .slide{display:none;padding:26px 34px 30px;min-height:100%;}
+  .slide.active{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:.35}to{opacity:1}}
+
+  h1.deck-title{font-size:34px;line-height:1.25;margin:0 0 6px;color:var(--ember-deep);text-align:center}
+  .frametitle{font-size:27px;color:var(--ember-deep);margin:2px 0 14px;font-weight:600;border-bottom:2px solid var(--ember-mid);padding-bottom:6px}
+
+  .title-slide{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%;gap:4px}
+  .title-slide .sub{font-size:22px;color:var(--ink);margin-top:18px}
+  .title-slide .inst{font-size:19px;color:var(--muted);font-style:italic}
+  .title-slide .date{font-size:19px;color:var(--muted);margin-top:10px}
+  .title-slide .badge{margin-top:26px;font-size:14px;color:var(--muted);font-family:Georgia,serif;
+    border:1px solid var(--ember-mid);border-radius:20px;padding:4px 14px;max-width:780px}
+
+  .block,.alertblock{border-radius:6px;overflow:hidden;margin:0 0 14px;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+  .block>.head{background:var(--ember-deep);color:#fff;padding:7px 14px;font-size:19px;font-weight:600}
+  .block>.body{background:var(--ember-body);padding:12px 16px}
+  .alertblock>.head{background:var(--alert-bar);color:#fff;padding:7px 14px;font-size:19px;font-weight:600}
+  .alertblock>.body{background:var(--alert-body);padding:12px 16px}
+
+  .lead{font-size:18px;line-height:1.5;margin:0 0 8px}
+  ul.pts,ol.pts{margin:6px 0 4px;padding-left:22px}
+  ul.pts>li,ol.pts>li{font-size:17px;line-height:1.5;margin-bottom:9px}
+  ul.pts ul,ul.pts ol{margin:6px 0 6px;padding-left:22px}
+  ul.pts ul li{font-size:16px;line-height:1.45;margin-bottom:6px}
+  .small{font-size:15.5px;line-height:1.5}
+
+  .hl{color:var(--hl)}
+  .cite{color:var(--muted);font-style:italic;white-space:nowrap}
+  em{font-style:italic}
+
+  .imgrow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+  .imgrow img{height:187px;width:auto;border:1px solid #c8b58f;border-radius:3px;background:#eee;object-fit:cover}
+  .imgrow.small img{height:143px}
+  .imgrow.tiny img{height:200px}
+  .imgrow.wide img{height:auto;max-width:100%}
+
+  .twocol{display:flex;gap:14px;align-items:flex-start}
+  .twocol .col-text{flex:1 1 70%;min-width:0}
+  .twocol .col-img{flex:0 0 26%;display:flex;justify-content:center;align-items:center}
+  .twocol .col-img img{max-width:100%;height:auto;border:1px solid #c8b58f;border-radius:3px}
+
+  blockquote.quote{
+    margin:8px 0;padding:6px 14px;
+    border-left:4px solid var(--ember-mid);
+    background:#fbf3e1;
+    color:var(--ink);font-style:italic;
+    font-size:17px;line-height:1.55;
+  }
+  blockquote.quote .src{display:block;margin-top:4px;font-size:14.5px;color:var(--muted);font-style:italic;text-align:right}
+
+  /* Dialogue list (Takahata / Nosaka interview style) */
+  dl.dialogue{margin:6px 0 4px}
+  dl.dialogue dt{font-weight:600;color:var(--ember-deep);margin-top:8px;font-size:16.5px}
+  dl.dialogue dd{margin:2px 0 8px 0;font-size:16.5px;line-height:1.55}
+
+  .intro .lead,
+  .intro p{font-size:20px;line-height:1.6;margin:0 0 12px}
+  .intro ul{margin:10px 0 6px;padding-left:24px}
+  .intro ul li{font-size:19px;line-height:1.6;margin-bottom:12px}
+  .intro .small{font-size:18px;line-height:1.6}
+
+  .controls{background:var(--bar);color:#fff;display:flex;align-items:center;justify-content:space-between;
+    padding:7px 14px;font-family:Georgia,serif;font-size:15px}
+  .controls .who{opacity:.9}
+  .controls .nav{display:flex;align-items:center;gap:8px}
+  .controls button{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.4);
+    border-radius:5px;padding:5px 13px;font-size:15px;cursor:pointer;font-family:inherit}
+  .controls button:hover{background:rgba(255,255,255,.30)}
+  .controls .count{min-width:54px;text-align:center}
+
+  @media print{
+    body{background:#fff}
+    #deck{max-width:none;height:auto}
+    .topbar,.controls{display:none}
+    .stage{overflow:visible}
+    .slide{display:block !important;page-break-after:always;min-height:0}
+  }
+</style>
+</head>
+<body>
+<div id="deck">
+
+  <div class="topbar">
+    <span class="t-title">JPN/FST 266 &mdash; Grave of the Fireflies (1988) <span class="cjk">火垂るの墓</span></span>
+    <span class="t-sec">Isao Takahata - 高畑勲 &middot; with Nosaka&rsquo;s 1967/78 story &amp; the 1986 Animage interview</span>
+  </div>
+
+  <div class="stage" id="stage">
+
+    <!-- ===== TITLE ===== -->
+    <section class="slide active">
+      <div class="title-slide">
+        <h1 class="deck-title">Week 09: Grave of the Fireflies (1988)<br>
+          <ruby>火垂<rt>hotaru</rt></ruby><ruby>の<rt>no</rt></ruby><ruby>墓<rt>haka</rt></ruby> by Isao Takahata</h1>
+        <div class="sub">JPN/FST 266 &mdash; Prof. Tomoyuki Yabe</div>
+        <div class="inst">GRAMELAC, Miami Univ. / <span class="cjk">マイアミ大学</span></div>
+        <div class="date">Fall 2025</div>
+        <div class="badge">Slides annotated with Nosaka Akiyuki, &ldquo;A Grave of Fireflies&rdquo; (tr. James R. Abrams, <em>Japan Quarterly</em> 25:4, Oct 1978), the Takahata&ndash;Nosaka interview (<em>Animage</em>, June 1986), and Takahata Isao, &ldquo;<span class="cjk">後輩の皆さんへのお願い</span>&rdquo; (<em>烏城</em> 148, March 1992)</div>
+      </div>
+    </section>
+
+    <!-- ===== INTRO ===== -->
+    <section class="slide intro">
+      <div class="frametitle">Introduction</div>
+      <div class="alertblock">
+        <div class="head">Not an anti-war film. A <em>shinj&#363;</em> film.</div>
+        <div class="body">
+          <p><em>Grave of the Fireflies</em> (GF) is <span class="hl">based on an autobiographical short story of the same title by Akiyuki Nosaka</span> (1967, Naoki Prize 1968). The plot follows two siblings, fourteen-year-old Seita and four-year-old Setsuko, who lose their parents and then their lives in the last months of the Pacific War. The film is universally read as anti-war, and that reading is legitimate, but it is not what either the author or the director described as the work&rsquo;s core.</p>
+          <ul>
+            <li><span class="hl">Nosaka</span>: <em>&ldquo;I dislike so-called &lsquo;antiwar films,&rsquo; and I especially dislike films that simply cry &lsquo;how pitiful, how pitiful.&rsquo;&rdquo;</em></li>
+            <li><span class="hl">Takahata</span>: he wanted to depict <em>&ldquo;not only the fullness of their lives, but their joy&rdquo;</em> &mdash; a fullness that, &ldquo;seen from today, was the essence of tragedy.&rdquo;</li>
+            <li>Both men describe the work as <span class="hl">a <em>shinj&#363;</em> (lovers&rsquo; joint-suicide) story</span> in the Chikamatsu tradition, in which the protagonists&rsquo; deaths are assumed from the start and the narrative follows their <em>michiyuki</em>, their journey toward death.</li>
+            <li>This week we read the film through that frame. The orange light, the candy tin, the umbrella, the ghosts in 1980s Kobe &mdash; all become legible once we stop watching for an anti-war message and start watching for <span class="hl">a paradise built for two</span>.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 1 ===== -->
+    <section class="slide">
+      <div class="frametitle">What they show is not always what we see</div>
+      <div class="alertblock">
+        <div class="head">Topic: what we see vs. what the director shows</div>
+        <div class="body">
+          <p class="lead">The animated film GF is <span class="hl">based on an autobiographical short story of the same title by Akiyuki Nosaka</span>. The plot follows a heartbreaking tale of two innocent siblings who lose their lives due to the consequences of war. While it can easily be interpreted as an anti-war film, and that is a valid interpretation, <span class="hl">there are elements on the screen that do not directly support the anti-war message.</span></p>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="head">What we often see / interpret</div>
+        <div class="body">
+          <ul class="pts">
+            <li><span class="hl">There can be a significant difference between what the director shows and what the audience perceives.</span> On the internet there are countless videos of viewers tearing up while watching GF; it has almost become a meme &mdash; the &ldquo;Grave of the Fireflies challenge.&rdquo; The common sentiment is, &ldquo;It&rsquo;s so sad; war is terrible.&rdquo;</li>
+            <li>Indeed, war is horrific and takes the lives of many innocent young people. However, a film&rsquo;s director or a story&rsquo;s author may not intend anti-war sentiment to be the central theme. Nosaka, in the 1986 <em>Animage</em> interview, flatly says: <span class="hl">&ldquo;I dislike anti-war themes and those that try to make the viewer cry.&rdquo;</span></li>
+            <li>This week we will look for what Takahata and Nosaka <em>did</em> intend: <span class="hl">a <em>shinj&#363;</em> structure</span>, <span class="hl">a purgatorial loop</span>, and <span class="hl">a paradise for two</span> built out of refusal &mdash; refusal of the aunt, of charity, of the postwar world.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 2 ===== -->
+    <section class="slide">
+      <div class="frametitle">What Takahata and Nosaka said about the film</div>
+      <div class="alertblock">
+        <div class="head">From the <em>Animage</em> June 1986 interview</div>
+        <div class="body">
+          <dl class="dialogue">
+            <dt>Takahata:</dt>
+            <dd><em>&ldquo;I thought kids today could relate to the kind of boy Seita was. Seita is the type who avoids his mean aunt instead of enduring her to make survival easier. However, those of us who remember the war would choose the easier way to survive by accepting a little hardship, like dealing with a mean aunt.&rdquo;</em></dd>
+            <dt>Nosaka:</dt>
+            <dd><em>&ldquo;&hellip; <span class="hl">Seita was a brat in a way.</span> All he could do was isolate himself with his beloved sister during the tough times after the war. He even felt that he would offer his own flesh to his sister to help her survive. It is very tragic, but at the same time, we can also think that <span class="hl">he was just creating a paradise for himself and his sister where no one could bother them until the end. This story is therefore of the Shinju (joint suicide) genre.</span> It is totally up to the viewer how to interpret the film, but personally, <span class="hl">I dislike anti-war themes and those that try to make the viewer cry.</span>&rdquo;</em> <span class="cite">(Animage, 1988)</span></dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="head">Shinj&#363;-mono (<span class="cjk">心中物</span>): the Chikamatsu template</div>
+        <div class="body">
+          <div class="twocol">
+            <div class="col-text">
+              <p class="small"><em>Shinj&#363;-mono</em> is a genre that depicts <span class="hl">lovers&rsquo; joint suicides</span>, perfected by the Edo playwright Chikamatsu Monzaemon (1653&ndash;1725) in works such as <em>Sonezaki Shinj&#363;</em> and <em>Shinj&#363; Ten no Amijima</em>. Two lovers who are forbidden to be together walk a final road (the <em>michiyuki</em>) toward a place where they will die together, hoping to be reunited in the next world.</p>
+              <p class="small">The genre&rsquo;s emblem is <span class="hl">a couple sheltering under a single paper umbrella</span>, the image that recurs on the GF poster and inside the film. In the 1986 interview Takahata says he thought of Chikamatsu the first time he read Nosaka&rsquo;s story: structurally, the death is announced before the action begins, and what follows is not a struggle for survival but a poetic journey to that death.</p>
+            </div>
+            <div class="col-img"><img src="takahata_item/kasa01.jpg" alt="paper umbrella motif"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 3 ===== -->
+    <section class="slide">
+      <div class="frametitle">Nosaka on incestuous purity and the sister as mother / lover</div>
+      <div class="alertblock">
+        <div class="head">From the <em>Animage</em> June 1986 interview, continued</div>
+        <div class="body">
+          <dl class="dialogue">
+            <dt>Nosaka:</dt>
+            <dd>Of course, realistically speaking, the boy isn&rsquo;t having romantic thoughts. He&rsquo;s simply hungry. But Setsuko at four years old &mdash; objectively speaking, that&rsquo;s the age when a girl is most adorable. And for a boy of fourteen or fifteen, that&rsquo;s when he begins to realize he is a &lsquo;male,&rsquo; to awaken to a sense of self. These two end up living together in isolation, and naturally there emerges something like incestuous love. <span class="hl">His sister is the only one he can speak to; the blood tie is strong, but at the same time she is completely barred from becoming an object of romantic love. This intensifies his emotions, purifies them.</span></dd>
+            <dt>Takahata:</dt>
+            <dd>Yes.</dd>
+            <dt>Nosaka:</dt>
+            <dd>And the little sister, influenced by the change in environment and by her brother&rsquo;s behavior, matures rapidly. <span class="hl">At times she becomes like a mother to him, at other times like a lover. While she is overwhelmingly protected by him, she also becomes his spiritual support.</span> As she grows physically weaker, her &lsquo;decline&rsquo; appears to him as a kind of beauty. It&rsquo;s like the sweet delusions of boyhood. Ultimately, every day on their path to death is a kind of <em>michiyuki</em> (a lovers&rsquo; journey to death). <span class="cite">(Animage, 1988)</span></dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="head">Why this matters for reading the film</div>
+        <div class="body">
+          <p class="small">Nosaka reverses the standard reading. The &ldquo;purification&rdquo; he describes is not a denial of erotic feeling but its sublimation: <span class="hl">precisely because Setsuko can never be a romantic object, the affection between the siblings intensifies into something that resembles love.</span> Takahata stages this collapse of registers visually &mdash; Setsuko sewing like a mother, running naked like a lover, &ldquo;playing house&rdquo; as a wife &mdash; folding maternal, conjugal, and erotic roles into a single four-year-old.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 4 ===== -->
+    <section class="slide">
+      <div class="frametitle">Images on the screen: ghosts</div>
+      <div class="alertblock">
+        <div class="head">Takahata: &ldquo;ghosts of the war are still watching us&rdquo;</div>
+        <div class="body">
+          <blockquote class="quote">
+            &ldquo;In the film, <span class="hl">a ghostly image of Seita appears and gazes at us.</span> Many of us have the impression that countless ghosts of the war are still watching us. I feel that we need this awareness of being watched for the sake of our future. <span class="hl">That&rsquo;s why we decided to depict the ghosts of Seita and Setsuko.</span>&rdquo;
+            <span class="src">&mdash; Takahata, 1999</span>
+          </blockquote>
+          <div class="imgrow">
+            <img src="takahata_item/02.jpg" alt="ghost of Seita 1">
+            <img src="takahata_item/06.jpg" alt="ghost of Seita 2">
+            <img src="takahata_item/03.jpg" alt="ghost of Seita 3">
+          </div>
+          <ul class="pts">
+            <li>Seita knows he is dead; <span class="hl">he says, &ldquo;I died on 9/21/1945,&rdquo; while gazing at us, the audience.</span></li>
+            <li>There are sequences in which <span class="hl">Seita and Setsuko appear in 1980s Kobe</span>, riding modern trains, looking down on a city they never lived to see.</li>
+            <li>He even witnesses his own death. Additional shots show <span class="hl">the ghost of Seita observing himself and his sister at crucial moments in their lives.</span></li>
+            <li>Kobe and Nishinomiya, cities burned by incendiary bombs, are depicted in an orange glow. <span class="hl">The ghostly appearances of the siblings, and the world they inhabit, are always illuminated by an orange light</span>, even in the absence of fire.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 5 ===== -->
+    <section class="slide">
+      <div class="frametitle">Ghosts trapped in a purgatorial world</div>
+      <div class="alertblock">
+        <div class="head">A reading through Dante&rsquo;s <em>Purgatorio</em></div>
+        <div class="body">
+          <ul class="pts">
+            <li><strong>Q:</strong> <span class="hl">Why are the ghosts of Setsuko and Seita lit in orange?</span> They seem to be <span class="hl">trapped in a purgatory-like dimension, unable or unwilling to move on.</span></li>
+            <li><strong>A:</strong> They are ghosts trapped in something like Dante&rsquo;s terraces of Purgatory. In Dante&rsquo;s <em>Divine Comedy</em>, Purgatory is the realm between Heaven and Hell. It is our world, but for the souls that lost bodies. <span class="hl">Those who need purification before entering Heaven go through penance delivered by fire</span>:</li>
+          </ul>
+          <blockquote class="quote">
+            &ldquo;The fire that refines them uttered against me:<br>
+            &lsquo;Come in; and fear not; though I scorch, I cleanse.&rsquo;&rdquo;
+            <span class="src">&mdash; Purgatorio, Canto 27, lines 49&ndash;50</span>
+          </blockquote>
+          <div class="imgrow">
+            <img src="takahata_item/04.jpg" alt="purgatorial light">
+            <img src="takahata_item/34.jpg" alt="hilltop bench overlooking Kobe">
+          </div>
+          <ul class="pts">
+            <li>Seita knows he is dead. At the beginning, he tells us so while gazing at us, the audience.</li>
+            <li>In the final scene, Seita and Setsuko rest on a bench on a hilltop overlooking modern-day Kobe, <span class="hl">as if they have chosen to remain on the top terrace of Purgatory, the terrace reserved for those guilty of the sin of lust.</span></li>
+            <li>What does it mean to remain on the top terrace, known for the sin of lust? <span class="hl">This is a <em>shinj&#363;</em> story (a double suicide of lovers).</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 6 ===== -->
+    <section class="slide">
+      <div class="frametitle">A <em>shinj&#363;</em> story for a brother and sister</div>
+      <div class="alertblock">
+        <div class="head">The michiyuki of Seita and Setsuko</div>
+        <div class="body">
+          <ul class="pts">
+            <li><span class="hl"><em>Shinj&#363;</em> is a joint suicide of lovers who are forbidden to be together, but wish to reunite in another dimension.</span> This theme became a frequent topic in theater, pop songs, and puppet theater around the turn of the eighteenth century. The umbrella, as seen on the movie poster for GF, is a symbol of this.</li>
+            <li>Nosaka also made significant remarks about Setsuko and Seita. After 14-year-old Seita started creating their own world, <span class="hl">the siblings formed a special relationship of emotional dependency.</span> Setsuko begs Seita not to leave her, and Seita agrees, even though he is heavily criticized by their aunt for not working while they stay at her house. This behavior may seem natural for a 4-year-old like Setsuko, but Seita&rsquo;s emotional attachment aligns GF with a Shinj&#363; story. As Nosaka notes:
+              <blockquote class="quote">
+                &ldquo;Experiencing the changes in her unusual life with her brother, [Setsuko] matures rapidly. <span class="hl">She ends up providing emotional support by taking on roles of both mother and lover.</span>&rdquo;
+              </blockquote>
+            </li>
+            <li>There is an interesting sequence that stands out from the rest of the film, where all scenes are normally shown from Seita&rsquo;s perspective. In this special scene, <span class="hl">Setsuko is shown sewing like a mother, running around naked like a lover, and playing the role of a wife raising a child</span> &mdash; experiences that Seita would never live to see in the future he never had.</li>
+          </ul>
+          <div class="imgrow tiny">
+            <img src="takahata_item/kasa01.jpg" alt="umbrella 1">
+            <img src="takahata_item/kasa02.jpg" alt="umbrella 2">
+            <img src="takahata_item/kasa03.jpg" alt="umbrella 3">
+          </div>
+          <div class="imgrow small">
+            <img src="takahata_item/11.jpg" alt="Setsuko as mother">
+            <img src="takahata_item/12.jpg" alt="Setsuko as lover">
+            <img src="takahata_item/13.jpg" alt="Setsuko as wife">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 7 ===== -->
+    <section class="slide">
+      <div class="frametitle">A suicide fighter, fireflies, Setsuko and Seita are shining</div>
+      <div class="alertblock">
+        <div class="head">What the film lets shine in the darkness</div>
+        <div class="body">
+          <ul class="pts">
+            <li><span class="hl"><em>Grave of the Fireflies</em></span> as a Shinj&#363; story aligns with the fact that, after their deaths, <span class="hl">Setsuko and Seita are never reunited with their parents.</span> Setsuko cries for her mother, and Seita is proud of his Navy officer father. There is a still shot of the family under the tree before the war worsens, but <span class="hl">Takahata is not interested in reuniting them.</span></li>
+            <li>That is not what Seita wants. He even abandons his mother&rsquo;s ashes in the cave while keeping Setsuko&rsquo;s ashes in a candy tin until his own death.</li>
+            <li><span class="hl">When his mother dies, he shows no visible sorrow or affection</span>, whereas <span class="hl">he holds Setsuko&rsquo;s body close until he cremates her the next morning</span>. Cremating Setsuko immediately suggests <span class="hl">his desire to preserve her image unchanged</span>, in contrast to his mother, whose death is depicted as grotesque, with wounds and maggots.</li>
+            <li>The man who gives him firewood for Setsuko&rsquo;s cremation suggests performing it near a temple. However, we know Seita won&rsquo;t do that; he wants to be alone with her. He doesn&rsquo;t even want a god to intervene.</li>
+            <li>The act of Shinj&#363; idealizes death. Throughout the film, <span class="hl">Seita and Setsuko admire things with an imminent demise, like a fighter on a suicide mission, fireflies, and each other.</span> Takahata also illuminates these elements, letting them <span class="hl">shine in the darkness</span>. They prefer to stay with just each other, forever.</li>
+          </ul>
+          <div class="imgrow small">
+            <img src="takahata_item/20.jpg" alt="kamikaze fighter">
+            <img src="takahata_item/21.jpg" alt="firefly">
+            <img src="takahata_item/23.jpg" alt="firefly in net">
+            <img src="takahata_item/24.jpg" alt="siblings shining">
+            <img src="takahata_item/25.jpg" alt="siblings shining 2">
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="head">Tracing the fireflies back to Nosaka&rsquo;s story</div>
+        <div class="body">
+          <p class="small">In Nosaka&rsquo;s 1978 text the fireflies are introduced as <span class="hl">a visual echo of war, not a symbol of peace</span>. Watching antiaircraft tracers on the night of the March 17 air raid, Seita &ldquo;compared the tracer bullets of the enemy with the light of the fireflies in a puff seen swallowed up in the sky.&rdquo; The two siblings catch fireflies and release them inside the mosquito net to &ldquo;make things a little lighter, not necessarily in imitation of Che Yin&rdquo; (the Chinese scholar said to have studied by firefly light). The next morning, Setsuko buries the dead insects in a tiny grave &mdash; and tells Seita that auntie has said their <em>mother</em> is &ldquo;already dead and is in her grave.&rdquo; <span class="hl">The film&rsquo;s title is literal: &ldquo;the grave of the fireflies&rdquo; is the grave a four-year-old digs for dead insects, which is at once the grave of her mother, of the bombed cities, and of the children themselves.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 8 ===== -->
+    <section class="slide">
+      <div class="frametitle">Seita&rsquo;s will for life &mdash; the interview</div>
+      <div class="alertblock">
+        <div class="head">Nosaka: &ldquo;I entrust everything to the director&rdquo;</div>
+        <div class="body">
+          <dl class="dialogue">
+            <dt>Nosaka:</dt>
+            <dd>&ldquo;To be honest, I also felt a sense of release when my sister died, a guilty relief. I was free of the burden. I didn&rsquo;t have to wake in the night to her crying anymore, didn&rsquo;t have to carry her on my back wandering about. It was cruel to my sister, but I really did feel that way &hellip; <span class="hl">I&rsquo;m certain I once thought of my sister as a burden. I can&rsquo;t believe I never did.</span>&rdquo;</dd>
+            <dt>Takahata:</dt>
+            <dd>&ldquo;Yes, I understand.&rdquo;</dd>
+            <dt>Nosaka:</dt>
+            <dd>&ldquo;I must have thought: <em>If only she weren&rsquo;t here, I could escape like this&hellip;</em> Absolutely, I must have.&rdquo;</dd>
+            <dt>Takahata:</dt>
+            <dd>&ldquo;And in terms of adapting it into film, Setsuko inevitably becomes a concrete presence. A four-year-old would of course be selfish at times, troublesome. There could be scenes where Seita finds it unbearable. But it&rsquo;s difficult, you see, difficult to make such moments work within the narrative.&rdquo;</dd>
+            <dt>Nosaka:</dt>
+            <dd>&ldquo;That&rsquo;s exactly where I&rsquo;d like you to use your talents as a director (laughs). In truth, I couldn&rsquo;t bring myself to depict those parts. As I wrote, I found myself beautifying the older brother. I filled in what I myself couldn&rsquo;t do. I was never as kind as the protagonist. I may have thought in my head, <em>I want to be like that</em>, but in reality, I couldn&rsquo;t. <span class="hl">I may have wished to give my food to my sister, but when I held it in my hands, my own hunger was too strong, and I ate it. And the deliciousness of that food was undeniable but so too was the agony I felt afterwards.</span> I thought, there can&rsquo;t be anyone more worthless than me. But in the novel, I didn&rsquo;t write any of that. <span class="hl">I entrust everything to the director.</span>&rdquo;</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="head">The biographical wound: Fukui, August 22, 1945</div>
+        <div class="body">
+          <p class="small">In the 1986 interview, Nosaka describes the night his real sister died in Fukui Prefecture, August 22, 1945 &mdash; a week after Japan&rsquo;s surrender, on the very day blackout restrictions were lifted. &ldquo;On this side, my sister had died; on that side, the lights had returned. The return of fire meant the return of peace. At that moment, I felt deeply, <em>I have survived</em>. But at the same time, I was terrified,&rdquo; because once the blackout ended he would have to live in the postwar world as the boy he had become. Nosaka placed Seita and Setsuko in &ldquo;an idealized setting&rdquo; precisely because he was <em>not</em> as good as Seita: <span class="hl">&ldquo;I found myself beautifying the older brother. I filled in what I myself couldn&rsquo;t do.&rdquo;</span> The story is, in his own words, less a memoir than <span class="hl">a requiem for the sister he could not save and an attempt to imagine the brother he wished he had been.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 9 ===== -->
+    <section class="slide">
+      <div class="frametitle">Seita&rsquo;s will for life &mdash; on the screen</div>
+      <div class="alertblock">
+        <div class="head">What the food and the cremation tell us</div>
+        <div class="body">
+          <ul class="pts">
+            <li>When Setsuko dies, Seita&rsquo;s will to live was not entirely gone. Takahata shows the food Seita prepared for Setsuko, who was too weak to eat. In a later shot, the food is gone, implying it was eaten. The same happens with the watermelon. Setsuko was only able to taste it, but later it was eaten, except for the piece meant for Setsuko. <span class="hl">Seita ate it. He still had the will to survive.</span>
+              <div class="imgrow small" style="margin-top:8px">
+                <img src="takahata_item/41.jpg" alt="food prepared for Setsuko">
+                <img src="takahata_item/42.jpg" alt="food later, eaten">
+              </div>
+            </li>
+            <li>The night Setsuko dies, Seita holds her dead body in his arms and, the next morning, quickly decides to cremate it. During the sequence, Takahata strips all emotion from Seita&rsquo;s face. <span class="hl">Takahata seems to depict that Seita has lost his humane feelings.</span>
+              <div class="imgrow small" style="margin-top:8px">
+                <img src="takahata_item/51.jpg" alt="cremation 1">
+                <img src="takahata_item/52.jpg" alt="cremation 2">
+              </div>
+            </li>
+            <li>Seita never returned to the cave after Setsuko&rsquo;s death and her cremation. There was still money left in the bank. <span class="hl">If he wanted, he could have left everything behind and started a new life.</span> He left his mother&rsquo;s remains there.</li>
+            <li><span class="hl">But he carried Setsuko&rsquo;s ashes with him in a candy tin.</span> It seems that Setsuko followed Seita around as a ghost as well. At the beginning of the film, when we see Seita&rsquo;s death, <span class="hl">Setsuko is shown watching her brother&rsquo;s death</span> from outside the station. She didn&rsquo;t have to wait long, as <span class="hl">Seita soon calls out to her, and they are reunited forever.</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="head">The candy tin: Sakuma Drops</div>
+        <div class="body">
+          <p class="small">In Nosaka&rsquo;s 1978 text, a station employee gingerly examines the lice-covered clothing inside Seita&rsquo;s waistband and finds &ldquo;a small candy drops can.&rdquo; He tries to open it, &ldquo;but perhaps because of the rust it would not budge.&rdquo; A companion grabs it, shakes it (it rattles), and finally &ldquo;the station man with a pitcher&rsquo;s windup hurled it into the darkness of the burnt-out ruins in front of the station, the lid popped off, a white powder spilled out, the fragments of three small bones rolled away, waking the fireflies hidden within the grass.&rdquo; <span class="hl">The film opens on those bones and fireflies.</span> The tin is the formal hinge of the entire narrative: candy on the outside, bones on the inside, a brother&rsquo;s love condensed into a single object that an indifferent adult throws away. Takahata returns to it at the very end as the camera tilts up to the hilltop bench.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 10 ===== -->
+    <section class="slide">
+      <div class="frametitle">Seita&rsquo;s destiny: cannibalism, candy, and the loop</div>
+      <div class="alertblock">
+        <div class="head">An ending built since the very beginning</div>
+        <div class="body">
+          <ul class="pts">
+            <li>There may be <span class="hl">signs of life in Seita&rsquo;s narrative</span>, but there is also <span class="hl">an opposing force that neutralizes or even surpasses his will to live</span>. This force directly counteracts his appetite for life itself. After cremating Setsuko, <span class="hl">Seita eats a root vegetable</span> by the faint light of the cremation fire. The image of him consuming earthly nourishment transitions into his ghostly form, and <span class="hl">the vegetable transforms into the candy tin that holds Setsuko&rsquo;s remains.</span> This becomes the first shot of the final sequence on the hilltop. The visual blend of candy and bones has been present since the start of the film, with the siblings occasionally sharing candy, but in the end the overlapping images suggest they are feeding on death itself, more specifically their own. <span class="hl">Takahata carefully constructed Seita&rsquo;s entrapment that he could never run away from since the very beginning, using a subtle narrative of cannibalism.</span> Right after Seita dies, the ghost of Setsuko comes to join him, as she was following him all along.</li>
+            <li><span class="hl">Seita gazes at us, the audience, twice</span> &mdash; once at the beginning and once at the end. <span class="hl">These meta-moments occur when Setsuko is absent or asleep.</span> It is suggested that Seita is the only one fully aware of their fate, and he tries to hide this awareness from her. <span class="hl">He knows he is trapped in a purgatory-like dimension, wandering for over 40 years after his death, reliving and observing the last traumatic yet intimate 6 months and 5 days of their lives (from the Kobe bombing on 3/16 to his death on 9/21).</span></li>
+            <li>He cannot leave alone for the next world, nor can he let his sister realize that she is dead, for the same reason they died in the first place. <span class="hl">The loop is itself the heaven he wanted: an unending <em>michiyuki</em> in which the two of them remain alone together, forever.</span></li>
+          </ul>
+          <div class="imgrow small">
+            <img src="takahata_item/01.jpg" alt="Seita gazing at us">
+            <img src="takahata_item/09.jpg" alt="loop image 1">
+            <img src="takahata_item/10.jpg" alt="loop image 2">
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="head">&ldquo;Eyes of the dying&rdquo;: why everything was beautiful</div>
+        <div class="body">
+          <blockquote class="quote">
+            &ldquo;People say the sky on August 15th was so blue &mdash; but at that time, our eyes saw everything so vividly. After all, we were about to die. <span class="hl">We saw with the eyes of the dying.</span> Even a single tomato &mdash; when I stole one and ate it, yes, it was tied to hunger, but it was more than that. Its sheer vitality came through. With death so close, the intensity of life was overwhelming.&rdquo;
+            <span class="src">&mdash; Nosaka Akiyuki, <em>Animage</em> 1986</span>
+          </blockquote>
+          <p class="small">Takahata&rsquo;s film inherits this paradox. The orange light is the light of fire, but it is also the light of <span class="hl">intensified perception</span>. The fireflies, the watermelon, the sea at Suma &mdash; each is gorgeous precisely because it is about to be lost.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 11 ===== -->
+    <section class="slide">
+      <div class="frametitle">Coda: Takahata&rsquo;s message to the next generation</div>
+      <div class="alertblock">
+        <div class="head">A 1992 essay to high-school students: &ldquo;Seita resembles you&rdquo;</div>
+        <div class="body">
+          <p class="lead">In a 1992 essay to students at his old high school in Okayama (<span class="cjk">後輩の皆さんへのお願い</span>, &ldquo;A request to my younger schoolmates,&rdquo; collected in <em>アニメーション、折りにふれて</em>, Iwanami 2019), Takahata returned to Seita to make an argument about modernity rather than war.</p>
+          <ul class="pts">
+            <li><strong>&ldquo;You will soon greet the twenty-first century.&rdquo;</strong> Takahata reminds the students that they will soon stand at the core of twenty-first-century society. The terms swirling around them &mdash; information society, internationalization, democratization, nationalism, new socialism &mdash; cannot be set aside as too hard. <span class="hl">World-scale problems now reach directly into daily life, down to a single item of food.</span></li>
+            <li><strong>Seita resembles young people today.</strong> One of his motives for making the film, Takahata writes, was that Seita&rsquo;s feelings and way of thinking <span class="hl">&ldquo;resemble those of today&rsquo;s young people and children to a surprising degree.&rdquo;</span> Seita and Setsuko had never endured hard times before. <span class="hl">They could not put up with the aunt&rsquo;s petty meanness even for the duration of bowing their heads, so they chose to live in an air-raid shelter rather than bear humiliation.</span></li>
+            <li><strong>Seita&rsquo;s mistake was confidence in money.</strong> Takahata is careful: Seita&rsquo;s mistake was not in itself &mdash; the aunt really was mean. <span class="hl">It was his confidence that he could survive alone, a confidence grounded in money. While his mother was alive they could buy what they needed. Seita believed in the value of money and could not imagine that money might buy nothing at all.</span> In wartime, of course, there were no convenience stores; his savings bought nothing. He died of malnutrition; he killed his sister.</li>
+            <li><strong>The harder situation today.</strong> Today&rsquo;s children, Takahata continues, would think the same way as Seita. The world of mutual obligation, of being scolded by neighbors, has weakened. <span class="hl">If today&rsquo;s children were dropped into the same circumstances, they too would end up like Seita: thrown out by relatives, joining the swarms of war orphans, fending for themselves.</span> The wartime neighborhood associations (<em>tonari-gumi</em>) have been dismantled; in some ways <span class="hl">the &ldquo;true struggle for survival&rdquo; facing today&rsquo;s young people is harsher than wartime</span>, because they must win the entrance-exam race and not be abandoned by adults at the same time.</li>
+            <li><strong>A request.</strong> Extend your sense of possibility not only toward the &ldquo;high-tech information society&rdquo; or the salaried-worker track, but also toward the <span class="hl">&ldquo;origin point&rdquo; (<em>原点</em>) of human life &mdash; the path of the <em>hyakush&#333;</em> (peasant, smallholder, person of the hundred trades).</span> Try yourself out with curiosity and energy. Train yourself. Unexpectedly abundant joy may be waiting.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="head">Why this matters for our reading</div>
+        <div class="body">
+          <p class="small">The 1992 essay confirms what the 1986 interview only hinted at: Takahata&rsquo;s film is not a war memorial pointed at the past, but a warning aimed at the present. The film&rsquo;s emotional logic &mdash; Seita&rsquo;s refusal to endure, his retreat into an enclosed world of two, his confidence that money will be enough &mdash; is meant to look uncomfortably familiar to a contemporary audience. <span class="hl">&ldquo;Anti-war&rdquo; is the easiest way to watch it; &ldquo;self-portrait&rdquo; is the harder one.</span></p>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /stage -->
+
+  <div class="controls">
+    <span class="who">JPN/FST 266 &mdash; Prof. Tomoyuki Yabe</span>
+    <span class="nav">
+      <button id="prev" aria-label="Previous slide">&larr; Prev</button>
+      <span class="count" id="count">1 / 13</span>
+      <button id="next" aria-label="Next slide">Next &rarr;</button>
+      <button id="fs" aria-label="Toggle fullscreen">&#9974; Full</button>
+    </span>
+  </div>
+
+</div><!-- /deck -->
+
+<script>
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var stage  = document.getElementById('stage');
+  var count  = document.getElementById('count');
+  var i = 0;
+  function show(n){
+    i = Math.max(0, Math.min(slides.length-1, n));
+    slides.forEach(function(s,k){ s.classList.toggle('active', k===i); });
+    count.textContent = (i+1) + ' / ' + slides.length;
+    stage.scrollTop = 0;
+  }
+  document.getElementById('next').onclick = function(){ show(i+1); };
+  document.getElementById('prev').onclick = function(){ show(i-1); };
+  document.getElementById('fs').onclick = function(){
+    if(!document.fullscreenElement){ document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); }
+    else { document.exitFullscreen && document.exitFullscreen(); }
+  };
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ show(i+1); e.preventDefault(); }
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){ show(i-1); e.preventDefault(); }
+    else if(e.key==='Home'){ show(0); }
+    else if(e.key==='End'){ show(slides.length-1); }
+  });
+  show(0);
+</script>
+</body>
+</html>

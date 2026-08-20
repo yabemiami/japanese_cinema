@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Merry Christmas Mr. Lawrence (1983) — Nagisa Oshima | JPN/FST 266</title>
+<style>
+  :root{
+    --night-deep:#1f2a3f;      /* block title bar (camp-night blue) */
+    --night-mid:#7f8aa0;       /* lighter accent */
+    --night-body:#f1ecdf;      /* block body bg (sun-bleached parchment) */
+    --alert-bar:#4a2533;       /* alertblock title bar (crimson-rust) */
+    --alert-body:#f4ecde;      /* alertblock body bg */
+    --hl:#c44530;              /* vermilion for \red emphasis (the Japanese flag, blood, Yonoi's sash) */
+    --ink:#22262e;
+    --muted:#6b5f4f;
+    --bar:#2c2e36;             /* footer / header bars */
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:#a0987a;        /* warm tan / Java-camp dust */
+    color:var(--ink);
+    font-family:"Hoefler Text",Georgia,"Times New Roman","Yu Mincho","Hiragino Mincho ProN",serif;
+    -webkit-font-smoothing:antialiased;
+    display:flex;align-items:center;justify-content:center;
+  }
+  ruby,.cjk{font-family:"Yu Gothic","Hiragino Kaku Gothic ProN","Hiragino Sans","MS Gothic",inherit;}
+
+  #deck{width:100%;max-width:1040px;height:100vh;display:flex;flex-direction:column;}
+  .topbar{
+    background:var(--bar);color:#fff;font-size:15px;letter-spacing:.02em;
+    padding:6px 16px;display:flex;justify-content:space-between;align-items:center;
+    font-family:Georgia,serif;
+  }
+  .topbar .t-title{opacity:.95}
+  .topbar .t-sec{opacity:.8;font-style:italic}
+
+  .stage{flex:1;overflow:auto;background:#fff;}
+  .slide{display:none;padding:26px 34px 30px;min-height:100%;}
+  .slide.active{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:.35}to{opacity:1}}
+
+  h1.deck-title{font-size:32px;line-height:1.25;margin:0 0 6px;color:var(--night-deep);text-align:center}
+  .frametitle{font-size:27px;color:var(--night-deep);margin:2px 0 14px;font-weight:600;border-bottom:2px solid var(--night-mid);padding-bottom:6px}
+
+  .title-slide{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%;gap:4px}
+  .title-slide .sub{font-size:22px;color:var(--ink);margin-top:18px}
+  .title-slide .inst{font-size:19px;color:var(--muted);font-style:italic}
+  .title-slide .date{font-size:19px;color:var(--muted);margin-top:10px}
+  .title-slide .badge{margin-top:26px;font-size:14px;color:var(--muted);font-family:Georgia,serif;
+    border:1px solid var(--night-mid);border-radius:20px;padding:4px 14px;max-width:820px}
+
+  .block,.alertblock{border-radius:6px;overflow:hidden;margin:0 0 14px;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+  .block>.head{background:var(--night-deep);color:#fff;padding:7px 14px;font-size:19px;font-weight:600}
+  .block>.body{background:var(--night-body);padding:12px 16px}
+  .alertblock>.head{background:var(--alert-bar);color:#fff;padding:7px 14px;font-size:19px;font-weight:600}
+  .alertblock>.body{background:var(--alert-body);padding:12px 16px}
+
+  .lead{font-size:18px;line-height:1.5;margin:0 0 8px}
+  ul.pts,ol.pts{margin:6px 0 4px;padding-left:22px}
+  ul.pts>li,ol.pts>li{font-size:17px;line-height:1.5;margin-bottom:8px}
+  ul.pts ul,ul.pts ol{margin:6px 0 6px;padding-left:22px}
+  ul.pts ul li{font-size:16px;line-height:1.45;margin-bottom:6px}
+  .small{font-size:15.5px;line-height:1.5}
+
+  .hl{color:var(--hl);font-weight:600}
+  .cite{color:var(--muted);font-style:italic;white-space:nowrap}
+  em{font-style:italic}
+
+  .imgrow{display:flex;gap:10px;justify-content:stretch;flex-wrap:nowrap;margin-top:12px;align-items:flex-start}
+  .imgrow img{flex:1 1 0;min-width:0;width:100%;height:auto;border:1px solid #c8bca3;border-radius:3px;background:#eee;object-fit:contain}
+  .imgrow.center{justify-content:center}
+  .imgrow.center img{flex:0 0 auto;max-width:60%}
+
+  .twocol{display:flex;gap:14px;align-items:flex-start}
+  .twocol .col-text{flex:1 1 60%;min-width:0}
+  .twocol .col-img{flex:0 0 36%;display:flex;justify-content:center;align-items:flex-start}
+
+  blockquote.quote{
+    margin:8px 0;padding:6px 14px;
+    border-left:4px solid var(--night-mid);
+    background:#f7f3e6;
+    color:var(--ink);font-style:italic;
+    font-size:16.5px;line-height:1.55;
+  }
+  blockquote.quote .src{display:block;margin-top:4px;font-size:14.5px;color:var(--muted);font-style:italic;text-align:right}
+
+  .binarytable{display:flex;gap:24px;justify-content:center;margin:8px 0 4px}
+  .binarytable .col{font-size:15px;line-height:1.5;text-align:center;font-style:italic;color:var(--ink)}
+  .binarytable .col .pair{display:block;margin-bottom:2px}
+  .binarytable .col .pair span.hl{font-weight:400}
+  .binarytable .src{text-align:center;font-size:14px;color:var(--muted);font-style:italic;margin-top:4px}
+
+  .intro .lead,
+  .intro p{font-size:21px;line-height:1.6;margin:0 0 12px}
+  .intro ul{margin:10px 0 6px;padding-left:24px}
+  .intro ul li{font-size:21px;line-height:1.6;margin-bottom:16px}
+
+  .controls{background:var(--bar);color:#fff;display:flex;align-items:center;justify-content:space-between;
+    padding:7px 14px;font-family:Georgia,serif;font-size:15px}
+  .controls .who{opacity:.9}
+  .controls .nav{display:flex;align-items:center;gap:8px}
+  .controls button{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.4);
+    border-radius:5px;padding:5px 13px;font-size:15px;cursor:pointer;font-family:inherit}
+  .controls button:hover{background:rgba(255,255,255,.30)}
+  .controls .count{min-width:54px;text-align:center}
+
+  @media print{
+    body{background:#fff}
+    #deck{max-width:none;height:auto}
+    .topbar,.controls{display:none}
+    .stage{overflow:visible}
+    .slide{display:block !important;page-break-after:always;min-height:0}
+  }
+</style>
+</head>
+<body>
+<div id="deck">
+
+  <div class="topbar">
+    <span class="t-title">JPN/FST 266 &mdash; Merry Christmas Mr. Lawrence (1983)</span>
+    <span class="t-sec">Nagisa Oshima &middot; read through L&eacute;vi-Strauss on binary opposition and mediation</span>
+  </div>
+
+  <div class="stage" id="stage">
+
+    <!-- ===== TITLE ===== -->
+    <section class="slide active">
+      <div class="title-slide">
+        <h1 class="deck-title">Week 07: Merry Christmas Mr. Lawrence (1983)<br>
+          by Nagisa Oshima <span class="cjk">大島渚</span></h1>
+        <div class="sub">JPN/FST 266 &mdash; Prof. Tomoyuki Yabe</div>
+        <div class="inst">GRAMELAC, Miami Univ. / <span class="cjk">マイアミ大学</span></div>
+        <div class="date">Fall 2025</div>
+        <div class="badge">Slides annotated with Claude L&eacute;vi-Strauss, <em>Structural Anthropology</em> (1963) and &ldquo;The Story of Asdiwal&rdquo; (1958/1967); Robert N. Watson on <em>Romeo and Juliet</em> (2016); Richard Raskin, &ldquo;The Moth in <em>Merry Christmas, Mr. Lawrence</em>&rdquo; (<em>Asian Cinema</em>, 2007)</div>
+      </div>
+    </section>
+
+    <!-- ===== INTRO ===== -->
+    <section class="slide">
+      <div class="frametitle">Introduction</div>
+      <div class="alertblock">
+        <div class="head">Nagisa Oshima and the beauty of opposition</div>
+        <div class="body">
+          <p class="lead">Nagisa Oshima (1932&ndash;2013) set <em>Merry Christmas Mr. Lawrence</em> (1983) in a Japanese POW camp in Java in 1942, where captors and British prisoners collide across language, discipline, and desire. We will ask why its <span class="hl">climax scenes</span> strike us so powerfully&mdash;and find an answer in binary opposition and its resolution.</p>
+          <ul class="pts">
+            <li><strong>Unforgettable climaxes:</strong> &ldquo;one of the most beautiful kiss scenes in cinema history&rdquo; (Bertolucci).</li>
+            <li><strong>Binary opposition &amp; resolution:</strong> myth &ldquo;always progresses from the awareness of oppositions toward their resolution&rdquo; <span class="cite">(L&eacute;vi-Strauss, <em>Structural Anthropology</em> 1963, p.&nbsp;224)</span>.</li>
+            <li><strong>Cultures in collision:</strong> East and West, captor and prisoner, honor and empathy&mdash;paired and set against each other.</li>
+            <li><strong>A film of faces:</strong> Sakamoto, Bowie, Conti, and Kitano embody these oppositions on screen.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 1: Very strong climax scenes ===== -->
+    <section class="slide">
+      <div class="frametitle">Very strong climax scenes</div>
+      <div class="alertblock">
+        <div class="head">Why these scenes strike us with such a strong impression</div>
+        <div class="body">
+          <ul class="pts">
+            <li><em>&ldquo;One of the most beautiful kiss scenes in cinema history.&rdquo;</em> <span class="cite">&mdash; Bernardo Bertolucci</span></li>
+            <li><strong>Q:</strong> Is the scene beautiful for a gay male gaze, or for defenders of male friendship?</li>
+            <li>Perhaps, but we can also say it is <span class="hl">cinematically beautiful</span>. Nagisa Oshima does everything to make the climactic scenes visually stunning.</li>
+          </ul>
+          <div class="imgrow">
+            <img src="lawrence_item/11.jpg" alt="Climax 11">
+            <img src="lawrence_item/12.jpg" alt="Climax 12">
+            <img src="lawrence_item/13.jpg" alt="Climax 13">
+            <img src="lawrence_item/15.jpg" alt="Climax 15">
+          </div>
+        </div>
+      </div>
+      <div class="block">
+        <div class="head">Why so beautiful: binary opposition and resolution</div>
+        <div class="body">
+          <ul class="pts">
+            <li>The primordial nature of human thought is often found in myth. The late French anthropologist <span class="hl">Claude L&eacute;vi-Strauss</span> writes that <em>&ldquo;mythical thought always progresses from <span class="hl">the awareness of oppositions toward their resolution</span>&rdquo;</em> <span class="cite">(L&eacute;vi-Strauss, <em>Structural Anthropology</em> 1963, p.&nbsp;224)</span>.</li>
+            <li>Literary criticism, particularly when analyzing the art of storytelling, can be inspired by this approach to binary opposition. Authors can intentionally utilize binary oppositions and their resolution to increase narrative effectiveness, and some strong stories naturally include effective binary pairs.</li>
+            <li>The climax scenes in <em>Merry Christmas Mr. Lawrence</em> cinematically capture <span class="hl">moments of resolution</span>. The film features numerous images that form binary pairs: Japan vs. Britain, detainer vs. detainee, and many more.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 2 (NEW): Lévi-Strauss apparatus ===== -->
+    <section class="slide">
+      <div class="frametitle">L&eacute;vi-Strauss&rsquo;s apparatus: how myths organize meaning</div>
+      <div class="alertblock">
+        <div class="head">Three concepts to take along for the rest of the deck</div>
+        <div class="body">
+          <ul class="pts">
+            <li><span class="hl">Binary opposition.</span> Cultures organize meaning through paired contrasts: nature / culture, raw / cooked, high / low, land / water, life / death, endogamy / exogamy. <span class="hl">It is the pair, not either pole alone, that carries meaning.</span> Myth thinks <em>with</em> these pairs.</li>
+            <li><span class="hl">Mediation.</span> Myth&rsquo;s real work, on L&eacute;vi-Strauss&rsquo;s account, is to <span class="hl">mediate</span> between irreconcilable opposites. It throws up middle terms (mediator figures, objects, gestures) that hold the two poles apart and also pass meaning between them. The flower Celliers eats, the courtroom podium, the swords drawn between Yonoi and Celliers: these are exactly such middle terms in cinematic form.</li>
+            <li><span class="hl">Codes that all transmit the same message.</span> In &ldquo;The Story of Asdiwal&rdquo; L&eacute;vi-Strauss shows that a myth runs the same conflict simultaneously on several &ldquo;levels&rdquo;: geographic, economic, sociological, cosmological. <em>&ldquo;Everything happens as if the levels were provided with different codes, each being used according to the needs of the moment, and according to its particular capacity, to transmit <span class="hl">the same message</span>&rdquo;</em> <span class="cite">(L&eacute;vi-Strauss, &ldquo;Asdiwal,&rdquo; English trans., p.&nbsp;13&ndash;14)</span>.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="block">
+        <div class="head">The decisive move: a descending scale of impossible mediations</div>
+        <div class="body">
+          <p class="small">L&eacute;vi-Strauss&rsquo;s key analytic insight in &ldquo;Asdiwal&rdquo; is that a myth lines up its binary pairs <span class="hl">in a descending scale</span>, with the distance between the poles gradually narrowing, yet never fully closing. The hero <em>&ldquo;adventures can be seen in a different form, that of a series of <span class="hl">impossible mediations between oppositions which are ordered in a descending scale</span>: high and low, water and earth, sea-hunting and mountain-hunting, etc.&rdquo;</em> <span class="cite">(L&eacute;vi-Strauss, &ldquo;Asdiwal,&rdquo; p.&nbsp;16)</span>. He concludes: <em>&ldquo;the above two schemata are integrated in a third consisting of several binary oppositions, none of which the hero can resolve, although <span class="hl">the distance separating the opposed terms gradually dwindles</span>&rdquo;</em> <span class="cite">(p.&nbsp;19)</span>.</p>
+          <p class="small">Hold this template in mind for the rest of the deck. <em>Merry Christmas Mr. Lawrence</em> stages exactly three pairs: <span class="hl">Kanemoto&ndash;De&nbsp;Jong, Yonoi&ndash;Celliers, Hara&ndash;Lawrence</span>. Each pair runs the same conflict (Japan / Britain, detainer / detainee, man / man, life / death) in a different cinematic <em>code</em>. And, just as in Asdiwal, <span class="hl">the distance between the two poles gradually narrows from pair to pair</span>, while resolution remains impossible without death.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 3: Romeo and Juliet ===== -->
+    <section class="slide">
+      <div class="frametitle">Romeo and Juliet and their forbidden love</div>
+      <div class="alertblock">
+        <div class="head">Binarity and resolution in <em>Romeo and Juliet</em></div>
+        <div class="body">
+          <p class="small">Watson (2016) shows that Shakespeare uses binarity as a literary device, both thematically and rhetorically, in the love tragedy <em>Romeo and Juliet</em>. The play, in his reading, <em>&ldquo;is structured around irreconcilable contraries that determine the tragic outcome.&rdquo;</em></p>
+          <div class="binarytable">
+            <div class="col">
+              <span class="pair">A &harr; B</span>
+              <span class="pair">Romeo &harr; Juliet</span>
+              <span class="pair">Montague &harr; Capulet</span>
+              <span class="pair">male &harr; female</span>
+              <span class="pair">sexual violence &harr; sexual affection</span>
+              <span class="pair">hate &harr; love</span>
+              <span class="pair">Thanatos &harr; Eros</span>
+              <span class="pair">age &harr; youth</span>
+            </div>
+            <div class="col">
+              <span class="pair">death &harr; life</span>
+              <span class="pair">tragedy &harr; comedy</span>
+              <span class="pair">reality &harr; dreams</span>
+              <span class="pair">waking &harr; sleeping</span>
+              <span class="pair">light &harr; dark</span>
+              <span class="pair">public &harr; private</span>
+              <span class="pair">Protestant &harr; Catholic</span>
+            </div>
+          </div>
+          <div class="binarytable" style="margin-top:0"><div class="src">(Watson 2016, p.&nbsp;107)</div></div>
+          <p class="small" style="margin-top:8px">The unification of Romeo and Juliet, who come from two feuding families, leads to the death of the two lovers and an eventual reconciliation of the families. In L&eacute;vi-Strauss&rsquo;s vocabulary: the only mediator strong enough to bind <em>Capulet</em> to <em>Montague</em> is <span class="hl">a pair of corpses</span>.</p>
+          <div class="twocol">
+            <div class="col-text">
+              <blockquote class="quote" style="font-size:14.5px">
+                <strong>Juliet:</strong> I cannot sum up sum of <span class="hl">half</span> my wealth.<br>
+                <strong>Friar Lawrence:</strong> Come, come with me, and we will make short work,<br>
+                For, by your leaves, you shall not stay alone<br>
+                Till holy church incorporate <span class="hl">two in one</span>.
+              </blockquote>
+            </div>
+            <div class="col-text">
+              <p class="small" style="font-size:14.5px"><em>&ldquo;Half&rdquo;</em> prepares us for <em>&ldquo;two in one,&rdquo;</em> as the two are forbidden to stay <em>&ldquo;alone,&rdquo;</em> and the double use of <em>&ldquo;come&rdquo;</em> sets up the antonymic meaning of <em>&ldquo;leaves,&rdquo;</em> which lingers in tension with <em>&ldquo;stay.&rdquo;</em></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 4: MCML and the three binary oppositions ===== -->
+    <section class="slide">
+      <div class="frametitle"><em>Merry Christmas Mr. Lawrence</em> and binary oppositions</div>
+      <div class="block">
+        <div class="head">Three pairs, one descending scale</div>
+        <div class="body">
+          <ul class="pts">
+            <li><em>Merry Christmas Mr. Lawrence</em> <span class="hl">runs binary opposition as its structural spine</span>. The film centers on soldiers from two nations at war: Japan and Britain. The story is set mostly in a Japanese prisoner-of-war camp, where everyone is either a <em>detainer</em> or a <em>detainee</em>.</li>
+            <li>Inside that overarching frame, <span class="hl">three pairs of characters are placed in binary opposition</span>:
+              <ol style="padding-left:18px;margin:6px 0 4px">
+                <li>Kanemoto and De&nbsp;Jong</li>
+                <li>Yonoi and Celliers</li>
+                <li>Hara and Lawrence</li>
+              </ol>
+              <ul>
+                <li>The first two pairs reach <span class="hl">an event of resolution, and both die as a result of it</span>.</li>
+                <li>The last pair forms a kind of friendship despite the situation they are thrown into as a Japanese detainer and a British detainee. Hara saves Lawrence&rsquo;s life; Lawrence cannot do the same for Hara. They are often depicted <span class="hl">side by side and facing the same direction</span> while talking, and they are reunited four years after the war, on the night before Hara is executed as a war criminal.</li>
+              </ul>
+            </li>
+            <li>Read with L&eacute;vi-Strauss&rsquo;s &ldquo;Asdiwal&rdquo; in hand, these three pairs are <span class="hl">the same conflict run on three different cinematic codes</span> (sexual violence / cinematic barriers / shared frame), arranged in a descending scale: each pair stands closer to its opposite term than the one before, yet none of them resolves without death.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 5: Binary Opposition 1 — De Jong and Kanemoto ===== -->
+    <section class="slide">
+      <div class="frametitle">Binary Opposition 1: De Jong and Kanemoto</div>
+      <div class="block">
+        <div class="head">The opening tragedy: violent binding and double death</div>
+        <div class="body">
+          <p class="small"><span class="hl">At the outset, we are introduced to a tragedy involving two opposed elements.</span> The film begins with a sequence in which a Korean paramilitary soldier, Kanemoto, is about to be executed for committing sexual violence against a Dutch soldier, De&nbsp;Jong, who had escaped the camp, been recaptured, and jailed. De&nbsp;Jong recounts that Kanemoto initially entered the cell and kindly tended to his wounds, but one night made a sexual advance toward him (or raped him).</p>
+          <p class="small">Later, Kanemoto is given the opportunity to commit <em>seppuku</em> (honorable suicide), during which De&nbsp;Jong bites his own tongue and joins Kanemoto in death. Two men take their own lives (Kanemoto is forced to do so but pursues his destiny). Oshima gives us some reason to think that a bond was formed between them and that they choose to end their lives at the same time. <span class="hl">This narrative introduces the film&rsquo;s main theme: the story of binary opposition, the cinematic presentation of opposed elements that, after being violently bound together, leads to the demise of both.</span></p>
+          <p class="small">In L&eacute;vi-Strauss&rsquo;s template, this is <span class="hl">the first and widest pair</span>. The opposition is bound by violence; the &ldquo;mediation&rdquo; is rape and seppuku; the resolution is death for both. The poles are still far apart, and the mythic work the film will continue is already declared in this prologue.</p>
+          <div class="imgrow center">
+            <img src="lawrence_item/21.jpg" alt="De Jong and Kanemoto 21">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 6: Binary Opposition 2 (1/2) — Yonoi and Celliers ===== -->
+    <section class="slide">
+      <div class="frametitle">Binary Opposition 2: Captain Yonoi and Major Celliers</div>
+      <div class="block">
+        <div class="head">Two men, two regrets, one impossible bond</div>
+        <div class="body">
+          <p class="small"><span class="hl">From the moment they are seen together for the first time, Yonoi&rsquo;s fondness for Celliers is evident.</span> Through Yonoi&rsquo;s arrangement (a charade of empty bullets, or a failed execution), Celliers is transferred to the prisoner-of-war camp where Yonoi serves as commanding officer. Yonoi&rsquo;s behavior in the camp becomes ultra-stoic, causing anxiety among the captives. Celliers is informed that Yonoi has been this way since his arrival. Celliers wishes Yonoi would simply share his thoughts with him.</p>
+          <p class="small"><span class="hl">Oshima incorporates narrative elements indicating that both men carry past regrets they cannot forgive themselves for.</span> Yonoi was unable to participate in the <em>2.26 incident</em>, the failed 1936 political coup led by young Army officers against a corrupt government; all the officers involved were executed. Celliers, in turn, betrayed his younger brother (who had a disability) when they were enrolled at the same boarding school. Celliers decided not to protect his brother during a hazing initiation, an event that changed his brother&rsquo;s life forever. <span class="hl">Both men are haunted by these past failures, and we can view them as overlapping or as a pair.</span></p>
+          <p class="small">Structurally, this pair runs the same Japan / Britain conflict as Kanemoto&ndash;De&nbsp;Jong, but on <span class="hl">a different code</span>: where the first pair worked through institutional violence, this one works through <span class="hl">unspoken desire and shared shame</span>. The two poles are closer than in the prologue, yet still untouchable.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 7: Binary Opposition 2 (2/2) — kiss as failed mediation ===== -->
+    <section class="slide">
+      <div class="frametitle">Binary Opposition 2: cinematic barriers and the kiss</div>
+      <div class="block">
+        <div class="head">Barriers as mediators, the kiss as their abolition</div>
+        <div class="body">
+          <p class="small">The Yonoi&ndash;Celliers opposition is the central element of the film and provides significant <span class="hl">cinematic tension</span> leading up to the climax. The Kanemoto&ndash;De&nbsp;Jong opposition (and its resolution) is mostly recounted <em>viva voce</em>. In the Yonoi&ndash;Celliers case, beyond the basic thematic oppositions (Japanese / British, detainer / detainee), <span class="hl">Oshima also presents many cinematic depictions of opposition</span>. Each time the two men physically encounter each other, <span class="hl">there is always a cinematic barrier that is difficult to surpass</span>: a courtroom podium, a flower that Celliers eats in protest (which leads to his solitary confinement), or swords.</p>
+          <p class="small">These barriers are precisely <span class="hl">L&eacute;vi-Strauss&rsquo;s &ldquo;middle terms&rdquo;</span>, the mediator-objects through which myth keeps a binary pair both apart and in contact. The podium mediates by law; the flower mediates by ritual; the swords mediate by code of honor. As long as a mediator stands between Yonoi and Celliers, the binary is sustainable.</p>
+          <div class="imgrow">
+            <img src="lawrence_item/01.jpg" alt="Barriers 01">
+            <img src="lawrence_item/02.jpg" alt="Barriers 02">
+            <img src="lawrence_item/03.jpg" alt="Barriers 03">
+          </div>
+          <p class="small" style="margin-top:10px">They finally meet without any barrier in the final kiss sequence, a self-sacrificial act to save a marshal whom Yonoi is about to execute (or perhaps to save themselves from the lives they live in regret). This climactic scene, which Bertolucci called <em>&ldquo;one of the most beautiful kiss scenes in cinema history,&rdquo;</em> serves as the resolution of the two opposed elements. <span class="hl">The long cinematic tension is released through a kiss that lasts for only two cuts, and the abolition of the last mediator leads to the demise of both men.</span> In structuralist terms, the pair did the same logical work as Kanemoto&ndash;De&nbsp;Jong but in a far more compressed cinematic code: <span class="hl">the distance between the poles has shrunk to the width of one kiss</span>, and that turns out to be exactly the width of a death.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 8: Binary Opposition 3 — Hara and Lawrence ===== -->
+    <section class="slide">
+      <div class="frametitle">Binary Opposition 3: Sgt. Hara and Col. Lawrence</div>
+      <div class="block">
+        <div class="head">Side by side: the smallest distance, the kindest mediation</div>
+        <div class="body">
+          <p class="small">The very last scene of the film is a close-up of Sergeant Hara&rsquo;s face as he says <em>&ldquo;Merry Christmas, Mr. Lawrence&rdquo;</em> to Colonel Lawrence. It is a memorable moment. <span class="hl">The Hara&ndash;Lawrence pair is the film&rsquo;s third binary opposition, and its smallest distance.</span> The two have had more opportunities to know each other (they often face the same direction <em>side by side</em>, while Yonoi and Celliers, or Kanemoto and De&nbsp;Jong, are never shown side by side), even though their relationship is heavily conditioned by the war. Hara treats Lawrence cruelly through violence, yet also saves his life on Christmas Day from a planned execution, saying he is Santa Claus. Later, although Hara cannot return the same favor, Lawrence visits him on the night before his execution as a war criminal to offer consolation and compassion.</p>
+          <p class="small"><span class="hl">The close-up of Sgt. Hara&rsquo;s smile is particularly striking.</span> Hara has learned English during his captivity and speaks to Lawrence in English. It is suggested in their final conversation that Hara has come to the realization that there is no need to serve the Japanese Empire any longer: he is his own man now. He says he is ready to die. Lawrence tells Hara that if it were up to him, he would set him free and send him back to his family. <span class="hl">In this moment they are honest and true to themselves.</span> They share memories and talk about that Christmas Day as friends. <span class="hl">The barriers that once placed them in opposition have dissolved, and this final shot functions as the resolution, coming just before death.</span> The film ends on this note.</p>
+          <p class="small">In L&eacute;vi-Strauss&rsquo;s descending scale, this is the bottom rung. <span class="hl">The distance between the poles has narrowed almost to nothing</span>: same frame, same direction, shared language, shared memory. And yet, in keeping with the rule of impossible mediation, even this minimum distance cannot be crossed without death. Hara will be executed at dawn. The film&rsquo;s last image is not a union but a goodbye spoken across a vanishing gap.</p>
+          <div class="imgrow">
+            <img src="lawrence_item/33.jpg" alt="Hara-Lawrence 33">
+            <img src="lawrence_item/34.jpg" alt="Hara-Lawrence 34">
+            <img src="lawrence_item/37.jpg" alt="Hara-Lawrence 37">
+            <img src="lawrence_item/39.jpg" alt="Hara-Lawrence 39">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 8b: interplay of images (synthesis) ===== -->
+    <section class="slide">
+      <div class="frametitle">The interplay of images: how the three pairs share one frame</div>
+      <div class="block">
+        <div class="head">Each couple has its own place in the frame &mdash; and the images do the arguing</div>
+        <div class="body">
+          <p class="small">Beyond the dialogue, Oshima gives each of the three couples a <span class="hl">recurring visual signature</span>: a way of standing, sitting, or lying in the frame that repeats until we feel it, whether or not we consciously notice. (In L&eacute;vi-Strauss&rsquo;s <em>Mythologiques</em> these repeating image-units would be called <span class="hl">mythemes</span>.) Crucially, the three signatures are posed <em>against one another</em> &mdash; and it is their interplay, not any single shot, that dramatizes the climaxes.</p>
+          <ul class="pts">
+            <li><strong>De&nbsp;Jong &amp; Kanemoto</strong> are always held <span class="hl">low, on or near the ground</span>. Their forbidden union is completed <em>below</em> the earth: a hole is dug to catch the blood, and both men are given back to the soil.</li>
+            <li><strong>Yonoi &amp; Celliers</strong> are always <span class="hl">upright, face to face, with something between them</span> &mdash; a podium, a sword, a flower. Held at that distance, the divider is not an obstacle to the bond; it <em>is</em> the bond.</li>
+            <li><strong>The kiss</strong> abolishes the divider: Celliers steps into the exact place the object always stood and replaces the barrier with <span class="hl">contact</span>. That is the moment their demise begins &mdash; the distance between the poles has shrunk to the width of one kiss.</li>
+          </ul>
+          <div class="imgrow">
+            <img src="lawrence_item/21.jpg" alt="De Jong and Kanemoto: union on the ground">
+            <img src="lawrence_item/12.jpg" alt="Yonoi and Celliers: upright, divided by a barrier">
+            <img src="lawrence_item/13.jpg" alt="The kiss: the barrier abolished">
+          </div>
+          <p class="small" style="margin-top:10px">Left to right: union on the <span class="hl">ground</span> (De&nbsp;Jong &amp; Kanemoto); the <span class="hl">upright</span> pair divided by a barrier (Yonoi &amp; Celliers); and the <span class="hl">kiss</span> that removes it.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 8c: death turned into a bond (seed & smile) ===== -->
+    <section class="slide">
+      <div class="frametitle">Death turned into a bond: the buried seed &amp; the frozen smile</div>
+      <div class="block">
+        <div class="head">The last two images &mdash; one planted in the earth, one held in a face</div>
+        <div class="body">
+          <p class="small"><strong>The seed.</strong> As punishment for the kiss, Celliers is buried <span class="hl">upright to the neck</span>, forced down into the very earth that had earlier received De&nbsp;Jong and Kanemoto&rsquo;s blood. The plane that was a grave becomes a <span class="hl">seed-bed</span>. Lawrence says the image aloud: <em>&ldquo;It was as if Celliers, by his death, sowed a seed in Yonoi, that we might all share by its growth.&rdquo;</em> A buried body (an image) becomes a planted seed (a line) &mdash; what the earth-mytheme has been building since the opening is finally spoken.</p>
+          <p class="small"><strong>The smile.</strong> The film ends on Hara behind bars, condemned to hang at dawn. The bars form a <span class="hl">grid that both separates and joins</span>, and the camera holds the close-up <span class="hl">without a cut</span>, so the smile and the death waiting for him sit in one face at the same time. Hara and Lawrence are the film&rsquo;s <span class="hl">side-by-side</span> pair: the smallest distance, walking the same way. Theirs is a <em>partial</em> friendship (Hara had freed Lawrence on Christmas Eve) that the war never let grow to its full, unlimited form.</p>
+          <p class="small">His <em>&ldquo;Merry Christmas, Mr. Lawrence,&rdquo;</em> learned from Lawrence himself, carries that unfinished friendship <span class="hl">past the execution</span> and out into the film&rsquo;s title. Both closing images say the same thing in different codes &mdash; <span class="hl">death inverted into a bond</span> &mdash; and the audience feels it whether or not they can name why.</p>
+          <div class="imgrow">
+            <img src="lawrence_item/37.jpg" alt="Hara and Lawrence side by side">
+            <img src="lawrence_item/15.jpg" alt="Hara's final smile in close-up">
+          </div>
+          <p class="small" style="margin-top:10px">The <span class="hl">side-by-side</span> pair (Hara &amp; Lawrence) and the final close-up: a smile held in the frame against the death it does not yet name.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 9: Serendipitous moments ===== -->
+    <section class="slide">
+      <div class="frametitle">Serendipitous moments, happy accidents</div>
+      <div class="block">
+        <div class="head">Two unplanned events that complete the film</div>
+        <div class="body">
+          <p class="small"><em>Merry Christmas Mr. Lawrence</em> is blessed by two serendipitous (unexpected but welcomed) events during the shoots.</p>
+          <ul class="pts">
+            <li><span class="hl">The moth.</span> Major Celliers is buried alive in the ground, with only his head surfacing, as a form of execution. Yonoi comes and cuts a lock of Celliers&rsquo; hair. In the next shot, Celliers&rsquo; neck slightly shifts to the side to depict his last moment. <span class="hl">A white moth comes from nowhere and lands on Celliers&rsquo; head</span>, as if it came to tell us he is dead for sure.
+              <div class="imgrow center" style="margin-top:8px">
+                <img src="lawrence_item/51.jpg" alt="The moth on Celliers' head" style="max-width:72%">
+              </div>
+              <p class="small" style="margin-top:8px">Richard Raskin&rsquo;s essay confirms that the moth was a genuine accident (Oshima called it <em>&ldquo;a wonderful accident&rdquo;</em>; the producer Jeremy Thomas called it <em>&ldquo;completely coincidental, just the random quality of art&rdquo;</em>), and that Bowie asked Oshima to keep the take <span class="cite">(Raskin 2007, p.&nbsp;282)</span>. Raskin offers <span class="hl">three readings</span>, none of which excludes the others:</p>
+              <ol style="padding-left:18px;font-size:15.5px;line-height:1.5">
+                <li><span class="hl">Celliers&rsquo;s soul</span>, finally released from his earthbound mortal remains, &ldquo;the freedom of movement now displayed by the moth and the absolute immobility that had been suffered by Celliers for days on end&rdquo; <span class="cite">(p.&nbsp;283)</span>.</li>
+                <li><span class="hl">Pollination / seed imagery</span>, anchored in the novel&rsquo;s title <em>The Seed and the Sower</em> and in Lawrence&rsquo;s line: <em>&ldquo;It was as if Celliers by his death sowed a seed in Yonoi that we might all share by its growth&rdquo;</em> <span class="cite">(p.&nbsp;284)</span>. The moth lands on the hair as it would on a flower.</li>
+                <li><span class="hl">Yonoi&rsquo;s desire</span>: Pascal Bonitzer reads the moth as <em>&ldquo;white and malevolent, like the very sign of Yonoi&rsquo;s desire,&rdquo;</em> the same desire that has just cut the lock of golden hair <span class="cite">(p.&nbsp;284)</span>.</li>
+              </ol>
+              <p class="small" style="margin-top:6px">Each reading reactivates a binary the film has already established: <em>moving&nbsp;/&nbsp;still</em>, <em>living&nbsp;/&nbsp;dead</em>, <em>flower&nbsp;/&nbsp;corpse</em>, <em>Yonoi&nbsp;/&nbsp;Celliers</em>. The moth, in L&eacute;vi-Strauss&rsquo;s vocabulary, is <span class="hl">a perfect mediator</span>: it sits exactly on the boundary between every one of those pairs at once. Oshima&rsquo;s answer to interpretation was characteristic: <em>&ldquo;A work of art is made without any kind of certainty. It is produced in fear, apprehension and doubt. It isn&rsquo;t a purposeful, deliberate undertaking that knows exactly where it is going&rdquo;</em> <span class="cite">(Oshima 1995, quoted in Raskin, p.&nbsp;285)</span>.</p>
+            </li>
+            <li><span class="hl">Frame skip.</span> During the kiss sequence, when the camera captures Yonoi&rsquo;s face up close, the camera skips a few frames (out of the usual 24 frames per second). It gives an interrupted, discontinuous, almost dizzy feeling, even though the picture on screen does not change much. It ends up <span class="hl">cinematically materializing</span> Yonoi&rsquo;s emotion of the moment.
+              <div class="imgrow center" style="margin-top:8px">
+                <img src="lawrence_item/11.jpg" alt="Frame skip in the kiss" style="max-width:72%">
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 10: Movies with memorable climaxes — Ordet ===== -->
+    <section class="slide">
+      <div class="frametitle">Movies with memorable climaxes</div>
+      <div class="alertblock">
+        <div class="head">Movies with a strong climax scene or plot</div>
+        <div class="body">
+          <p class="small">Some movies have such a strong climax that it feels as though every other component of the film exists solely to build up to that one scene.</p>
+        </div>
+      </div>
+      <div class="block">
+        <div class="head"><em>Ordet</em> (1955) by Carl Dreyer</div>
+        <div class="body">
+          <p class="small">The film ends with a miraculous resurrection scene delivered by Johannes, a man who has mentally broken down and believes himself to be Jesus Christ in 1925 Denmark. He criticizes people for their lukewarm faith, drawing inspiration from Kierkegaard&rsquo;s belief that having faith in the impossible is the true divine miracle. After his niece, who has just lost her mother, asks him to bring her mother back, Johannes praises her childlike but pure faith in a God who can perform such a miracle, and the miracle happens. The film is 126 minutes long, and its entire runtime builds toward this climactic resurrection sequence.</p>
+          <p class="small">The film, like <em>Merry Christmas Mr. Lawrence</em>, <span class="hl">explores themes in binary opposition</span>: old and new schools of Christianity, a man and a woman in love from opposing churches, faith and unbelief, life and death. The final event seems to provide a resolution to these oppositions, although, as in L&eacute;vi-Strauss&rsquo;s account of myth, <span class="hl">that resolution comes only by crossing death itself</span>.</p>
+          <div class="imgrow">
+            <img src="lawrence_item/41.jpg" alt="Ordet 41">
+            <img src="lawrence_item/42.jpg" alt="Ordet 42">
+            <img src="lawrence_item/43.jpg" alt="Ordet 43">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 11: Taste of Cherry ===== -->
+    <section class="slide">
+      <div class="frametitle">Movies with memorable climaxes (continued)</div>
+      <div class="block">
+        <div class="head"><em>Taste of Cherry</em> (1997) by Abbas Kiarostami</div>
+        <div class="body">
+          <p class="small">A successful Iranian architect, Badii, drives around Tehran searching for someone to help him with his suicide plan. He gives rides to three people, proposing a job that involves confirming his death at dawn and filling the hole where he plans to take his own life through a self-inflicted drug overdose during the night. These three individuals come from different ethnic backgrounds, and each reacts differently to his proposition, sharing their life stories before refusing Badii&rsquo;s request. The third man, a Turk, seems to accept the job while still trying to persuade Badii to reconsider. As night falls, Badii lies in the hole and gazes up at the full silver moon shining through a thin layer of clouds. The screen turns black with the sound of an approaching storm.</p>
+          <p class="small">Instead of the anticipated sequence showing the next morning (which is central to Badii&rsquo;s proposition), <span class="hl">a &ldquo;making-of-the-scene&rdquo; sequence begins</span>, featuring Kiarostami and the actor playing Badii as they film the scene. This continues through the end credits. For some viewers this might seem anticlimactic, since there is no climax, or perhaps the climax is the moment when Badii gazes at the moon before his death. <span class="hl">It is a memorable anticlimax</span>: where L&eacute;vi-Strauss&rsquo;s mythic logic insists that mediation produces resolution at the cost of death, Kiarostami refuses both. The film withdraws into its own making, and the binary <em>living / dying</em> is replaced by the binary <em>fiction / production</em>.</p>
+          <div class="imgrow">
+            <img src="lawrence_item/61.jpg" alt="Taste of Cherry 61">
+            <img src="lawrence_item/62.jpg" alt="Taste of Cherry 62">
+            <img src="lawrence_item/63.jpg" alt="Taste of Cherry 63">
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /stage -->
+
+  <div class="controls">
+    <span class="who">JPN/FST 266 &mdash; Prof. Tomoyuki Yabe</span>
+    <span class="nav">
+      <button id="prev" aria-label="Previous slide">&larr; Prev</button>
+      <span class="count" id="count">1 / 15</span>
+      <button id="next" aria-label="Next slide">Next &rarr;</button>
+      <button id="fs" aria-label="Toggle fullscreen">&#9974; Full</button>
+    </span>
+  </div>
+
+</div><!-- /deck -->
+
+<script>
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var stage  = document.getElementById('stage');
+  var count  = document.getElementById('count');
+  var i = 0;
+  function show(n){
+    i = Math.max(0, Math.min(slides.length-1, n));
+    slides.forEach(function(s,k){ s.classList.toggle('active', k===i); });
+    count.textContent = (i+1) + ' / ' + slides.length;
+    stage.scrollTop = 0;
+  }
+  document.getElementById('next').onclick = function(){ show(i+1); };
+  document.getElementById('prev').onclick = function(){ show(i-1); };
+  document.getElementById('fs').onclick = function(){
+    if(!document.fullscreenElement){ document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); }
+    else { document.exitFullscreen && document.exitFullscreen(); }
+  };
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ show(i+1); e.preventDefault(); }
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){ show(i-1); e.preventDefault(); }
+    else if(e.key==='Home'){ show(0); }
+    else if(e.key==='End'){ show(slides.length-1); }
+  });
+  show(0);
+</script>
+</body>
+</html>

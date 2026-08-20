@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Listening to the Air (2018) 空に聞く — Haruka Komori | JPN/FST 266</title>
+<style>
+  :root{
+    --tide-deep:#3d5d68;        /* block title bar (slate sea-grey) */
+    --tide-mid:#88a7b1;         /* lighter tide accent */
+    --tide-body:#eef2ee;        /* block body bg (pale mist) */
+    --alert-bar:#243f4a;        /* alertblock title bar (deep harbor) */
+    --alert-body:#f1eee4;       /* alertblock body bg (washi parchment) */
+    --hl:#b85931;               /* kite-string rust for \red emphasis */
+    --ink:#1f2a30;
+    --muted:#5d6770;
+    --bar:#2f4651;              /* footer / header bars (deep slate) */
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:#b5b09f;         /* driftwood / sand surround */
+    color:var(--ink);
+    font-family:"Hoefler Text",Georgia,"Times New Roman","Yu Mincho","Hiragino Mincho ProN",serif;
+    -webkit-font-smoothing:antialiased;
+    display:flex;align-items:center;justify-content:center;
+  }
+  ruby,.cjk{font-family:"Yu Gothic","Hiragino Kaku Gothic ProN","Hiragino Sans","MS Gothic",inherit;}
+
+  #deck{width:100%;max-width:1040px;height:100vh;display:flex;flex-direction:column;}
+  .topbar{
+    background:var(--bar);color:#fff;font-size:15px;letter-spacing:.02em;
+    padding:6px 16px;display:flex;justify-content:space-between;align-items:center;
+    font-family:Georgia,serif;
+  }
+  .topbar .t-title{opacity:.95}
+  .topbar .t-sec{opacity:.8;font-style:italic}
+
+  .stage{flex:1;overflow:auto;background:#fff;}
+  .slide{display:none;padding:26px 34px 30px;min-height:100%;}
+  .slide.active{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:.35}to{opacity:1}}
+
+  h1.deck-title{font-size:34px;line-height:1.25;margin:0 0 6px;color:var(--tide-deep);text-align:center}
+  .frametitle{font-size:27px;color:var(--tide-deep);margin:2px 0 14px;font-weight:600;border-bottom:2px solid var(--tide-mid);padding-bottom:6px}
+
+  .title-slide{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%;gap:4px}
+  .title-slide .sub{font-size:22px;color:var(--ink);margin-top:18px}
+  .title-slide .inst{font-size:19px;color:var(--muted);font-style:italic}
+  .title-slide .date{font-size:19px;color:var(--muted);margin-top:10px}
+  .title-slide .badge{margin-top:26px;font-size:14px;color:var(--muted);font-family:Georgia,serif;
+    border:1px solid var(--tide-mid);border-radius:20px;padding:4px 14px;max-width:780px}
+
+  .block,.alertblock{border-radius:6px;overflow:hidden;margin:0 0 14px;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+  .block>.head{background:var(--tide-deep);color:#fff;padding:7px 14px;font-size:19px;font-weight:600}
+  .block>.body{background:var(--tide-body);padding:12px 16px}
+  .alertblock>.head{background:var(--alert-bar);color:#fff;padding:7px 14px;font-size:19px;font-weight:600}
+  .alertblock>.body{background:var(--alert-body);padding:12px 16px}
+
+  .lead{font-size:18px;line-height:1.5;margin:0 0 8px}
+  ul.pts,ol.pts{margin:6px 0 4px;padding-left:22px}
+  ul.pts>li,ol.pts>li{font-size:17px;line-height:1.5;margin-bottom:9px}
+  ul.pts ul,ul.pts ol{margin:6px 0 6px;padding-left:22px}
+  ul.pts ul li{font-size:16px;line-height:1.45;margin-bottom:6px}
+  .small{font-size:15.5px;line-height:1.5}
+
+  .hl{color:var(--hl)}
+  .cite{color:var(--muted);font-style:italic;white-space:nowrap}
+  em{font-style:italic}
+
+  .imgrow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+  .imgrow img{height:187px;width:auto;border:1px solid #c2bda9;border-radius:3px;background:#eee;object-fit:cover}
+  .imgrow.small img{height:143px}
+  .imgrow.tiny img{height:110px}
+  .imgrow.wide img{height:auto;max-width:100%}
+
+  .twocol{display:flex;gap:14px;align-items:flex-start}
+  .twocol .col-text{flex:1 1 70%;min-width:0}
+  .twocol .col-img{flex:0 0 26%;display:flex;justify-content:center;align-items:center}
+  .twocol .col-img img{max-width:100%;height:auto;border:1px solid #c2bda9;border-radius:3px}
+
+  blockquote.quote{
+    margin:8px 0;padding:6px 14px;
+    border-left:4px solid var(--tide-mid);
+    background:#f4f7f4;
+    color:var(--ink);font-style:italic;
+    font-size:17px;line-height:1.55;
+  }
+  blockquote.quote .src{display:block;margin-top:4px;font-size:14.5px;color:var(--muted);font-style:italic;text-align:right}
+
+  dl.dialogue{margin:6px 0 4px}
+  dl.dialogue dt{font-weight:600;color:var(--tide-deep);margin-top:8px;font-size:16.5px}
+  dl.dialogue dd{margin:2px 0 8px 0;font-size:16.5px;line-height:1.55}
+
+  .intro .lead,
+  .intro p{font-size:20px;line-height:1.6;margin:0 0 12px}
+  .intro ul{margin:10px 0 6px;padding-left:24px}
+  .intro ul li{font-size:19px;line-height:1.6;margin-bottom:12px}
+  .intro .small{font-size:18px;line-height:1.6}
+
+  .controls{background:var(--bar);color:#fff;display:flex;align-items:center;justify-content:space-between;
+    padding:7px 14px;font-family:Georgia,serif;font-size:15px}
+  .controls .who{opacity:.9}
+  .controls .nav{display:flex;align-items:center;gap:8px}
+  .controls button{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.4);
+    border-radius:5px;padding:5px 13px;font-size:15px;cursor:pointer;font-family:inherit}
+  .controls button:hover{background:rgba(255,255,255,.30)}
+  .controls .count{min-width:54px;text-align:center}
+
+  @media print{
+    body{background:#fff}
+    #deck{max-width:none;height:auto}
+    .topbar,.controls{display:none}
+    .stage{overflow:visible}
+    .slide{display:block !important;page-break-after:always;min-height:0}
+  }
+</style>
+</head>
+<body>
+<div id="deck">
+
+  <div class="topbar">
+    <span class="t-title">JPN/FST 266 &mdash; Listening to the Air (2018) <span class="cjk">空に聞く</span></span>
+    <span class="t-sec">Haruka Komori - 小森はるか &middot; with Nichols ch.1 &amp; the 2020 Cine Nouveau interview</span>
+  </div>
+
+  <div class="stage" id="stage">
+
+    <!-- ===== TITLE ===== -->
+    <section class="slide active">
+      <div class="title-slide">
+        <h1 class="deck-title">Week 10: Listening to the Air (2018)<br>
+          <ruby>空に<rt>sora ni</rt></ruby><ruby>聞く<rt>kiku</rt></ruby> by Haruka Komori</h1>
+        <div class="sub">JPN/FST 266 &mdash; Prof. Tomoyuki Yabe</div>
+        <div class="inst">GRAMELAC, Miami Univ. / <span class="cjk">マイアミ大学</span></div>
+        <div class="date">Fall 2025</div>
+        <div class="badge">Slides annotated with Bill Nichols, &ldquo;How Can We Define Documentary Film?&rdquo; (<em>Introduction to Documentary</em>, 3rd ed., Indiana UP, 2017), and the Komori interview with Daichi Yoshino, Cine Nouveau, Osaka (November 2020)</div>
+      </div>
+    </section>
+
+    <!-- ===== INTRO ===== -->
+    <section class="slide intro">
+      <div class="frametitle">Introduction</div>
+      <div class="alertblock">
+        <div class="head">A documentary made by someone who lived next door</div>
+        <div class="body">
+          <p>In 2012, one year after the March 11 earthquake and tsunami, Haruka Komori moved to Rikuzentakata in Iwate Prefecture as a recovery volunteer. She met Hiromi Abe, a host at the town&rsquo;s temporary disaster FM station, about two months later, and began filming her about six months after that. Komori stayed in Rikuzentakata for more than three years, building a relationship with Abe and the community long before the camera became part of it.</p>
+          <ul>
+            <li><span class="hl">Komori on relationships first</span>: <em>&ldquo;It takes me a long time to get to the point where I can film &mdash; I just can&rsquo;t shoot casually. Pointing a camera at someone is always daunting&hellip; I only film people I trust deeply.&rdquo;</em></li>
+            <li><span class="hl">Komori on filming as listening</span>: <em>&ldquo;When I&rsquo;m filming, &lsquo;listening&rsquo; doesn&rsquo;t just mean hearing words. It includes movements, the flow of time, the light in the room, and the sounds outside&hellip; To film is, in a sense, to listen.&rdquo;</em></li>
+            <li>This week we read <em>Listening to the Air</em> against <span class="hl">Bill Nichols&rsquo;s three commonsense definitions of documentary</span> and against <span class="hl">Errol Morris&rsquo;s <em>Gates of Heaven</em></span>, a film made on opposite principles &mdash; to see what the documentary form can hold and how far Komori bends it.</li>
+          </ul>
+          <div class="imgrow" style="--imgh:300px">
+            <img src="komori_item/35.jpg" alt="Komori intro image 35" style="height:300px">
+            <img src="komori_item/36.jpeg" alt="Komori intro image 36" style="height:300px">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 1 ===== -->
+    <section class="slide">
+      <div class="frametitle">Komori&rsquo;s style: capturing events in the way they are</div>
+      <div class="alertblock">
+        <div class="head">Komori lived in the same community as her documentary subjects</div>
+        <div class="body">
+          <p class="lead">In 2012, one year after the March 11, 2011 earthquake and tsunami in Northeast Japan, Komori moved to Rikuzen-Takada (one of the towns on the Pacific coast most severely devastated) as a recovery volunteer. She had begun her career as a filmmaker, not specifically in documentaries. Komori met Hiromi Abe, who started running and hosting a temporary disaster-recovery FM radio station. After about six months in the community, Komori approached Abe about a documentary project. Abe had no prior broadcasting experience when she started serving the community through her radio station, but continued for three years and nine months, with Komori by her side for much of this time.</p>
+          <p class="lead">Komori stayed in Rikuzen-Takada for over three years, during which she filmed about half a dozen projects, sometimes collaborating with another artist, Natsumi Oze. <span class="hl">Komori notes that her approach to filming people in the devastated community was to build trust with them first, becoming part of the community herself</span>, as the people worked through recovery from their great losses. <span class="hl">Komori is a documentary filmmaker who takes the time to establish trust with her subjects.</span></p>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="head">A true observer: no shots taken solely for landscape</div>
+        <div class="body">
+          <p class="small">In the 2020 interview, Komori notes that <span class="hl">she did not film any shots solely to show the landscape</span>. All of the shots that include landscapes also include people or objects that she cinematically documents. The government decided to elevate Rikuzen-Takada using earth excavated from the surrounding mountains, which were subsequently leveled. Her camera captures scenes like this in the landscape.</p>
+          <blockquote class="quote">
+            &ldquo;I never shot landscapes just to fill in between scenes. When I film while walking, I&rsquo;m not consciously thinking, &lsquo;I&rsquo;m shooting a landscape.&rsquo; I&rsquo;m searching for something I can only find through the act of filming&hellip; There was definitely anger bubbling inside me, but I realized that anger doesn&rsquo;t really show on camera. No matter how angry I felt, the landscape would overwhelm it.&rdquo;
+            <span class="src">&mdash; Komori, Cine Nouveau, Nov. 2020</span>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 2 ===== -->
+    <section class="slide">
+      <div class="frametitle">What is a documentary film?</div>
+      <div class="alertblock">
+        <div class="head">Documentary films come in different flavors</div>
+        <div class="body">
+          <p class="lead">The same three elements that give fiction films their flavor also shape documentaries:</p>
+          <ul class="pts">
+            <li><strong>mise-en-sc&egrave;ne</strong>: what appears on the screen is controlled</li>
+            <li><strong>shots</strong>: cameras, lighting, placement, movements are manipulated</li>
+            <li><strong>editing</strong>: different editing techniques can be used; the documented person can be cut into a particular shape</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="alertblock">
+        <div class="head">Doc. vs. fiction: can we define documentary? Not a clear cut &mdash; but maybe</div>
+        <div class="body">
+          <p class="small">Nichols (2017) acknowledges: <em>&ldquo;&hellip; guarantee no absolute separation between fiction and documentary. Some documentaries make strong use of practices such as scripting, staging, reenactment, rehearsal&hellip;&rdquo;</em> Some fiction films, conversely, mimic a documentary style. But in chapter 1 he sets out <em>&ldquo;some of the ways in which commonsense definitions of documentary can be refined.&rdquo;</em></p>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="head">Nichols&rsquo;s three commonsense definitions (after John Grierson)</div>
+        <div class="body">
+          <p class="small">Documentaries:</p>
+          <ul class="pts">
+            <li><strong>are about reality</strong>; they&rsquo;re about something that actually happened;</li>
+            <li><strong>are about real people</strong> &mdash; &ldquo;social actors&rdquo; who don&rsquo;t play roles, but, as Goffman put it, <em>present themselves</em>;</li>
+            <li><strong>tell stories about what happens in the real world.</strong></li>
+          </ul>
+          <p class="small">Nichols then tightens this into a working definition: <em>&ldquo;Documentary film speaks about situations and events involving real people (social actors) who present themselves within a framework. This frame conveys a plausible perspective on the lives, situations, and events portrayed. The distinct point of view of the filmmaker shapes the film into a way of understanding the historical world directly rather than through a fictional allegory.&rdquo;</em> Documentary is <span class="hl">a representation, not a reproduction</span>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 3 ===== -->
+    <section class="slide">
+      <div class="frametitle">Komori&rsquo;s style: her rules</div>
+      <div class="alertblock">
+        <div class="head">Staying out of the way of her subjects</div>
+        <div class="body">
+          <p class="small">Komori often emphasizes <span class="hl">not interfering with the people and events she documents.</span> She is so sensitive to this approach that she sometimes chooses not to enter certain areas where her subjects work or live, even if she has permission. Instead, she might film a scene from the next room or a hallway. <span class="hl">She never tries to control the situation for her shots, which results in limitations on the angles and types of shots she can capture.</span></p>
+          <blockquote class="quote">
+            &ldquo;For me, a key question in filmmaking is how to be allowed to <em>be</em> in a space with a camera. I&rsquo;m there holding it, but I don&rsquo;t want to dominate, nor do I want to hide. I search for the subtle distance, the right place for the camera to rest.&rdquo;
+            <span class="src">&mdash; Komori, 2020</span>
+          </blockquote>
+        </div>
+      </div>
+
+      <div class="alertblock">
+        <div class="head">Focus on the documented subjects</div>
+        <div class="body">
+          <p class="small">In the same interview, Komori said she intentionally avoids filming or including anything unrelated to the core topic of her documentary. For example, she avoids capturing scenic views even if they are part of the town where her subject resides. <span class="hl">All landscape shots in <em>Listening to the Air</em> include elements relevant to the documentary&rsquo;s theme or show views connected to her subject&rsquo;s perspective.</span></p>
+        </div>
+      </div>
+
+      <div class="imgrow small">
+        <img src="komori_item/27.jpg" alt="Komori landscape 27">
+        <img src="komori_item/28.jpg" alt="Komori landscape 28">
+        <img src="komori_item/26.jpg" alt="Komori landscape 26">
+        <img src="komori_item/29.jpg" alt="Komori landscape 29">
+      </div>
+      <div class="imgrow small">
+        <img src="komori_item/30.jpg" alt="Komori landscape 30">
+        <img src="komori_item/31.jpg" alt="Komori landscape 31">
+        <img src="komori_item/32.jpg" alt="Komori landscape 32">
+      </div>
+    </section>
+
+    <!-- ===== FRAME 4 ===== -->
+    <section class="slide">
+      <div class="frametitle">Komori&rsquo;s art</div>
+      <div class="alertblock">
+        <div class="head">Komori&rsquo;s artistic expression within self-imposed limits</div>
+        <div class="body">
+          <p class="lead">The limitations Komori imposes on her documentaries appear to stem from the nature of her work. <span class="hl">Her purpose in documenting Rikuzen-Takada, for instance, is to create a record for the future.</span> She often says her films about Rikuzen-Takada are meant to preserve what survivors of the 2011 tsunami did for each other and more. This raises the question:</p>
+          <p><strong>Q:</strong> <span class="hl">Does she have space for her own artistic expression?</span></p>
+          <p><strong>A:</strong> <span class="hl">While her art may be constrained by her commitment to authentic documentation, she pursues it within these limits, and indeed she succeeds.</span></p>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="head">A record of an &ldquo;in-between time&rdquo;</div>
+        <div class="body">
+          <p class="small">In the 2020 interview, Komori reframed this purpose in temporal terms. The period people call &ldquo;reconstruction,&rdquo; she says, is hard to preserve in memory &mdash; <em>&ldquo;it&rsquo;s a kind of interim time, a bridge between disaster and rebuilding. Ten or twenty years from now, that &lsquo;in-between time&rsquo; might simply vanish from people&rsquo;s memories. I wanted to record that fleeting period.&rdquo;</em> <span class="hl">The film&rsquo;s constraint &mdash; never to interfere, never to fill, never to dramatize &mdash; is what makes it usable as a record for a future viewer who was not there.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 5 ===== -->
+    <section class="slide">
+      <div class="frametitle">On the screen of <em>Listening to the Air</em>: Abe-san&rsquo;s hands</div>
+      <div class="block">
+        <div class="head">Scenes from <em>Listening to the Air</em></div>
+        <div class="body">
+          <p class="lead"><strong>Abe-san&rsquo;s hands.</strong> The opening sequence starts with a zoom shot on Abe-san&rsquo;s hands as she works at the radio station. We see her hands again near the end, this time working in a restaurant she runs. <span class="hl">This parallelism is impressive, as her radio work seems to nourish the souls of the people of Rikuzen-Takata, many of whom have lost family members.</span> It is a small surprise at the end to find out that Abe-san is in the restaurant business (she mentions her &ldquo;shop&rdquo; during an interview, explaining that her children visited her parents more because of it; in the English translation, this &ldquo;shop&rdquo; is rendered as &ldquo;restaurant,&rdquo; which gives the surprise away). <span class="hl">Abe-san&rsquo;s role in the restaurant business gives an impression of continuity in her work for the town before and after the tsunami, as she continues nourishing the community with her own hands.</span></p>
+          <div class="imgrow">
+            <img src="komori_item/21.jpg" alt="Abe-san&rsquo;s hands at the radio station">
+            <img src="komori_item/22.jpg" alt="Abe-san&rsquo;s hands in the kitchen">
+          </div>
+        </div>
+      </div>
+
+      <div class="alertblock">
+        <div class="head">Why hands?</div>
+        <div class="body">
+          <blockquote class="quote">
+            &ldquo;When someone&rsquo;s hands move &mdash; or when their body begins to move &mdash; you can glimpse how they&rsquo;ve lived. That&rsquo;s what I love to capture.&rdquo;
+            <span class="src">&mdash; Komori, 2020</span>
+          </blockquote>
+          <p class="small">Note also the <span class="hl">change in distance</span> between the two shots: the radio-station opening is close and handheld; the kitchen ending is fixed and far. Komori said she filmed the kitchen scene twice and couldn&rsquo;t get close: <em>&ldquo;I could feel that I could no longer film her with that same closeness. Just as my way of filming the ground had changed, my way of filming people at work had changed too.&rdquo;</em> The change in distance is itself a record of the years that have passed.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 6 ===== -->
+    <section class="slide">
+      <div class="frametitle">On the screen of <em>Listening to the Air</em>: a minute of silence</div>
+      <div class="block">
+        <div class="head">Broadcasting a minute of silence</div>
+        <div class="body">
+          <p class="lead"><span class="hl">Abe-san broadcasts a minute of silence on the 11th day of every month</span> (<em>tsukimeinichi</em>: in Japan, people commemorate the deceased on the monthly anniversary of the day they passed). During an interview she was once asked why she didn&rsquo;t record the silence instead of broadcasting it live every time. She recalls her frustration and response: &ldquo;You must be stupid asking me that.&rdquo; She explains that broadcasting it live is important because, by observing a minute of silence every 11th of the month, <span class="hl">people can reflect on their own loss and changes as they move forward from the 11th of March, 2011.</span></p>
+          <p class="lead">Komori, in turn, captures the whole minute of silence without shortening it. <span class="hl">In the last 15 seconds of this silent footage, the sun seems to come out from behind the clouds, casting light through the curtains as the room from which Abe-san is broadcasting grows brighter at the end of the minute, as if <em>the Air</em> is responding back.</span> We can&rsquo;t help but wonder if Komori had several shots to choose from or if this simply happened at the moment she decided to film. Additionally, Abe-san appears quite comfortable expressing the frustration she felt at the &lsquo;stupid&rsquo; question, likely because her interviewer, Komori, spent over three years with her in the community.</p>
+          <div class="imgrow">
+            <img src="komori_item/33.jpg" alt="minute of silence shot 1">
+            <img src="komori_item/34.jpg" alt="minute of silence shot 2">
+          </div>
+        </div>
+      </div>
+
+      <div class="alertblock">
+        <div class="head">Things that cannot be seen by the camera</div>
+        <div class="body">
+          <blockquote class="quote">
+            &ldquo;Her voice, and the voices broadcast from Disaster FM, allowed listeners to imagine so much precisely because those things couldn&rsquo;t be seen. Through what was invisible, the radio let people see something in their minds &mdash; the landscapes of memory and loss&hellip; <span class="hl">The radio made visible those invisible presences.</span>&rdquo;
+            <span class="src">&mdash; Komori, 2020</span>
+          </blockquote>
+          <p class="small">The minute-of-silence sequence is the film&rsquo;s argument for itself: a documentary about a radio host has to find a cinematic equivalent for radio&rsquo;s power to make absence audible. Komori&rsquo;s answer is to let the room change, without comment, for a full sixty seconds.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 7 ===== -->
+    <section class="slide">
+      <div class="frametitle">On the screen of <em>Listening to the Air</em>: kites</div>
+      <div class="block">
+        <div class="head">Listening to the Air &mdash; a double meaning</div>
+        <div class="body">
+          <p class="lead">Komori mentioned in interviews that the title <em>Listening to the Air</em> has a <span class="hl">double meaning</span>. Besides the fact that the film is about <span class="hl">a radio station broadcasting on air</span>, it also suggests <span class="hl">listening to the deceased in heaven or somewhere in the sky</span> (the Japanese title is literally <em>&ldquo;Listening to the sky&rdquo;</em>). With this double meaning in mind, the kite sequence gains added significance. It has been a tradition in the Rikuzen region (where other towns were also hit by the tsunami) to fly kites around March 11th. <span class="hl">Komori effectively connects two images of reaching out to the souls of the deceased by letting something into the air: kites and words in the radio.</span></p>
+          <div class="imgrow">
+            <img src="komori_item/23.jpg" alt="kites 1">
+            <img src="komori_item/24.jpg" alt="kites 2">
+            <img src="komori_item/25.jpg" alt="kites 3">
+          </div>
+        </div>
+      </div>
+
+      <div class="alertblock">
+        <div class="head">From ground to sky: a shift in the director&rsquo;s gaze</div>
+        <div class="body">
+          <p class="small">In the 2020 interview, Komori described the shift in her own attention while making the film. She had been fixated on the ground itself, on the buried twelve meters of old town beneath the new raised earth. <em>&ldquo;But those things can&rsquo;t really be seen. At the same time, while working on this film, I noticed that Ms. Abe&rsquo;s thoughts for the deceased &mdash; and perhaps not only for them &mdash; seemed to reach upward, toward the sky. When I realized that, I felt, &lsquo;It&rsquo;s not just the ground.&rsquo; <span class="hl">Seeing the sky opened up my vision; suddenly, I could search for the invisible in the air itself.</span>&rdquo;</em> The kite sequence is the visible trace of that turn.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 8 ===== -->
+    <section class="slide">
+      <div class="frametitle">Perfect alignment: Komori&rsquo;s art and Rikuzen-Takada</div>
+      <div class="alertblock">
+        <div class="head">Komori&rsquo;s cinematic expression and the people&rsquo;s will for recovery align</div>
+        <div class="body">
+          <p class="lead"><span class="hl">All of Komori&rsquo;s cinematic moments are composed of shots made in adherence to her own documentary-making principles, rooted in sympathy, compassion, thoughtfulness, and consideration for her subjects.</span> When the documentary covers particularly sensitive themes &mdash; such as losing loved ones, or the original town being buried and leveled by earth scraped from surrounding mountains, which were themselves leveled down &mdash; <span class="hl">Komori&rsquo;s close and intimate position within the community,</span> established genuinely from her concern for the people&rsquo;s well-being and recovery, <span class="hl">allows her cinematic expressions to align completely with the intentions of the community.</span></p>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="head">A &ldquo;plural first-person&rdquo;: not &ldquo;I&rdquo; but &ldquo;we&rdquo;</div>
+        <div class="body">
+          <blockquote class="quote">
+            &ldquo;She often used &lsquo;we&rsquo; when she spoke. It wasn&rsquo;t the voice of a single person; it was as if she gathered the voices of many. I think it came from her sense of addressing both the people living there and those who had passed away. It was a voice that said, &lsquo;We are still here, living.&rsquo; Not everyone could convey that, but Ms. Abe could.&rdquo;
+            <span class="src">&mdash; Komori on Abe&rsquo;s voice, 2020</span>
+          </blockquote>
+          <p class="small">In Nichols&rsquo;s terms, Abe is the ideal &ldquo;social actor&rdquo; for a documentary like this one: not a victim performing victimhood, not an announcer performing professionalism, but a person <em>presenting herself</em> in everyday life, and in doing so giving voice to a community. Komori&rsquo;s job is to be close enough that this presentation happens, and far enough that it isn&rsquo;t for the camera.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 9 ===== -->
+    <section class="slide">
+      <div class="frametitle">A documentary film different from <em>Listening to the Air</em></div>
+      <div class="alertblock">
+        <div class="head"><em>Gates of Heaven</em> (1978) by Errol Morris</div>
+        <div class="body">
+          <p class="small">Errol Morris&rsquo;s documentary film, <em>Gates of Heaven</em> (1978), takes a very different approach compared to Komori&rsquo;s. However, it still appears to adhere to Nichols&rsquo;s three main points, though not entirely.</p>
+          <ul class="pts">
+            <li>are about reality; they&rsquo;re about something that actually happened;</li>
+            <li>are about real people;</li>
+            <li>tell stories about what happens in the real world.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="head">Scenes from <em>Gates of Heaven</em>: mise-en-sc&egrave;ne</div>
+        <div class="body">
+          <p class="small"><strong>Mise-en-sc&egrave;ne.</strong> Did Morris <span class="hl">alter the display of items</span> in the rooms, or <span class="hl">add any props he brought along</span>? If the objects genuinely belong to the interviewee but were rearranged for filming, how much does this violate documentary rules? Nichols would say: documentary is <em>representation</em>, not <em>reproduction</em>; what matters is whether the framing offers a <span class="hl">plausible perspective</span> on real people. But how far can the staging go before the film becomes a fiction that happens to be about real subjects?</p>
+          <div class="imgrow">
+            <img src="komori_item/04.jpg" alt="Gates of Heaven still 04">
+            <img src="komori_item/05.jpg" alt="Gates of Heaven still 05">
+            <img src="komori_item/06.jpg" alt="Gates of Heaven still 06">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 10 ===== -->
+    <section class="slide">
+      <div class="frametitle">A documentary film different from <em>Listening to the Air</em></div>
+      <div class="block">
+        <div class="head">Scenes from <em>Gates of Heaven</em>: shots and editing</div>
+        <div class="body">
+          <p class="small"><strong>Shots.</strong> The film features emphatic camera techniques. While informative, it also <span class="hl">satirizes aspects of pet cemeteries</span>. Sometimes it&rsquo;s hard to determine whether a specific camera angle was chosen solely to convey truth or for stylistic purposes. Ultimately, is there a strict rule for framing objects in documentary films? <span class="hl">Style choices might serve to convey mood. But does controlling mood compromise truth?</span></p>
+          <div class="imgrow small">
+            <img src="komori_item/01.jpg" alt="Gates of Heaven still 01">
+            <img src="komori_item/02.jpg" alt="Gates of Heaven still 02">
+            <img src="komori_item/08.jpg" alt="Gates of Heaven still 08">
+          </div>
+          <p class="small" style="margin-top:14px"><strong>Editing.</strong> Morris uses different editing techniques to portray the subject. For instance, members of the family that owns the pet cemetery business discuss various topics unrelated to the business, including playing guitar on a hill. There&rsquo;s even a sequence dedicated to this. <span class="hl">Did Morris capture a genuine daily routine, or did he prompt them by saying something like, &ldquo;Hey, can you play for us now?&rdquo;</span> Nichols&rsquo;s term for this kind of cutting is <em>evidentiary editing</em>: shots are joined less by continuity in time and space than by a controlling perspective. The argument is the filmmaker&rsquo;s; the people are real.</p>
+          <div class="imgrow small">
+            <img src="komori_item/10.jpg" alt="Gates of Heaven still 10">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 11 ===== -->
+    <section class="slide">
+      <div class="frametitle">Coda: to film is, in a sense, to listen</div>
+      <div class="alertblock">
+        <div class="head">Two answers to Nichols&rsquo;s question, side by side</div>
+        <div class="body">
+          <p class="lead">Both <em>Gates of Heaven</em> and <em>Listening to the Air</em> fit Nichols&rsquo;s working definition: they speak about real people who present themselves within a frame, and the frame conveys a plausible perspective on the historical world. Where they diverge is in <span class="hl">who decides what the frame should be</span>.</p>
+          <ul class="pts">
+            <li><strong>Morris</strong> imposes a frame on subjects he met for the project: the camera is high, the props are arranged, the mood is controlled, the cuts make the argument. The film is shaped, in Nichols&rsquo;s phrase, by &ldquo;the distinct point of view of the filmmaker.&rdquo;</li>
+            <li><strong>Komori</strong> spends three years in a town first and only then asks for the camera. The frame is built by what the community will let her see, by the rooms she chooses not to enter, by the distance she finds with her boundary-microphone instinct: <em>&ldquo;how to be allowed to be in a space with a camera.&rdquo;</em></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="head">Komori&rsquo;s closing definition</div>
+        <div class="body">
+          <blockquote class="quote">
+            &ldquo;When I&rsquo;m filming, &lsquo;listening&rsquo; doesn&rsquo;t just mean hearing words. It includes movements, the flow of time, the light in the room, and the sounds outside&hellip; All of that conveys meaning beyond words. <span class="hl">For me, filming itself may be inseparable from listening. Even if the camera can&rsquo;t capture everything, I think to film is, in a sense, to listen.</span>&rdquo;
+            <span class="src">&mdash; Komori, Cine Nouveau, Nov. 2020</span>
+          </blockquote>
+          <p class="small">If Nichols&rsquo;s frame is the filmmaker&rsquo;s point of view, Komori&rsquo;s is the listener&rsquo;s. That is one way to make a documentary; <em>Gates of Heaven</em> is another. Both are inside the form. Both are arguments about what a camera, pointed at real people, can be for.</p>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /stage -->
+
+  <div class="controls">
+    <span class="who">JPN/FST 266 &mdash; Prof. Tomoyuki Yabe</span>
+    <span class="nav">
+      <button id="prev" aria-label="Previous slide">&larr; Prev</button>
+      <span class="count" id="count">1 / 13</span>
+      <button id="next" aria-label="Next slide">Next &rarr;</button>
+      <button id="fs" aria-label="Toggle fullscreen">&#9974; Full</button>
+    </span>
+  </div>
+
+</div><!-- /deck -->
+
+<script>
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var stage  = document.getElementById('stage');
+  var count  = document.getElementById('count');
+  var i = 0;
+  function show(n){
+    i = Math.max(0, Math.min(slides.length-1, n));
+    slides.forEach(function(s,k){ s.classList.toggle('active', k===i); });
+    count.textContent = (i+1) + ' / ' + slides.length;
+    stage.scrollTop = 0;
+  }
+  document.getElementById('next').onclick = function(){ show(i+1); };
+  document.getElementById('prev').onclick = function(){ show(i-1); };
+  document.getElementById('fs').onclick = function(){
+    if(!document.fullscreenElement){ document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); }
+    else { document.exitFullscreen && document.exitFullscreen(); }
+  };
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ show(i+1); e.preventDefault(); }
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){ show(i-1); e.preventDefault(); }
+    else if(e.key==='Home'){ show(0); }
+    else if(e.key==='End'){ show(slides.length-1); }
+  });
+  show(0);
+</script>
+</body>
+</html>

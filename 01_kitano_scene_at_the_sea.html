@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Scene at the Sea (1991) あの夏一番静かな海 — Takeshi Kitano | JPN/FST 266</title>
+<style>
+  :root{
+    --sea-deep:#1f5d8c;        /* block title bar (Kitano blue) */
+    --sea-mid:#7fb1d1;         /* lighter accents */
+    --sea-body:#e8f1f7;        /* block body bg */
+    --alert-bar:#0f3e63;       /* alertblock title bar (deeper sea) */
+    --alert-body:#eef4f9;      /* alertblock body bg */
+    --hl:#c25a2a;              /* warm sand/coral emphasis */
+    --ink:#1a2630;
+    --muted:#5a6b78;
+    --bar:#244a66;             /* footer / header bars */
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:#dcc9a8;         /* sand surround */
+    color:var(--ink);
+    font-family:"Hoefler Text",Georgia,"Times New Roman","Yu Mincho","Hiragino Mincho ProN",serif;
+    -webkit-font-smoothing:antialiased;
+    display:flex;align-items:center;justify-content:center;
+  }
+  /* CJK fallback */
+  ruby,.cjk{font-family:"Yu Gothic","Hiragino Kaku Gothic ProN","Hiragino Sans","MS Gothic",inherit;}
+
+  #deck{width:100%;max-width:1040px;height:100vh;display:flex;flex-direction:column;}
+  .topbar{
+    background:var(--bar);color:#fff;font-size:15px;letter-spacing:.02em;
+    padding:6px 16px;display:flex;justify-content:space-between;align-items:center;
+    font-family:Georgia,serif;
+  }
+  .topbar .t-title{opacity:.95}
+  .topbar .t-sec{opacity:.8;font-style:italic}
+
+  .stage{flex:1;overflow:auto;background:#fff;}
+  .slide{display:none;padding:26px 34px 30px;min-height:100%;}
+  .slide.active{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:.35}to{opacity:1}}
+
+  h1.deck-title{font-size:36px;line-height:1.25;margin:0 0 6px;color:var(--sea-deep);text-align:center}
+  .frametitle{font-size:28px;color:var(--sea-deep);margin:2px 0 14px;font-weight:600;border-bottom:2px solid var(--sea-mid);padding-bottom:6px}
+
+  /* Introduction slide: larger type, more breathing room */
+  .intro .lead,
+  .intro p{font-size:21px;line-height:1.6;margin:0 0 12px}
+  .intro ul{margin:10px 0 6px;padding-left:24px}
+  .intro ul li{font-size:21px;line-height:1.6;margin-bottom:16px}
+  .intro .small{font-size:19px;line-height:1.6}
+
+  /* title slide */
+  .title-slide{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%;gap:4px}
+  .title-slide .sub{font-size:22px;color:var(--ink);margin-top:18px}
+  .title-slide .inst{font-size:19px;color:var(--muted);font-style:italic}
+  .title-slide .date{font-size:19px;color:var(--muted);margin-top:10px}
+  .title-slide .badge{margin-top:26px;font-size:14px;color:var(--muted);font-family:Georgia,serif;
+    border:1px solid var(--sea-mid);border-radius:20px;padding:4px 14px}
+
+  /* blocks */
+  .block,.alertblock{border-radius:6px;overflow:hidden;margin:0 0 14px;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+  .block>.head{background:var(--sea-deep);color:#fff;padding:7px 14px;font-size:19px;font-weight:600}
+  .block>.body{background:var(--sea-body);padding:12px 16px}
+  .alertblock>.head{background:var(--alert-bar);color:#fff;padding:7px 14px;font-size:19px;font-weight:600}
+  .alertblock>.body{background:var(--alert-body);padding:12px 16px}
+
+  .lead{font-size:18px;line-height:1.5;margin:0 0 8px}
+  ul.pts{margin:6px 0 4px;padding-left:22px}
+  ul.pts>li{font-size:17.5px;line-height:1.5;margin-bottom:9px}
+  .small{font-size:16px;line-height:1.5}
+
+  .hl{color:var(--hl)}
+  .cite{color:var(--muted);font-style:italic;white-space:nowrap}
+  em{font-style:italic}
+
+  .imgrow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+  .imgrow img{height:166px;width:auto;border:1px solid #c7d6e0;border-radius:3px;background:#eee;object-fit:cover}
+  .imgrow.small img{height:132px}
+  .imgrow.wide img{height:auto;max-width:100%}
+
+  /* Kitano displayquote */
+  blockquote.quote{
+    margin:8px 0;padding:6px 14px;
+    border-left:4px solid var(--sea-mid);
+    background:#f3f8fb;
+    color:var(--ink);font-style:italic;
+    font-size:17.5px;line-height:1.55;
+  }
+  blockquote.quote .src{display:block;margin-top:4px;font-size:14.5px;color:var(--muted);font-style:italic;text-align:right}
+
+  /* controls */
+  .controls{background:var(--bar);color:#fff;display:flex;align-items:center;justify-content:space-between;
+    padding:7px 14px;font-family:Georgia,serif;font-size:15px}
+  .controls .who{opacity:.9}
+  .controls .nav{display:flex;align-items:center;gap:8px}
+  .controls button{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.4);
+    border-radius:5px;padding:5px 13px;font-size:15px;cursor:pointer;font-family:inherit}
+  .controls button:hover{background:rgba(255,255,255,.30)}
+  .controls .count{min-width:54px;text-align:center}
+
+  /* print: one slide per page */
+  @media print{
+    body{background:#fff}
+    #deck{max-width:none;height:auto}
+    .topbar,.controls{display:none}
+    .stage{overflow:visible}
+    .slide{display:block !important;page-break-after:always;min-height:0}
+  }
+</style>
+</head>
+<body>
+<div id="deck">
+
+  <div class="topbar">
+    <span class="t-title">JPN/FST 266 &mdash; A Scene at the Sea (1991) <span class="cjk">あの夏一番静かな海</span></span>
+    <span class="t-sec">Takeshi Kitano - 北野武</span>
+  </div>
+
+  <div class="stage" id="stage">
+
+    <!-- ===== TITLE ===== -->
+    <section class="slide active">
+      <div class="title-slide">
+        <h1 class="deck-title">Week 02: A Scene at the Sea (1991)<br>
+          <ruby>あの夏一番静かな海<rt>ano natsu ichiban shizuka na umi</rt></ruby> by Takeshi Kitano</h1>
+        <div class="sub">JPN/FST 266 &mdash; Prof. Tomoyuki Yabe</div>
+        <div class="inst">GRAMELAC, Miami Univ. / <span class="cjk">マイアミ大学</span></div>
+        <div class="date">Fall 2025</div>
+        <div class="badge">&lsquo;The quietest scene by the sea from that summer&rsquo;</div>
+      </div>
+    </section>
+
+    <!-- ===== INTRO ===== -->
+    <section class="slide intro">
+      <div class="frametitle">Introduction</div>
+      <div class="alertblock">
+        <div class="head">Kitano's Unconventinal style</div>
+        <div class="body">
+          <p>Kitano Takeshi’s directorial style is defined by a radical "Aesthetics of Omission," a cinematic ethics that prioritizes silence and visual space over traditional narrative explanation. By stripping away dramatic conventions, Kitano moves beyond mainstream entertainment to create a minimalist experience where emotion is conveyed through "the crossing of gazes" and the "unconscious gait toward fate".
+        
+              <ul>
+  <li>
+    <strong>Aesthetics of Subtraction:</strong> Kitano practices the "decisiveness of eliminating explanatory shots," refusing to fill narrative gaps with exposition.
+  </li>
+
+  <li>
+    <strong>Narrative Fragmentation:</strong> His films often lack a "dramatic skeleton" or causal continuity, consisting instead of isolated episodes and "fragments".
+  </li>
+
+  <li>
+    <strong>Indirect Depiction of Pivotal Events:</strong> He avoids filming moments of accident or death directly, conveying them through opaque, symbolic imagery like a surfboard left on a beach.
+  </li>
+
+  <li>
+    <strong>Minimalist Visual Composition:</strong> Frames are often sustained by simple elements such as a blue sky and a black wetsuit rather than complex action.
+  </li>
+
+  <li>
+    <strong>Sparse Dialogue:</strong> His work features significantly fewer lines than typical dramas; for example, <em>A Scene at the Sea</em> has only approximately 280 lines compared to the standard 1,000+.
+  </li>
+
+  <li>
+    <strong>Lateral Tracking Shots:</strong> He utilizes repeated shots of characters "simply walking" in a horizontal direction, treated as pure cinematic movement rather than a march toward a destination.
+  </li>
+
+  <li>
+    <strong>"Mannequin-like" Acting:</strong> Performers act as "models" with suppressed emotions and impassive faces, distancing the character from both society and the world of the film.
+  </li>
+
+  <li>
+    <strong>Ontological Solitude:</strong> Characters are depicted with an "existential" isolation that is present from the start of the story, regardless of their surroundings.
+  </li>
+
+  <li>
+    <strong>Non-Participation:</strong> Characters often behave as passive onlookers or bystanders in their own narratives, creating a sense of extreme alienation.
+  </li>
+</ul>
+            
+            </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 1 ===== -->
+    <section class="slide">
+      <div class="frametitle">&lsquo;The quietest scene by the sea from that summer&rsquo;</div>
+      <div class="alertblock">
+        <div class="head">Almost a Silent Movie, and the Aesthetics of Omission</div>
+        <div class="body">
+          <ul class="pts">
+            <li>During the sequences with Shigeru and Takako, they are in complete silence; they are indeed deaf. The late film critic Nagaharu Yodogawa, who was born in 1909 and had seen many silent movies, once said, <span class="hl">&ldquo;It almost feels like early silent films.&rdquo;</span></li>
+            <li>One can praise Kitano&rsquo;s direction with a phrase such as <span class="hl">&ldquo;the decisiveness of eliminating explanatory shots.&rdquo;</span> His cinematic style can be characterized by a single phrase, the <span class="hl">Aesthetics of Omission</span>: his refusal to fill the gaps between shots with &ldquo;explanation&rdquo; constitutes what he has called a <span class="hl">&ldquo;cinematic ethics.&rdquo;</span></li>
+            <li><em>A Scene at the Sea</em> in particular, by exploiting the premise of a hearing-impaired protagonist, is regarded as <span class="hl">the pinnacle of minimalism in Japanese cinema</span>: emotion is conveyed through nothing more than <span class="hl">&ldquo;the crossing of gazes&rdquo;</span> and <span class="hl">&ldquo;the act of walking,&rdquo;</span> without recourse to dialogue.</li>
+            <li>Related to this is Kitano&rsquo;s technique of never directly filming moments of accident or death. <span class="hl">Shigeru&rsquo;s death is conveyed through a surfboard left on the sand</span>: opaque, but decisive.</li>
+            <li>Many scenes featuring events unrelated to the main story are present. These scenes depict bustling activity and commotion that contrast sharply with the quietude of Shigeru and Takako. There are also scenes in which the boisterous characters seem to watch over, and perhaps even admire, the deaf couple: when they gaze at them, they become quiet and composed like the couple. The contrast <span class="hl">accentuates the quietness and stillness of their world</span>.</li>
+            <li>There are many scenes with horizontal lines (the horizon, seawalls, etc.), and the movie is also filled with sideways movements, beginning with surfing, and there are abrupt falling movements: surfers into the waves, runners on the beach, a bicycle into the bay, and possibly Shigeru into the sea off screen.</li>
+          </ul>
+          <div class="imgrow wide">
+            <img src="kitano_item/100.jpg" alt="A Scene at the Sea panorama">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 2 ===== -->
+    <section class="slide">
+      <div class="frametitle">Almost a Silent Movie</div>
+      <div class="alertblock">
+        <div class="head">Time moves slower for Shigeru and Takako</div>
+        <div class="body">
+          <ul class="pts">
+            <li>Even though the pace of the movie is slow, time seems to move even slower for Shigeru and Takako. They miss the heat that Shigeru is supposed to compete in while they quietly gaze at the sea. In this slow world, <span class="hl">Kitano&rsquo;s camera often captures Shigeru gazing at the sea, as if he is somehow aware of his destiny to become one with it</span>: not a march toward a destination, but what Japanese critics have called an <span class="hl">&ldquo;unconscious gait toward fate.&rdquo;</span></li>
+            <li>My favorite scene is the one where Takako is facing a man doing the Radio Calisthenics, which is traditionally accompanied by its special music. A radio is beside the man, but it is silent (only the film&rsquo;s background music is playing). The audience perceives the scene as Takako would: <span class="hl">for her, calisthenics are always soundless</span>. Kitano momentarily places us in Takako&rsquo;s world, leading us to experience her silent world unconsciously.</li>
+            <li>It is also a cinematic narrative that impresses upon us the quiet world in which the two live. The calisthenics man is protective of them, and he says to Shigeru, &ldquo;Surfing? Be careful!&rdquo; This scene may also foreshadow Shigeru&rsquo;s fate. Takako&rsquo;s solitude on the beach while Shigeru is surfing frequently appears on screen, giving us a sense of Shigeru&rsquo;s impending absence. As the film progresses, <span class="hl">Takako&rsquo;s smiles on the beach completely disappear, as if she knows that her time with Shigeru is limited</span>.</li>
+          </ul>
+          <div class="imgrow">
+            <img src="kitano_item/01.jpg" alt="A Scene at the Sea 01">
+            <img src="kitano_item/02.jpg" alt="A Scene at the Sea 02">
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="head">Kitano on his own style: showing, not explaining</div>
+        <div class="body">
+          <p class="small">Kitano has frequently made statements to the following effect regarding this film:</p>
+          <blockquote class="quote">
+            &ldquo;In places where you&rsquo;d normally use dialogue to explain, I wanted to show everything through images. I wanted to create space for the audience to imagine: &lsquo;What are these two people thinking?&rsquo;&rdquo;
+            <span class="src">&mdash; Takeshi Kitano</span>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 3 ===== -->
+    <section class="slide">
+      <div class="frametitle">Their quietude and a moment in Takako&rsquo;s world</div>
+      <div class="alertblock">
+        <div class="head">Visual motifs: walking, the surfboard, the color blue</div>
+        <div class="body">
+          <ul class="pts">
+            <li>A feature frequently noted in Japanese critical discourse is Kitano&rsquo;s repeated use of shots in which characters <span class="hl">simply walk in a horizontal direction</span>. While this has been likened to the style of Ozu Yasujiro, in Kitano&rsquo;s case the composition is celebrated not as a &ldquo;march toward a destination&rdquo; but as an <span class="hl">&ldquo;unconscious gait toward fate.&rdquo;</span> In <em>A Scene at the Sea</em>, the repeated lateral tracking of shots in which the protagonists carry their surfboards functions <span class="hl">not as narrative exposition but as purely cinematic movement in its own right</span>.</li>
+            <li>Images of Shigeru and Takako carrying a surfboard are shown frequently enough to establish a cinematic theme. The two boys who imitate Shigeru hold a surfboard in a similar way, doubling the image and enhancing its impact. After Shigeru is gone, the two boys each hold a surfboard separately, which emphasizes a change and highlights Shigeru&rsquo;s absence by manipulating the visual motif (two are carrying one board or one each). In the final montage sequence, <span class="hl">Takako is in the front, whereas Shigeru always carried the surfboard in the front before. She also gets on a surfboard (with Shigeru on the screen as a fragment of Takako's memory or as a ghost).</span> By placing Takako in Shigeru&rsquo;s position, Kitano effectively translates a sense of change onto the screen through visible images. Now, Takako will live her life.</li>
+            <li>The color blue (<span class="hl">Kitano blue</span>) is omnipresent, seen in the sea, sky, and even the garbage truck. This pervasive blue creates a sense of a slow, quiet summer day by the sea. The interplay of color, silence, and slow speed melds into a cohesive cinematic narrative about the silent world of Shigeru and Takako.</li>
+            <li>This movie provides a good example of how <span class="hl">even seemingly unrelated elements can enhance the effectiveness of cinematic expression</span>.</li>
+          </ul>
+          <div class="imgrow small">
+            <img src="kitano_item/30.jpg" alt="A Scene at the Sea 30">
+            <img src="kitano_item/31.jpg" alt="A Scene at the Sea 31">
+            <img src="kitano_item/32.jpg" alt="A Scene at the Sea 32">
+          </div>
+          <div class="imgrow small">
+            <img src="kitano_item/33.jpg" alt="A Scene at the Sea 33">
+            <img src="kitano_item/34.jpg" alt="A Scene at the Sea 34">
+            <img src="kitano_item/24.jpg" alt="A Scene at the Sea 24">
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="head">Kitano on his own style: enough to sustain the frame</div>
+        <div class="body">
+          <blockquote class="quote">
+            &ldquo;If you have a blue sky, a blue ocean, and a black wetsuit, that&rsquo;s enough to sustain the frame.&rdquo;
+            <span class="src">&mdash; Takeshi Kitano</span>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /stage -->
+
+  <div class="controls">
+    <span class="who">JPN/FST 266 &mdash; Prof. Tomoyuki Yabe</span>
+    <span class="nav">
+      <button id="prev" aria-label="Previous slide">&larr; Prev</button>
+      <span class="count" id="count">1 / 5</span>
+      <button id="next" aria-label="Next slide">Next &rarr;</button>
+      <button id="fs" aria-label="Toggle fullscreen">&#9974; Full</button>
+    </span>
+  </div>
+
+</div><!-- /deck -->
+
+<script>
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var stage  = document.getElementById('stage');
+  var count  = document.getElementById('count');
+  var i = 0;
+  function show(n){
+    i = Math.max(0, Math.min(slides.length-1, n));
+    slides.forEach(function(s,k){ s.classList.toggle('active', k===i); });
+    count.textContent = (i+1) + ' / ' + slides.length;
+    stage.scrollTop = 0;
+  }
+  document.getElementById('next').onclick = function(){ show(i+1); };
+  document.getElementById('prev').onclick = function(){ show(i-1); };
+  document.getElementById('fs').onclick = function(){
+    if(!document.fullscreenElement){ document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); }
+    else { document.exitFullscreen && document.exitFullscreen(); }
+  };
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ show(i+1); e.preventDefault(); }
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){ show(i-1); e.preventDefault(); }
+    else if(e.key==='Home'){ show(0); }
+    else if(e.key==='End'){ show(slides.length-1); }
+  });
+  show(0);
+</script>
+</body>
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seven Samurai (1954) 七人の侍 — Akira Kurosawa | JPN/FST 266</title>
+<style>
+  :root{
+    --ink-deep:#2c3340;       /* block title bar (sumi ink slate) */
+    --ink-mid:#7d8694;        /* lighter accents (rain steel) */
+    --ink-body:#f1ecdf;       /* block body bg (raw silk) */
+    --alert-bar:#1a2230;      /* alertblock title bar (deep ink) */
+    --alert-body:#efe9d8;     /* alertblock body bg */
+    --hl:#9a3a2c;             /* vermilion / blood for \red emphasis */
+    --ink:#22262e;
+    --muted:#6b6253;
+    --bar:#3a414f;            /* footer / header bars */
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:#c7baa0;       /* raw silk / undyed cotton surround */
+    color:var(--ink);
+    font-family:"Hoefler Text",Georgia,"Times New Roman","Yu Mincho","Hiragino Mincho ProN",serif;
+    -webkit-font-smoothing:antialiased;
+    display:flex;align-items:center;justify-content:center;
+  }
+  ruby,.cjk{font-family:"Yu Gothic","Hiragino Kaku Gothic ProN","Hiragino Sans","MS Gothic",inherit;}
+
+  #deck{width:100%;max-width:1040px;height:100vh;display:flex;flex-direction:column;}
+  .topbar{
+    background:var(--bar);color:#fff;font-size:15px;letter-spacing:.02em;
+    padding:6px 16px;display:flex;justify-content:space-between;align-items:center;
+    font-family:Georgia,serif;
+  }
+  .topbar .t-title{opacity:.95}
+  .topbar .t-sec{opacity:.8;font-style:italic}
+
+  .stage{flex:1;overflow:auto;background:#fff;}
+  .slide{display:none;padding:26px 34px 30px;min-height:100%;}
+  .slide.active{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:.35}to{opacity:1}}
+
+  h1.deck-title{font-size:34px;line-height:1.25;margin:0 0 6px;color:var(--ink-deep);text-align:center}
+  .frametitle{font-size:28px;color:var(--ink-deep);margin:2px 0 14px;font-weight:600;border-bottom:2px solid var(--ink-mid);padding-bottom:6px}
+
+  .title-slide{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%;gap:4px}
+  .title-slide .sub{font-size:22px;color:var(--ink);margin-top:18px}
+  .title-slide .inst{font-size:19px;color:var(--muted);font-style:italic}
+  .title-slide .date{font-size:19px;color:var(--muted);margin-top:10px}
+  .title-slide .badge{margin-top:26px;font-size:14px;color:var(--muted);font-family:Georgia,serif;
+    border:1px solid var(--ink-mid);border-radius:20px;padding:4px 14px;max-width:780px}
+
+  .block,.alertblock{border-radius:6px;overflow:hidden;margin:0 0 14px;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+  .block>.head{background:var(--ink-deep);color:#fff;padding:7px 14px;font-size:19px;font-weight:600}
+  .block>.body{background:var(--ink-body);padding:12px 16px}
+  .alertblock>.head{background:var(--alert-bar);color:#fff;padding:7px 14px;font-size:19px;font-weight:600}
+  .alertblock>.body{background:var(--alert-body);padding:12px 16px}
+
+  .lead{font-size:18px;line-height:1.5;margin:0 0 8px}
+  ul.pts,ol.pts{margin:6px 0 4px;padding-left:22px}
+  ul.pts>li,ol.pts>li{font-size:17.5px;line-height:1.5;margin-bottom:9px}
+  ul.pts ul,ul.pts ol{margin:6px 0 6px;padding-left:22px}
+  ul.pts ul li{font-size:16.5px;line-height:1.45;margin-bottom:6px}
+  .small{font-size:16px;line-height:1.5}
+
+  .hl{color:var(--hl)}
+  .cite{color:var(--muted);font-style:italic;white-space:nowrap}
+  em{font-style:italic}
+
+  .imgrow{display:flex;gap:10px;justify-content:stretch;flex-wrap:nowrap;margin-top:12px;align-items:flex-start}
+  .imgrow img{flex:1 1 0;min-width:0;width:100%;height:auto;border:1px solid #c8bca3;border-radius:3px;background:#eee;object-fit:contain}
+  .imgrow.small img,.imgrow.tiny img{height:auto}
+  .imgrow.wide img{height:auto;max-width:100%}
+
+  .twocol{display:flex;gap:14px;align-items:flex-start}
+  .twocol .col-text{flex:1 1 70%;min-width:0}
+  .twocol .col-img{flex:0 0 26%;display:flex;justify-content:center;align-items:center}
+  .twocol .col-img img{max-width:100%;height:auto;border:1px solid #c8bca3;border-radius:3px}
+
+  blockquote.quote{
+    margin:8px 0;padding:6px 14px;
+    border-left:4px solid var(--ink-mid);
+    background:#f7f3e6;
+    color:var(--ink);font-style:italic;
+    font-size:17px;line-height:1.55;
+  }
+  blockquote.quote .src{display:block;margin-top:4px;font-size:14.5px;color:var(--muted);font-style:italic;text-align:right}
+
+  .intro .lead,
+  .intro p{font-size:21px;line-height:1.6;margin:0 0 12px}
+  .intro ul{margin:10px 0 6px;padding-left:24px}
+  .intro ul li{font-size:21px;line-height:1.6;margin-bottom:16px}
+  .intro .small{font-size:19px;line-height:1.6}
+
+  .controls{background:var(--bar);color:#fff;display:flex;align-items:center;justify-content:space-between;
+    padding:7px 14px;font-family:Georgia,serif;font-size:15px}
+  .controls .who{opacity:.9}
+  .controls .nav{display:flex;align-items:center;gap:8px}
+  .controls button{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.4);
+    border-radius:5px;padding:5px 13px;font-size:15px;cursor:pointer;font-family:inherit}
+  .controls button:hover{background:rgba(255,255,255,.30)}
+  .controls .count{min-width:54px;text-align:center}
+
+  @media print{
+    body{background:#fff}
+    #deck{max-width:none;height:auto}
+    .topbar,.controls{display:none}
+    .stage{overflow:visible}
+    .slide{display:block !important;page-break-after:always;min-height:0}
+  }
+</style>
+</head>
+<body>
+<div id="deck">
+
+  <div class="topbar">
+    <span class="t-title">JPN/FST 266 &mdash; Seven Samurai (1954) <span class="cjk">七人の侍</span></span>
+    <span class="t-sec">Akira Kurosawa - 黒澤明 &middot; annotated with Richie, Burch, Deleuze, and Tarkovsky</span>
+  </div>
+
+  <div class="stage" id="stage">
+
+    <!-- ===== TITLE ===== -->
+    <section class="slide active">
+      <div class="title-slide">
+        <h1 class="deck-title">Week 05: Seven Samurai (1954)<br>
+          <ruby>七人の侍<rt>shichinin no samurai</rt></ruby> by Akira Kurosawa</h1>
+        <div class="sub">JPN/FST 266 &mdash; Prof. Tomoyuki Yabe</div>
+        <div class="inst">GRAMELAC, Miami Univ. / <span class="cjk">マイアミ大学</span></div>
+        <div class="date">Fall 2025</div>
+        <div class="badge">Slides annotated with Donald Richie, &ldquo;Method, Technique, and Style&rdquo; and the chapter on <em>Seven Samurai</em>; Andrey Tarkovsky, <em>Sculpting in Time</em> (1987)</div>
+      </div>
+    </section>
+
+    <!-- ===== INTRO ===== -->
+    <section class="slide">
+      <div class="frametitle">Introduction</div>
+      <div class="alertblock">
+        <div class="head">Akira Kurosawa and cinematic motion</div>
+        <div class="body">
+          <p class="lead">Akira Kurosawa (1910&ndash;1998) is famous for a bold, exaggerated style. <em>Seven Samurai</em> (1954) tells of a farming village that hires seven masterless samurai to defend it against marauding bandits. Our focus is Kurosawa&rsquo;s conviction that a motion picture should be <span class="hl">composed entirely of motion</span>.</p>
+          <ul class="pts">
+            <li><strong>Exaggerated expression:</strong> a heightened, &ldquo;Shakespearean&rdquo; use of hyperbole in cinematic terms (Kiarostami).</li>
+            <li><strong>Motion everywhere:</strong> multiple cameras, telephoto lenses, and a moving camera&mdash;&ldquo;no shot that does not have motion&rdquo; <span class="cite">(Richie, p.&nbsp;103)</span>.</li>
+            <li><strong>Nature as drama:</strong> heavy rain, wind, and fire intensify emotion, culminating in the climactic rain battle.</li>
+            <li><strong>Rain in cinema:</strong> a comparative look, including Tarkovsky&rsquo;s <em>Sculpting in Time</em>.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 1: Kurosawa and Exaggeration ===== -->
+    <section class="slide">
+      <div class="frametitle">Kurosawa and exaggeration in cinematic expression</div>
+      <div class="alertblock">
+        <div class="head">Kurosawa&rsquo;s expressive style</div>
+        <div class="body">
+          <p class="lead">Kurosawa&rsquo;s style is known for its use of <span class="hl">exaggerated expression</span>. He often employs multiple cameras, sometimes with a telephoto lens. The cameras themselves are actively moved during filming. <span class="hl">Exaggerated natural elements</span>, such as heavy rain, powerful wind, or large fires, are frequently used to enhance the emotional and dramatic impact. Filmmaker Abbas Kiarostami once compared Kurosawa&rsquo;s style to Shakespeare&rsquo;s use of hyperbole in literature, describing Kurosawa&rsquo;s style as <em>&ldquo;Shakespearean&rdquo;</em> <span class="cite">(p.c.)</span>.</p>
+          <p class="small">Richie sharpens the same intuition in formal terms. Kurosawa, he says, &ldquo;insisted that the motion-picture be composed entirely of <span class="hl">motion</span>. The film opens with fast pans of the bandits riding over hills, and ends with the chaos of the battle itself, motion so swift we can almost not see it at all. <span class="hl">There is no shot that does not have motion</span>, either in the object photographed, or in the movement of the camera itself&rdquo; <span class="cite">(Richie, p.&nbsp;103)</span>. The exaggeration is not decorative; it is the medium.</p>
+        </div>
+      </div>
+      <div class="block">
+        <div class="head">Cinematic techniques in <em>Seven Samurai</em></div>
+        <div class="body">
+          <p class="small">Besides the final battle in the hyperbolic rain (which we will address in the next slide), several memorable moments in <em>Seven Samurai</em> showcase Kurosawa&rsquo;s use of varied cinematic techniques.</p>
+          <ul class="pts">
+            <li><span class="hl">The opening sequence with the raiders on horseback</span>: Kurosawa employs dynamic camera movements, including sweeping shots and close-ups. Telephoto lenses are used to keep wide areas in focus. This sequence follows the title roll, which has a sound effect of drumbeats. <span class="hl">The drumbeats turn into the hoofbeats</span> as the raiders&rsquo; sequence begins, suturing sound into the next image without a seam.</li>
+          </ul>
+          <div class="imgrow tiny">
+            <img src="kurosawa_item/11/01.jpg" alt="Raiders opening 01">
+            <img src="kurosawa_item/11/02.jpg" alt="Raiders opening 02">
+            <img src="kurosawa_item/11/03.jpg" alt="Raiders opening 03">
+            <img src="kurosawa_item/11/04.jpg" alt="Raiders opening 04">
+            <img src="kurosawa_item/11/05.jpg" alt="Raiders opening 05">
+          </div>
+          <div style="margin-top:10px;display:flex;justify-content:center">
+            <video controls preload="metadata" style="max-width:100%;max-height:280px;border:1px solid #c8bca3;border-radius:3px">
+              <source src="item/06_01_open_.mp4" type="video/mp4">
+              Your browser does not support embedded video. <a href="item/06_01_open_.mp4">Download the clip</a>.
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 2: More techniques ===== -->
+    <section class="slide">
+      <div class="frametitle">Recruitment, Kikuchiyo, and the multi-camera setup</div>
+      <div class="block">
+        <div class="head">Building characters, capturing performance</div>
+        <div class="body">
+          <ul class="pts">
+            <li><span class="hl">The recruitment of the samurai</span>: Kurosawa uses long takes and effective framing to develop the character of each samurai as he is encountered. Richie observes that the sequence is built as a &ldquo;mosaic of tiny scenes&rdquo; held together with wipes, and that we get to know each samurai through how they react to a small, often comic test <span class="cite">(Richie, p.&nbsp;103)</span>.</li>
+          </ul>
+          <div class="imgrow tiny">
+            <img src="kurosawa_item/11/11.jpg" alt="Recruitment 11">
+            <img src="kurosawa_item/11/12.jpg" alt="Recruitment 12">
+            <img src="kurosawa_item/11/13.jpg" alt="Recruitment 13">
+            <img src="kurosawa_item/11/14.jpg" alt="Recruitment 14">
+            <img src="kurosawa_item/11/15.jpg" alt="Recruitment 15">
+            <img src="kurosawa_item/11/16.jpg" alt="Recruitment 16">
+          </div>
+          <ul class="pts" style="margin-top:10px">
+            <li><span class="hl">Kikuchiyo speaking to the farmers</span>: the scene showcases Kurosawa&rsquo;s use of montage and Toshiro Mifune&rsquo;s improvisation, adding depth to Kikuchiyo&rsquo;s character. Richie notes that what is most powerful in the scene is that Mifune acts <span class="hl">directly into the camera</span>, and that &ldquo;each shot of Mifune is a bit shorter than the one which went before. The tempo is accelerated by the cutting, and these long scenes become shorter&rdquo; <span class="cite">(Richie, p.&nbsp;105)</span>.</li>
+          </ul>
+          <div class="imgrow tiny" style="align-items:center">
+            <img src="kurosawa_item/11/21.jpg" alt="Kikuchiyo 21">
+            <img src="kurosawa_item/11/22.jpg" alt="Kikuchiyo 22">
+            <img src="kurosawa_item/11/23.jpg" alt="Kikuchiyo 23">
+            <img src="kurosawa_item/11/24.jpg" alt="Kikuchiyo 24">
+            <video controls preload="metadata" style="flex:1 1 0;min-width:0;width:100%;max-height:140px;border:1px solid #c8bca3;border-radius:3px;background:#000">
+              <source src="item/06_02_adrib_.mp4" type="video/mp4">
+              Your browser does not support embedded video. <a href="item/06_02_adrib_.mp4">Download the clip</a>.
+            </video>
+          </div>
+          <ul class="pts" style="margin-top:10px">
+            <li><span class="hl">Up to eight cameras</span> were used to capture a scene from different angles simultaneously. Kurosawa noted that with multiple cameras he did not have to stop the actors and have them repeat for shots from different angles. Using multiple cameras, Kurosawa was able to <span class="hl">capture the actors&rsquo; fluid performances unbroken</span>, then assemble the rhythm of impact in the cutting room.</li>
+          </ul>
+          <div class="imgrow tiny">
+            <img src="kurosawa_item/11/31.jpg" alt="Multi-camera 31">
+            <img src="kurosawa_item/11/32.jpg" alt="Multi-camera 32">
+            <img src="kurosawa_item/11/33.jpg" alt="Multi-camera 33">
+            <img src="kurosawa_item/11/34.jpg" alt="Multi-camera 34">
+            <img src="kurosawa_item/11/35.jpg" alt="Multi-camera 35">
+            <img src="kurosawa_item/11/36.jpg" alt="Multi-camera 36">
+          </div>
+          <div style="margin-top:10px;display:flex;justify-content:center">
+            <video controls preload="metadata" style="max-width:100%;max-height:280px;border:1px solid #c8bca3;border-radius:3px">
+              <source src="item/06_03_multi_camera_.mp4" type="video/mp4">
+              Your browser does not support embedded video. <a href="item/06_03_multi_camera_.mp4">Download the clip</a>.
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 3: The Rain Battle Sequence ===== -->
+    <section class="slide">
+      <div class="frametitle">The rain battle sequence</div>
+      <div class="alertblock">
+        <div class="head">Life and death in <em>Seven Samurai</em>&rsquo;s rain</div>
+        <div class="body">
+          <p class="lead">The final battle scene in the rain in <em>Seven Samurai</em> is one of the most famous sequences in cinema. Kurosawa made sure it would be highly expressive. He used special effects, splashing water upward from the ground in certain spots, and mixed black ink into the splashed water. Usually these effects are the main focus when people discuss his exaggerated style. <span class="hl">But what is achieved in terms of cinematic narrative? What makes the rain sequence so memorable?</span></p>
+          <p class="small">The director Andrei Tarkovsky, himself known for his use of rain, points to a single image in the sequence in which the narrative of <span class="hl">life and death</span> is fully realized as an image, without recourse to symbolism.</p>
+          <blockquote class="quote">
+            And a shot from <em>The Seven Samurai</em>. A mediaeval Japanese village. A fight is going on between some horsemen, and the samurai who are on foot. It is pouring with rain, there is mud everywhere. <span class="hl">The samurai wear an ancient Japanese garment which leaves most of the leg bare, and their legs are plastered with mud. And when one samurai falls down dead we see the rain washing away the mud and his leg becoming white, as white as marble. A man is dead; that is an image which is a fact. It is innocent of symbolism, and that is an image.</span>
+            <span class="src">&mdash; Andrei Tarkovsky, <em>Sculpting in Time</em>, p.&nbsp;73</span>
+          </blockquote>
+          <div class="imgrow small">
+            <img src="kurosawa_item/03.jpg" alt="Rain battle 03">
+            <img src="kurosawa_item/05.jpg" alt="Rain battle 05">
+            <img src="kurosawa_item/06.jpg" alt="Rain battle 06">
+            <img src="kurosawa_item/07.jpg" alt="Rain battle 07">
+          </div>
+          <p class="small" style="margin-top:10px">Tarkovsky&rsquo;s point is that the sequence is powerful because the narrative of life and death concerning the samurai is <span class="hl">fully realized on screen as an image</span>, not relayed by a symbol. Earlier in the same chapter he names the criterion: &ldquo;the purity of cinema, its inherent strength, is revealed not in the symbolic aptness of images however bold these may be, but in the capacity of those images to express <span class="hl">a specific, unique, actual fact</span>&rdquo; <span class="cite">(Tarkovsky, p.&nbsp;72)</span>. The white leg under washing rain meets that criterion exactly.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 4: Tarkovsky's own rain ===== -->
+    <section class="slide">
+      <div class="frametitle">Rain in cinema: Tarkovsky</div>
+      <div class="block">
+        <div class="head">Rain as material setting, not as symbol</div>
+        <div class="body">
+          <p class="small">In the same book, Tarkovsky talks about the presentation of rain in his own films. Audiences keep asking what the rain means, and he keeps refusing the question.</p>
+          <div style="margin:10px 0;display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap">
+            <img src="kurosawa_item/50.jpg" alt="Tarkovsky rain 50" style="flex:0 0 auto;max-width:42%;max-height:260px;height:auto;width:auto;border:1px solid #c8bca3;border-radius:3px">
+            <video controls preload="metadata" style="flex:0 0 auto;max-width:54%;max-height:260px;border:1px solid #c8bca3;border-radius:3px">
+              <source src="item/TRK_mirror.mp4" type="video/mp4">
+              Your browser does not support embedded video. <a href="item/TRK_mirror.mp4">Download the clip</a>.
+            </video>
+          </div>
+          <blockquote class="quote">
+            Rain is after all typical of the landscape in which I grew up; in Russia you have those long, dreary, persistent rains. &hellip; <span class="hl">Rain, fire, water, snow, dew, the driving ground wind, all are part of the material setting in which we dwell; I would even say of the truth of our lives.</span> I am therefore puzzled when I am told that people cannot simply enjoy watching nature, when it is lovingly reproduced on the screen, but have to look for some hidden meaning they feel it must contain.
+            <span class="src">&mdash; Tarkovsky, <em>Sculpting in Time</em>, p.&nbsp;212</span>
+          </blockquote>
+          <p class="small">A page later he sharpens the distinction. Rain in his films is not &ldquo;bad weather,&rdquo; nor is it &ldquo;a symbol of something else.&rdquo; He uses it, rather, to <span class="hl">&ldquo;create a particular aesthetic setting in which to steep the action of the film&rdquo;</span> <span class="cite">(Tarkovsky, p.&nbsp;213)</span>. The rain belongs to the actual world the camera records; it gains its force from being unmistakably there.</p>
+          <p class="small" style="margin-top:10px">The intensity of rain in Tarkovsky&rsquo;s films is different from that of Kurosawa&rsquo;s. But how Tarkovsky thinks rain contributes to cinematic narrative in <em>Seven Samurai</em>, and how he uses it in his own films, are similar. <span class="hl">A familiar natural phenomenon, like rain, becomes effective for enriching cinematic narrative when it is immediate and complete on screen, without symbolizing anything that would distract the audience&rsquo;s awareness.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 5+6: Singin' in the Rain & Blade Runner (combined) ===== -->
+    <section class="slide">
+      <div class="frametitle">Rain in cinema: a comparative look</div>
+      <div class="block">
+        <div class="head"><em>Singin&rsquo; in the Rain</em> (1952) by Kelly and Donen</div>
+        <div class="body">
+          <p class="small">After Don (Gene Kelly) has fallen in love with Kathy, we see his happy and ecstatic dancing in the rain. Usually we avoid exposing ourselves to the rain and getting wet. Don enjoys being wet here. <span class="hl">What does the rain do in this sequence (even in the title of the movie itself)? Do you see anything else besides the rain itself that makes this sequence effective?</span></p>
+          <div class="imgrow" style="margin-top:8px;align-items:center">
+            <img src="kurosawa_item/22/01.jpg" alt="Singin' in the Rain 01" style="max-height:130px;object-fit:contain">
+            <img src="kurosawa_item/22/02.jpg" alt="Singin' in the Rain 02" style="max-height:130px;object-fit:contain">
+            <img src="kurosawa_item/22/03.jpg" alt="Singin' in the Rain 03" style="max-height:130px;object-fit:contain">
+            <video controls preload="metadata" style="flex:1 1 0;min-width:0;width:100%;max-height:130px;border:1px solid #c8bca3;border-radius:3px;background:#000">
+              <source src="item/Sing_rain.mp4" type="video/mp4">
+              Your browser does not support embedded video. <a href="item/Sing_rain.mp4">Download the clip</a>.
+            </video>
+          </div>
+        </div>
+      </div>
+      <div class="block">
+        <div class="head"><em>Blade Runner</em> (1982) by Ridley Scott</div>
+        <div class="body">
+          <p class="small">A Blade Runner, an officer whose task is the extermination of replicants (artificial human beings), pursues Roy Batty, the replicant leader, in a brutal chase. Roy, whose lifespan is limited to four years, has Deckard at his mercy, hanging from a high building edge by one grip. Instead of killing him, Roy <span class="hl">saves his life</span>. Standing in the downpour, Roy delivers his final monologue: <em>&ldquo;all those moments will be lost in time, like tears in rain&rdquo;</em> before dying. The rain and tears are present, but also <span class="hl">the white dove</span>. <span class="hl">Evaluate the effect of the sequence based on what we can see in it.</span></p>
+          <div class="imgrow small" style="margin-top:8px">
+            <img src="kurosawa_item/33/01.jpg" alt="Blade Runner 01" style="max-height:120px;object-fit:contain">
+            <img src="kurosawa_item/33/02.jpg" alt="Blade Runner 02" style="max-height:120px;object-fit:contain">
+            <img src="kurosawa_item/33/04.jpg" alt="Blade Runner 04" style="max-height:120px;object-fit:contain">
+          </div>
+          <div class="imgrow small" style="margin-top:6px;align-items:center">
+            <img src="kurosawa_item/33/05.jpg" alt="Blade Runner 05" style="max-height:120px;object-fit:contain">
+            <img src="kurosawa_item/33/06.jpg" alt="Blade Runner 06" style="max-height:120px;object-fit:contain">
+            <video controls preload="metadata" style="flex:1 1 0;min-width:0;width:100%;max-height:120px;border:1px solid #c8bca3;border-radius:3px;background:#000">
+              <source src="item/blade_rain.mp4" type="video/mp4">
+              Your browser does not support embedded video. <a href="item/blade_rain.mp4">Download the clip</a>.
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 7: The Matrix ===== -->
+    <section class="slide">
+      <div class="frametitle">Rain in cinema: a comparative look</div>
+      <div class="block">
+        <div class="head"><em>The Matrix</em> (1999) by the Wachowskis: Neo vs. Agent Smith in rain</div>
+        <div class="body">
+          <p class="small">I feel that the rain battle scene between Neo and Agent Smith in <em>The Matrix</em> is somehow an homage to Kurosawa. There is even a character named <span class="hl">Captain Mifune</span> in <em>The Matrix</em>, while the actor Toshiro Mifune played Kikuchiyo in <em>Seven Samurai</em>, who dies in the rain.</p>
+          <ul class="pts">
+            <li>Do you think Tarkovsky would find a similarly effective element in the scene?</li>
+            <li>If you say <em>yes</em>, explain why.</li>
+            <li>If you say <em>no</em>, what would you do to make the scene effective in the Tarkovskian sense (conveying the narrative through imagery strongly)?</li>
+          </ul>
+          <div style="display:flex;gap:12px;justify-content:center;align-items:center;margin-top:10px;flex-wrap:wrap">
+            <img src="kurosawa_item/08.jpg" alt="Matrix rain battle" style="flex:0 0 auto;max-width:42%;max-height:260px;height:auto;width:auto;border:1px solid #c8bca3;border-radius:3px">
+            <video controls preload="metadata" style="flex:0 0 auto;max-width:54%;max-height:260px;border:1px solid #c8bca3;border-radius:3px">
+              <source src="item/MTRX_rain.mp4" type="video/mp4">
+              Your browser does not support embedded video. <a href="item/MTRX_rain.mp4">Download the clip</a>.
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /stage -->
+
+  <div class="controls">
+    <span class="who">JPN/FST 266 &mdash; Prof. Tomoyuki Yabe</span>
+    <span class="nav">
+      <button id="prev" aria-label="Previous slide">&larr; Prev</button>
+      <span class="count" id="count">1 / 8</span>
+      <button id="next" aria-label="Next slide">Next &rarr;</button>
+      <button id="fs" aria-label="Toggle fullscreen">&#9974; Full</button>
+    </span>
+  </div>
+
+</div><!-- /deck -->
+
+<script>
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var stage  = document.getElementById('stage');
+  var count  = document.getElementById('count');
+  var i = 0;
+  function show(n){
+    i = Math.max(0, Math.min(slides.length-1, n));
+    slides.forEach(function(s,k){ s.classList.toggle('active', k===i); });
+    count.textContent = (i+1) + ' / ' + slides.length;
+    stage.scrollTop = 0;
+  }
+  document.getElementById('next').onclick = function(){ show(i+1); };
+  document.getElementById('prev').onclick = function(){ show(i-1); };
+  document.getElementById('fs').onclick = function(){
+    if(!document.fullscreenElement){ document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); }
+    else { document.exitFullscreen && document.exitFullscreen(); }
+  };
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ show(i+1); e.preventDefault(); }
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){ show(i-1); e.preventDefault(); }
+    else if(e.key==='Home'){ show(0); }
+    else if(e.key==='End'){ show(slides.length-1); }
+  });
+  show(0);
+</script>
+</body>
+</html>

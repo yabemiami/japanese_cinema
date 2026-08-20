@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ugetsu (1953) 雨月物語 — Kenji Mizoguchi | JPN/FST 266</title>
+<style>
+  :root{
+    --sage-deep:#4f6b5a;      /* block title bar (mist sage) */
+    --sage-mid:#9fb5a5;       /* lighter accents */
+    --sage-body:#f0ebdd;      /* block body bg (warm parchment) */
+    --alert-bar:#364c3e;      /* alertblock title bar (deeper moss) */
+    --alert-body:#f4f0e3;     /* alertblock body bg */
+    --hl:#a14a2a;             /* clay terracotta for \red emphasis */
+    --ink:#2a261e;
+    --muted:#6b5f4f;
+    --bar:#5b7166;            /* footer / header bars */
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:#b8a98c;       /* clay parchment surround */
+    color:var(--ink);
+    font-family:"Hoefler Text",Georgia,"Times New Roman","Yu Mincho","Hiragino Mincho ProN",serif;
+    -webkit-font-smoothing:antialiased;
+    display:flex;align-items:center;justify-content:center;
+  }
+  ruby,.cjk{font-family:"Yu Gothic","Hiragino Kaku Gothic ProN","Hiragino Sans","MS Gothic",inherit;}
+
+  #deck{width:100%;max-width:1040px;height:100vh;display:flex;flex-direction:column;}
+  .topbar{
+    background:var(--bar);color:#fff;font-size:15px;letter-spacing:.02em;
+    padding:6px 16px;display:flex;justify-content:space-between;align-items:center;
+    font-family:Georgia,serif;
+  }
+  .topbar .t-title{opacity:.95}
+  .topbar .t-sec{opacity:.8;font-style:italic}
+
+  .stage{flex:1;overflow:auto;background:#fff;}
+  .slide{display:none;padding:26px 34px 30px;min-height:100%;}
+  .slide.active{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:.35}to{opacity:1}}
+
+  h1.deck-title{font-size:36px;line-height:1.25;margin:0 0 6px;color:var(--sage-deep);text-align:center}
+  .frametitle{font-size:28px;color:var(--sage-deep);margin:2px 0 14px;font-weight:600;border-bottom:2px solid var(--sage-mid);padding-bottom:6px}
+
+  .title-slide{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%;gap:4px}
+  .title-slide .sub{font-size:22px;color:var(--ink);margin-top:18px}
+  .title-slide .inst{font-size:19px;color:var(--muted);font-style:italic}
+  .title-slide .date{font-size:19px;color:var(--muted);margin-top:10px}
+  .title-slide .badge{margin-top:26px;font-size:14px;color:var(--muted);font-family:Georgia,serif;
+    border:1px solid var(--sage-mid);border-radius:20px;padding:4px 14px}
+
+  .block,.alertblock{border-radius:6px;overflow:hidden;margin:0 0 14px;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+  .block>.head{background:var(--sage-deep);color:#fff;padding:7px 14px;font-size:19px;font-weight:600}
+  .block>.body{background:var(--sage-body);padding:12px 16px}
+  .alertblock>.head{background:var(--alert-bar);color:#fff;padding:7px 14px;font-size:19px;font-weight:600}
+  .alertblock>.body{background:var(--alert-body);padding:12px 16px}
+
+  .lead{font-size:18px;line-height:1.5;margin:0 0 8px}
+  ul.pts,ol.pts{margin:6px 0 4px;padding-left:22px}
+  ul.pts>li,ol.pts>li{font-size:17.5px;line-height:1.5;margin-bottom:9px}
+  ul.pts ul,ul.pts ol{margin:6px 0 6px;padding-left:22px}
+  ul.pts ul li{font-size:16.5px;line-height:1.45;margin-bottom:6px}
+  .small{font-size:16px;line-height:1.5}
+
+  .hl{color:var(--hl)}
+  .cite{color:var(--muted);font-style:italic;white-space:nowrap}
+  em{font-style:italic}
+
+  .imgrow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+  .imgrow img{height:180px;width:auto;border:1px solid #c8bca3;border-radius:3px;background:#eee;object-fit:cover}
+  .imgrow.small img{height:140px}
+  .imgrow.wide img{height:auto;max-width:100%}
+
+  .twocol{display:flex;gap:14px;align-items:flex-start}
+  .twocol .col-text{flex:1 1 70%;min-width:0}
+  .twocol .col-img{flex:0 0 26%;display:flex;justify-content:center;align-items:center}
+  .twocol .col-img img{max-width:100%;height:auto;border:1px solid #c8bca3;border-radius:3px}
+
+  blockquote.quote{
+    margin:8px 0;padding:6px 14px;
+    border-left:4px solid var(--sage-mid);
+    background:#f7f3e6;
+    color:var(--ink);font-style:italic;
+    font-size:17.5px;line-height:1.55;
+  }
+  blockquote.quote .src{display:block;margin-top:4px;font-size:14.5px;color:var(--muted);font-style:italic;text-align:right}
+
+  .intro .lead,
+  .intro p{font-size:21px;line-height:1.6;margin:0 0 12px}
+  .intro ul{margin:10px 0 6px;padding-left:24px}
+  .intro ul li{font-size:21px;line-height:1.6;margin-bottom:16px}
+  .intro .small{font-size:19px;line-height:1.6}
+
+  .controls{background:var(--bar);color:#fff;display:flex;align-items:center;justify-content:space-between;
+    padding:7px 14px;font-family:Georgia,serif;font-size:15px}
+  .controls .who{opacity:.9}
+  .controls .nav{display:flex;align-items:center;gap:8px}
+  .controls button{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.4);
+    border-radius:5px;padding:5px 13px;font-size:15px;cursor:pointer;font-family:inherit}
+  .controls button:hover{background:rgba(255,255,255,.30)}
+  .controls .count{min-width:54px;text-align:center}
+
+  @media print{
+    body{background:#fff}
+    #deck{max-width:none;height:auto}
+    .topbar,.controls{display:none}
+    .stage{overflow:visible}
+    .slide{display:block !important;page-break-after:always;min-height:0}
+  }
+</style>
+</head>
+<body>
+<div id="deck">
+
+  <div class="topbar">
+    <span class="t-title">JPN/FST 266 &mdash; Ugetsu (1953) <span class="cjk">雨月物語</span></span>
+    <span class="t-sec">Kenji Mizoguchi - 溝口健二 &middot; annotated with Neer, &ldquo;Lightweight&rdquo; (Critical Inquiry, 2019)</span>
+  </div>
+
+  <div class="stage" id="stage">
+
+    <!-- ===== TITLE ===== -->
+    <section class="slide active">
+      <div class="title-slide">
+        <h1 class="deck-title">Week 04: Ugetsu (1953)<br>
+          <ruby>雨月物語<rt>ugetsu monogatari</rt></ruby> by Kenji Mizoguchi</h1>
+        <div class="sub">JPN/FST 266 &mdash; Prof. Tomoyuki Yabe</div>
+        <div class="inst">GRAMELAC, Miami Univ. / <span class="cjk">マイアミ大学</span></div>
+        <div class="date">Fall 2025</div>
+        <div class="badge">Slides annotated with Richard Neer, &ldquo;Lightweight: Mizoguchi, <em>Ugetsu</em>, and the Displacement of Criteria,&rdquo; <em>Critical Inquiry</em> 45 (Winter 2019): 471&ndash;505</div>
+      </div>
+    </section>
+
+    <!-- ===== INTRO ===== -->
+    <section class="slide">
+      <div class="frametitle">Introduction</div>
+      <div class="alertblock">
+        <div class="head">Kenji Mizoguchi and the moving image</div>
+        <div class="body">
+          <p class="lead">Kenji Mizoguchi (1898&ndash;1956) is celebrated for the flowing long take and the moving camera. <em>Ugetsu</em> (<em>Ugetsu Monogatari</em>, 1953), set during Japan&rsquo;s civil wars, follows two peasant men whose ambitions&mdash;for wealth and for samurai status&mdash;lead their families to ruin and draw one of them into a ghostly love affair. We will focus on how <span class="hl">movement</span>, of both the camera and objects within the frame, dramatizes his cinematic space.</p>
+          <ul class="pts">
+            <li><strong>The moving image:</strong> scenes built as single long takes, with floating boats, sliding figures, and stately camera movement that continually reorganize the composition.</li>
+            <li><strong>A composite adaptation:</strong> the screenplay weaves together tales by Ueda Akinari with a story by Guy de Maupassant.</li>
+            <li><strong>Kaleidoscopic composition:</strong> characters appear &ldquo;as elements within larger compositional arrays&hellip; the slightest shift inflects all the lines of space&rdquo; <span class="cite">(Neer, p.&nbsp;479)</span>.</li>
+            <li><strong>Ambition and its cost:</strong> war, illusion, and the ghostly blur the line between desire and reality.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 1: mastery of moving images ===== -->
+    <section class="slide">
+      <div class="frametitle">Mizoguchi&rsquo;s mastery of moving images: things move</div>
+      <div class="alertblock">
+        <div class="head">Camera movements, floating boats, sliding on ground, etc.</div>
+        <div class="body">
+          <p class="lead">There are many great traits in Mizoguchi&rsquo;s cinematic storytelling. <span class="hl">We will focus on movement</span>: both the camera (point of view) and objects, such as floating boats, often seen in long shots. In Mizoguchi&rsquo;s films, a scene is often composed of a single long take. Naturally, shots that contain movement tend to be longer. In such shots, extended camera movements or the movement of objects within the scene <span class="hl">effectively dramatize Mizoguchi&rsquo;s cinematic space</span>. In <em>Ugetsu Monogatari</em> (1953), we can observe the mastery of his style.</p>
+          <p class="small">Neer sharpens the same observation in formal terms: in Mizoguchi&rsquo;s best work, &ldquo;characters, entities, and actions appear as elements within larger compositional arrays, like the bits of glass in a kaleidoscope. <span class="hl">Stately camera movements and careful choreography continually reorganize these patterns</span>&rdquo; <span class="cite">(Neer, p.&nbsp;479)</span>. As Rivette put it, in Mizoguchi <span class="hl">&ldquo;the slightest shift inflects all the lines of space&rdquo;</span> <span class="cite">(Neer, p.&nbsp;479)</span>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 2: composite adaptation ===== -->
+    <section class="slide">
+      <div class="frametitle">The <em>Ugetsu</em> Screenplay: composite adaptation</div>
+      <div class="block">
+        <div class="head">A composite adaptation, weaving internationalism into its fabric</div>
+        <div class="body">
+          <ul class="pts">
+            <li>The screenplay is a composite adaptation, blending three short stories: two chapters from <em>Ugetsu Monogatari</em> (1776) by Akinari Ueda and <em>&ldquo;How He Got the Legion of Honor&rdquo;</em> (1883) by Guy de Maupassant.
+              <ul>
+                <li>Ueda&rsquo;s chapter <em>Asaji ga Yado</em> (&ldquo;The House in the Thicket&rdquo;): a story about a man who falls for a mysterious woman, only to discover she is a ghost. This tale directly influenced the <span class="hl">Lady Wakasa sequence</span> in <em>Ugetsu</em>.</li>
+                <li>Ueda&rsquo;s chapter <em>Jasei no In</em> (&ldquo;A Serpent&rsquo;s Lust&rdquo;): a story about a man drawn into a dangerous romance with a supernatural being. Its theme of <span class="hl">destructive desire</span> is echoed in the film&rsquo;s treatment of love and ambition.</li>
+              </ul>
+            </li>
+            <li>Maupassant&rsquo;s &ldquo;How He Got the Legion of Honor&rdquo; and Mizoguchi&rsquo;s <em>Ugetsu monogatari</em> both warn against unchecked ambition. In Maupassant, a man&rsquo;s pursuit of recognition ends in irony (losing his wife to the man she had to help in order for her husband to obtain the Honor); in <em>Ugetsu</em>, Tobei&rsquo;s desire for wealth leads to illusion and ruin (forcing his wife to endure horrific experiences). Both suggest that <span class="hl">honor gained at the cost of human bonds brings only loss</span>.</li>
+            <li>A small but pointed detail: Neer notes that Maupassant&rsquo;s &ldquo;D&eacute;cor&eacute;&rdquo; (1883) is <span class="hl">unacknowledged in the film&rsquo;s credits</span>, <span class="hl">&ldquo;as if to weave internationalism into its very fabric&rdquo;</span> <span class="cite">(Neer, p.&nbsp;473, n.&nbsp;5)</span>. The composite is itself part of the work, not just its prehistory.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 3: floating boat ===== -->
+    <section class="slide">
+      <div class="frametitle">A floating boat</div>
+      <div class="block">
+        <div class="head">Suspended between life and death on Lake Biwa</div>
+        <div class="body">
+          <ul class="pts">
+            <li>The boat sequence: a boat carrying a couple and a family of three avoids land routes where mercenary samurai roam, traveling slowly on the misty, quiet waters of Lake Biwa. They soon encounter a dying boatman on a drifting ship who warns them about pirates who take anything, including lives. They decide to reroute their journey to a market and disembark the wife and young child on land where they believe it is safest. The boat lingers in the mist, surrounded by images of death. <span class="hl">Mizoguchi&rsquo;s use of a floating boat carrying helpless people, avoiding death merely by chance, is an effective device</span>. It gives us the impression that <span class="hl">they are suspended between life and death</span>, as if momentarily detached from their destiny.
+              <div style="margin-top:10px;display:flex;justify-content:center">
+                <video controls preload="metadata" style="max-width:100%;max-height:320px;border:1px solid #c8bca3;border-radius:3px">
+                  <source src="item/MZ_boat_1.mp4" type="video/mp4">
+                  Your browser does not support embedded video. <a href="item/MZ_boat_1.mp4">Download the clip</a>.
+                </video>
+              </div>
+            </li>
+            <li>Not far from death, the boat drifts on the lake, uncertain of safe locations. By the boat in the mist, Mizoguchi depicts <span class="hl">a world between life and death</span>. Indeed, they initially think the injured boatman is a ghost.</li>
+            <li>Worth holding in mind for later: this hovering between supernatural and mundane is something <em>Ugetsu</em> ultimately resolves on the side of the mundane. As Neer puts it, by the end <span class="hl">&ldquo;a spooky ship on Lake Biwa turns out to be mundane, the palace turns out to be supernatural&rdquo;</span> <span class="cite">(Neer, p.&nbsp;490)</span>. The boat is the first staging of that uncertainty.</li>
+          </ul>
+          <div class="imgrow">
+            <img src="mizoguchi_item/01.jpg" alt="Ugetsu boat sequence 01">
+            <img src="mizoguchi_item/02.jpg" alt="Ugetsu boat sequence 02">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 4: sliding boat ===== -->
+    <section class="slide">
+      <div class="frametitle">A sliding boat</div>
+      <div class="block">
+        <div class="head">Horizontal separation in <em>Ugetsu</em>, depth in <em>Sansho</em></div>
+        <div class="body">
+          <div class="twocol">
+            <div class="col-text">
+              <p class="small">The boat slides away from the land, leaving the wife and child who move <span class="hl">horizontally</span> along with it. The shot captures the wife and son as they follow the boat&rsquo;s movement until they can no longer keep up. Somehow, this moment convinces us that it may be the <span class="hl">last time the husband will ever see them</span>.</p>
+            </div>
+            <div class="col-img">
+              <video controls preload="metadata" style="width:100%;max-height:220px;border:1px solid #c8bca3;border-radius:3px">
+                <source src="item/MZ_boat_2.mp4" type="video/mp4">
+                Your browser does not support embedded video. <a href="item/MZ_boat_2.mp4">Download the clip</a>.
+              </video>
+            </div>
+          </div>
+          <div class="twocol" style="margin-top:10px">
+            <div class="col-text">
+              <p class="small">Another version of a scene with a boat and the land separating families comes from another film by Mizoguchi, <em>Sansho the Bailiff</em>. A mother is stranded from her two children by kidnappers using a boat. While in <em>Ugetsu</em> the boat slides sideways away from the land, in <em>Sansho</em> the boat is paddled away from the land <span class="hl">into the depths on the screen</span>.</p>
+            </div>
+            <div class="col-img">
+              <video controls preload="metadata" style="width:100%;max-height:220px;border:1px solid #c8bca3;border-radius:3px">
+                <source src="item/MZ_sansho_boat.mp4" type="video/mp4">
+                Your browser does not support embedded video. <a href="item/MZ_sansho_boat.mp4">Download the clip</a>.
+              </video>
+            </div>
+          </div>
+          <p class="small" style="margin-top:10px">Neer puts this in formal terms: Mizoguchi&rsquo;s shots routinely make <span class="hl">&ldquo;graphic flatness coincide with pictorial depth in a sort of mobile Gestalt&rdquo;</span> <span class="cite">(Neer, p.&nbsp;479)</span>. The two boats, one moving across the screen plane, one receding into it, are exactly the two cinematic axes the camera makes legible.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 5: camera pans ===== -->
+    <section class="slide">
+      <div class="frametitle">Camera pans</div>
+      <div class="block">
+        <div class="head">Mizoguchi&rsquo;s long pans: from the 360&deg; homecoming to the beach of <em>Sansho</em></div>
+        <div class="body">
+          <ul class="pts">
+            <li>Mizoguchi is known for his camera movement. In <em>Ugetsu</em>, there is a famous wide <span class="hl">360&deg; (or less) pan</span>. This shot occurs when Genjuro finally returns to his house, where he believes he will find his wife and son. As he steps inside, the house appears deserted, with no one in sight. He exits through the back door and then reenters from the front, with the camera following his movement from inside. Upon reentering, Miyagi suddenly appears at the fireplace, the heart of the home, welcoming him. The husband then notices his son is also there and falls asleep beside him. <span class="hl">All these narrative elements are captured during the pan, which is a long shot.</span>
+              <div style="margin-top:10px;display:flex;justify-content:center">
+                <video controls preload="metadata" style="max-width:100%;max-height:300px;border:1px solid #c8bca3;border-radius:3px">
+                  <source src="item/MZ_last_360.mp4" type="video/mp4">
+                  Your browser does not support embedded video. <a href="item/MZ_last_360.mp4">Download the clip</a>.
+                </video>
+              </div>
+            </li>
+            <li>Mizoguchi almost always begins and ends his films with shots involving camera movement. <em>Ugetsu</em> also starts this way, with a fade-in followed by a pan to the left, showing a bird&rsquo;s-eye view of the town where Miyagi is helping to load her husband&rsquo;s pottery for sale. It ends with the camera <span class="hl">rising from Miyagi&rsquo;s grave, revealing the same village we saw at the beginning</span>.
+              <div style="margin-top:10px;display:flex;justify-content:center">
+                <video controls preload="metadata" style="max-width:100%;max-height:300px;border:1px solid #c8bca3;border-radius:3px">
+                  <source src="item/MZ_begin_end.mp4" type="video/mp4">
+                  Your browser does not support embedded video. <a href="item/MZ_begin_end.mp4">Download the clip</a>.
+                </video>
+              </div>
+            </li>
+            <li><em>Sansho the Bailiff</em> has an impressive final scene that is often imitated as an homage to Mizoguchi. After the mother and son are reunited by the mother&rsquo;s hut on the beach, the camera pans left away from the hut, showing the beach and the sea. <span class="hl">This iconic scene has been replicated by many directors as a tribute to Mizoguchi.</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="block">
+        <div class="head">Godard on the homecoming pan</div>
+        <div class="body">
+          <blockquote class="quote">
+            &ldquo;Genjuro returns home. He does not know that his loving wife, [Miyagi], is dead. He enters, looks in all the rooms, the camera panning with him. He moves from one room to the next, still followed by the camera. He goes out, the camera leaves him, returns to the room and frames [Miyagi], in flesh and blood, just at the moment when Genjuro comes in again and sees her, believing (as we do) that he didn&rsquo;t look properly and that his gentle wife really is alive.&rdquo;
+            <span class="src">&mdash; Jean-Luc Godard, quoted in Neer, p.&nbsp;493</span>
+          </blockquote>
+          <p class="small">Neer&rsquo;s gloss makes the technical point: <span class="hl">&ldquo;the audience shares Genjuro&rsquo;s error&rdquo;</span> because the pan, not a cut, performs Miyagi&rsquo;s reappearance <span class="cite">(Neer, p.&nbsp;493)</span>. The camera movement <em>is</em> the conjuring trick.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 6: dissolving style ===== -->
+    <section class="slide">
+      <div class="frametitle">Dissolving Mizoguchi style</div>
+      <div class="block">
+        <div class="head">Camera sliding into the earth and appearing back out</div>
+        <div class="body">
+          <ul class="pts">
+            <li><span class="hl">Dissolving as the camera sliding into the earth and appearing back out of the earth</span>: Mizoguchi does not use a standard dissolve to indicate a time or location shift in <em>Ugetsu</em>. To show that enough time has passed for Genjuro to become fully entranced by the magic of the snake spirit, Mizoguchi employs a dissolve where the image of one scene fades out as another fades in. He achieves this with a close-up shot of the ground in one location, which smoothly transitions and dissolves into the ground of a different location on a later day. <span class="hl">Mizoguchi integrates camera movement into this impressive dissolve.</span>
+              <div style="margin-top:10px;display:flex;justify-content:center">
+                <video controls preload="metadata" style="max-width:100%;max-height:320px;border:1px solid #c8bca3;border-radius:3px">
+                  <source src="item/MZ_diss.mp4" type="video/mp4">
+                  Your browser does not support embedded video. <a href="item/MZ_diss.mp4">Download the clip</a>.
+                </video>
+              </div>
+            </li>
+            <li>Neer&rsquo;s wider observation makes this even more exceptional: in Mizoguchi generally, <span class="hl">&ldquo;cuts between scenes are sharp, with few dissolves or wipes; Mizoguchi tends to round off each scene so that it reads as a semiautonomous unit, often fading to black&rdquo;</span> <span class="cite">(Neer, p.&nbsp;479)</span>. The ground-to-ground dissolve in the Wakasa episode is precisely a controlled departure from Mizoguchi&rsquo;s usual habit, a <span class="hl">&ldquo;magical transition that elides an indeterminate number of days or weeks&rdquo;</span> <span class="cite">(Neer, p.&nbsp;487)</span>.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="alertblock">
+        <div class="head">A medium of moving images</div>
+        <div class="body">
+          <p class="lead">Mizoguchi employs many highly effective cinematic techniques, often involving the dynamics of moving elements. As the name suggests, movies are a medium of moving images. Mizoguchi&rsquo;s style, which maximizes the impact of motion, is <span class="hl">well suited to the art of cinema</span>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 7: Angelopoulos ===== -->
+    <section class="slide">
+      <div class="frametitle">Move the camera: Mizoguchi influences (1)</div>
+      <div class="block">
+        <div class="head">Theo Angelopoulos: <em>The Traveling Players</em> (1975)</div>
+        <div class="body">
+          <p class="lead">A Greek auteur, Theo Angelopoulos is known for his wide camera pans and movements. He uses a one-scene-one-shot approach to filmmaking. He has cited Mizoguchi as a major influence, along with Orson Welles. In <em>The Traveling Players</em> (1975), a cinematic chorus of modern Greek history, there are effective wide pan shots.</p>
+          <ul class="pts">
+            <li>The first occurs when the group of traveling theater members checks into a hotel. The camera is positioned at the center of the courtyard, following the members as they pass through the yard, reach the staircase, and ascend to the second floor where their rooms are located. The rooms face the courtyard. As the camera continues panning and returns to the balcony, the players emerge onto the balcony as if preparing for rehearsal. <span class="hl">There are enough analogies in the film that connect the players to figures from Greek mythology. Their synchronized movements onstage and offstage, including in the pan scene, seem to emphasize the mythological tone of the film, perhaps resembling a chorus of singers lined up in Greek theatre.</span>
+              <div style="margin-top:10px;display:flex;justify-content:center">
+                <video controls preload="metadata" style="max-width:100%;max-height:360px;border:1px solid #c8bca3;border-radius:3px">
+                  <source src="item/teo_yard.mp4" type="video/mp4">
+                  Your browser does not support embedded video. <a href="item/teo_yard.mp4">Download the clip</a>.
+                </video>
+              </div>
+            </li>
+            <li>Another memorable one is at a town plaza. This long shot seems to capture the phases of modern Greek history in one extended 360&deg; pan shot (two full rotations).
+              <div style="margin-top:10px;display:flex;justify-content:center">
+                <video controls preload="metadata" style="max-width:100%;max-height:360px;border:1px solid #c8bca3;border-radius:3px">
+                  <source src="item/teo_town.mp4" type="video/mp4">
+                  Your browser does not support embedded video. <a href="item/teo_town.mp4">Download the clip</a>.
+                </video>
+              </div>
+            </li>
+            <li>In the context of Mizoguchi&rsquo;s influence, we cannot overlook the <span class="hl">beach picnic sequence</span>. The panning and movement of the camera in a long sequence on the beach with a view of the sea strongly recalls Mizoguchi&rsquo;s style.
+              <div style="margin-top:10px;display:flex;justify-content:center">
+                <video controls preload="metadata" style="max-width:100%;max-height:360px;border:1px solid #c8bca3;border-radius:3px">
+                  <source src="item/tabel_cloth.mp4" type="video/mp4">
+                  Your browser does not support embedded video. <a href="item/tabel_cloth.mp4">Download the clip</a>.
+                </video>
+              </div>
+            </li>
+          </ul>
+          <p class="small">Mizoguchi seems to use his long one-scene-one-shot pan to depict turnings of life that cannot be avoided. It is like a 360&deg; observation of reality (of the protagonists). Watch <em>The Traveling Players</em> (1975) and think about why Angelopoulos used them!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 8: Tarkovsky ===== -->
+    <section class="slide">
+      <div class="frametitle">Move the camera: Mizoguchi influences (2)</div>
+      <div class="block">
+        <div class="head">Andrei Tarkovsky: <em>Nostalghia</em> (1983)</div>
+        <div class="body">
+          <p class="lead">A Russian auteur (a refugee in Italy, Sweden and France), Andrei Tarkovsky is known for his dreamlike long shots and the use of earthly elements such as rain and fire. He cited Mizoguchi as an influence. In <em>Nostalghia</em> (1983), there are long shots that capture the simple movement of a character.</p>
+          <p class="small">The most memorable, with a Mizoguchi-like long camera movement (tracking), is the pacing in the ruins of an ancient hot spring pool. The antagonist is on a mission to walk from one side of the old empty pool to the other with a candle in his hands, without allowing the flame to be extinguished. He must pace several times until he succeeds. <span class="hl">Tarkovsky&rsquo;s camera follows the antagonist by tracking horizontally and faithfully recording the entire duration until the end. It is easy to associate Mizoguchi&rsquo;s camera movement with Tarkovsky&rsquo;s: he too often captures a motion as a long cinematic action by showing its completion in real time.</span></p>
+          <div class="imgrow">
+            <img src="mizoguchi_item/88/01.jpg" alt="Nostalghia 88/01">
+            <img src="mizoguchi_item/88/02.jpg" alt="Nostalghia 88/02">
+            <img src="mizoguchi_item/88/03.jpg" alt="Nostalghia 88/03">
+          </div>
+          <div style="margin-top:10px;display:flex;justify-content:center">
+            <video controls preload="metadata" style="max-width:100%;max-height:360px;border:1px solid #c8bca3;border-radius:3px">
+              <source src="item/tarvoksly_pool.mp4" type="video/mp4">
+              Your browser does not support embedded video. <a href="item/tarvoksly_pool.mp4">Download the clip</a>.
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 9: Wong Kar Wai ===== -->
+    <section class="slide">
+      <div class="frametitle">Move the camera: Mizoguchi influences (3)</div>
+      <div class="block">
+        <div class="head">Wong Kar Wai: <em>In the Mood for Love</em> (2000) &amp; <em>2046</em> (2004)</div>
+        <div class="body">
+          <p class="small">A Chinese auteur, Wong Kar Wai is known for his dreamlike transitions (and other nonstandard ones), similar to those in Mizoguchi&rsquo;s <em>Ugetsu</em> (especially the snake-ghost sequence). <span class="hl">He often mentions the enduring influence of Mizoguchi and <em>Ugetsu</em> on his cinematic style. <em>In the Mood for Love</em> (2000), widely regarded as his most acclaimed film, also contains impressive dissolves and other transitions combined with camera movements.</span> He often plays with the opacity and transparency, or dimness and brightness, of image contrasts on the screen in relation to time-space transitions.</p>
+          <p class="small">The ending sequences of <em>2046</em> (2004) feature dissolves, camera pans, tracking and transparency. <em>2046</em> is a very loose sequel to <em>In the Mood for Love</em>, with a loosely structured timeline that conveys dreamlike memory fragments. The combination of dissolves, multidirectional camera pans, and the transparency of object images throughout the sequence delivers its unsettling ending with images of floating space and time.</p>
+          <div style="margin-top:10px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+            <video controls preload="metadata" style="max-width:48%;max-height:300px;border:1px solid #c8bca3;border-radius:3px">
+              <source src="item/WKW_love_01.mp4" type="video/mp4">
+              Your browser does not support embedded video. <a href="item/WKW_love_01.mp4">Download the clip</a>.
+            </video>
+            <video controls preload="metadata" style="max-width:48%;max-height:300px;border:1px solid #c8bca3;border-radius:3px">
+              <source src="item/WKW_love_02.mp4" type="video/mp4">
+              Your browser does not support embedded video. <a href="item/WKW_love_02.mp4">Download the clip</a>.
+            </video>
+          </div>
+          <div class="imgrow small">
+            <img src="mizoguchi_item/77/11.jpg" alt="Wong Kar Wai 77/11">
+            <img src="mizoguchi_item/77/12.jpg" alt="Wong Kar Wai 77/12">
+          </div>
+          <div style="margin-top:10px;display:flex;justify-content:center">
+            <video controls preload="metadata" style="max-width:100%;max-height:340px;border:1px solid #c8bca3;border-radius:3px">
+              <source src="item/WKW_2024.mp4" type="video/mp4">
+              Your browser does not support embedded video. <a href="item/WKW_2024.mp4">Download the clip</a>.
+            </video>
+          </div>
+          <div class="imgrow small" style="flex-wrap:nowrap">
+            <img src="mizoguchi_item/77/01.jpg" alt="Wong Kar Wai 77/01" style="height:auto;max-height:110px;max-width:32%;width:auto;object-fit:contain">
+            <img src="mizoguchi_item/77/02.jpg" alt="Wong Kar Wai 77/02" style="height:auto;max-height:110px;max-width:32%;width:auto;object-fit:contain">
+            <img src="mizoguchi_item/77/03.jpg" alt="Wong Kar Wai 77/03" style="height:auto;max-height:110px;max-width:32%;width:auto;object-fit:contain">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 10: Godard ===== -->
+    <section class="slide">
+      <div class="frametitle">Move the camera: Mizoguchi influences (4)</div>
+      <div class="block">
+        <div class="head">Jean-Luc Godard: <em>Le M&eacute;pris</em> (1963) and <em>Pierrot le Fou</em> (1965)</div>
+        <div class="body">
+          <p class="small">As we have read in his writing on Mizoguchi, Godard praises him. Besides internalizing Mizoguchi&rsquo;s influences (tracking and panning), Godard also modeled the ending scenes of two of his films, <em>Le M&eacute;pris</em> (1963) and <em>Pierrot le Fou</em> (1965), after the ending of Mizoguchi&rsquo;s <em>Sansho the Bailiff</em> as a tribute. In <em>Le M&eacute;pris</em>, Godard even shows a tracking-shot setup on screen before his own camera pans to the left toward the sea.</p>
+          <div style="margin-top:10px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+            <video controls preload="metadata" style="max-width:48%;max-height:320px;border:1px solid #c8bca3;border-radius:3px">
+              <source src="item/JLG_le_mepris.mp4" type="video/mp4">
+              Your browser does not support embedded video. <a href="item/JLG_le_mepris.mp4">Download the clip</a>.
+            </video>
+            <video controls preload="metadata" style="max-width:48%;max-height:320px;border:1px solid #c8bca3;border-radius:3px">
+              <source src="item/JLG_Pierrot.mp4" type="video/mp4">
+              Your browser does not support embedded video. <a href="item/JLG_Pierrot.mp4">Download the clip</a>.
+            </video>
+          </div>
+          <p class="small">Godard&rsquo;s admiration is no aside. He declared <em>Ugetsu</em> <span class="hl">&ldquo;Mizoguchi&rsquo;s masterpiece, and one that ranks him on equal terms with Griffith, Eisenstein and Renoir&rdquo;</span> <span class="cite">(quoted in Neer, p.&nbsp;475)</span>. The pan-to-the-sea endings of <em>Le M&eacute;pris</em> and <em>Pierrot</em> are not just citations; they answer that judgment in the only currency that matters here, which is moving images.</p>
+          <div class="imgrow small">
+            <img src="mizoguchi_item/99/01.jpg" alt="Godard 99/01">
+            <img src="mizoguchi_item/99/02.jpg" alt="Godard 99/02">
+            <img src="mizoguchi_item/99/03.jpg" alt="Godard 99/03">
+          </div>
+          <div class="imgrow small">
+            <img src="mizoguchi_item/20.jpg" alt="Sansho ending tribute 20">
+            <img src="mizoguchi_item/21.jpg" alt="Sansho ending tribute 21">
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /stage -->
+
+  <div class="controls">
+    <span class="who">JPN/FST 266 &mdash; Prof. Tomoyuki Yabe</span>
+    <span class="nav">
+      <button id="prev" aria-label="Previous slide">&larr; Prev</button>
+      <span class="count" id="count">1 / 12</span>
+      <button id="next" aria-label="Next slide">Next &rarr;</button>
+      <button id="fs" aria-label="Toggle fullscreen">&#9974; Full</button>
+    </span>
+  </div>
+
+</div><!-- /deck -->
+
+<script>
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var stage  = document.getElementById('stage');
+  var count  = document.getElementById('count');
+  var i = 0;
+  function show(n){
+    i = Math.max(0, Math.min(slides.length-1, n));
+    slides.forEach(function(s,k){ s.classList.toggle('active', k===i); });
+    count.textContent = (i+1) + ' / ' + slides.length;
+    stage.scrollTop = 0;
+  }
+  document.getElementById('next').onclick = function(){ show(i+1); };
+  document.getElementById('prev').onclick = function(){ show(i-1); };
+  document.getElementById('fs').onclick = function(){
+    if(!document.fullscreenElement){ document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); }
+    else { document.exitFullscreen && document.exitFullscreen(); }
+  };
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ show(i+1); e.preventDefault(); }
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){ show(i-1); e.preventDefault(); }
+    else if(e.key==='Home'){ show(0); }
+    else if(e.key==='End'){ show(slides.length-1); }
+  });
+  show(0);
+</script>
+</body>
+</html>

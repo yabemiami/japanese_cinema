@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ozu and the Imaginary Line | JPN/FST 266</title>
+<style>
+  :root{
+    --indigo-deep:#2c4a6b;     /* block title bar (Ozu indigo) */
+    --indigo-mid:#7a96b3;      /* lighter accents */
+    --indigo-body:#f4ede0;     /* block body bg (tatami cream) */
+    --alert-bar:#1e3552;       /* alertblock title bar (deeper indigo) */
+    --alert-body:#faf3e2;      /* alertblock body bg */
+    --hl:#b85c2a;              /* persimmon for \red emphasis */
+    --ink:#2a221a;
+    --muted:#6b5f4f;
+    --bar:#3a5575;             /* footer / header bars */
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:#c9b896;
+    color:var(--ink);
+    font-family:"Hoefler Text",Georgia,"Times New Roman","Yu Mincho","Hiragino Mincho ProN",serif;
+    -webkit-font-smoothing:antialiased;
+    display:flex;align-items:center;justify-content:center;
+  }
+  ruby,.cjk{font-family:"Yu Gothic","Hiragino Kaku Gothic ProN","Hiragino Sans","MS Gothic",inherit;}
+
+  #deck{width:100%;max-width:1040px;height:100vh;display:flex;flex-direction:column;}
+  .topbar{
+    background:var(--bar);color:#fff;font-size:15px;letter-spacing:.02em;
+    padding:6px 16px;display:flex;justify-content:space-between;align-items:center;
+    font-family:Georgia,serif;
+  }
+  .topbar .t-title{opacity:.95}
+  .topbar .t-sec{opacity:.8;font-style:italic}
+
+  .stage{flex:1;overflow:auto;background:#fff;}
+  .slide{display:none;padding:26px 34px 30px;min-height:100%;}
+  .slide.active{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:.35}to{opacity:1}}
+
+  h1.deck-title{font-size:36px;line-height:1.25;margin:0 0 6px;color:var(--indigo-deep);text-align:center}
+  .frametitle{font-size:28px;color:var(--indigo-deep);margin:2px 0 14px;font-weight:600;border-bottom:2px solid var(--indigo-mid);padding-bottom:6px}
+
+  .title-slide{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%;gap:4px}
+  .title-slide .sub{font-size:22px;color:var(--ink);margin-top:18px}
+  .title-slide .inst{font-size:19px;color:var(--muted);font-style:italic}
+  .title-slide .date{font-size:19px;color:var(--muted);margin-top:10px}
+  .title-slide .badge{margin-top:26px;font-size:14px;color:var(--muted);font-family:Georgia,serif;
+    border:1px solid var(--indigo-mid);border-radius:20px;padding:4px 14px}
+
+  .block,.alertblock{border-radius:6px;overflow:hidden;margin:0 0 14px;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+  .block>.head{background:var(--indigo-deep);color:#fff;padding:7px 14px;font-size:19px;font-weight:600}
+  .block>.body{background:var(--indigo-body);padding:12px 16px}
+  .alertblock>.head{background:var(--alert-bar);color:#fff;padding:7px 14px;font-size:19px;font-weight:600}
+  .alertblock>.body{background:var(--alert-body);padding:12px 16px}
+
+  .lead{font-size:18px;line-height:1.5;margin:0 0 8px}
+  ul.pts,ol.pts{margin:6px 0 4px;padding-left:22px}
+  ul.pts>li,ol.pts>li{font-size:17.5px;line-height:1.5;margin-bottom:9px}
+  .small{font-size:16px;line-height:1.5}
+
+  .hl{color:var(--hl)}
+  .cite{color:var(--muted);font-style:italic;white-space:nowrap}
+  em{font-style:italic}
+
+  .imgrow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+  .imgrow img{height:200px;width:auto;border:1px solid #d0c4a8;border-radius:3px;background:#eee;object-fit:cover}
+  .imgrow.small img{height:150px}
+  .imgrow.wide img{height:auto;max-width:100%}
+
+  .twocol{display:flex;gap:14px;align-items:flex-start}
+  .twocol .col-text{flex:1 1 70%;min-width:0}
+  .twocol .col-img{flex:0 0 26%;display:flex;justify-content:center;align-items:center}
+  .twocol .col-img img{max-width:100%;height:auto;border:1px solid #d0c4a8;border-radius:3px}
+
+  blockquote.quote{
+    margin:8px 0;padding:6px 14px;
+    border-left:4px solid var(--indigo-mid);
+    background:#fbf5e7;
+    color:var(--ink);font-style:italic;
+    font-size:17.5px;line-height:1.55;
+  }
+  blockquote.quote .src{display:block;margin-top:4px;font-size:14.5px;color:var(--muted);font-style:italic;text-align:right}
+
+  .intro .lead,
+  .intro p{font-size:21px;line-height:1.6;margin:0 0 12px}
+  .intro ul{margin:10px 0 6px;padding-left:24px}
+  .intro ul li{font-size:21px;line-height:1.6;margin-bottom:16px}
+  .intro .small{font-size:19px;line-height:1.6}
+
+  .controls{background:var(--bar);color:#fff;display:flex;align-items:center;justify-content:space-between;
+    padding:7px 14px;font-family:Georgia,serif;font-size:15px}
+  .controls .who{opacity:.9}
+  .controls .nav{display:flex;align-items:center;gap:8px}
+  .controls button{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.4);
+    border-radius:5px;padding:5px 13px;font-size:15px;cursor:pointer;font-family:inherit}
+  .controls button:hover{background:rgba(255,255,255,.30)}
+  .controls .count{min-width:54px;text-align:center}
+
+  @media print{
+    body{background:#fff}
+    #deck{max-width:none;height:auto}
+    .topbar,.controls{display:none}
+    .stage{overflow:visible}
+    .slide{display:block !important;page-break-after:always;min-height:0}
+  }
+</style>
+</head>
+<body>
+<div id="deck">
+
+  <div class="topbar">
+    <span class="t-title">JPN/FST 266 &mdash; <ruby>小津<rt>Ozu</rt></ruby> &amp; the Imaginary Line</span>
+    <span class="t-sec">Continuity editing &middot; expanded with Hasumi 2024</span>
+  </div>
+
+  <div class="stage" id="stage">
+
+    <!-- ===== TITLE ===== -->
+    <section class="slide active">
+      <div class="title-slide">
+        <h1 class="deck-title">Supplement: <ruby>小津<rt>Ozu</rt></ruby><br>
+          and the Imaginary Line</h1>
+        <div class="sub">JPN/FST 266 &mdash; Prof. Tomoyuki Yabe</div>
+        <div class="inst">GRAMELAC, Miami Univ. / <span class="cjk">マイアミ大学</span></div>
+        <div class="date">Fall 2026</div>
+        <div class="badge">Continuity editing &amp; the 180&deg; rule &middot; annotated with Hasumi, <em>Directed by Yasujiro Ozu</em> (UC Press 2024)</div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 1: the rule ===== -->
+    <section class="slide">
+      <div class="frametitle">The &ldquo;imaginary line&rdquo; rule</div>
+      <div class="alertblock">
+        <div class="head">A rule for smooth conversation sequences</div>
+        <div class="body">
+          <p class="lead">There is a rule that helps keep a conversation sequence smooth, known as the <span class="hl">imaginary line</span> rule for camera placement (also: the <em>line of action</em>, or the <em>180&deg; rule</em>). It establishes an uninterrupted third-person point of view across a sequence of conversation shots.</p>
+          <ul class="pts">
+            <li>The camera stays on <span class="hl">one side</span> of the imaginary line joining the two speakers (within the 180&deg; arc).</li>
+            <li>This keeps each character&rsquo;s left/right screen position consistent, so they appear to <span class="hl">look at each other</span> across the cuts.</li>
+          </ul>
+          <div class="imgrow wide">
+            <img src="imaginary_line_items/diagram_180.png" alt="180-degree line of action diagram">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 2: Ozu not interested ===== -->
+    <section class="slide">
+      <div class="frametitle">Ozu does not seem interested in this rule</div>
+      <div class="block">
+        <div class="head">Composition before continuity</div>
+        <div class="body">
+          <ul class="pts">
+            <li>Ozu&rsquo;s (re)placements of the camera create shots of <span class="hl">similar composition</span>: a speaker in isolation is always positioned at the <span class="hl">center</span> of the shot, with their eyes directed in the <span class="hl">same direction</span>.</li>
+            <li>He may not be interested in adhering to Hollywood film conventions. Instead, he focuses on <span class="hl">organizing each shot in terms of image composition</span>. His style prioritizes the aesthetic of composition over plot or smooth storytelling.</li>
+            <li>We will see this in the beach conversation sequence in <em>Early Summer</em> (1951, ~1:50:38) in a few weeks.</li>
+          </ul>
+          <div class="imgrow wide">
+            <img src="imaginary_line_items/montage_ozu.png" alt="Montage of Ozu conversation shots: centered, same direction" style="width:100%;max-width:960px">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 3: crossing the line by design ===== -->
+    <section class="slide">
+      <div class="frametitle">Crossing the line, by design</div>
+      <div class="block">
+        <div class="head">Cameras on both sides of the line</div>
+        <div class="body">
+          <ul class="pts">
+            <li>Seen from above, Ozu places the camera on <span class="hl">both</span> sides of the line. Each character is shot nearly <span class="hl">frontally</span>, centered, looking in a consistent on-screen direction.</li>
+            <li>Their gazes do not truly meet &mdash; they extend <span class="hl">in parallel</span>, the same way across cuts.</li>
+            <li>What looks like a &ldquo;mistake&rdquo; is a deliberate search for <span class="hl">compositional continuity</span> rather than storyline continuity.</li>
+          </ul>
+          <div class="imgrow wide">
+            <img src="imaginary_line_items/camera_topdown.png" alt="Top-down camera placement crossing the line" style="width:100%;max-width:960px">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 4: Tokkan boss sequence ===== -->
+    <section class="slide">
+      <div class="frametitle">The silent era already shows it: <ruby>突貫小僧<rt>Tokkan Kozo</rt></ruby> (1929)</div>
+      <div class="block">
+        <div class="head">A Straightforward Boy &mdash; kidnapper brings the boy to his boss</div>
+        <div class="body">
+          <p class="lead">In <em>Tokkan Kozo</em> (<span class="cjk">突貫小僧</span>, <em>A Straightforward Boy</em>, 1929), during the sequence where the kidnapper brings the boy to his boss, the camera clearly <span class="hl">crosses the imaginary line</span> of the conversation and their bodies face the <span class="hl">same way</span> on the screen &mdash; a technique more commonly recognized as a hallmark of Ozu&rsquo;s later works.</p>
+          <div class="imgrow">
+            <img src="imaginary_line_items/tokkan_a1.png" alt="Tokkan boss sequence 1">
+            <img src="imaginary_line_items/tokkan_a2.png" alt="Tokkan boss sequence 2">
+            <img src="imaginary_line_items/tokkan_a3.png" alt="Tokkan boss sequence 3">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 5: Tokkan first meeting ===== -->
+    <section class="slide">
+      <div class="frametitle">Subtle line-crossing, same instinct: the first meeting</div>
+      <div class="block">
+        <div class="head">Centering the speakers, synchronizing the shots</div>
+        <div class="body">
+          <p class="lead">During the sequence where the boy and the kidnapper meet for the first time, it is not immediately obvious that the camera crosses the imaginary line. But Ozu&rsquo;s preference for placing the conversing characters at the <span class="hl">center</span> of each shot is already evident.</p>
+          <div class="imgrow">
+            <img src="imaginary_line_items/tokkan_b1.png" alt="Tokkan first meeting 1">
+            <img src="imaginary_line_items/tokkan_b2.png" alt="Tokkan first meeting 2">
+            <img src="imaginary_line_items/tokkan_b3.png" alt="Tokkan first meeting 3">
+            <img src="imaginary_line_items/tokkan_b4.png" alt="Tokkan first meeting 4">
+          </div>
+          <p class="small">In the second shot of the boy, he faces more sharply to the <span class="hl">left</span>, filmed with the camera just past the left side of the imaginary line. This shift causes the bodies of the boy and the kidnapper to now face the <span class="hl">same direction</span> (compare the two shots of the boy with that of the kidnapper holding the bamboo stick). Ozu prioritizes how the boy appears on screen, synchronizing the boy&rsquo;s shot with the kidnapper&rsquo;s in placement and direction.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 6: conclusion of the original ===== -->
+    <section class="slide">
+      <div class="frametitle">What the silent film tells us</div>
+      <div class="alertblock">
+        <div class="head">An aesthetic, not an accident</div>
+        <div class="body">
+          <p class="lead">It is difficult to determine the exact placement of the camera in the boy-and-kidnapper sequence, but it is safe to assume that Ozu&rsquo;s directorial choices are motivated by <span class="hl">something other than conventional cinematic grammar</span>.</p>
+          <p class="lead">We can conclude that Ozu&rsquo;s <span class="hl">compositional aesthetics</span> were already evident in his silent era, and would eventually become a hallmark of his films &mdash; <em>Late Spring</em>, <em>Early Summer</em>, <em>Tokyo Story</em>, and beyond.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 7: Hasumi policy ===== -->
+    <section class="slide">
+      <div class="frametitle">Hasumi 2024: not a mistake, a policy</div>
+      <div class="block">
+        <div class="head">A deliberate disregard of the 180&deg; rule</div>
+        <div class="body">
+          <ul class="pts">
+            <li>Hasumi frames exactly what we have seen on screen: <span class="hl">&ldquo;Eyes appear to look at each other, but eyelines fail to meet as they extend past each other in parallel&rdquo;</span> <span class="cite">(HS, p.&nbsp;154)</span>.</li>
+            <li>This was <span class="hl">a deliberate policy</span>, not an oversight: Ozu&rsquo;s editor Yoshiyasu Hamamura is known to have raised the 180-degree-rule issue, but Ozu did not change course. As Truffaut observed, this was <span class="hl">&ldquo;clearly an intentional directorial policy&rdquo;</span> <span class="cite">(HS, p.&nbsp;154)</span>.</li>
+            <li>Hasumi warns us not to confine the phenomenon within negative rhetoric about a <span class="hl">&ldquo;failed eyeline match, an utterly elementary technical mistake&rdquo;</span> <span class="cite">(HS, p.&nbsp;154)</span>. The strangeness is the point, not a deficiency of craft.</li>
+          </ul>
+          <blockquote class="quote">
+            &ldquo;There are constantly scenes of two people facing each other and talking, with a lot of cutting back and forth, but these cuts give an impression of being <span class="hl">strangely off</span>. &hellip; every time we have a cut, the other person ceases to be there.&rdquo;
+            <span class="src">&mdash; Fran&ccedil;ois Truffaut, interview (HS, pp.&nbsp;153&ndash;54)</span>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 8: unidirectional looking ===== -->
+    <section class="slide">
+      <div class="frametitle">A concept to take away: &ldquo;unidirectional looking&rdquo;</div>
+      <div class="block">
+        <div class="head">&ldquo;The mere fact that they extend in the same direction&rdquo;</div>
+        <div class="body">
+          <blockquote class="quote">
+            &ldquo;What is most important for Ozu is not the positional relationship between the eye and its object, or whether eyelines meet, but <span class="hl">the mere fact that they extend in the same direction</span>.&rdquo;
+            <span class="src">&mdash; Hasumi, ch. 5 &ldquo;Looking&rdquo; (HS, p.&nbsp;129)</span>
+          </blockquote>
+          <ul class="pts">
+            <li>It names what we saw in <em>Tokkan Kozo</em>: gazes <span class="hl">parallel</span>, not meeting.</li>
+            <li>It reframes &ldquo;breaking the rule&rdquo; as a <span class="hl">positive aesthetic</span>, not an error.</li>
+            <li>Audiences are often story-centric, prioritizing storyline over other elements. If we free our minds for cinema viewing, we can keenly sense <span class="hl">compositional continuity</span> as its own pleasure &mdash; perhaps even some previously &ldquo;bad&rdquo; movies could be appreciated in a new light.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 9: sources ===== -->
+    <section class="slide">
+      <div class="frametitle">Sources &amp; further viewing</div>
+      <div class="block">
+        <div class="head">References</div>
+        <div class="body">
+          <ul class="pts">
+            <li>Shigu&eacute;hiko Hasumi, <em>Directed by Yasujiro Ozu</em>, trans. Ryan Cook (Univ. of California Press, 2024) &mdash; ch. 5 &ldquo;Looking&rdquo; &amp; ch. 6 &ldquo;Holding Still.&rdquo; <span class="cite">[HS = Hasumi; P = Prologue]</span></li>
+            <li>David Bordwell, <em>Ozu and the Poetics of Cinema</em> &mdash; <a href="https://quod.lib.umich.edu/c/cjfs/0920054.0001.001/--ozu-and-the-poetics-of-cinema-david-bordwell?rgn=main;view=fulltext">full text (U. Michigan)</a>.</li>
+            <li><em>A Straightforward Boy</em> (<span class="cjk">突貫小僧</span>, 1929) &mdash; <a href="https://www.lecinemaclub.com/archives/a-straightforward-boy/">Le Cin&eacute;ma Club</a>.</li>
+            <li><em>I Was Born, But&hellip;</em> &mdash; <a href="https://silentfilm.org/i-was-born-but/">SF Silent Film Festival</a>.</li>
+          </ul>
+          <p class="small">Film stills &copy; Sh&omacr;chiku Co., Ltd., reproduced for classroom discussion. JPN/FST 266, Miami University.</p>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /stage -->
+
+  <div class="controls">
+    <span class="who">JPN/FST 266 &mdash; Prof. Tomoyuki Yabe</span>
+    <span class="nav">
+      <button id="prev" aria-label="Previous slide">&larr; Prev</button>
+      <span class="count" id="count">1 / 10</span>
+      <button id="next" aria-label="Next slide">Next &rarr;</button>
+      <button id="fs" aria-label="Toggle fullscreen">&#9974; Full</button>
+    </span>
+  </div>
+
+</div><!-- /deck -->
+
+<script>
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var stage  = document.getElementById('stage');
+  var count  = document.getElementById('count');
+  var i = 0;
+  function show(n){
+    i = Math.max(0, Math.min(slides.length-1, n));
+    slides.forEach(function(s,k){ s.classList.toggle('active', k===i); });
+    count.textContent = (i+1) + ' / ' + slides.length;
+    stage.scrollTop = 0;
+  }
+  document.getElementById('next').onclick = function(){ show(i+1); };
+  document.getElementById('prev').onclick = function(){ show(i-1); };
+  document.getElementById('fs').onclick = function(){
+    if(!document.fullscreenElement){ document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); }
+    else { document.exitFullscreen && document.exitFullscreen(); }
+  };
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ show(i+1); e.preventDefault(); }
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){ show(i-1); e.preventDefault(); }
+    else if(e.key==='Home'){ show(0); }
+    else if(e.key==='End'){ show(slides.length-1); }
+  });
+  show(0);
+</script>
+</body>
+</html>

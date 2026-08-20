@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 01: Preliminary | JPN/FST 266</title>
+<style>
+  :root{
+    --indigo-deep:#2c4a6b;     /* block title bar (Ozu indigo) */
+    --indigo-mid:#7a96b3;      /* lighter accents */
+    --indigo-body:#f4ede0;     /* block body bg (tatami cream) */
+    --alert-bar:#1e3552;       /* alertblock title bar (deeper indigo) */
+    --alert-body:#faf3e2;      /* alertblock body bg */
+    --hl:#b85c2a;              /* persimmon for \red emphasis */
+    --ink:#2a221a;
+    --muted:#6b5f4f;
+    --bar:#3a5575;             /* footer / header bars */
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:#c9b896;
+    color:var(--ink);
+    font-family:"Hoefler Text",Georgia,"Times New Roman","Yu Mincho","Hiragino Mincho ProN",serif;
+    -webkit-font-smoothing:antialiased;
+    display:flex;align-items:center;justify-content:center;
+  }
+  ruby,.cjk{font-family:"Yu Gothic","Hiragino Kaku Gothic ProN","Hiragino Sans","MS Gothic",inherit;}
+
+  #deck{width:100%;max-width:1040px;height:100vh;display:flex;flex-direction:column;}
+  .topbar{
+    background:var(--bar);color:#fff;font-size:15px;letter-spacing:.02em;
+    padding:6px 16px;display:flex;justify-content:space-between;align-items:center;
+    font-family:Georgia,serif;
+  }
+  .topbar .t-title{opacity:.95}
+  .topbar .t-sec{opacity:.8;font-style:italic}
+
+  .stage{flex:1;overflow:auto;background:#fff;}
+  .slide{display:none;padding:26px 34px 30px;min-height:100%;}
+  .slide.active{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:.35}to{opacity:1}}
+
+  h1.deck-title{font-size:36px;line-height:1.25;margin:0 0 6px;color:var(--indigo-deep);text-align:center}
+  .frametitle{font-size:28px;color:var(--indigo-deep);margin:2px 0 14px;font-weight:600;border-bottom:2px solid var(--indigo-mid);padding-bottom:6px}
+
+  .title-slide{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%;gap:4px}
+  .title-slide .sub{font-size:22px;color:var(--ink);margin-top:18px}
+  .title-slide .inst{font-size:19px;color:var(--muted);font-style:italic}
+  .title-slide .date{font-size:19px;color:var(--muted);margin-top:10px}
+  .title-slide .badge{margin-top:26px;font-size:14px;color:var(--muted);font-family:Georgia,serif;
+    border:1px solid var(--indigo-mid);border-radius:20px;padding:4px 14px}
+
+  .block,.alertblock{border-radius:6px;overflow:hidden;margin:0 0 14px;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+  .block>.head{background:var(--indigo-deep);color:#fff;padding:7px 14px;font-size:19px;font-weight:600}
+  .block>.body{background:var(--indigo-body);padding:12px 16px}
+  .alertblock>.head{background:var(--alert-bar);color:#fff;padding:7px 14px;font-size:19px;font-weight:600}
+  .alertblock>.body{background:var(--alert-body);padding:12px 16px}
+
+  .lead{font-size:18px;line-height:1.5;margin:0 0 8px}
+  ul.pts,ol.pts{margin:6px 0 4px;padding-left:22px}
+  ul.pts>li,ol.pts>li{font-size:17.5px;line-height:1.5;margin-bottom:9px}
+  .small{font-size:16px;line-height:1.5}
+
+  .hl{color:var(--hl)}
+  .cite{color:var(--muted);font-style:italic;white-space:nowrap}
+  em{font-style:italic}
+
+  .imgrow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+  .imgrow img{height:200px;width:auto;border:1px solid #d0c4a8;border-radius:3px;background:#eee;object-fit:cover}
+  .imgrow.small img{height:150px}
+  .imgrow.wide img{height:auto;max-width:100%}
+
+  .twocol{display:flex;gap:14px;align-items:flex-start}
+  .twocol .col-text{flex:1 1 70%;min-width:0}
+  .twocol .col-img{flex:0 0 26%;display:flex;justify-content:center;align-items:center}
+  .twocol .col-img img{max-width:100%;height:auto;border:1px solid #d0c4a8;border-radius:3px}
+
+  blockquote.quote{
+    margin:8px 0;padding:6px 14px;
+    border-left:4px solid var(--indigo-mid);
+    background:#fbf5e7;
+    color:var(--ink);font-style:italic;
+    font-size:17.5px;line-height:1.55;
+  }
+  blockquote.quote .src{display:block;margin-top:4px;font-size:14.5px;color:var(--muted);font-style:italic;text-align:right}
+
+  .intro .lead,
+  .intro p{font-size:21px;line-height:1.6;margin:0 0 12px}
+  .intro ul{margin:10px 0 6px;padding-left:24px}
+  .intro ul li{font-size:21px;line-height:1.6;margin-bottom:16px}
+  .intro .small{font-size:19px;line-height:1.6}
+
+  .controls{background:var(--bar);color:#fff;display:flex;align-items:center;justify-content:space-between;
+    padding:7px 14px;font-family:Georgia,serif;font-size:15px}
+  .controls .who{opacity:.9}
+  .controls .nav{display:flex;align-items:center;gap:8px}
+  .controls button{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.4);
+    border-radius:5px;padding:5px 13px;font-size:15px;cursor:pointer;font-family:inherit}
+  .controls button:hover{background:rgba(255,255,255,.30)}
+  .controls .count{min-width:54px;text-align:center}
+
+  @media print{
+    body{background:#fff}
+    #deck{max-width:none;height:auto}
+    .topbar,.controls{display:none}
+    .stage{overflow:visible}
+    .slide{display:block !important;page-break-after:always;min-height:0}
+  }
+</style>
+</head>
+<body>
+<div id="deck">
+  <div class="topbar">
+    <span class="t-title">JPN/FST 266 &mdash; Week 01: Preliminary</span>
+    <span class="t-sec">Cinema components &middot; expanded with Bordwell &amp; Hasumi</span>
+  </div>
+  <div class="stage" id="stage">
+
+    <!-- TITLE -->
+    <section class="slide active">
+      <div class="title-slide">
+        <h1 class="deck-title">Week 01: Preliminary</h1>
+        <div class="sub">Some cinema components for talking about films</div>
+        <div class="inst">JPN/FST 266 &mdash; Prof. Tomoyuki Yabe</div>
+        <div class="inst">GRAMELAC, Miami Univ. / <span class="cjk">マイアミ大学</span></div>
+        <div class="date">Fall 2026</div>
+        <div class="badge">Annotated with Bordwell &amp; Thompson, <em>Film Art: An Introduction</em> (chs. 3&ndash;6) &amp; Hasumi, <em>Directed by Yasujiro Ozu</em> (2024)</div>
+      </div>
+    </section>
+
+    <!-- COMPONENTS -->
+    <section class="slide">
+      <div class="frametitle">Some cinema components for talking about films</div>
+      <div class="alertblock">
+        <div class="head">Three components we can see on the screen</div>
+        <div class="body">
+          <p class="lead">When you like a movie, you just like it. But when we discuss films in a college course, we need structure &mdash; critical methods for thinking about them.</p>
+          <ul class="pts">
+            <li><span class="hl">Mise-en-sc&egrave;ne</span> (setting-on-stage: how things are set)</li>
+            <li><span class="hl">Shots</span> (how the camera captures scenes)</li>
+            <li><span class="hl">Editing</span> (how shots are connected in a film)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="block">
+        <div class="head">Things we see &amp; things we don&rsquo;t see on the screen</div>
+        <div class="body">
+          <ul class="pts">
+            <li>The three components are elements we can <span class="hl">see</span> on the screen.</li>
+            <li>Cultural significance, historical background, and metaphorical interpretation are <span class="hl">not physically on the screen</span>; a filmmaker insinuates them by arranging visible elements, but they reside in the audience&rsquo;s mind.</li>
+            <li>Let&rsquo;s base our analysis on what the director presents <span class="hl">on the screen</span> &mdash; after all, we are WATCHING a movie.</li>
+          </ul>
+          <p class="small">Bordwell &amp; Thompson call these the <span class="hl">techniques of the medium</span>: mise-en-sc&egrave;ne, cinematography, editing, and sound &mdash; the concrete choices through which a film shapes meaning and feeling <span class="cite">(FA, chs.&nbsp;4&ndash;7)</span>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MISE EN SCENE elements -->
+    <section class="slide">
+      <div class="frametitle">Mise-en-sc&egrave;ne (how things are set or appear)</div>
+      <div class="block">
+        <div class="head">Four areas of choice &amp; control</div>
+        <div class="body">
+          <ul class="pts">
+            <li><span class="hl">Setting</span></li>
+            <li><span class="hl">Costume and makeup</span></li>
+            <li><span class="hl">Lighting</span></li>
+            <li><span class="hl">Staging</span>: movement and performance</li>
+          </ul>
+          <p class="small">Bordwell: <span class="hl">mise-en-sc&egrave;ne</span> (French, &ldquo;putting into the scene&rdquo;) names the director&rsquo;s <span class="hl">control over what appears in the frame</span> &mdash; grouped into these four areas <span class="cite">(FA, p.&nbsp;114)</span>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MES setting -->
+    <section class="slide">
+      <div class="frametitle">Mise-en-sc&egrave;ne &mdash; setting &amp; the power of the frame</div>
+      <div class="block">
+        <div class="head">From the reading &mdash; Bordwell, ch. 4</div>
+        <div class="body">
+          <ul class="pts">
+            <li>Setting can be built for <span class="hl">authenticity</span> or heavily <span class="hl">stylized</span>; it can even <span class="hl">dominate</span> the actors <span class="cite">(FA, pp.&nbsp;116&ndash;17)</span>.</li>
+            <li>A <span class="hl">prop</span> (a term borrowed from theater) can &ldquo;activate&rdquo; an area of the frame and guide the eye <span class="cite">(FA, p.&nbsp;117)</span>.</li>
+            <li>Color, too, is a component of setting &mdash; it can make a figure stand out or support a narrative shift <span class="cite">(FA, p.&nbsp;117)</span>.</li>
+          </ul>
+          <div class="imgrow wide">
+            <img src="preliminary_items/mes_settings.png" alt="Greed tavern and All the President's Men newsroom" style="width:100%;max-width:760px">
+          </div>
+          <p class="small"><em>Authenticity in constructed settings:</em> posters and flypaper build a tavern in <em>Greed</em> (left); for <em>All the President&rsquo;s Men</em>, even wastepaper from the real newsroom was scattered on the set (right) <span class="cite">(FA figs. 4.10&ndash;4.11)</span>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MES lighting -->
+    <section class="slide">
+      <div class="frametitle">Mise-en-sc&egrave;ne &mdash; lighting</div>
+      <div class="block">
+        <div class="head">From the reading &mdash; three-point lighting</div>
+        <div class="body">
+          <div class="twocol">
+            <div class="col-text">
+              <ul class="pts">
+                <li>Classical Hollywood used at least three sources per shot: the <span class="hl">key light</span> (primary, strongest shadows), the <span class="hl">fill light</span> (softens the key&rsquo;s shadows), and the <span class="hl">backlight</span> (edge of brightness separating figure from ground) <span class="cite">(FA, pp.&nbsp;126&ndash;28)</span>.</li>
+                <li><span class="hl">High-key</span> lighting = low contrast, few heavy shadows (comedies, bright dramas). <span class="hl">Low-key</span> lighting = hard light, strong shadows, <span class="hl">chiaroscuro</span> (film noir) <span class="cite">(FA, p.&nbsp;129)</span>.</li>
+              </ul>
+            </div>
+            <div class="col-img">
+              <img src="preliminary_items/lighting_3point.png" alt="Three-point lighting diagram: key, fill, backlight">
+            </div>
+          </div>
+          <p class="small"><em>The basic three-point setup:</em> key (front-diagonal), fill (near the camera), and backlight (behind and above) <span class="cite">(FA fig. 4.70)</span>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHOTS elements -->
+    <section class="slide">
+      <div class="frametitle">Shots (how the camera captures scenes)</div>
+      <div class="block">
+        <div class="head">Elements &mdash; cinematography</div>
+        <div class="body">
+          <ul class="pts">
+            <li>The range of tonalities (exposure, brightness/darkness, color filters)</li>
+            <li>Speed of motion (number of frames; duration of an event)</li>
+            <li>Perspective (lenses, focus)</li>
+            <li>Framing (what is included / excluded)</li>
+            <li>The mobile frame (crane shots, dolly shots)</li>
+            <li>Duration of the image: the long take</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CINE photographic image -->
+    <section class="slide">
+      <div class="frametitle">Cinematography &mdash; the photographic image</div>
+      <div class="block">
+        <div class="head">From the reading &mdash; tonalities, exposure, color, speed</div>
+        <div class="body">
+          <ul class="pts">
+            <li><span class="hl">Tonal contrast</span> guides the eye and sets mood: high-contrast is &ldquo;stark and dramatic,&rdquo; low-contrast &ldquo;more muted&rdquo; <span class="cite">(FA, p.&nbsp;160)</span>.</li>
+            <li><span class="hl">Exposure</span> regulates light through the lens &mdash; the trade-off between a blown-out window and a silhouetted figure <span class="cite">(FA, p.&nbsp;162)</span>.</li>
+            <li><span class="hl">Speed of motion</span>: filming faster than 24 fps yields slow motion on playback; slower yields fast motion <span class="cite">(FA, ch.&nbsp;5)</span>.</li>
+          </ul>
+          <div class="imgrow wide">
+            <img src="preliminary_items/cine_contrast.png" alt="Tonal contrast: Casablanca and Wild Strawberries" style="width:100%;max-width:660px">
+          </div>
+          <p class="small"><em>Tonal contrast:</em> balanced grays in <em>Casablanca</em> (left) vs. near-white, high-contrast dream imagery in Bergman&rsquo;s <em>Wild Strawberries</em> (right) <span class="cite">(FA figs. 5.1&ndash;5.2)</span>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CINE lens & frame -->
+    <section class="slide">
+      <div class="frametitle">Cinematography &mdash; the lens &amp; the frame</div>
+      <div class="block">
+        <div class="head">From the reading &mdash; perspective, framing, duration</div>
+        <div class="body">
+          <ul class="pts">
+            <li><span class="hl">Focal length</span> shapes perspective: <span class="hl">wide-angle</span> lenses stretch space and exaggerate depth; <span class="hl">telephoto</span> lenses flatten it, making planes seem stacked <span class="cite">(FA, p.&nbsp;164)</span>.</li>
+            <li><span class="hl">Depth of field</span> is the range in focus; keeping foreground and background sharp is <span class="hl">deep focus</span>, a major option of the 1940s&ndash;50s <span class="cite">(FA, p.&nbsp;168)</span>.</li>
+            <li><span class="hl">Framing</span> controls angle, height, distance (<span class="hl">shot scale</span>: long shot &rarr; close-up) and defines onscreen vs. <span class="hl">offscreen space</span> <span class="cite">(FA, p.&nbsp;186)</span>.</li>
+            <li>The <span class="hl">mobile frame</span> (pan, tilt, tracking, crane, zoom) and the <span class="hl">long take</span> let a shot unfold space and time without a cut <span class="cite">(FA, pp.&nbsp;196, 208)</span>.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDITING elements -->
+    <section class="slide">
+      <div class="frametitle">Editing (how shots are connected in a film)</div>
+      <div class="block">
+        <div class="head">Four relations between shot A &amp; shot B</div>
+        <div class="body">
+          <ul class="pts">
+            <li><span class="hl">Graphic</span> relations (shape, color, composition)</li>
+            <li><span class="hl">Rhythmic</span> relations (a rhythm across shots; shot length)</li>
+            <li><span class="hl">Spatial</span> relations (shots that build a space)</li>
+            <li><span class="hl">Temporal</span> relations (shots that order story time)</li>
+            <li><span class="hl">Continuity editing</span> (the 180-degree imaginary line)</li>
+          </ul>
+          <p class="small">Bordwell organizes all editing along exactly these four dimensions <span class="cite">(FA, p.&nbsp;219)</span>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDITING expanded -->
+    <section class="slide">
+      <div class="frametitle">Editing &mdash; the four relations up close</div>
+      <div class="block">
+        <div class="head">From the reading &mdash; Bordwell, ch. 6</div>
+        <div class="body">
+          <ul class="pts">
+            <li><span class="hl">Graphic match</span>: shots linked by shared shape, color, or composition (smooth continuity or deliberate clash).</li>
+            <li><span class="hl">Rhythmic</span>: shot lengths set a tempo &mdash; rapid cutting accelerates, long shots slow us down.</li>
+            <li><span class="hl">Spatial</span>: editing builds space. An <span class="hl">establishing shot</span> can be broken into closer views (<span class="hl">analytical</span> editing) &mdash; or withheld, letting cuts assemble a space that was never filmed together (<span class="hl">constructive</span> editing, the <span class="hl">Kuleshov effect</span>) <span class="cite">(FA, pp.&nbsp;224&ndash;26)</span>.</li>
+            <li><span class="hl">Temporal</span>: editing reorders story time &mdash; <span class="hl">flashback/flashforward</span>, and <span class="hl">ellipsis</span> (skipping story time) via cut, dissolve, fade, or wipe <span class="cite">(FA, p.&nbsp;228)</span>.</li>
+          </ul>
+          <div class="imgrow wide">
+            <img src="preliminary_items/edit_samurai.png" alt="Seven Samurai graphic match" style="width:100%;max-width:680px">
+          </div>
+          <p class="small"><em>Dynamic graphic match:</em> Kurosawa cuts six brief, graphically matched shots of running samurai in <em>Seven Samurai</em> <span class="cite">(FA figs. 6.11&ndash;6.13)</span>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTINUITY system -->
+    <section class="slide">
+      <div class="frametitle">Continuity editing &amp; the 180&deg; system</div>
+      <div class="alertblock">
+        <div class="head">The axis of action &amp; its devices</div>
+        <div class="body">
+          <div class="twocol">
+            <div class="col-text">
+              <ul class="pts">
+                <li>Space is built around the <span class="hl">axis of action</span> (the 180&deg; line). Keeping the camera on one side preserves consistent <span class="hl">screen direction</span> <span class="cite">(FA, p.&nbsp;231)</span>.</li>
+                <li>Its devices: the <span class="hl">eyeline match</span> (A looks offscreen, B shows what is seen), the <span class="hl">shot/reverse shot</span>, and the <span class="hl">match on action</span> (a movement carried across the cut) <span class="cite">(FA, p.&nbsp;234)</span>.</li>
+              </ul>
+            </div>
+            <div class="col-img">
+              <img src="preliminary_items/diagram_180.png" alt="180-degree line of action diagram">
+            </div>
+          </div>
+          <div class="imgrow wide">
+            <img src="preliminary_items/srs_maltese.png" alt="Shot/reverse shot in The Maltese Falcon" style="width:100%;max-width:640px">
+          </div>
+          <p class="small"><em>Shot/reverse shot</em> across the 180&deg; line in <em>The Maltese Falcon</em> <span class="cite">(FA figs. 6.61&ndash;6.62)</span>. <span class="hl">We will see Ozu deliberately break this system.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NARRATIVE -->
+    <section class="slide">
+      <div class="frametitle">Narrative Continuity</div>
+      <div class="block">
+        <div class="head">A term I might use: &ldquo;narrative continuity&rdquo;</div>
+        <div class="body">
+          <p class="small">Roughly, <span class="hl">narrative</span> is how a story is told &mdash; in the film, on the screen, and in the sound track. One story can have different narratives; how a filmmaker presents a story is one cinematic narrative, not the story itself. <span class="hl">Plot</span> usually refers to the ordering of events.</p>
+          <p class="small">I take &lsquo;narrative&rsquo; in cinema to include <span class="hl">anything on the screen that does not directly form events within the story</span> &mdash; unrelated images, colors, light or darkness, sounds. If even unrelated elements carry the narrative forward, the cinematic narrative continues to intrigue the audience.</p>
+        </div>
+      </div>
+      <div class="block">
+        <div class="head">From the reading &mdash; Bordwell, ch. 3 (narrative form)</div>
+        <div class="body">
+          <p class="small">Bordwell distinguishes <span class="hl">story</span> (all events in order) from <span class="hl">plot</span> (everything actually present in the film we watch), and calls the delivery of story information <span class="hl">narration</span> &mdash; which may be <span class="hl">restricted</span> to a character&rsquo;s knowledge or freely <span class="hl">omniscient</span>, as in <em>Citizen Kane</em>. He also separates <span class="hl">diegetic</span> (story-world) from <span class="hl">nondiegetic</span> material <span class="cite">(FA, ch.&nbsp;3)</span>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- OZU -->
+    <section class="slide">
+      <div class="frametitle">Narrative Continuity for Ozu</div>
+      <div class="block">
+        <div class="head">Example</div>
+        <div class="body">
+          <ul class="pts">
+            <li>In Ozu&rsquo;s conversation sequences, the conventional continuity shot is disrupted by his obsession with <span class="hl">uniformity of composition</span>: each shot of conversing characters appears in a similar way. Ozu seeks <span class="hl">compositional continuity</span> rather than just storyline continuity.</li>
+            <li>Audiences are often <span class="hl">story-centric</span>. But freeing our minds for cinema viewing, we can sense continuities on different dimensions &mdash; perhaps even &ldquo;bad&rdquo; movies could be appreciated anew.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="block">
+        <div class="head">From the reading &mdash; Hasumi (2024)</div>
+        <div class="body">
+          <ul class="pts">
+            <li>For Ozu, what matters is not whether eyelines meet but <span class="hl">&ldquo;the mere fact that they extend in the same direction&rdquo;</span> &mdash; <span class="hl">unidirectional looking</span> <span class="cite">(HS, p.&nbsp;129)</span>.</li>
+            <li>His disregard of the 180&deg; rule was a <span class="hl">deliberate policy</span>: his editor raised the issue, but Ozu did not change course <span class="cite">(HS, p.&nbsp;154)</span>.</li>
+            <li>Hasumi links this to a deeper claim: cinema can film the eye but never the <span class="hl">look</span> itself &mdash; the &ldquo;cruel schism between the eye and the look&rdquo; &mdash; and Ozu, rather than concealing this limit, <span class="hl">exposes</span> it <span class="cite">(HS, p.&nbsp;152)</span>. <span class="cite">(See the supplement: &ldquo;Ozu &amp; the Imaginary Line.&rdquo;)</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOURCES -->
+    <section class="slide">
+      <div class="frametitle">Sources</div>
+      <div class="block">
+        <div class="head">Readings &amp; references</div>
+        <div class="body">
+          <ul class="pts">
+            <li>David Bordwell &amp; Kristin Thompson, <em>Film Art: An Introduction</em> &mdash; ch.&nbsp;3 Narrative Form; ch.&nbsp;4 Mise-en-Sc&egrave;ne; ch.&nbsp;5 Cinematography; ch.&nbsp;6 Editing. <span class="cite">[FA]</span></li>
+            <li>Shigu&eacute;hiko Hasumi, <em>Directed by Yasujiro Ozu</em>, trans. Ryan Cook (UC Press, 2024). <span class="cite">[HS]</span></li>
+          </ul>
+          <p class="small">Textbook figures &copy; their respective rights holders, reproduced for classroom discussion. JPN/FST 266, Miami University.</p>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /stage -->
+  <div class="controls">
+    <span class="who">JPN/FST 266 &mdash; Prof. Tomoyuki Yabe</span>
+    <span class="nav">
+      <button id="prev" aria-label="Previous slide">&larr; Prev</button>
+      <span class="count" id="count">1 / 14</span>
+      <button id="next" aria-label="Next slide">Next &rarr;</button>
+      <button id="fs" aria-label="Toggle fullscreen">&#9974; Full</button>
+    </span>
+  </div>
+</div><!-- /deck -->
+<script>
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var stage  = document.getElementById('stage');
+  var count  = document.getElementById('count');
+  var i = 0;
+  function show(n){
+    i = Math.max(0, Math.min(slides.length-1, n));
+    slides.forEach(function(s,k){ s.classList.toggle('active', k===i); });
+    count.textContent = (i+1) + ' / ' + slides.length;
+    stage.scrollTop = 0;
+  }
+  document.getElementById('next').onclick = function(){ show(i+1); };
+  document.getElementById('prev').onclick = function(){ show(i-1); };
+  document.getElementById('fs').onclick = function(){
+    if(!document.fullscreenElement){ document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); }
+    else { document.exitFullscreen && document.exitFullscreen(); }
+  };
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ show(i+1); e.preventDefault(); }
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){ show(i-1); e.preventDefault(); }
+    else if(e.key==='Home'){ show(0); }
+    else if(e.key==='End'){ show(slides.length-1); }
+  });
+  show(0);
+</script>
+</body></html>

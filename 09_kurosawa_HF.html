@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 10: Hidden Fortress (1958) | JPN/FST 266</title>
+<style>
+  :root{
+    --ink-deep:#2c3340;       /* block title bar (sumi ink slate) */
+    --ink-mid:#7d8694;        /* lighter accents (rain steel) */
+    --ink-body:#f1ecdf;       /* block body bg (raw silk) */
+    --alert-bar:#1a2230;      /* alertblock title bar (deep ink) */
+    --alert-body:#efe9d8;     /* alertblock body bg */
+    --hl:#9a3a2c;             /* vermilion / blood for \red emphasis */
+    --ink:#22262e;
+    --muted:#6b6253;
+    --bar:#3a414f;            /* footer / header bars */
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:#c7baa0;       /* raw silk / undyed cotton surround */
+    color:var(--ink);
+    font-family:"Hoefler Text",Georgia,"Times New Roman","Yu Mincho","Hiragino Mincho ProN",serif;
+    -webkit-font-smoothing:antialiased;
+    display:flex;align-items:center;justify-content:center;
+  }
+  ruby,.cjk{font-family:"Yu Gothic","Hiragino Kaku Gothic ProN","Hiragino Sans","MS Gothic",inherit;}
+
+  #deck{width:100%;max-width:1040px;height:100vh;display:flex;flex-direction:column;}
+  .topbar{
+    background:var(--bar);color:#fff;font-size:15px;letter-spacing:.02em;
+    padding:6px 16px;display:flex;justify-content:space-between;align-items:center;
+    font-family:Georgia,serif;
+  }
+  .topbar .t-title{opacity:.95}
+  .topbar .t-sec{opacity:.8;font-style:italic}
+
+  .stage{flex:1;overflow:auto;background:#fff;}
+  .slide{display:none;padding:26px 34px 30px;min-height:100%;}
+  .slide.active{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:.35}to{opacity:1}}
+
+  h1.deck-title{font-size:34px;line-height:1.25;margin:0 0 6px;color:var(--ink-deep);text-align:center}
+  .frametitle{font-size:28px;color:var(--ink-deep);margin:2px 0 14px;font-weight:600;border-bottom:2px solid var(--ink-mid);padding-bottom:6px}
+
+  .title-slide{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%;gap:4px}
+  .title-slide .sub{font-size:22px;color:var(--ink);margin-top:18px}
+  .title-slide .inst{font-size:19px;color:var(--muted);font-style:italic}
+  .title-slide .date{font-size:19px;color:var(--muted);margin-top:10px}
+  .title-slide .badge{margin-top:26px;font-size:14px;color:var(--muted);font-family:Georgia,serif;
+    border:1px solid var(--ink-mid);border-radius:20px;padding:4px 14px;max-width:780px}
+
+  .block,.alertblock{border-radius:6px;overflow:hidden;margin:0 0 14px;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+  .block>.head{background:var(--ink-deep);color:#fff;padding:7px 14px;font-size:19px;font-weight:600}
+  .block>.body{background:var(--ink-body);padding:12px 16px}
+  .alertblock>.head{background:var(--alert-bar);color:#fff;padding:7px 14px;font-size:19px;font-weight:600}
+  .alertblock>.body{background:var(--alert-body);padding:12px 16px}
+
+  .lead{font-size:18px;line-height:1.5;margin:0 0 8px}
+  ul.pts,ol.pts{margin:6px 0 4px;padding-left:22px}
+  ul.pts>li,ol.pts>li{font-size:17.5px;line-height:1.5;margin-bottom:9px}
+  ul.pts ul,ul.pts ol{margin:6px 0 6px;padding-left:22px}
+  ul.pts ul li{font-size:16.5px;line-height:1.45;margin-bottom:6px}
+  .small{font-size:16px;line-height:1.5}
+
+  .hl{color:var(--hl)}
+  .cite{color:var(--muted);font-style:italic;white-space:nowrap}
+  em{font-style:italic}
+
+  .imgrow{display:flex;gap:10px;justify-content:stretch;flex-wrap:nowrap;margin-top:12px;align-items:flex-start}
+  .imgrow img{flex:1 1 0;min-width:0;width:100%;height:auto;border:1px solid #c8bca3;border-radius:3px;background:#eee;object-fit:contain}
+  .imgrow.small img,.imgrow.tiny img{height:auto}
+  .imgrow.wide img{height:auto;max-width:100%}
+
+  .twocol{display:flex;gap:14px;align-items:flex-start}
+  .twocol .col-text{flex:1 1 70%;min-width:0}
+  .twocol .col-img{flex:0 0 26%;display:flex;justify-content:center;align-items:center}
+  .twocol .col-img img{max-width:100%;height:auto;border:1px solid #c8bca3;border-radius:3px}
+
+  blockquote.quote{
+    margin:8px 0;padding:6px 14px;
+    border-left:4px solid var(--ink-mid);
+    background:#f7f3e6;
+    color:var(--ink);font-style:italic;
+    font-size:17px;line-height:1.55;
+  }
+  blockquote.quote .src{display:block;margin-top:4px;font-size:14.5px;color:var(--muted);font-style:italic;text-align:right}
+
+  .intro .lead,
+  .intro p{font-size:21px;line-height:1.6;margin:0 0 12px}
+  .intro ul{margin:10px 0 6px;padding-left:24px}
+  .intro ul li{font-size:21px;line-height:1.6;margin-bottom:16px}
+  .intro .small{font-size:19px;line-height:1.6}
+
+  .controls{background:var(--bar);color:#fff;display:flex;align-items:center;justify-content:space-between;
+    padding:7px 14px;font-family:Georgia,serif;font-size:15px}
+  .controls .who{opacity:.9}
+  .controls .nav{display:flex;align-items:center;gap:8px}
+  .controls button{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.4);
+    border-radius:5px;padding:5px 13px;font-size:15px;cursor:pointer;font-family:inherit}
+  .controls button:hover{background:rgba(255,255,255,.30)}
+  .controls .count{min-width:54px;text-align:center}
+
+  @media print{
+    body{background:#fff}
+    #deck{max-width:none;height:auto}
+    .topbar,.controls{display:none}
+    .stage{overflow:visible}
+    .slide{display:block !important;page-break-after:always;min-height:0}
+  }
+</style>
+</head>
+<body>
+<div id="deck">
+  <div class="topbar">
+    <span class="t-title">JPN/FST 266 &mdash; Hidden Fortress (1958) <span class="cjk">隠し砦の三悪人</span></span>
+    <span class="t-sec">Akira Kurosawa - 黒澤明 &middot; the tall-and-short duo &amp; the Star Wars debt</span>
+  </div>
+  <div class="stage" id="stage">
+    <section class="slide active">
+      <div class="title-slide">
+        <h1 class="deck-title">Week 10: Hidden Fortress (1958)<br>
+          <ruby>隠し砦の三悪人<rt>Kakushitoride no san-akunin</rt></ruby> by Akira Kurosawa</h1>
+        <div class="sub">JPN/FST 266 &mdash; Prof. Tomoyuki Yabe</div>
+        <div class="inst">GRAMELAC, Miami Univ. / <span class="cjk">マイアミ大学</span></div>
+        <div class="date">Fall 2025</div>
+        <div class="badge">Slides annotated with Michael Kaminski, &ldquo;Under the Influence of Akira Kurosawa: The Visual Style of George Lucas,&rdquo; in Brode &amp; Deyneka, eds. (2012), pp.&nbsp;82&ndash;97</div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="frametitle">Introduction</div>
+      <div class="alertblock">
+        <div class="head">An entertainment that reshaped world cinema</div>
+        <div class="body">
+          <p class="lead"><em>The Hidden Fortress</em> (1958) is Kurosawa&rsquo;s first film in widescreen and one of his most purely entertaining: a fast, funny samurai adventure. A defeated clan&rsquo;s <span class="hl">princess</span> and her <span class="hl">general</span>, in disguise, must smuggle the clan&rsquo;s gold across enemy territory to safety, helped and hindered by <span class="hl">two greedy peasants</span>. Donald Richie called it &ldquo;romantic,&rdquo; &ldquo;mythic,&rdquo; &ldquo;operatic,&rdquo; and &ldquo;fairy-tale&rdquo; &mdash; then Kurosawa&rsquo;s most expensive film, and his most financially successful.</p>
+          <ul class="pts">
+            <li><strong>Told from below:</strong> the story unfolds from the point of view of the <span class="hl">two lowest characters</span>, the bickering peasants Tahei and Matashichi.</li>
+            <li><strong>A cinematic image:</strong> the <span class="hl">tall one and the short one</span>, a contrast Kurosawa turns into visual accent, rhythm, and comedy.</li>
+            <li><strong>A long afterlife:</strong> by George Lucas&rsquo;s own account, the single strongest influence on <em>Star Wars</em> &mdash; a debt this session traces in detail.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="frametitle">Kurosawa and Lucas</div>
+      <div class="alertblock">
+        <div class="head">Lucas on Kurosawa and Hidden Fortress</div>
+        <div class="body">
+          <p class="small"><em>&ldquo;I had never seen anything that powerful or cinematographic. <span class="hl">The emotions were so strong that it did not matter that I did not understand the culture or the traditions.</span> From that moment on, Kurosawa&rsquo;s films have served as one of my strongest sources of creative inspiration.&rdquo;</em> (Lucas, 2004)</p>
+          <p class="small"><em>&ldquo;The one thing that really struck me about <em>The Hidden Fortress</em> was that <span class="hl">the story was told from the perspective of the two lowest characters</span>&hellip; That set me off on a very interesting course, that was the strongest influence for me in <em>Star Wars</em>, and it is what altered the point of view of all three movies.&rdquo;</em> (Bouzereau 1997)</p>
+        </div>
+      </div>
+      <div class="block">
+        <div class="head">Stories told by <em>the two lowest characters</em></div>
+        <div class="body">
+          <p class="small">Hidden Fortress and Star Wars are both told through <span class="hl">a pair of the socially lowest characters</span>: the peasants Tahei and Matashichi, and the servant droids C-3PO and R2-D2 &mdash; who even share dialogue with the peasants, as when they curse their &ldquo;lot in life&rdquo; <span class="cite">(Kaminski, p.&nbsp;87)</span>.</p>
+          <p class="small">The debt is documented. Lucas&rsquo;s first <em>Star Wars</em> treatment (April 1973) &ldquo;included every single scene from <em>Hidden Fortress</em>,&rdquo; substituting a fourteen-year-old Princess Leia for Princess Yuki, a General Skywalker for General Makabe, and <span class="hl">&ldquo;a pair of bickering bureaucrats (later turned into robots named R2-D2 and C-3PO) for the comedic peasant duo Tahei and Matashichi&rdquo;</span> <span class="cite">(Kaminski, p.&nbsp;87)</span>. Having no home video, Lucas worked from Donald Richie&rsquo;s 1965 plot summary, <span class="hl">copying entire passages</span> almost verbatim.</p>
+          <div class="imgrow">
+            <img src="kurosawa_item/41.jpg" alt="The duo: C-3PO and R2-D2 (top); Tahei and Matashichi (bottom)">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="frametitle">A cinematic image: the pair of the tall one and the short one</div>
+      <div class="alertblock">
+        <div class="head">Three ways to read the pair</div>
+        <div class="body">
+          <p class="small">We can talk about this cinematic image in a few different ways, based on how the two fare on the screen:</p>
+          <ol class="pts">
+            <li><strong>Narrative:</strong> a comic duo (tall and serious vs. short and funny).</li>
+            <li><strong>Sergei Eisenstein&rsquo;s <em>typage</em>:</strong> an image shaped by a stereotype the audience already carries.</li>
+            <li><strong>Visual composition:</strong> the contrast as a graphic accent in the frame.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="block">
+        <div class="head">A contrasting comic duo</div>
+        <div class="body">
+          <p class="small">The contrasting comic duo is an old narrative device across writing, drawing, and manga. The contrast in the two bodies is transferred onto temperament or social role: <span class="hl">tall / short &rarr; serious / funny; solemn / goofy</span>.</p>
+          <ul class="pts">
+            <li><strong>Don Quixote</strong> and Sancho Panza (a richer, less single-note pairing).</li>
+            <li><strong>Mutt and Jeff:</strong> a tall, serious gambler and a short, comedic, unpredictable sidekick.</li>
+            <li><strong>Yaji and Kita</strong> from a Japanese humorous travelogue (from 1802): equally comic, yet in stage and print images Yaji is always drawn taller, Kita shorter.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="frametitle">Sergei Eisenstein&rsquo;s <em>typage</em></div>
+      <div class="alertblock">
+        <div class="head">What is <em>typage</em>?</div>
+        <div class="body">
+          <p class="small"><span class="hl">Typage is a technique that relies on actors&rsquo; physical characteristics to reflect the roles they play.</span> Physical features are quickly associated with the class, profession, or social role of a character within the audience&rsquo;s social context; a strong actor-role link can even lead to typecasting. Eisenstein built cinema from <span class="hl">montage</span> &mdash; effective sequences and patchworks of signs &mdash; and the signs include both visual images (through editing) and the audience&rsquo;s mental images, such as typage. His style is often called the <span class="hl">dialectics of film form</span>.</p>
+        </div>
+      </div>
+      <div class="block">
+        <div class="head">Typage in <em>Hidden Fortress</em> and <em>Star Wars</em></div>
+        <div class="body">
+          <ul class="pts">
+            <li>Taller <span class="hl">Tahei</span> is always the scheming one, trying to manipulate shorter <span class="hl">Matashichi</span>.</li>
+            <li>The more humanly shaped <span class="hl">C-3PO</span> is given human traits and a naive anxiety, while the &ldquo;computer-in-a-case&rdquo; <span class="hl">R2-D2</span> is brave and stubborn where humans would be afraid.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="frametitle">How Kurosawa uses the Tahei&ndash;Matashichi duo on screen</div>
+      <div class="alertblock">
+        <div class="head">The duo provides visual accents</div>
+        <div class="body">
+          <ul class="pts">
+            <li><strong>Images:</strong> the contrast of their heights is translated directly onto the screen, giving immediate <span class="hl">visual accent and rhythm</span> whenever they are juxtaposed.</li>
+            <li><strong>In the frame:</strong> the contrast can be worked through different camera angles and placements, letting Kurosawa <span class="hl">capture space dramatically</span> as the narrative develops within it.</li>
+            <li><strong>Movements:</strong> the physical contrast accentuates the action &mdash; climbing a wall, long-legged Tahei races up while short-legged Matashichi struggles; fleeing with stolen rice and a pot, low-geared Matashichi dashes faster even as Tahei hauls the heavy sack.</li>
+          </ul>
+          <div class="imgrow">
+            <img src="kurosawa_item/53.jpg" alt="The duo framed in the landscape">
+            <img src="kurosawa_item/57.jpg" alt="The duo in movement at the wall">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="frametitle">What Lucas saw: Kurosawa&rsquo;s visual style</div>
+      <div class="alertblock">
+        <div class="head">&ldquo;Mostly everything is visual&rdquo;</div>
+        <div class="body">
+          <p class="small">Lucas is drawn less to Kurosawa&rsquo;s stories than to his <span class="hl">images</span>. &ldquo;I&rsquo;m not known for my dialogue,&rdquo; Lucas said; Kurosawa&rsquo;s films &ldquo;work because they speak to us at a direct, perhaps more primal, level&hellip; through images&rdquo; <span class="cite">(Kaminski, p.&nbsp;89)</span>. &ldquo;The visual graphics, and the framing and the quality of the images, goes a long way to telling the story and setting the mood&rdquo; <span class="cite">(p.&nbsp;94)</span>.</p>
+        </div>
+      </div>
+      <div class="block">
+        <div class="head">A style forged from lenses and cameras</div>
+        <div class="body">
+          <ul class="pts">
+            <li><strong>Telephoto lenses:</strong> long lenses <span class="hl">flatten space</span> into abstract, graphic patterns, stacking distant planes on top of near ones &mdash; moving the image &ldquo;away from realism&rdquo; toward composition <span class="cite">(Kaminski, pp.&nbsp;91&ndash;92)</span>.</li>
+            <li><strong>Multi-camera shooting:</strong> because the action in <em>Seven Samurai</em> was too large to repeat, Kurosawa filmed with <span class="hl">up to five cameras at once</span>, which in turn required those long lenses &mdash; a technique that became his signature <span class="cite">(p.&nbsp;91)</span>.</li>
+            <li><strong>Roots in silent cinema:</strong> Kurosawa grew up on silent film (his brother Heigo was a <em>benshi</em>), absorbing Eisenstein, Murnau, and above all <span class="hl">John Ford</span> &mdash; the westerns whose &ldquo;grammar&rdquo; he said he learned <span class="cite">(pp.&nbsp;90&ndash;91)</span>.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="frametitle">From <em>Hidden Fortress</em> to <em>Star Wars</em>: a scene-by-scene inheritance</div>
+      <div class="block">
+        <div class="head">The armature Lucas kept</div>
+        <div class="body">
+          <p class="small">Beyond the peasant duo and the hidden treasure (gold in <em>Hidden Fortress</em>; the Death Star plans inside R2-D2), Lucas carried over the whole shape of the tale: a <span class="hl">princess on the run</span> with her retainers and clan treasure, her <span class="hl">protector-general</span> (Makabe &rarr; General/Ben Kenobi), and a story <span class="hl">framed from the servants&rsquo; point of view</span>.</p>
+          <p class="small">Lucas prized this above all: the film is &ldquo;told from the point of view of the farmers, and not&hellip; the princess. <span class="hl">It really did frame the movie</span>&rdquo; <span class="cite">(Kaminski, p.&nbsp;87)</span>. Producer Gary Kurtz even considered buying the rights from Toho. When Kurosawa heard Lucas was using his characters, he waved off any fee, smiled, and said, <span class="hl">&ldquo;use them all you like&rdquo;</span> <span class="cite">(Nogami, in Kaminski, p.&nbsp;89)</span>.</p>
+          <div class="imgrow">
+            <img src="kurosawa_item/45.jpg" alt="Princess parallel: Yuki and Leia">
+            <img src="kurosawa_item/44.jpg" alt="Ceremonial throne-room finale">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="frametitle">Specific borrowings across the original trilogy</div>
+      <div class="block">
+        <div class="head">Compositions lifted, sometimes shot for shot</div>
+        <div class="body">
+          <ul class="pts">
+            <li><strong>The cantina brawl</strong> comes from <em>Yojimbo</em>: a rapid burst of cutting, a sword suddenly drawn, and an insert of a <span class="hl">severed arm</span> falling with the weapon still in hand &mdash; &ldquo;transplanted&hellip; surprisingly faithfully&rdquo; <span class="cite">(Kaminski, p.&nbsp;94)</span>.</li>
+            <li><strong>The Millennium Falcon hiding place</strong> reworks a reveal from <em>Sanjuro</em>, with heads emerging from removable floorboards.</li>
+            <li><strong>Wipes:</strong> a near-obsolete transition by the 1970s, which Kurosawa used &ldquo;to great and aggressive effect&rdquo; for changes of time and place &mdash; and Lucas revived.</li>
+            <li><strong>The Kenobi&ndash;Vader duel</strong> &ldquo;seems lifted in its entirety from <em>Hidden Fortress</em>&rdquo; (Will Brooker): like the Makabe&ndash;Tadokoro staff fight, it opens on a <span class="hl">wide profile tableau</span>, moves through shot/reverse-shot, and climaxes in close-ups with the weapons <span class="hl">crossing diagonally</span> across the frame <span class="cite">(Kaminski, p.&nbsp;95)</span>.</li>
+            <li><strong>The <em>Return of the Jedi</em> speeder chase</strong> restages the <em>Hidden Fortress</em> horseback duel &mdash; two warriors side by side before one is thrown headfirst; Lucas storyboarded it himself.</li>
+          </ul>
+          <div class="imgrow">
+            <img src="kurosawa_item/43.jpg" alt="Wipe transitions in Star Wars and Hidden Fortress">
+            <img src="kurosawa_item/42.jpg" alt="Horseback duel becomes the speeder chase">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="frametitle">A villain&rsquo;s redemption &mdash; and a face from <em>Hidden Fortress</em></div>
+      <div class="block">
+        <div class="head">Tadokoro, Mifune, and the shape of Star Wars characters</div>
+        <div class="body">
+          <ul class="pts">
+            <li><strong>Vader&rsquo;s redemption</strong> in <em>Return of the Jedi</em> is prefigured in <em>Hidden Fortress</em>: the villain General <span class="hl">Tadokoro</span>, whose facial scar even resembles the unmasked Vader, turns on his own side and <span class="hl">saves the heroes from execution</span> <span class="cite">(Kaminski, p.&nbsp;88)</span>.</li>
+            <li><strong>Ben Kenobi</strong> is modeled on Toshiro Mifune&rsquo;s general; Lucas at one point pursued casting <span class="hl">Mifune himself</span> as Obi-Wan before the role went to Alec Guinness.</li>
+            <li><strong>The wider debt</strong> runs through recurring Kurosawa themes Lucas absorbed: the <span class="hl">master&ndash;pupil</span> bond, the dichotomy of illusion and reality, class division seen &ldquo;from below,&rdquo; and the <span class="hl">awakening of a hero</span> <span class="cite">(p.&nbsp;89)</span>. Even the name &ldquo;Jedi&rdquo; echoes <em>jidai-geki</em>, the Japanese period film.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="frametitle">The prequels return to Kurosawa</div>
+      <div class="block">
+        <div class="head"><em>The Phantom Menace</em>: Lucas&rsquo;s most Kurosawa-influenced film</div>
+        <div class="body">
+          <p class="small">Directing again after two decades, Lucas leaned hard on the master. He adopted Kurosawa&rsquo;s late <span class="hl">two-camera setup</span>, and <em>Phantom Menace</em> &mdash; loosely a remake of <em>Hidden Fortress</em>, following its plot even more closely than the original <em>Star Wars</em> &mdash; favors the <span class="hl">master shot</span>, a feeling of <span class="hl">stillness</span>, and composition over crane or steadicam movement, &ldquo;circa <em>Ran</em>&rdquo; <span class="cite">(Kaminski, pp.&nbsp;95&ndash;96)</span>.</p>
+          <ul class="pts">
+            <li>Droid tanks cresting a hillside echo the <span class="hl">bandits emerging from the mountains</span> in <em>Seven Samurai</em>; the rolling hills of Naboo recall the opening quarter of <em>Ran</em>.</li>
+            <li>The Gungan army advancing out of mist is an iconic image from <em>Throne of Blood</em>; the closing celebration is framed like the <span class="hl">final shot of <em>Hidden Fortress</em></span>.</li>
+            <li>Liam Neeson&rsquo;s Qui-Gon takes over Mifune&rsquo;s role, dressed with a long ponytail and distinct facial hair.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="frametitle">The clone wars, <em>Ran</em>, and the break</div>
+      <div class="block">
+        <div class="head">Kurosawa&rsquo;s battles &mdash; then Lucas finds his own style</div>
+        <div class="body">
+          <ul class="pts">
+            <li><strong>Attack of the Clones</strong> stages its battles like the great clashes of <em>Ran</em>: <span class="hl">color-coded forces</span> and consistent <span class="hl">screen direction</span> (green/blue fire attacking right-to-left, red fire left-to-right), and armies firing through a wash of smoke. Its lovers in a field of flowers echo <em>Seven Samurai</em> <span class="cite">(Kaminski, pp.&nbsp;96&ndash;97)</span>.</li>
+            <li><strong>Revenge of the Sith</strong> is nearly barren of Kurosawa &mdash; only a nod as Yoda strokes his head like Takeshi Shimura, and even that was added by an ILM animator, not Lucas. The mentor is finally set aside <span class="cite">(p.&nbsp;97)</span>.</li>
+            <li><strong>A reverse metamorphosis:</strong> where Kurosawa moved <em>toward</em> telephoto formalism, Lucas moved the opposite way &mdash; from the abstraction of <em>THX 1138</em> to the warm, Ford-like lenses of <em>American Graffiti</em> and beyond <span class="cite">(p.&nbsp;94)</span>.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="frametitle">Discussion</div>
+      <div class="alertblock">
+        <div class="head">Over to you</div>
+        <div class="body">
+          <p class="lead">Have you seen <em>Star Wars</em>? Talk about anything from <em>Star Wars</em> that you think might show the influence of <em>Hidden Fortress</em> &mdash; or of Kurosawa more broadly.</p>
+          <div class="imgrow">
+            <img src="kurosawa_item/41.jpg" alt="The duo">
+            <img src="kurosawa_item/42.jpg" alt="Horseback / speeders">
+            <img src="kurosawa_item/45.jpg" alt="The princess">
+          </div>
+        </div>
+      </div>
+    </section>
+  </div><!-- /stage -->
+  <div class="controls">
+    <span class="who">JPN/FST 266 &mdash; Prof. Tomoyuki Yabe</span>
+    <span class="nav">
+      <button id="prev" aria-label="Previous slide">&larr; Prev</button>
+      <span class="count" id="count">1 / 13</span>
+      <button id="next" aria-label="Next slide">Next &rarr;</button>
+      <button id="fs" aria-label="Toggle fullscreen">&#9974; Full</button>
+    </span>
+  </div>
+</div><!-- /deck -->
+<script>
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var stage  = document.getElementById('stage');
+  var count  = document.getElementById('count');
+  var i = 0;
+  function show(n){
+    i = Math.max(0, Math.min(slides.length-1, n));
+    slides.forEach(function(s,k){ s.classList.toggle('active', k===i); });
+    count.textContent = (i+1) + ' / ' + slides.length;
+    stage.scrollTop = 0;
+  }
+  document.getElementById('next').onclick = function(){ show(i+1); };
+  document.getElementById('prev').onclick = function(){ show(i-1); };
+  document.getElementById('fs').onclick = function(){
+    if(!document.fullscreenElement){ document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); }
+    else { document.exitFullscreen && document.exitFullscreen(); }
+  };
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ show(i+1); e.preventDefault(); }
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){ show(i-1); e.preventDefault(); }
+    else if(e.key==='Home'){ show(0); }
+    else if(e.key==='End'){ show(slides.length-1); }
+  });
+  show(0);
+</script>
+</body></html>
