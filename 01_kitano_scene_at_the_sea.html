@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>A Scene at the Sea (1991) あの夏一番静かな海 — Takeshi Kitano | JPN/FST 266</title>
+<title>A Scene at the Sea (1991) あの夏、いちばん静かな海。 — Takeshi Kitano | JPN/FST 266</title>
 <style>
   :root{
     --sea-deep:#1f5d8c;        /* block title bar (Kitano blue) */
@@ -47,10 +47,10 @@
 
   /* Introduction slide: larger type, more breathing room */
   .intro .lead,
-  .intro p{font-size:21px;line-height:1.6;margin:0 0 12px}
+  .intro p{font-size:20px;line-height:1.55;margin:0 0 12px}
   .intro ul{margin:10px 0 6px;padding-left:24px}
-  .intro ul li{font-size:21px;line-height:1.6;margin-bottom:16px}
-  .intro .small{font-size:19px;line-height:1.6}
+  .intro ul li{font-size:19px;line-height:1.5;margin-bottom:12px}
+  .intro .small{font-size:18px;line-height:1.55}
 
   /* title slide */
   .title-slide{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%;gap:4px}
@@ -76,6 +76,16 @@
   .cite{color:var(--muted);font-style:italic;white-space:nowrap}
   em{font-style:italic}
 
+  /* two-column layout for the "means" slide */
+  .cols{display:flex;gap:14px;flex-wrap:wrap}
+  .cols>*{flex:1 1 300px;margin-bottom:0}
+
+  /* data figures */
+  .figrow{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 2px}
+  .fig{flex:1 1 150px;background:#fff;border:1px solid #c7d6e0;border-radius:5px;padding:8px 10px;text-align:center}
+  .fig .n{display:block;font-size:26px;color:var(--sea-deep);font-weight:600;line-height:1.1}
+  .fig .l{display:block;font-size:14px;color:var(--muted);margin-top:3px;line-height:1.3}
+
   .imgrow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
   .imgrow img{height:166px;width:auto;border:1px solid #c7d6e0;border-radius:3px;background:#eee;object-fit:cover}
   .imgrow.small img{height:132px}
@@ -90,6 +100,10 @@
     font-size:17.5px;line-height:1.55;
   }
   blockquote.quote .src{display:block;margin-top:4px;font-size:14.5px;color:var(--muted);font-style:italic;text-align:right}
+
+  /* sources slide */
+  ul.refs{margin:6px 0 4px;padding-left:22px}
+  ul.refs>li{font-size:16px;line-height:1.45;margin-bottom:8px}
 
   /* controls */
   .controls{background:var(--bar);color:#fff;display:flex;align-items:center;justify-content:space-between;
@@ -115,7 +129,7 @@
 <div id="deck">
 
   <div class="topbar">
-    <span class="t-title">JPN/FST 266 &mdash; A Scene at the Sea (1991) <span class="cjk">あの夏一番静かな海</span></span>
+    <span class="t-title">JPN/FST 266 &mdash; A Scene at the Sea (1991) <span class="cjk">あの夏、いちばん静かな海。</span></span>
     <span class="t-sec">Takeshi Kitano - 北野武</span>
   </div>
 
@@ -125,7 +139,7 @@
     <section class="slide active">
       <div class="title-slide">
         <h1 class="deck-title">Week 02: A Scene at the Sea (1991)<br>
-          <ruby>あの夏一番静かな海<rt>ano natsu ichiban shizuka na umi</rt></ruby> by Takeshi Kitano</h1>
+          <ruby>あの夏、いちばん静かな海。<rt>ano natsu, ichiban shizuka na umi</rt></ruby> by Takeshi Kitano</h1>
         <div class="sub">JPN/FST 266 &mdash; Prof. Tomoyuki Yabe</div>
         <div class="inst">GRAMELAC, Miami Univ. / <span class="cjk">マイアミ大学</span></div>
         <div class="date">Fall 2025</div>
@@ -137,49 +151,29 @@
     <section class="slide intro">
       <div class="frametitle">Introduction</div>
       <div class="alertblock">
-        <div class="head">Kitano's Unconventinal style</div>
+        <div class="head">Kitano&rsquo;s unconventional style</div>
         <div class="body">
-          <p>Kitano Takeshi’s directorial style is defined by a radical "Aesthetics of Omission," a cinematic ethics that prioritizes silence and visual space over traditional narrative explanation. By stripping away dramatic conventions, Kitano moves beyond mainstream entertainment to create a minimalist experience where emotion is conveyed through "the crossing of gazes" and the "unconscious gait toward fate".
-        
-              <ul>
-  <li>
-    <strong>Aesthetics of Subtraction:</strong> Kitano practices the "decisiveness of eliminating explanatory shots," refusing to fill narrative gaps with exposition.
-  </li>
+          <p>Kitano Takeshi&rsquo;s direction is built on subtraction. He strips away dramatic convention and lets silence, stillness, and visual space carry what dialogue would ordinarily explain. The points below are the working vocabulary for this week; most of them are argued at length in a recent doctoral study of Kitano&rsquo;s style, cited throughout as <span class="cite">Vlasov 2024</span>.</p>
 
-  <li>
-    <strong>Narrative Fragmentation:</strong> His films often lack a "dramatic skeleton" or causal continuity, consisting instead of isolated episodes and "fragments".
-  </li>
+          <ul>
+            <li><strong>Aesthetics of subtraction:</strong> the decisiveness of eliminating explanatory shots, a refusal to fill narrative gaps with exposition.</li>
 
-  <li>
-    <strong>Indirect Depiction of Pivotal Events:</strong> He avoids filming moments of accident or death directly, conveying them through opaque, symbolic imagery like a surfboard left on a beach.
-  </li>
+            <li><strong>Narrative fragmentation:</strong> the film has &ldquo;no dramatic skeleton&rdquo;; the life of this man, possessed by the sea, &ldquo;consists of nothing but isolated episodes.&rdquo; <span class="cite">(Vlasov 2024, 21)</span></li>
 
-  <li>
-    <strong>Minimalist Visual Composition:</strong> Frames are often sustained by simple elements such as a blue sky and a black wetsuit rather than complex action.
-  </li>
+            <li><strong>Indirect depiction of pivotal events:</strong> accident and death are not filmed directly. Shigeru&rsquo;s death reaches us through a surfboard on the sand.</li>
 
-  <li>
-    <strong>Sparse Dialogue:</strong> His work features significantly fewer lines than typical dramas; for example, <em>A Scene at the Sea</em> has only approximately 280 lines compared to the standard 1,000+.
-  </li>
+            <li><strong>Sparse dialogue:</strong> roughly <span class="hl">280 lines</span> in the whole film, against 1,000 to 1,700 in an ordinary drama. <span class="cite">(Vlasov 2024, 25)</span></li>
 
-  <li>
-    <strong>Lateral Tracking Shots:</strong> He utilizes repeated shots of characters "simply walking" in a horizontal direction, treated as pure cinematic movement rather than a march toward a destination.
-  </li>
+            <li><strong>&ldquo;Mannequin-like&rdquo; acting:</strong> performers as Bresson&rsquo;s <em>models</em>, impassive, which distances the character from society and from the film&rsquo;s own world. <span class="cite">(Vlasov 2024, 126)</span></li>
 
-  <li>
-    <strong>"Mannequin-like" Acting:</strong> Performers act as "models" with suppressed emotions and impassive faces, distancing the character from both society and the world of the film.
-  </li>
+            <li><strong>Ontological solitude:</strong> isolation is not caused by the plot; it is given from the first frame, whether the character is alone or among friends. <span class="cite">(Vlasov 2024, 125&ndash;126)</span></li>
 
-  <li>
-    <strong>Ontological Solitude:</strong> Characters are depicted with an "existential" isolation that is present from the start of the story, regardless of their surroundings.
-  </li>
+            <li><strong>Non-participation:</strong> characters behave as bystanders in their own story, producing an extreme sense of alienation. <span class="cite">(Vlasov 2024, 126)</span></li>
 
-  <li>
-    <strong>Non-Participation:</strong> Characters often behave as passive onlookers or bystanders in their own narratives, creating a sense of extreme alienation.
-  </li>
-</ul>
-            
-            </p>
+            <li><strong>Fate:</strong> death is not a reversal but a result the film has assumed from the beginning; Schrader&rsquo;s &ldquo;resigned sadness&rdquo; rather than tragedy. <span class="cite">(Vlasov 2024, 66, 123)</span></li>
+
+            <li><strong>Lateral movement and walking:</strong> characters simply walk across the frame, treated as cinematic movement in its own right rather than as travel toward a goal.</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -192,9 +186,9 @@
         <div class="body">
           <ul class="pts">
             <li>During the sequences with Shigeru and Takako, they are in complete silence; they are indeed deaf. The late film critic Nagaharu Yodogawa, who was born in 1909 and had seen many silent movies, once said, <span class="hl">&ldquo;It almost feels like early silent films.&rdquo;</span></li>
-            <li>One can praise Kitano&rsquo;s direction with a phrase such as <span class="hl">&ldquo;the decisiveness of eliminating explanatory shots.&rdquo;</span> His cinematic style can be characterized by a single phrase, the <span class="hl">Aesthetics of Omission</span>: his refusal to fill the gaps between shots with &ldquo;explanation&rdquo; constitutes what he has called a <span class="hl">&ldquo;cinematic ethics.&rdquo;</span></li>
-            <li><em>A Scene at the Sea</em> in particular, by exploiting the premise of a hearing-impaired protagonist, is regarded as <span class="hl">the pinnacle of minimalism in Japanese cinema</span>: emotion is conveyed through nothing more than <span class="hl">&ldquo;the crossing of gazes&rdquo;</span> and <span class="hl">&ldquo;the act of walking,&rdquo;</span> without recourse to dialogue.</li>
-            <li>Related to this is Kitano&rsquo;s technique of never directly filming moments of accident or death. <span class="hl">Shigeru&rsquo;s death is conveyed through a surfboard left on the sand</span>: opaque, but decisive.</li>
+            <li>One can praise Kitano&rsquo;s direction with a phrase such as <span class="hl">&ldquo;the decisiveness of eliminating explanatory shots.&rdquo;</span> His cinematic style can be characterized by a single phrase, the <span class="hl">Aesthetics of Omission</span>: his refusal to fill the gaps between shots with &ldquo;explanation&rdquo; constitutes what amounts to a <span class="hl">cinematic ethics</span>.</li>
+            <li><em>A Scene at the Sea</em> in particular, by exploiting the premise of a hearing-impaired protagonist, is often described as <span class="hl">a high point of minimalism in Japanese cinema</span>: emotion is conveyed through nothing more than <span class="hl">&ldquo;the crossing of gazes&rdquo;</span> and <span class="hl">&ldquo;the act of walking,&rdquo;</span> without recourse to dialogue.</li>
+            <li>Related to this is Kitano&rsquo;s technique of never directly filming moments of accident or death. <span class="hl">Shigeru&rsquo;s death is conveyed through a surfboard left on the sand</span>: opaque, but decisive. Vlasov reads the same logic as a general editing principle: Kitano <span class="hl">removes the decisive moment</span> and shows only cause and result, so that the event feels like something already settled in advance. <span class="cite">(Vlasov 2024, 122)</span></li>
             <li>Many scenes featuring events unrelated to the main story are present. These scenes depict bustling activity and commotion that contrast sharply with the quietude of Shigeru and Takako. There are also scenes in which the boisterous characters seem to watch over, and perhaps even admire, the deaf couple: when they gaze at them, they become quiet and composed like the couple. The contrast <span class="hl">accentuates the quietness and stillness of their world</span>.</li>
             <li>There are many scenes with horizontal lines (the horizon, seawalls, etc.), and the movie is also filled with sideways movements, beginning with surfing, and there are abrupt falling movements: surfers into the waves, runners on the beach, a bicycle into the bay, and possibly Shigeru into the sea off screen.</li>
           </ul>
@@ -212,7 +206,8 @@
         <div class="head">Time moves slower for Shigeru and Takako</div>
         <div class="body">
           <ul class="pts">
-            <li>Even though the pace of the movie is slow, time seems to move even slower for Shigeru and Takako. They miss the heat that Shigeru is supposed to compete in while they quietly gaze at the sea. In this slow world, <span class="hl">Kitano&rsquo;s camera often captures Shigeru gazing at the sea, as if he is somehow aware of his destiny to become one with it</span>: not a march toward a destination, but what Japanese critics have called an <span class="hl">&ldquo;unconscious gait toward fate.&rdquo;</span></li>
+            <li>Even though the pace of the movie is slow, time seems to move even slower for Shigeru and Takako. They miss the heat that Shigeru is supposed to compete in while they quietly gaze at the sea. In this slow world, <span class="hl">Kitano&rsquo;s camera often captures Shigeru gazing at the sea, as if he is somehow aware of his destiny to become one with it</span>: not a march toward a destination, but an <span class="hl">unconscious gait toward fate</span>.</li>
+            <li>The missed heat is not a small joke. Vlasov uses the same scene to show how information travels in this film: we never see the disqualification. Shigeru sits on the beach watching the other entrants, and only in the following scene, <span class="hl">through the small talk of surfers he knows</span>, do we learn that he failed to hear his name called and was disqualified. <span class="cite">(Vlasov 2024, 25)</span></li>
             <li>My favorite scene is the one where Takako is facing a man doing the Radio Calisthenics, which is traditionally accompanied by its special music. A radio is beside the man, but it is silent (only the film&rsquo;s background music is playing). The audience perceives the scene as Takako would: <span class="hl">for her, calisthenics are always soundless</span>. Kitano momentarily places us in Takako&rsquo;s world, leading us to experience her silent world unconsciously.</li>
             <li>It is also a cinematic narrative that impresses upon us the quiet world in which the two live. The calisthenics man is protective of them, and he says to Shigeru, &ldquo;Surfing? Be careful!&rdquo; This scene may also foreshadow Shigeru&rsquo;s fate. Takako&rsquo;s solitude on the beach while Shigeru is surfing frequently appears on screen, giving us a sense of Shigeru&rsquo;s impending absence. As the film progresses, <span class="hl">Takako&rsquo;s smiles on the beach completely disappear, as if she knows that her time with Shigeru is limited</span>.</li>
           </ul>
@@ -223,13 +218,17 @@
         </div>
       </div>
 
+      <!-- NOTE: the two blockquotes previously attributed to Kitano himself ("I wanted to show
+           everything through images..." and "a blue sky, a blue ocean, and a black wetsuit...")
+           could not be located in Vlasov 2024 or in Gerow, Kitano Takeshi (BFI, 2007), p. 94.
+           They have been replaced with sourced quotations. Restore them only with a real citation. -->
       <div class="block">
-        <div class="head">Kitano on his own style: showing, not explaining</div>
+        <div class="head">Showing, not explaining</div>
         <div class="body">
-          <p class="small">Kitano has frequently made statements to the following effect regarding this film:</p>
+          <p class="small">On what the actor is doing in such a shot:</p>
           <blockquote class="quote">
-            &ldquo;In places where you&rsquo;d normally use dialogue to explain, I wanted to show everything through images. I wanted to create space for the audience to imagine: &lsquo;What are these two people thinking?&rsquo;&rdquo;
-            <span class="src">&mdash; Takeshi Kitano</span>
+            &ldquo;The actor does not simply refrain from acting; he becomes a presence that merely &lsquo;exists&rsquo; within the frame, and is furthermore &lsquo;confined&rsquo; within a shot longer than a standard static one. By this means the audience is able not only to see the protagonist&rsquo;s solitude and alienation but to feel it.&rdquo;
+            <span class="src">&mdash; Vlasov 2024, 126 (my translation)</span>
           </blockquote>
         </div>
       </div>
@@ -242,8 +241,8 @@
         <div class="head">Visual motifs: walking, the surfboard, the color blue</div>
         <div class="body">
           <ul class="pts">
-            <li>A feature frequently noted in Japanese critical discourse is Kitano&rsquo;s repeated use of shots in which characters <span class="hl">simply walk in a horizontal direction</span>. While this has been likened to the style of Ozu Yasujiro, in Kitano&rsquo;s case the composition is celebrated not as a &ldquo;march toward a destination&rdquo; but as an <span class="hl">&ldquo;unconscious gait toward fate.&rdquo;</span> In <em>A Scene at the Sea</em>, the repeated lateral tracking of shots in which the protagonists carry their surfboards functions <span class="hl">not as narrative exposition but as purely cinematic movement in its own right</span>.</li>
-            <li>Images of Shigeru and Takako carrying a surfboard are shown frequently enough to establish a cinematic theme. The two boys who imitate Shigeru hold a surfboard in a similar way, doubling the image and enhancing its impact. After Shigeru is gone, the two boys each hold a surfboard separately, which emphasizes a change and highlights Shigeru&rsquo;s absence by manipulating the visual motif (two are carrying one board or one each). In the final montage sequence, <span class="hl">Takako is in the front, whereas Shigeru always carried the surfboard in the front before. She also gets on a surfboard (with Shigeru on the screen as a fragment of Takako's memory or as a ghost).</span> By placing Takako in Shigeru&rsquo;s position, Kitano effectively translates a sense of change onto the screen through visible images. Now, Takako will live her life.</li>
+            <li>A feature frequently noted in Japanese critical discourse is Kitano&rsquo;s repeated use of shots in which characters <span class="hl">simply walk in a horizontal direction</span>. While this has been likened to the style of Ozu Yasujiro, in Kitano&rsquo;s case the composition is celebrated not as a &ldquo;march toward a destination&rdquo; but as an <span class="hl">&ldquo;unconscious gait toward fate.&rdquo;</span> In <em>A Scene at the Sea</em>, the repeated lateral tracking of shots in which the protagonists carry their surfboards functions <span class="hl">not as narrative exposition but as purely cinematic movement in its own right</span>. Vlasov counts many such shots in which the character is simply walking and the story does not advance at all. <span class="cite">(Vlasov 2024, 42)</span></li>
+            <li>Images of Shigeru and Takako carrying a surfboard are shown frequently enough to establish a cinematic theme. The two boys who imitate Shigeru hold a surfboard in a similar way, doubling the image and enhancing its impact. After Shigeru is gone, the two boys each hold a surfboard separately, which emphasizes a change and highlights Shigeru&rsquo;s absence by manipulating the visual motif (two are carrying one board or one each). In the final montage sequence, <span class="hl">Takako is in the front, whereas Shigeru always carried the surfboard in the front before. She also gets on a surfboard (with Shigeru on the screen as a fragment of Takako&rsquo;s memory or as a ghost).</span> By placing Takako in Shigeru&rsquo;s position, Kitano effectively translates a sense of change onto the screen through visible images. Now, Takako will live her life.</li>
             <li>The color blue (<span class="hl">Kitano blue</span>) is omnipresent, seen in the sea, sky, and even the garbage truck. This pervasive blue creates a sense of a slow, quiet summer day by the sea. The interplay of color, silence, and slow speed melds into a cohesive cinematic narrative about the silent world of Shigeru and Takako.</li>
             <li>This movie provides a good example of how <span class="hl">even seemingly unrelated elements can enhance the effectiveness of cinematic expression</span>.</li>
           </ul>
@@ -261,12 +260,149 @@
       </div>
 
       <div class="block">
-        <div class="head">Kitano on his own style: enough to sustain the frame</div>
+        <div class="head">The closing long take</div>
+        <div class="body">
+          <p class="small">Takako walking toward the sea runs 1 minute 23 seconds. Vlasov sets it beside the famous opening of <em>Touch of Evil</em> (1958), which at 3 minutes 43 seconds is nearly three times longer and yet feels shorter:</p>
+          <blockquote class="quote">
+            &ldquo;In <em>A Scene at the Sea</em> the camera does not move, the shot is filmed in long shot, and the actress&rsquo;s action within the frame does not push the story forward (she is only walking toward the sea), so the shot comes to feel like a photograph. Its effect is to stretch time and to create a meditative atmosphere.&rdquo;
+            <span class="src">&mdash; Vlasov 2024, 42 (my translation)</span>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 4 (NEW) ===== -->
+    <section class="slide">
+      <div class="frametitle">No dramatic skeleton: the story as fragments</div>
+      <div class="alertblock">
+        <div class="head">What happens, and why that is the point</div>
+        <div class="body">
+          <ul class="pts">
+            <li>Vlasov&rsquo;s summary of the film is deliberately flat, because the film offers nothing else to report: a garbage collector is drawn to the sea, finds a surfboard by chance, resolves to change his life, devotes his free time to surfing, makes friends among the surfers, wins a competition, and dies while surfing. <span class="cite">(Vlasov 2024, 20)</span></li>
+            <li>Measured against conventional narrative cinema, the film is composed of <span class="hl">&ldquo;scraps&rdquo; of plot with almost no causal link between scenes</span>. Kitano&rsquo;s films of this period give the impression of separate short films assembled side by side. <span class="cite">(Vlasov 2024, 20&ndash;21)</span></li>
+            <li>Two remarks by the critic <span class="hl">Yamane Sadao</span>, quoted by Vlasov, set the terms for the whole week.</li>
+          </ul>
+
+          <blockquote class="quote">
+            &ldquo;As for the story, it amounts to no more than a young man working part-time on a garbage truck who picks up a broken surfboard and becomes absorbed in surfing; there is nothing that could properly be called a plot.&rdquo;
+            <span class="src">&mdash; Yamane Sadao (1990&ndash;1999 reviews, 85), quoted in Vlasov 2024, 21</span>
+          </blockquote>
+
+          <blockquote class="quote">
+            &ldquo;Both in the unfolding of the story and in the individual scenes, everything that would ordinarily count as dramatic has been stripped away.&rdquo;
+            <span class="src">&mdash; Yamane Sadao (1990&ndash;1999 reviews, 159), quoted in Vlasov 2024, 21</span>
+          </blockquote>
+
+          <p class="small"><strong>Discussion:</strong> if nothing is dramatized, what holds our attention for ninety minutes? Rhythm, repetition of images, and the sea itself are the candidates worth testing against the film.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 5 (NEW) ===== -->
+    <section class="slide">
+      <div class="frametitle">Solitude: given, not caused</div>
+      <div class="alertblock">
+        <div class="head">Deafness as the exception that shows the rule</div>
+        <div class="body">
+          <ul class="pts">
+            <li>Shigeru treats the sea as the one thing that matters and holds to it to the end, <span class="hl">even though his employer and Takako both support him</span>. His deafness cuts him off physically as well as socially, so the isolation is doubled. <span class="cite">(Vlasov 2024, 124)</span></li>
+            <li>But Vlasov&rsquo;s claim is that this scripted motivation is unusual for Kitano, not typical of him. Most of his films offer no explanation at all.</li>
+          </ul>
+
+          <blockquote class="quote">
+            &ldquo;The characters in Kitano&rsquo;s films are indifferent to external stimulus, and give the impression of having been solitary from birth. Solitude in Kitano&rsquo;s cinema can therefore be said to be ontological, that is, existential, in nature. In films such as <em>BROTHER</em> and <em>A Scene at the Sea</em>, the characters&rsquo; solitude is accounted for by elements of the screenplay, such as a hearing impairment or a language barrier, whereas in the great majority of Kitano&rsquo;s films no such explanatory element is present at all. Whether they are alone in a scene or surrounded by friends, they are always depicted as beings made to feel their solitude.&rdquo;
+            <span class="src">&mdash; Vlasov 2024, 125&ndash;126 (my translation)</span>
+          </blockquote>
+
+          <ul class="pts">
+            <li>Solitude, on this reading, is not a narrative element but <span class="hl">&ldquo;a central concept that defines the very existence of the characters&rdquo;</span>. <span class="cite">(Vlasov 2024, 125)</span></li>
+            <li><strong>Question for us:</strong> does the film&rsquo;s deafness therefore <em>explain</em> Shigeru, or does it merely give the audience a permissible reason for a solitude Kitano would have staged anyway?</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 6 (NEW) ===== -->
+    <section class="slide">
+      <div class="frametitle">Fate, and the ending we are not shown</div>
+      <div class="alertblock">
+        <div class="head">&ldquo;Kitano&rsquo;s characters have no interest in life. For them death holds no fear.&rdquo; <span class="cite" style="color:#cfe0ec;font-weight:400">(Vlasov 2024, 121)</span></div>
+        <div class="body">
+          <ul class="pts">
+            <li>Shigeru pays no attention to his job, and we are never told what he would do if dismissed. &ldquo;This is a film in which Shigeru tries to connect with the sea, and his death is the natural result of that.&rdquo; <span class="cite">(Vlasov 2024, 121)</span></li>
+            <li>Vlasov then raises a hypothesis, and marks its weakness himself, which is why it is worth putting to the class rather than settling.</li>
+          </ul>
+
+          <blockquote class="quote">
+            &ldquo;Why should Shigeru, who by the final part of the film has become a skilled surfer, lose his life in so calm a sea? One hypothesis is that he was driven by an impulse to become one, for ever, with the sea he revered, and took his own life. To accept such a hypothesis is closer to treating a wish as a reality. &hellip; Given the obsessive love for the sea the film depicts, it may be inferred that even if someone had warned him he had almost no chance of surviving that day, he would probably have taken the risk and gone in.&rdquo;
+            <span class="src">&mdash; Vlasov 2024, 121&ndash;122 (my translation)</span>
+          </blockquote>
+
+          <ul class="pts">
+            <li>Elsewhere he puts it more flatly: Shigeru is <span class="hl">&ldquo;progressively infected by a fanatical attachment to the sea,&rdquo;</span> never shows any sign of fearing it, and has even stopped going to work, so that his death is <span class="hl">&ldquo;the logical conclusion of this fervour.&rdquo;</span> <span class="cite">(Vlasov 2024, 65)</span></li>
+            <li><strong>How fate is filmed, not stated:</strong> the shot begins seconds before a character enters and holds after they leave, so that the world visibly does not need them. Vlasov calls this the <span class="hl">empty frame</span>. Combined with cause-and-result editing that deletes the decisive moment, it makes events feel settled in advance. <span class="cite">(Vlasov 2024, 122)</span></li>
+            <li>The effect Kitano is after is not tragedy but what Schrader calls <span class="hl">resigned sadness</span>: an irreversible outcome the audience has expected from the opening. <span class="cite">(Vlasov 2024, 66, 123)</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 7 (NEW) ===== -->
+    <section class="slide">
+      <div class="frametitle">The means: performance, shot, dialogue</div>
+
+      <div class="alertblock">
+        <div class="head">Acting: the actor as &ldquo;model&rdquo;</div>
         <div class="body">
           <blockquote class="quote">
-            &ldquo;If you have a blue sky, a blue ocean, and a black wetsuit, that&rsquo;s enough to sustain the frame.&rdquo;
-            <span class="src">&mdash; Takeshi Kitano</span>
+            &ldquo;The characters in Kitano&rsquo;s films look like mannequins; they are close to the actor as &lsquo;model&rsquo; in Bresson&rsquo;s sense. In <em>A Scene at the Sea</em>, for instance, there are two scenes in which Takako sheds tears. What the audience sees, however, is no more than a single tear running down her cheek: no expression of sadness or suffering can be seen at all, and her face remains impassive.&rdquo;
+            <span class="src">&mdash; Vlasov 2024, 126 (my translation)</span>
           </blockquote>
+          <p class="small">Suppressed expression lowers the dramatic register and redirects attention from momentary feeling to bodily reaction and attitude. Characters who show nothing and take part in nothing become <span class="hl">bystanders in their own story</span>, watching it much as we do. <span class="cite">(Vlasov 2024, 126)</span></p>
+        </div>
+      </div>
+
+      <div class="cols">
+        <div class="block">
+          <div class="head">Shots: how long is long</div>
+          <div class="body">
+            <div class="figrow">
+              <span class="fig"><span class="n">14</span><span class="l">shots over 30 seconds</span></span>
+              <span class="fig"><span class="n">4</span><span class="l">shots over one minute</span></span>
+              <span class="fig"><span class="n">1:23</span><span class="l">closing take, Takako walking to the sea</span></span>
+            </div>
+            <p class="small">All of them static, with nothing happening that advances the story or reveals character through action. The film ends on a long static shot of a figure filmed from behind, motionless, looking at the sea. <span class="cite">(Vlasov 2024, 42, 66)</span></p>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="head">Dialogue: how sparse is sparse</div>
+          <div class="body">
+            <div class="figrow">
+              <span class="fig"><span class="n">~280</span><span class="l"><em>A Scene at the Sea</em></span></span>
+              <span class="fig"><span class="n">~1,300</span><span class="l"><em>Seven Samurai</em> (1954)</span></span>
+              <span class="fig"><span class="n">~1,550</span><span class="l"><em>Pretty Woman</em> (1990)</span></span>
+            </div>
+            <p class="small">An ordinary drama runs 1,000 to 1,700 lines; <em>Battles Without Honor and Humanity</em> (1973) has about 1,080. Most of what is spoken here is small talk by supporting characters. In <em>HANA-BI</em>, Miyuki is on screen some twenty-five minutes and says two words, &ldquo;thank you&rdquo; and &ldquo;I&rsquo;m sorry.&rdquo; <span class="cite">(Vlasov 2024, 25)</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SOURCES ===== -->
+    <section class="slide">
+      <div class="frametitle">Sources</div>
+      <div class="block">
+        <div class="head">Works cited</div>
+        <div class="body">
+          <ul class="refs">
+            <li>Vlasov Sergei. <em>Kitano Takeshi eigaron: sono sutairu to enshutsu gih&#333;</em> <span class="cjk">北野武映画論 ～そのスタイルと演出技法～</span> [On the cinema of Kitano Takeshi: style and directorial technique]. PhD diss., Nihon University Graduate School of Art, 2024. Cited as <span class="cite">Vlasov 2024</span>; all translations from the Japanese are mine.</li>
+            <li>Yamane Sadao <span class="cjk">山根貞男</span>. <em>Nihon eiga jihy&#333; sh&#363;sei 1990&ndash;1999</em> <span class="cjk">日本映画時評集成 1990-1999</span>. Tokyo: Kokusho Kank&#333;kai, 2018. Pages 85 and 159, quoted in Vlasov 2024, 21.</li>
+            <li>Gerow, Aaron. <em>Kitano Takeshi</em>. London: British Film Institute, 2007.</li>
+            <li>Schrader, Paul. <em>Transcendental Style in Film: Ozu, Bresson, Dreyer</em>. Cited by Vlasov in the Japanese translation by Yamamoto Kikuo (Film Art, 1981).</li>
+            <li>Bresson, Robert. <em>Notes on the Cinematograph</em>, on the actor as &ldquo;model,&rdquo; cited by Vlasov 2024, 126.</li>
+          </ul>
+          <p class="small">Frame captures from <em>A Scene at the Sea</em> (Kitano Takeshi, 1991) are used for classroom analysis and discussion.</p>
         </div>
       </div>
     </section>
@@ -277,7 +413,7 @@
     <span class="who">JPN/FST 266 &mdash; Prof. Tomoyuki Yabe</span>
     <span class="nav">
       <button id="prev" aria-label="Previous slide">&larr; Prev</button>
-      <span class="count" id="count">1 / 5</span>
+      <span class="count" id="count">1 / 10</span>
       <button id="next" aria-label="Next slide">Next &rarr;</button>
       <button id="fs" aria-label="Toggle fullscreen">&#9974; Full</button>
     </span>
