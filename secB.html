@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FST/JPN 266 Sec B — Class Group Shuffler</title>
+<style>
+  :root {
+    --navy: #1c3d5a;
+    --blue: #2f6690;
+    --orange: #e8871e;
+    --grey: #6b7280;
+    --bg: #f7f9fb;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--navy);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    min-height: 100vh;
+  }
+  h1 {
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  p.course {
+    color: var(--blue);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 13px;
+    margin: 0 0 6px 0;
+  }
+  p.sub {
+    color: var(--grey);
+    font-style: italic;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  #members {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 800px;
+    margin-bottom: 26px;
+  }
+  .chip {
+    background: white;
+    border: 1px solid #dbe2ea;
+    border-radius: 16px;
+    padding: 5px 12px;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--blue);
+  }
+  button {
+    background: var(--orange);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 32px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    transition: transform 0.1s ease;
+  }
+  button:hover { transform: scale(1.04); }
+  button:active { transform: scale(0.97); }
+
+  #results {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 36px;
+    width: 100%;
+    max-width: 1000px;
+  }
+  .group-card {
+    background: white;
+    border-radius: 14px;
+    padding: 18px 22px;
+    min-width: 150px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    border-top: 6px solid var(--blue);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.4s ease forwards;
+  }
+  .group-card:nth-child(2) { border-top-color: var(--orange); }
+  .group-card:nth-child(3) { border-top-color: #4caf50; }
+  .group-card:nth-child(4) { border-top-color: #9c27b0; }
+  .group-card:nth-child(5) { border-top-color: #e91e63; }
+  .group-card:nth-child(6) { border-top-color: #009688; }
+  .group-card h2 {
+    margin: 0 0 12px 0;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--grey);
+  }
+  .group-card .names {
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.7;
+    color: var(--navy);
+  }
+  @keyframes fadeIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<p class="course">FST/JPN 266 Sec B</p>
+<h1>Class Group Shuffler</h1>
+<p class="sub">Click to randomly split the class into 6 groups</p>
+
+<div id="members"></div>
+
+<button onclick="shuffleGroups()">Shuffle</button>
+
+<div id="results"></div>
+
+<script>
+  const MEMBERS = [
+    "M. A.", "B. B.", "G. B.", "C. B.", "M. B.", "A. B.", "W. C.",
+    "K. D.", "M. D.", "J. D.", "S. E.", "E. E.", "O. F.", "R. F.",
+    "C. G.", "M. G.", "J. K.", "A. L.", "E. M.", "R. M.", "O. O.",
+    "B. Pa.", "J. P.", "B. Po.", "Z. P.", "J. Q.", "S. R.", "L. R.",
+    "P. R.", "G. R.", "E. S.", "M. S.", "L. S.", "J. W.", "N. Y."
+  ];
+  const NUM_GROUPS = 6;
+
+  function renderMembers() {
+    const container = document.getElementById("members");
+    container.innerHTML = MEMBERS.map(n => `<div class="chip">${n}</div>`).join("");
+  }
+
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function shuffleGroups() {
+    const shuffled = shuffle(MEMBERS);
+    const total = shuffled.length;
+    const base = Math.floor(total / NUM_GROUPS);
+    const remainder = total % NUM_GROUPS;
+
+    const groups = [];
+    let idx = 0;
+    for (let g = 0; g < NUM_GROUPS; g++) {
+      const size = base + (g < remainder ? 1 : 0);
+      groups.push(shuffled.slice(idx, idx + size));
+      idx += size;
+    }
+
+    const resultsEl = document.getElementById("results");
+    resultsEl.innerHTML = groups.map((grp, i) => `
+      <div class="group-card">
+        <h2>Group ${i + 1}</h2>
+        <div class="names">${grp.join("<br>")}</div>
+      </div>
+    `).join("");
+  }
+
+  renderMembers();
+  shuffleGroups();
+</script>
+
+</body>
+</html>
