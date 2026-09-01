@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Early Summer (1951) 麦秋 — Yasujiro Ozu (expanded with Hasumi 2024) | JPN/FST 266</title>
+<style>
+  :root{
+    --indigo-deep:#2c4a6b;     /* block title bar (Ozu indigo) */
+    --indigo-mid:#7a96b3;      /* lighter accents */
+    --indigo-body:#f4ede0;     /* block body bg (tatami cream) */
+    --alert-bar:#1e3552;       /* alertblock title bar (deeper indigo) */
+    --alert-body:#faf3e2;      /* alertblock body bg */
+    --hl:#b85c2a;              /* persimmon for \red emphasis */
+    --ink:#2a221a;
+    --muted:#6b5f4f;
+    --bar:#3a5575;             /* footer / header bars */
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:#c9b896;
+    color:var(--ink);
+    font-family:"Hoefler Text",Georgia,"Times New Roman","Yu Mincho","Hiragino Mincho ProN",serif;
+    -webkit-font-smoothing:antialiased;
+    display:flex;align-items:center;justify-content:center;
+  }
+  ruby,.cjk{font-family:"Yu Gothic","Hiragino Kaku Gothic ProN","Hiragino Sans","MS Gothic",inherit;}
+
+  #deck{width:100%;max-width:1040px;height:100vh;display:flex;flex-direction:column;}
+  .topbar{
+    background:var(--bar);color:#fff;font-size:15px;letter-spacing:.02em;
+    padding:6px 16px;display:flex;justify-content:space-between;align-items:center;
+    font-family:Georgia,serif;
+  }
+  .topbar .t-title{opacity:.95}
+  .topbar .t-sec{opacity:.8;font-style:italic}
+
+  .stage{flex:1;overflow:auto;background:#fff;}
+  .slide{display:none;padding:26px 34px 30px;min-height:100%;}
+  .slide.active{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:.35}to{opacity:1}}
+
+  h1.deck-title{font-size:36px;line-height:1.25;margin:0 0 6px;color:var(--indigo-deep);text-align:center}
+  .frametitle{font-size:28px;color:var(--indigo-deep);margin:2px 0 14px;font-weight:600;border-bottom:2px solid var(--indigo-mid);padding-bottom:6px}
+
+  .title-slide{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%;gap:4px}
+  .title-slide .sub{font-size:22px;color:var(--ink);margin-top:18px}
+  .title-slide .inst{font-size:19px;color:var(--muted);font-style:italic}
+  .title-slide .date{font-size:19px;color:var(--muted);margin-top:10px}
+  .title-slide .badge{margin-top:26px;font-size:14px;color:var(--muted);font-family:Georgia,serif;
+    border:1px solid var(--indigo-mid);border-radius:20px;padding:4px 14px}
+
+  .block,.alertblock{border-radius:6px;overflow:hidden;margin:0 0 14px;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+  .block>.head{background:var(--indigo-deep);color:#fff;padding:7px 14px;font-size:19px;font-weight:600}
+  .block>.body{background:var(--indigo-body);padding:12px 16px}
+  .alertblock>.head{background:var(--alert-bar);color:#fff;padding:7px 14px;font-size:19px;font-weight:600}
+  .alertblock>.body{background:var(--alert-body);padding:12px 16px}
+
+  .lead{font-size:18px;line-height:1.5;margin:0 0 8px}
+  ul.pts,ol.pts{margin:6px 0 4px;padding-left:22px}
+  ul.pts>li,ol.pts>li{font-size:17.5px;line-height:1.5;margin-bottom:9px}
+  .small{font-size:16px;line-height:1.5}
+
+  .hl{color:var(--hl)}
+  .cite{color:var(--muted);font-style:italic;white-space:nowrap}
+  em{font-style:italic}
+
+  .imgrow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+  .imgrow img{height:200px;width:auto;border:1px solid #d0c4a8;border-radius:3px;background:#eee;object-fit:cover}
+  .imgrow.small img{height:150px}
+  .imgrow.wide img{height:auto;max-width:100%}
+
+  .twocol{display:flex;gap:14px;align-items:flex-start}
+  .twocol .col-text{flex:1 1 70%;min-width:0}
+  .twocol .col-img{flex:0 0 26%;display:flex;justify-content:center;align-items:center}
+  .twocol .col-img img{max-width:100%;height:auto;border:1px solid #d0c4a8;border-radius:3px}
+
+  blockquote.quote{
+    margin:8px 0;padding:6px 14px;
+    border-left:4px solid var(--indigo-mid);
+    background:#fbf5e7;
+    color:var(--ink);font-style:italic;
+    font-size:17.5px;line-height:1.55;
+  }
+  blockquote.quote .src{display:block;margin-top:4px;font-size:14.5px;color:var(--muted);font-style:italic;text-align:right}
+
+  .intro .lead,
+  .intro p{font-size:21px;line-height:1.6;margin:0 0 12px}
+  .intro ul{margin:10px 0 6px;padding-left:24px}
+  .intro ul li{font-size:21px;line-height:1.6;margin-bottom:16px}
+  .intro .small{font-size:19px;line-height:1.6}
+
+  .controls{background:var(--bar);color:#fff;display:flex;align-items:center;justify-content:space-between;
+    padding:7px 14px;font-family:Georgia,serif;font-size:15px}
+  .controls .who{opacity:.9}
+  .controls .nav{display:flex;align-items:center;gap:8px}
+  .controls button{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.4);
+    border-radius:5px;padding:5px 13px;font-size:15px;cursor:pointer;font-family:inherit}
+  .controls button:hover{background:rgba(255,255,255,.30)}
+  .controls .count{min-width:54px;text-align:center}
+
+  @media print{
+    body{background:#fff}
+    #deck{max-width:none;height:auto}
+    .topbar,.controls{display:none}
+    .stage{overflow:visible}
+    .slide{display:block !important;page-break-after:always;min-height:0}
+  }
+</style>
+</head>
+<body>
+<div id="deck">
+
+  <div class="topbar">
+    <span class="t-title">JPN/FST 266 &mdash; Early Summer (1951) <span class="cjk">麦秋</span></span>
+    <span class="t-sec">Yasujiro Ozu - 小津安二郎 &middot; expanded with Hasumi 2024</span>
+  </div>
+
+  <div class="stage" id="stage">
+
+    <!-- ===== TITLE ===== -->
+    <section class="slide active">
+      <div class="title-slide">
+        <h1 class="deck-title">Week 03: Early Summer (1951)<br>
+          <ruby>麦秋<rt>bakushu</rt></ruby> by Yasujiro Ozu</h1>
+        <div class="sub">JPN/FST 266 &mdash; Prof. Tomoyuki Yabe</div>
+        <div class="inst">GRAMELAC, Miami Univ. / <span class="cjk">マイアミ大学</span></div>
+        <div class="date">Fall 2025</div>
+        <div class="badge">Slides annotated with Hasumi, <em>Directed by Yasujiro Ozu</em> (UC Press 2024): PROLOGUE &amp; HOLDING STILL</div>
+      </div>
+    </section>
+
+    <!-- ===== INTRO ===== -->
+    <section class="slide intro">
+      <div class="frametitle">Introduction</div>
+      <div class="alertblock">
+        <div class="head">Why <em>Early Summer</em>, and why read it with Hasumi?</div>
+        <div class="body">
+          <p><em>Early Summer</em> (1951, <span class="cjk">麦秋</span>) is usually regarded as the film in which Ozu&rsquo;s style is most fully realized. We use it as a case study, paired with Shigehiko Hasumi&rsquo;s <em>Directed by Yasujiro Ozu</em> (UC Press, 2024), to shift the question from <span class="hl">&ldquo;what is Ozu&rsquo;s style?&rdquo;</span> to <span class="hl">&ldquo;what does that style reveal about cinema itself?&rdquo;</span></p>
+          <p>Hasumi&rsquo;s claim runs through the whole session: <span class="hl">cinema has no &ldquo;grammar,&rdquo; only limits</span>, the things it physically cannot show. Most films stay watchable by <span class="hl">concealing</span> those limits; Ozu instead <span class="hl">exposes</span> them, which is why Hasumi calls him <span class="hl">&ldquo;among the freest of filmmakers&rdquo;</span> <span class="cite">(HS, p.&nbsp;151)</span>. His constraint is not poverty of expression but freedom from the obligation to hide.</p>
+        </div>
+      </div>
+      <div class="block">
+        <div class="head">What this session traces</div>
+        <div class="body">
+          <ul>
+            <li><span class="hl">The obsessions, reframed</span> &mdash; space (low camera, frames within frames), people (centered figures, crossing the 180&deg; line), and time (no fades; finches and clocks as indices of what cinema cannot record).</li>
+            <li><span class="hl">The eye vs. the look</span> &mdash; the camera captures eyes but never the gaze itself, and Ozu&rsquo;s &ldquo;off&rdquo; conversation cuts lay this limit bare instead of papering over it.</li>
+            <li><span class="hl">Holding still</span> &mdash; the lyricism of parallel gazes at an offscreen object, the camera placed on a moving body, and the family photograph that quietly stages separation and death.</li>
+            <li><span class="hl">Watching differently</span> &mdash; &ldquo;things Ozuesque&rdquo; as social reassurance vs. actually <em>seeing</em> the films, with kindred auteurs (Semb&egrave;ne, Akerman, Kaurism&auml;ki (my list); etc.) as an extension.</li>
+          </ul>
+          <p class="small">Throughline: <span class="hl">constraint as freedom</span>, and what Hasumi calls <span class="hl">&ldquo;movement in stasis&rdquo;</span> <span class="cite">(P, p.&nbsp;5)</span> &mdash; learning to watch a film as more than the &ldquo;space between events.&rdquo;</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 1: obsession with aesthetics ===== -->
+    <section class="slide">
+      <div class="frametitle">Ozu&rsquo;s obsession with his aesthetics</div>
+      <div class="alertblock">
+        <div class="head">Ozu&rsquo;s stylistic approaches:</div>
+        <div class="body">
+          <p class="lead"><em>Early Summer</em> was directed by Yasujiro Ozu in 1951. We can see Ozu&rsquo;s fully developed style here; it is often considered to have most of his cinematic styles realized in this film.</p>
+          <p class="lead">Hasumi (2024) argues that, far from being a stylist who narrowed his vocabulary, Ozu should be considered <span class="hl">&ldquo;among the freest of filmmakers&rdquo;</span> precisely because <span class="hl">he devotes himself to constraint and in doing so makes the limits of cinema itself conspicuous</span> <span class="cite">(HS, p.&nbsp;151)</span>. What he &ldquo;sacrificed&rdquo; were not means of self-expression but the constraints cinema imposes <span class="cite">(HS, p.&nbsp;151)</span>.</p>
+        </div>
+      </div>
+      <div class="block">
+        <div class="head">Ozu&rsquo;s aesthetic styles:</div>
+        <div class="body">
+          <p class="lead">Ozu is known for his stylistic obsessions about how things are placed on the screen.</p>
+          <ol class="pts">
+            <li>The <span class="hl">low placement of the camera</span>, as if the observer were sitting on a tatami mat with the character in the movie.</li>
+            <li>The characters in conversation are placed in the center of the shot in a uniform manner, disregarding the Hollywood grammar (the imaginary line for the camera placement).</li>
+            <li>Ozu&rsquo;s film has many shots but no fadeout effects to suggest the passing of time. Ozu uses regular shots of things to indicate this.</li>
+            <li>The famous Koinobori sequence (fish banners): we just don&rsquo;t know what is going on (and the bride procession: they say they see it, but where is it?).</li>
+          </ol>
+          <p class="small">Hasumi calls the underlying logic <span class="hl">&ldquo;movement in stasis&rdquo;</span>: a shot may appear static, but its plurality of elements <span class="hl">&ldquo;might at any moment bring stark tensions to life, slicing at the eye or disorienting the look&rdquo;</span> <span class="cite">(P, p.&nbsp;5)</span>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAMES 2-4 MERGED: aesthetic styles (space, people, time) ===== -->
+    <section class="slide">
+      <div class="frametitle">Ozu&rsquo;s aesthetic styles: space, people, time</div>
+      <p class="lead">Ozu is known for his stylistic obsessions about how things are placed on the screen.</p>
+
+      <div class="block">
+        <div class="head">1. Space</div>
+        <div class="body">
+          <ul class="pts">
+            <li><span class="hl">The low placement of the camera</span>, as if the observer were sitting on a tatami mat with the character in the movie. The soles of the actors&rsquo; feet are shown; it is said Ozu made sure they were freshly white tabi (Japanese socks).</li>
+            <li>Ozu also seems to enjoy <span class="hl">creating frames within the screen frame</span>. In the living room below, two sets of sliding paper walls and a set of paper blinds create a three-layered frame; he often uses anything available in each scene to construct these space-frames.</li>
+          </ul>
+          <div class="imgrow small">
+            <img src="ozu_items/05.jpg" alt="Ozu space frame 05">
+            <img src="ozu_items/06.jpg" alt="Ozu space frame 06">
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="head">2. People</div>
+        <div class="body">
+          <ul class="pts">
+            <li>The characters are placed in the <span class="hl">center of the shot in a uniform manner</span>, disregarding how the conversation is depicted in Hollywood movies of the time (the imaginary line that the observer would not cross over).</li>
+            <li>Hasumi notes this was <span class="hl">a deliberate policy</span>, not an oversight: Ozu&rsquo;s editor Yoshiyasu Hamamura is known to have raised the 180-degree-rule issue with him, but Ozu did not change course <span class="cite">(HS, p.&nbsp;154)</span>. As Truffaut put it, the cuts <span class="hl">&ldquo;give an impression of being strangely off&rdquo;</span> <span class="cite">(HS, p.&nbsp;153)</span>.</li>
+          </ul>
+          <div class="imgrow small">
+            <img src="ozu_items/201.jpg" alt="Ozu centered people 202">
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="head">3. Time</div>
+        <div class="body">
+          <ul class="pts">
+            <li>Ozu&rsquo;s film has many shots but <span class="hl">no fadeout effects to suggest the passing of time</span>. In <em>Bakushu</em>, Ozu uses shots of finches in a cage instead.</li>
+            <li>Hasumi reminds us that <span class="hl">time itself, as the flow of duration, is something cinema cannot record</span> <span class="cite">(HS, p.&nbsp;152)</span>. The finches, the clock, the wind in branches: these become indirect indices of an invisible subject the camera cannot reach. Where other directors paper over the limit with fades, Ozu lets it show as another image.</li>
+          </ul>
+          <div class="imgrow small">
+            <img src="ozu_items/10.jpg" alt="Ozu finches in cage 10">
+            <img src="ozu_items/11.jpg" alt="Ozu finches in cage 11">
+          </div>
+          <div class="imgrow small" style="align-items:flex-start;margin-top:8px">
+            <figure style="margin:0;text-align:center">
+              <video src="ozu_items/Ozu_canary_cage.mp4" controls preload="metadata" playsinline style="height:200px;width:auto;background:#000;border:1px solid #d0c4a8;border-radius:3px"></video>
+              <figcaption style="font-size:13px;color:#6b5f4f;margin-top:4px">Ozu&rsquo;s device: the caged canary &mdash; <em>Early Summer</em></figcaption>
+            </figure>
+          </div>
+          <p class="small" style="margin-top:12px">By contrast, here are the <span class="hl">conventional devices</span> other filmmakers use to signal the passing of time &mdash; the <span class="hl">dissolve</span> and the <span class="hl">wipe</span> &mdash; the very effects Ozu pointedly avoids:</p>
+          <div class="imgrow small" style="align-items:flex-start;margin-top:8px">
+            <figure style="margin:0;text-align:center">
+              <video src="ozu_items/Citizen_Kane_dissolves.mp4" controls preload="metadata" playsinline style="height:180px;width:auto;background:#000;border:1px solid #d0c4a8;border-radius:3px"></video>
+              <figcaption style="font-size:13px;color:#6b5f4f;margin-top:4px">Dissolves &mdash; <em>Citizen Kane</em> (1941)</figcaption>
+            </figure>
+            <figure style="margin:0;text-align:center">
+              <video src="ozu_items/The_Shining_Dissolves.mp4" controls preload="metadata" playsinline style="height:180px;width:auto;background:#000;border:1px solid #d0c4a8;border-radius:3px"></video>
+              <figcaption style="font-size:13px;color:#6b5f4f;margin-top:4px">Dissolves &mdash; <em>The Shining</em> (1980)</figcaption>
+            </figure>
+            <figure style="margin:0;text-align:center">
+              <video src="ozu_items/Wipes_Star_Wars_4.mp4" controls preload="metadata" playsinline style="height:180px;width:auto;background:#000;border:1px solid #d0c4a8;border-radius:3px"></video>
+              <figcaption style="font-size:13px;color:#6b5f4f;margin-top:4px">Wipes &mdash; <em>Star Wars</em> (1977)</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 5: indifference towards plot continuity ===== -->
+    <section class="slide">
+      <div class="frametitle">4. Ozu&rsquo;s indifference towards the plot continuity: story</div>
+      <div class="block">
+        <div class="head">Ozu&rsquo;s aesthetic styles: where is that?</div>
+        <div class="body">
+          <p class="lead">Ozu is known for his stylistic obsessions. Sometimes he goes beyond the plot continuity in a conventional way.</p>
+          <ul class="pts">
+            <li>The famous <span class="hl">Koinobori sequence</span> (traditional fish banners): we are left uncertain about what is happening. The mother looks to her left, but the open space in the direction of her gaze is never established in the film. The next shot shows Koinobori in the sky. Neither the window in that direction, the Koinobori banners, nor the occasion (Children&rsquo;s Day on May 5th, when the banners are raised for children&rsquo;s well-being) have been introduced into the plot. The scene even feels <span class="hl">eerie</span>.</li>
+            <li>For Hasumi this eeriness is structural rather than incidental. Ozu uses an <span class="hl">offscreen object</span> as a hinge: two figures suddenly fix their eyes on the same point and a lyricism emerges <span class="hl">&ldquo;through the simple gesture of two people fixing their eyes on the same object at the same time&rdquo;</span> <span class="cite">(HS, p.&nbsp;159)</span>. The Koinobori, the bridal procession winding through the fields in <em>Tokyo Story</em>, the balloon in <em>Early Summer</em>: each belongs to this family of unannounced offscreen anchors.</li>
+          </ul>
+          <div class="imgrow">
+            <img src="ozu_items/08.jpg" alt="Ozu Koinobori 08">
+            <img src="ozu_items/07.jpg" alt="Ozu Koinobori 07">
+          </div>
+          <div class="imgrow small" style="align-items:flex-start;margin-top:8px">
+            <figure style="margin:0;text-align:center">
+              <video src="ozu_items/Ozu_koinobori.mp4" controls preload="metadata" playsinline style="height:200px;width:auto;background:#000;border:1px solid #d0c4a8;border-radius:3px"></video>
+              <figcaption style="font-size:13px;color:#6b5f4f;margin-top:4px">The Koinobori sequence &mdash; <em>Early Summer</em></figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 6: Hasumi — no grammar but concealment ===== -->
+    <section class="slide">
+      <div class="frametitle">Hasumi 2024: pp. 149&ndash;158</div>
+      <div class="block">
+        <div class="head">No Grammar, but Concealment of the Limitations</div>
+        <div class="body">
+          <ul class="pts">
+            <li><span class="hl">Cinema does not have a &ldquo;grammar&rdquo;</span> that regulates forms of expression as natural language does. There are no (un)grammatical movies. <span class="hl">It only has limits</span> (physical impossibilities): things that cannot be shown on the screen, and these very limits define what cinema is.</li>
+            <li>Hasumi sharpens the point: a filmmaker has only <span class="hl">three kinds of camerawork available</span> (traveling shot, axis-rotation pan/tilt, static shot), and there are <span class="hl">no absolute principles of editing</span> dictating how they should be joined <span class="cite">(HS, p.&nbsp;150)</span>. Cinema, he writes, is <span class="hl">&ldquo;an environment thoroughly devoid of freedom&rdquo;</span> <span class="cite">(HS, p.&nbsp;150)</span>.</li>
+            <li>Limitations: the events in our reality are perceived in a totality (within the limits of what our senses can perceive). <span class="hl">Events that cinema depicts are always presented with less than we have in the real world, in fragments and always with less information</span>.</li>
+            <li>While conventional films keep the audience &ldquo;successfully&rdquo; entertained, <span class="hl">this does not mean that filmmakers follow a &ldquo;cinematic grammar&rdquo;; they are simply skilled at concealing these limits</span>. The freest of films, conversely, are those <span class="hl">&ldquo;that devote themselves to constraint and that in doing so are able to make the limits of cinema itself conspicuous&rdquo;</span> <span class="cite">(HS, p.&nbsp;151)</span>.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 7: different ways to watch films ===== -->
+    <section class="slide">
+      <div class="frametitle">Different ways to watch films</div>
+      <div class="alertblock">
+        <div class="head">Different ways to watch films:</div>
+        <div class="body">
+          <p>We are somewhat conditioned to believe that <span class="hl">being entertained by a movie often is to perceive it as close to reality</span>. But reality and the reality of cinema are two different kinds. Some film directors achieve that facade by concealing the limitations of cinema.</p>
+          <p><span class="hl">You are the cohort, as well, of this whole facade, or even this reality conspiracy</span>, in that you accept cinema&rsquo;s intention to be realistic without consciously examining it. <span class="hl">Actually the building of this facade cannot be complete without the audience cooperating</span>.</p>
+          <p>It is in a similar way that <span class="hl">we believe there is a standard English, which is actually just the prescriptive grammar</span> we are told to accept as the correct way to talk in school. <span class="hl">But there are many ways to speak English differently. You also unconsciously train yourself in which ways movies are supposed to be watched</span>. But there are many different ways to watch and make movies.</p>
+        </div>
+      </div>
+      <div class="block">
+        <div class="head">Hasumi&rsquo;s Prologue: &ldquo;things Ozuesque&rdquo; vs. seeing the film</div>
+        <div class="body">
+          <ul class="pts">
+            <li>For Hasumi, <span class="hl">&ldquo;things Ozuesque&rdquo;</span> are a <span class="hl">&ldquo;gratuitous lubricant&rdquo;</span>, a risk-free social game of mutual reassurance that <span class="hl">&ldquo;never leads people toward awkward silences or messy disagreements&rdquo;</span> <span class="cite">(P, p.&nbsp;1)</span>. Crucially: <span class="hl">&ldquo;The reason everyone thinks they know Ozu &hellip; is because no one really sees Ozu&rsquo;s films&rdquo;</span> <span class="cite">(P, p.&nbsp;4)</span>.</li>
+            <li>Real watching is what Hasumi calls the <span class="hl">&ldquo;pleasure of erasure&rdquo;</span> reversed: a <span class="hl">&ldquo;bourgeois (wordly or common)  virtue&rdquo;</span> we usually practice keeps the Ozuesque comfortable and the films unseen <span class="cite">(P, p.&nbsp;5)</span>. To look at Ozu seriously is to give that virtue up.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 8: Exposing the Limitations ===== -->
+    <section class="slide">
+      <div class="frametitle">Exposing the Limitations</div>
+      <div class="block">
+        <div class="head">Ozu&rsquo;s Exposure of Cinematic Limitation</div>
+        <div class="body">
+          <ul class="pts">
+            <li>In a sense, <span class="hl">conventional auteurs are constrained by these cinematic limitations</span> and are not free from them. <span class="hl">Ozu, however, exposes cinema&rsquo;s limitations and frees himself from the need to hide them</span>.</li>
+            <li>For example, while <span class="hl">the camera</span> can capture an actor&rsquo;s eyes, it <span class="hl">can never capture the gaze itself, the look their eyes create</span>. <span class="hl">This is a fundamental limitation of cinema</span>. Hasumi calls this the <span class="hl">&ldquo;cruel schism between the eye and the look&rdquo;</span>: the eye is a visible object, but looking is not <span class="cite">(HS, p.&nbsp;152)</span>.</li>
+            <li>Even in a well-crafted conversation scene, the exact eye lines between two people talking to each other cannot be perfectly captured (It is easiler to do so in the real space). <span class="hl">Cinema can only surrender whenever confronted with two sets of eyes looking at each other</span> <span class="cite">(HS, p.&nbsp;156)</span>: spatial simultaneity has to be replaced by temporal succession (a 180&deg; pan, or a shot/reverse shot).</li>
+            <li>As a result, <span class="hl">editing and shooting techniques, such as reverse shots, are designed to conceal this limitation</span>. However, <span class="hl">Ozu&rsquo;s approach seems to expose it</span>. The eeriness we feel when watching the conversation sequences in Ozu&rsquo;s films makes us wonder why that is. This, in turn, makes some of us notice how conversation scenes are constructed in films.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="block">
+        <div class="head">Truffaut on the strange Ozu space</div>
+        <div class="body">
+          <blockquote class="quote">
+            &ldquo;Ordinarily, when using a shot/reverse shot setup to film a conversation &hellip; you cut back and forth from the same side of the subjects. &hellip; But in Ozu films the camera seems to film one character from this side one minute &hellip; and the next minute we cut to the other character filmed from the opposite side. This is not just an impression. It must have been an intentional directorial choice, and it creates the uneasy sensation that, if you were to follow a character&rsquo;s eyeline, there might not be anyone there on the other end, that every time we have a cut, the other person ceases to be there.&rdquo;
+            <span class="src">&mdash; Fran&ccedil;ois Truffaut, interview with Hasumi &amp; Yamada, 1980 (HS, pp.&nbsp;153&ndash;54)</span>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 9: Liberation + Impossibility of Capturing the Gaze ===== -->
+    <section class="slide">
+      <div class="frametitle">Liberation from Limits / The Impossibility of the Gaze</div>
+      <div class="block">
+        <div class="head">Ozu&rsquo;s Liberation from Cinematic Limitations</div>
+        <div class="body">
+          <ul class="pts">
+            <li>Rather than pretending to capture the unattainable gaze on screen by strictly following the imaginary line, Ozu focuses on the actors&rsquo; eyes during conversations, accepting this cinematic impossibility. His interest lies elsewhere. He positions the actors&rsquo; eyes in the same spot on the screen with the same gaze direction (sometimes symmetrically opposite), even as the shots reverse between them. <span class="hl">Ozu creates a compositional pattern based on the characters&rsquo; eyes.</span> He does not try to capture something that is unattainable. He does not even pretend to do so.
+              <div class="imgrow small" style="margin-top:10px">
+                <img src="ozu_items/202.jpg" alt="Ozu eye-line composition 201">
+                <img src="ozu_items/201.jpg" alt="Ozu eye-line composition 202">
+              </div>
+            </li>
+            <li>Hasumi identifies <span class="hl">two fictions</span> Ozu&rsquo;s direct-to-camera staring lays bare <span class="cite">(HS, pp.&nbsp;155&ndash;56)</span>:
+              <ol class="pts">
+                <li>People, <span class="hl">especially Japanese people, do not in everyday life peer into each other&rsquo;s eyes</span> the way Ozu&rsquo;s characters do. The unnaturalness is a <span class="hl">&ldquo;concocted fiction&rdquo;</span>.</li>
+                <li>Cinema itself had to concoct a second fiction because <span class="hl">two sets of eyes meeting cannot be captured in a single static shot</span>. Editing then poses as if mutual eyelines were natural.</li>
+              </ol>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="block">
+        <div class="head">The Impossibility of Capturing the Gaze</div>
+        <div class="body">
+          <ul class="pts">
+            <li>Hasumi (2024: p.&nbsp;156) points out that the reverse shot technique based on the imaginary line was originally developed to <span class="hl">depict psychological convergence in romantic melodramas</span> and to <span class="hl">intensify conflict in action films</span>. It is, ultimately, a cinematic invention. Ozu&rsquo;s reverse shots, organized by screen composition, are also an invention. But his approach is driven by his obsession with compositional organization on the screen, not by dramatization &agrave; la Hollywood.</li>
+            <li><span class="hl">His stylistic choices</span>, such as crossing the imaginary line to establish compositional continuity in a conversation sequence, <span class="hl">challenge the boundaries of cinematic expression</span>. <span class="hl">He ventures into a space where a conversation sequence comes close to being perceived not as a conversation, but as a series of repetitive images</span>. <span class="hl">The perceptive audiences</span>, who were not completely tricked by the fabrication of the look, would have leniency towards Ozu&rsquo;s cinematic approach to conversation scenes, and rather get stimulated for something different.</li>
+            <li>An extreme case: in <em>Floating Weeds</em>, Ganjir&ocirc; Nakamura and Machiko Ky&ocirc; <span class="hl">&ldquo;stare each other down from under the eaves of facing houses during a downpour&rdquo;</span> <span class="cite">(HS, p.&nbsp;157)</span>. The density of the scene comes not from psychological conflict but from <span class="hl">the overwhelming tension created by the meeting of glares</span>: we sense that if it lasted a moment longer, <span class="hl">&ldquo;cinema might henceforth cease to be cinema&rdquo;</span>.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NEW: Side by Side ===== -->
+    <section class="slide">
+      <div class="frametitle">Side by Side: a lyricism without symbolism</div>
+      <div class="alertblock">
+        <div class="head">The opposite case: relaxation through parallel gazes</div>
+        <div class="body">
+          <p>Alongside the tension of mismatched eyelines, Hasumi identifies a counter-movement in Ozu: a <span class="hl">&ldquo;relaxation phenomenon&rdquo;</span> in which intimate figures sit side by side, often diagonal to the camera, and let their gazes converge on an offscreen object <span class="cite">(HS, pp.&nbsp;158&ndash;59)</span>.</p>
+        </div>
+      </div>
+      <div class="block">
+        <div class="head">Examples Hasumi works through</div>
+        <div class="body">
+          <ul class="pts">
+            <li><em>Early Summer</em>, hotel-tea scene: Setsuko Hara, Chikage Awashima and two married friends sit across a table; teasing &ldquo;parallel displacement&rdquo; ends with the four <span class="hl">arranged diagonally</span>, eyelines meeting only obliquely <span class="cite">(HS, p.&nbsp;158)</span>.
+              <div class="imgrow small" style="margin-top:8px">
+                <img src="ozu_items/61.jpg" alt="Early Summer hotel-tea scene 61">
+              </div>
+            </li>
+            <li><em>Late Autumn</em>, lakeside caf&eacute;: mother and daughter eat azuki beans, then together <span class="hl">turn to look at Mount Haruna</span> through the window. &ldquo;The motion itself evokes a sense of empathy that a cut between two sets of eyes would not convey&rdquo; <span class="cite">(HS, p.&nbsp;159)</span>.</li>
+            <li><em>Early Summer</em>, Ochanomizu caf&eacute;: Hara and Hiroshi Nihon&rsquo;yanagi turn together to a <span class="hl">painting on the wall</span> as he begins to speak of her brother who died at war.
+              <div class="imgrow small" style="margin-top:8px">
+                <img src="ozu_items/64.jpg" alt="Early Summer Ochanomizu café 64">
+                <img src="ozu_items/65.jpg" alt="Early Summer Ochanomizu café 65">
+                <img src="ozu_items/66.jpg" alt="Early Summer Ochanomizu café 66">
+              </div>
+            </li>
+            <li><em>Early Summer</em>, Tokyo National Museum garden: a <span class="hl">balloon breaks free</span> and the elderly couple follow it with their eyes in <span class="hl">&ldquo;choreographed synchrony&rdquo;</span> <span class="cite">(HS, p.&nbsp;159)</span>. Later, back in their hometown, they watch a <span class="hl">bridal procession winding through the fields</span>.
+              <div class="imgrow small" style="margin-top:8px">
+                <img src="ozu_items/63.jpg" alt="Early Summer balloon 63">
+                <img src="ozu_items/62.jpg" alt="Early Summer balloon 62">
+              </div>
+              <div class="imgrow small" style="margin-top:8px">
+                <img src="ozu_items/68.jpg" alt="Early Summer bridal procession 68">
+                <img src="ozu_items/67.jpg" alt="Early Summer bridal procession 67">
+              </div>
+            </li>
+            <li><em>Early Summer</em>, Yamato house: Chieko Higashiyama and Ichirô Sugai sit together <span class="hl">to watch a bride parade</span> <span class="cite">(HS, p.&nbsp;161)</span>.</li>
+            <li><em>There Was a Father</em>: father and son fishing barefoot at the riverside, casting their lines back upstream in <span class="hl">mechanically mirrored motion</span>. Lyricism, Hasumi writes, reaches its highest expression through <span class="hl">backs that exhibit exceptional eloquence without so much as a hint of movement</span> <span class="cite">(HS, p.&nbsp;161)</span>.</li>
+          </ul>
+          <p class="small">The unifying claim: Ozu&rsquo;s lyricism is <span class="hl">dynamic, never contained by the static properties of the image</span>, and arrives <span class="hl">&ldquo;simply through the gesture of two people fixing their eyes on the same object at the same time&rdquo;</span> <span class="cite">(HS, p.&nbsp;159)</span>, with no symbolic weight attached to the object itself.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NEW: Ozuesque Movement ===== -->
+    <section class="slide">
+      <div class="frametitle">Ozuesque Movement: making us envy motion</div>
+      <div class="block">
+        <div class="head">Holding still on something that moves</div>
+        <div class="body">
+          <ul class="pts">
+            <li>Even in a director famous for the static shot, Hasumi argues that <span class="hl">&ldquo;the greatest of cinematic movements can come to life in &lsquo;holding still&rsquo;&rdquo;</span> <span class="cite">(HS, p.&nbsp;170)</span>. The camera does not move; a vehicle on which it sits does, and the world streams past.</li>
+            <li><em>Late Spring</em> &amp; <em>Early Summer</em> &mdash; the <span class="hl">Yokosuka line</span>: Chish&ucirc; Ry&ucirc; and Hara, or Ry&ucirc; and Seiji Miyaguchi, ride <span class="hl">side by side on the bench seats</span> with the landscape flowing behind them, much like the father and son fishing at the riverbank. &ldquo;The outdoor scenery streams in the background behind two people seated side by side&rdquo; <span class="cite">(HS, p.&nbsp;165)</span>.</li>
+            <li><em>Tokyo Story</em> &mdash; the <span class="hl">sightseeing bus</span> through Marunouchi, the Imperial Palace, Ginza: Ry&ucirc;, Higashiyama and Hara sit in different rows, but the <span class="hl">&ldquo;languid, almost sensual gliding movement&rdquo;</span> draws us in. &ldquo;We are entranced, as if under the influence of genuine magic, and find ourselves wondering how the films of Ozu &hellip; are nonetheless able to pull off such a thing as making us <span class="hl">envy motion</span>&rdquo; <span class="cite">(HS, p.&nbsp;168)</span>.</li>
+            <li><em>Floating Weeds</em> &mdash; the <span class="hl">lighthouse passing on the ferry</span>: the same lighthouse seen earlier in static shots <span class="hl">&ldquo;slowly traverses the screen from right to left&rdquo;</span> as the boat drifts in. &ldquo;The lighthouse literally drifts past. The fluidity of its gliding movement is breathtaking&rdquo; <span class="cite">(HS, p.&nbsp;169)</span>.</li>
+          </ul>
+          <p class="small">The general formula: <span class="hl">the subject does not move; the camera does not move; the camera is placed on a moving body</span> (commuter train, streetcar, sightseeing bus, ferry). Stillness becomes the precondition for the most affecting motion <span class="cite">(HS, p.&nbsp;169)</span>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== NEW: Stopping to Move / Holding Still ===== -->
+    <section class="slide">
+      <div class="frametitle">Stopping to Move: holding still as ritual of separation</div>
+      <div class="alertblock">
+        <div class="head">The family photograph in <em>Early Summer</em></div>
+        <div class="body">
+          <p>Near the end of <em>Early Summer</em>, three generations of the family pose together for a photograph in the familiar first-floor living room. &ldquo;On the photographer&rsquo;s instructions, they pose and hold still&rdquo; <span class="cite">(HS, p.&nbsp;171)</span>. For once Ozu allows the frontal full shot he otherwise avoids: bodies face forward, eyes fix on the same point, motion ceases.</p>
+          <div class="imgrow small">
+            <img src="ozu_items/70.jpg" alt="Early Summer family photograph 70">
+          </div>
+          <p>Hasumi reads this as <span class="hl">a mirror of our own activity as viewers</span>: &ldquo;To watch a film is to share the experience of holding still and looking in the same direction as others, much as they do in posing for the camera&rdquo; <span class="cite">(HS, p.&nbsp;171)</span>. They sit in cruel light; we sit in &ldquo;complicit darkness.&rdquo;</p>
+        </div>
+      </div>
+      <div class="block">
+        <div class="head">Photograph &harr; separation: a structural law</div>
+        <div class="body">
+          <ul class="pts">
+            <li>In Ozu, the group photograph <span class="hl">always introduces a narrative of separation or death</span> <span class="cite">(HS, p.&nbsp;172)</span>: <em>There Was a Father</em> (class photo, then a student drowns), <em>Brothers and Sisters of the Toda Family</em> (matriarch&rsquo;s 60th-birthday portrait, then the patriarch&rsquo;s death that evening), <em>Record of a Tenement Gentleman</em>, <em>Early Summer</em>, <em>Late Autumn</em>.</li>
+            <li>The eerie biographical echo: in <em>Brothers and Sisters of the Toda Family</em> the patriarch dies on his wife&rsquo;s 60th birthday; <span class="hl">Ozu himself died precisely on his own 60th birthday</span> (December 1963) <span class="cite">(HS, p.&nbsp;174)</span>. Hasumi calls this scene <span class="hl">&ldquo;the negative center of the Ozuesque cinematic system, the point at which fiction and reality &hellip; perfectly overlap&rdquo;</span>.</li>
+            <li><em>Late Autumn</em>&rsquo;s wedding-anteroom portrait recalls the same posture. As Chish&ucirc; Ry&ucirc; mumbles in <em>An Autumn Afternoon</em> when asked whether his formal wear is for a funeral: <span class="hl">&ldquo;Something like that.&rdquo;</span> <span class="cite">(HS, p.&nbsp;178)</span> Weddings and funerals are joined by the theme of <span class="hl">holding still</span>.</li>
+          </ul>
+          <p class="small">Hasumi closes the chapter by linking <span class="hl">staircases and wedding photographs</span> as twin Ozuesque devices, each ordinarily withheld and shown only when separation must be staged: one in <em>An Autumn Afternoon</em>, the other in <em>Late Autumn</em>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 10 (orig): Seeing through Ozu's camera ===== -->
+    <section class="slide">
+      <div class="frametitle">Seeing through Ozu&rsquo;s camera</div>
+      <div class="block">
+        <div class="head">Seeing through Ozu&rsquo;s camera</div>
+        <div class="body">
+          <ul class="pts">
+            <li>Ozu&rsquo;s <span class="hl">acceptance of these limits</span>, and <span class="hl">his unique approach to conversation sequences</span>, places us in an unfamiliar and sometimes uncomfortable position as viewers. He seems to offer us <span class="hl">an opportunity to refresh or even renew our cinematic experiences through entirely different sensibilities</span>.</li>
+            <li>Hasumi writes (2024: p.&nbsp;157):
+              <blockquote class="quote">
+                &ldquo;We give ourselves over to the flow of the narrative and abandon really looking at the screen. But where we fix our attention deliberately on the screen, our eyes succumb to uncontrollable agitation. To look at an Ozu film is to maintain the eye in a state of constant and continuously renewing agitation. This is an exceptionally cruel experience for cinema itself, since it causes a decisive moment to come closing in, a point where it seems that with even one step farther, cinema might cease to be cinema.&rdquo;
+                <span class="src">&mdash; Shigehiko Hasumi (HS, p.&nbsp;157)</span>
+              </blockquote>
+            </li>
+            <li>The Prologue gives the same idea another wording: Ozu&rsquo;s films &ldquo;come at our eyes with constant incitements toward change. <span class="hl">Movement lives here in the raw, as the ever-renewing present</span> &hellip; a movement we might also call <span class="hl">movement in stasis</span>&rdquo; <span class="cite">(P, p.&nbsp;5)</span>. To take it seriously is to give up the comfort of the &ldquo;space between events.&rdquo;</li>
+            <li>It is like the Greek skepticism&rsquo;s <em>epoch&eacute;</em>: suspending judgement for fresh observation.</li>
+            <li>After these agitations, and with the rather Nietzschean &ldquo;Cinema is dead&rdquo; type of inspiration, we can free ourselves from the belief in the &ldquo;good movie.&rdquo; It is an idea rooted in Western cinema (many so-called cinematic grammars are Western conventions). Without the previous central pillar, we can invite new ways of watching and critiquing films.</li>
+          </ul>
+          <p class="small">When we talk about foreign films, we tend to focus mainly on subject matters and material cultures. But how movies are made, how shots are composed and edited, and even imagining how people of the time watched these films are all part of our experience of foreign cinema.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 11 (orig): Ozunesque ===== -->
+    <section class="slide">
+      <div class="frametitle">Ozunesque: with or without intention</div>
+
+      <div class="alertblock">
+        <div class="head">First, distinguish: &ldquo;Ozuesque&rdquo; (Hasumi) vs. &ldquo;Ozunesque&rdquo; (our extension)</div>
+        <div class="body">
+          <p class="small">Hasumi insists that <span class="hl">&ldquo;no single Ozu film ever resembles things Ozuesque&rdquo;</span> <span class="cite">(P, p.&nbsp;4)</span>: the easy genre of social reassurance has to be set aside if we want to see the films themselves. What follows are not exemplars of &ldquo;things Ozuesque&rdquo; in his sense, but other auteurs whose mise-en-sc&egrave;ne shares Ozu&rsquo;s commitment to compositional pattern and to <span class="hl">holding still</span>.</p>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="head">Ousmane Semb&egrave;ne: <em>Ceddo</em> (1977)</div>
+        <div class="body">
+          <div class="twocol">
+            <div class="col-text">
+              <p class="small">The father of African cinema, Senegalese auteur Ousmane Semb&egrave;ne, demonstrates remarkable control over mise-en-sc&egrave;ne, including the placement of people, framing with objects within the screen, and various shot/editing techniques, all of which contribute to his unique compositional style.</p>
+            </div>
+            <div class="col-img">
+              <img src="ozu_items/32.jpg" alt="Sembène Ceddo 32">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="head">Chantal Akerman: <em>Jeanne Dielman, 23 quai du Commerce, 1080 Bruxelles</em> (1975)</div>
+        <div class="body">
+          <div class="twocol">
+            <div class="col-text">
+              <p class="small">Long static shots of Jeanne Dielman, a single mother, going about her daily routines in her tidy apartment quickly establish a compositional pattern on the screen. In some of these long shots, surrounded by mundane objects, the dismalness of her life is captured through her subtle unrest, conveyed by stillness and silence. Her patterned, cinematic life on screen seems to anticipate a demise, much like the dissolution of family often portrayed in Ozu&rsquo;s films.</p>
+            </div>
+            <div class="col-img">
+              <img src="ozu_items/33.jpg" alt="Akerman Jeanne Dielman 33">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="head">Aki Kaurism&auml;ki: <em>The Match Factory Girl</em> (1990)</div>
+        <div class="body">
+          <div class="twocol">
+            <div class="col-text">
+              <p class="small">Through long and static shots, Kaurism&auml;ki sketches the mundane life of a young woman working at a match factory. Although the film is quiet, her life is filled with misfortune and harsh circumstances. In these slow and silent cinematic spaces, she eventually transforms into a serial killer.</p>
+            </div>
+            <div class="col-img">
+              <img src="ozu_items/34.jpg" alt="Kaurismäki Match Factory Girl 34">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </section>
+
+  </div><!-- /stage -->
+
+  <div class="controls">
+    <span class="who">JPN/FST 266 &mdash; Prof. Tomoyuki Yabe</span>
+    <span class="nav">
+      <button id="prev" aria-label="Previous slide">&larr; Prev</button>
+      <span class="count" id="count">1 / 14</span>
+      <button id="next" aria-label="Next slide">Next &rarr;</button>
+      <button id="fs" aria-label="Toggle fullscreen">&#9974; Full</button>
+    </span>
+  </div>
+
+</div><!-- /deck -->
+
+<script>
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var stage  = document.getElementById('stage');
+  var count  = document.getElementById('count');
+  var i = 0;
+  function show(n){
+    i = Math.max(0, Math.min(slides.length-1, n));
+    slides.forEach(function(s,k){ s.classList.toggle('active', k===i); });
+    count.textContent = (i+1) + ' / ' + slides.length;
+    stage.scrollTop = 0;
+  }
+  document.getElementById('next').onclick = function(){ show(i+1); };
+  document.getElementById('prev').onclick = function(){ show(i-1); };
+  document.getElementById('fs').onclick = function(){
+    if(!document.fullscreenElement){ document.documentElement.requestFullscreen && document.documentElement.requestFullscreen(); }
+    else { document.exitFullscreen && document.exitFullscreen(); }
+  };
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ show(i+1); e.preventDefault(); }
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){ show(i-1); e.preventDefault(); }
+    else if(e.key==='Home'){ show(0); }
+    else if(e.key==='End'){ show(slides.length-1); }
+  });
+  show(0);
+</script>
+</body>
+</html>
