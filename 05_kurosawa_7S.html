@@ -102,6 +102,27 @@
   .controls button:hover{background:rgba(255,255,255,.30)}
   .controls .count{min-width:54px;text-align:center}
 
+  /* training-montage slide */
+  .tm-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.9fr);gap:18px;align-items:center}
+  .tm-clip video{width:100%;aspect-ratio:16/9;display:block;background:#000;border:1px solid #c8bca3;border-radius:3px}
+  .tm-ours video{outline:3px solid var(--hl);outline-offset:-3px}
+  .tm-cap{font-size:15px;line-height:1.4;margin-top:5px}
+  .tm-cap b{font-size:16px}
+  .tm-who{color:var(--muted);font-style:italic}
+  .tm-line{position:relative;display:grid;grid-template-columns:repeat(5,1fr);margin:2px 0 14px;padding-top:4px}
+  .tm-line::before{content:"";position:absolute;left:10%;right:10%;top:10px;height:2px;background:var(--ink-mid)}
+  .tm-stop{position:relative;text-align:center;font-size:14.5px;line-height:1.3}
+  .tm-dot{display:block;width:13px;height:13px;border-radius:50%;background:var(--ink-deep);margin:0 auto 5px;position:relative;z-index:1}
+  .tm-yr{display:block;font-weight:700;font-size:15px}
+  .tm-here .tm-dot{background:#fff;border:3px solid var(--hl)}
+  .tm-here .tm-yr{color:var(--hl)}
+  .tm-three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .tm-label{font-weight:600;font-size:16px;margin:14px 0 6px;color:var(--ink-deep)}
+  .tm-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px}
+  .tm-grid .tm-clip{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:10px;align-items:start}
+  .tm-grid .tm-cap{margin-top:0}
+  @media (max-width:700px){.tm-intro,.tm-three,.tm-grid,.tm-grid .tm-clip{grid-template-columns:1fr}}
+
   @media print{
     body{background:#fff}
     #deck{max-width:none;height:auto}
@@ -144,6 +165,7 @@
             <li><strong>Exaggerated expression:</strong> a heightened, &ldquo;Shakespearean&rdquo; use of hyperbole in cinematic terms (Kiarostami).</li>
             <li><strong>Motion everywhere:</strong> multiple cameras, telephoto lenses, and a moving camera&mdash;&ldquo;no shot that does not have motion&rdquo; <span class="cite">(Richie, p.&nbsp;103)</span>.</li>
             <li><strong>Nature as drama:</strong> heavy rain, wind, and fire intensify emotion, culminating in the climactic rain battle.</li>
+            <li><strong>Training without montage:</strong> the history of the training montage, and Kurosawa&rsquo;s choice to save montage for the harvest and village life.</li>
             <li><strong>Rain in cinema:</strong> a comparative look, including Tarkovsky&rsquo;s <em>Sculpting in Time</em>.</li>
           </ul>
         </div>
@@ -231,6 +253,96 @@
               Your browser does not support embedded video. <a href="kurosawa_item/06_03_multi_camera_.mp4">Download the clip</a>.
             </video>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FRAME 2b: Training by montage ===== -->
+    <section class="slide">
+      <div class="frametitle">Training with or without montage: a short history</div>
+      <div class="block">
+        <div class="head">Kurosawa&rsquo;s choice: training without montage</div>
+        <div class="body">
+          <div class="tm-intro">
+            <div class="tm-clip tm-ours">
+              <video controls preload="metadata">
+                <source src="kurosawa_item/samurai_training.mp4" type="video/mp4">
+                Your browser does not support embedded video. <a href="kurosawa_item/samurai_training.mp4">Download the clip</a>.
+              </video>
+              <div class="tm-cap"><b>The training</b> <span class="tm-who">played as scenes, not montage</span></div>
+            </div>
+            <div>
+              <p class="small" style="margin:0 0 8px">The training montage compresses weeks of practice into fragments cut to music, and the sports film has made it a <span class="hl">set piece</span>. <em>Seven Samurai</em> is also a film about training: the farmers must be taught to fight. Yet Kurosawa, a director who readily uses montage, <span class="hl">does not choose montage</span> for the training.</p>
+              <p class="small" style="margin:0">He saves the montage sequence for the harvest and the moments of village life, when the farmers are <span class="hl">pursuing their lives as they should</span>. Why give montage to life, and withhold it from preparation for battle?</p>
+            </div>
+          </div>
+          <div class="tm-label">Kurosawa&rsquo;s montage sequences: the harvest and village life</div>
+          <div class="tm-three">
+            <div class="tm-clip">
+              <video controls preload="metadata">
+                <source src="kurosawa_item/7s_montage_01.mp4" type="video/mp4">
+                Your browser does not support embedded video. <a href="kurosawa_item/7s_montage_01.mp4">Download the clip</a>.
+              </video>
+              <div class="tm-cap">Montage 1</div>
+            </div>
+            <div class="tm-clip">
+              <video controls preload="metadata">
+                <source src="kurosawa_item/7s_montage_02.mp4" type="video/mp4">
+                Your browser does not support embedded video. <a href="kurosawa_item/7s_montage_02.mp4">Download the clip</a>.
+              </video>
+              <div class="tm-cap">Montage 2</div>
+            </div>
+            <div class="tm-clip">
+              <video controls preload="metadata">
+                <source src="kurosawa_item/7s_montage_03.mp4" type="video/mp4">
+                Your browser does not support embedded video. <a href="kurosawa_item/7s_montage_03.mp4">Download the clip</a>.
+              </video>
+              <div class="tm-cap">Montage 3</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tm-line" aria-label="Timeline">
+        <div class="tm-stop"><span class="tm-dot"></span><span class="tm-yr">1949</span><em>Champion</em></div>
+        <div class="tm-stop tm-here"><span class="tm-dot"></span><span class="tm-yr">1954</span><em>Seven Samurai</em></div>
+        <div class="tm-stop"><span class="tm-dot"></span><span class="tm-yr">1979</span><em>Rocky II</em></div>
+        <div class="tm-stop"><span class="tm-dot"></span><span class="tm-yr">1994</span><em>The Next Karate Kid</em></div>
+        <div class="tm-stop"><span class="tm-dot"></span><span class="tm-yr">2004</span><em>Million Dollar Baby</em></div>
+      </div>
+
+      <div class="tm-grid">
+        <div class="tm-clip">
+          <video controls preload="metadata">
+            <source src="kurosawa_item/1949_champion.mp4" type="video/mp4">
+            Your browser does not support embedded video. <a href="kurosawa_item/1949_champion.mp4">Download the clip</a>.
+          </video>
+          <div class="tm-cap"><b><em>Champion</em> (1949)</b> <span class="tm-who">dir. Mark Robson; with Kirk Douglas; score by Dimitri Tiomkin</span><br>
+          An early boxing montage: roadwork, bag, sparring, laid over the score.</div>
+        </div>
+        <div class="tm-clip">
+          <video controls preload="metadata">
+            <source src="kurosawa_item/rocky_2.mp4" type="video/mp4">
+            Your browser does not support embedded video. <a href="kurosawa_item/rocky_2.mp4">Download the clip</a>.
+          </video>
+          <div class="tm-cap"><b><em>Rocky II</em> (1979)</b> <span class="tm-who">dir. and starring Sylvester Stallone; score by Bill Conti</span><br>
+          The montage becomes the climax: Conti&rsquo;s theme drives the cutting, and the city runs with him.</div>
+        </div>
+        <div class="tm-clip">
+          <video controls preload="metadata">
+            <source src="kurosawa_item/the_next_karate_kid.mp4" type="video/mp4">
+            Your browser does not support embedded video. <a href="kurosawa_item/the_next_karate_kid.mp4">Download the clip</a>.
+          </video>
+          <div class="tm-cap"><b><em>The Next Karate Kid</em> (1994)</b> <span class="tm-who">dir. Christopher Cain; with Hilary Swank, Pat Morita; score by Bill Conti</span><br>
+          Conti again, now with a young woman in training under Mr. Miyagi.</div>
+        </div>
+        <div class="tm-clip">
+          <video controls preload="metadata">
+            <source src="kurosawa_item/million%20dollar_baby.mp4" type="video/mp4">
+            Your browser does not support embedded video. <a href="kurosawa_item/million%20dollar_baby.mp4">Download the clip</a>.
+          </video>
+          <div class="tm-cap"><b><em>Million Dollar Baby</em> (2004)</b> <span class="tm-who">dir. Clint Eastwood; with Hilary Swank; score by Eastwood</span><br>
+          Swank trains again, ten years later: quieter, slower, the montage turned inward.</div>
         </div>
       </div>
     </section>
@@ -350,7 +462,7 @@
     <span class="who">JPN/FST 266 &mdash; Prof. Tomoyuki Yabe</span>
     <span class="nav">
       <button id="prev" aria-label="Previous slide">&larr; Prev</button>
-      <span class="count" id="count">1 / 8</span>
+      <span class="count" id="count">1 / 9</span>
       <button id="next" aria-label="Next slide">Next &rarr;</button>
       <button id="fs" aria-label="Toggle fullscreen">&#9974; Full</button>
     </span>
