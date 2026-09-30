@@ -73,6 +73,11 @@
   .imgrow.center{justify-content:center}
   .imgrow.center img{flex:0 0 auto;max-width:60%}
 
+  .vidrow{display:flex;gap:10px;margin-top:12px;align-items:flex-start}
+  .vidrow video{flex:1 1 0;min-width:0;width:100%;height:auto;border:1px solid #c8bca3;border-radius:3px;background:#000}
+  .vidrow.center{justify-content:center}
+  .vidrow.center video{flex:0 0 auto;max-width:72%}
+
   .twocol{display:flex;gap:14px;align-items:flex-start}
   .twocol .col-text{flex:1 1 60%;min-width:0}
   .twocol .col-img{flex:0 0 36%;display:flex;justify-content:center;align-items:flex-start}
@@ -288,7 +293,8 @@
           <p class="small"><span class="hl">At the outset, we are introduced to a tragedy involving two opposed elements.</span> The film begins with a sequence in which a Korean paramilitary soldier, Kanemoto, is about to be executed for committing sexual violence against a Dutch soldier, De Jong, who had escaped the camp, been recaptured, and jailed. De Jong recounts that Kanemoto initially entered the cell and kindly tended to his wounds, but one night made a sexual advance toward him (or raped him).</p>
           <p class="small">Later, Kanemoto is given the opportunity to commit <em>seppuku</em> (honorable suicide), during which De Jong bites his own tongue and joins Kanemoto in death. Two men take their own lives (Kanemoto is forced to do so but pursues his destiny). Oshima gives us some reason to think that a bond was formed between them and that they choose to end their lives at the same time. <span class="hl">This narrative introduces the film&rsquo;s main theme: the story of binary opposition, the cinematic presentation of opposed elements that, after being violently bound together, leads to the demise of both.</span></p>
           <p class="small">In L&eacute;vi-Strauss&rsquo;s template, this is <span class="hl">the first and widest pair</span>. The opposition is bound by violence; the &ldquo;mediation&rdquo; is sex (rape) and seppuku; the resolution is death for both. The poles are still far apart, and the mythic work the film will continue is already declared in this prologue.</p>
-          <div class="imgrow center">
+          <div class="imgrow">
+            <img src="lawrence_item/121.jpg" alt="De Jong and Kanemoto 121">
             <img src="lawrence_item/21.jpg" alt="De Jong and Kanemoto 21">
           </div>
         </div>
@@ -381,6 +387,9 @@
             <img src="lawrence_item/15.jpg" alt="Hara's final smile in close-up">
           </div>
           <p class="small" style="margin-top:10px">The <span class="hl">side-by-side</span> pair (Hara &amp; Lawrence) and the final close-up: a smile held in the frame against the death it does not yet name.</p>
+          <div class="vidrow center">
+            <video src="lawrence_item/smile.mp4" controls preload="metadata" playsinline></video>
+          </div>
         </div>
       </div>
     </section>
@@ -411,6 +420,10 @@
               </div>
             </li>
           </ul>
+          <div class="vidrow">
+            <video src="lawrence_item/moth.mp4" controls preload="metadata" playsinline></video>
+            <video src="lawrence_item/kiss.mp4" controls preload="metadata" playsinline></video>
+          </div>
         </div>
       </div>
     </section>
@@ -434,6 +447,9 @@
             <img src="lawrence_item/42.jpg" alt="Ordet 42">
             <img src="lawrence_item/43.jpg" alt="Ordet 43">
           </div>
+          <div class="vidrow center">
+            <video src="lawrence_item/08_ordet_end.mp4" controls preload="metadata" playsinline></video>
+          </div>
         </div>
       </div>
     </section>
@@ -450,6 +466,10 @@
             <img src="lawrence_item/61.jpg" alt="Taste of Cherry 61">
             <img src="lawrence_item/62.jpg" alt="Taste of Cherry 62">
             <img src="lawrence_item/63.jpg" alt="Taste of Cherry 63">
+          </div>
+          <div class="vidrow">
+            <video src="lawrence_item/08_tast_01.mp4" controls preload="metadata" playsinline></video>
+            <video src="lawrence_item/08_tast_03_02.mp4" controls preload="metadata" playsinline></video>
           </div>
         </div>
       </div>
@@ -479,6 +499,7 @@
     slides.forEach(function(s,k){ s.classList.toggle('active', k===i); });
     count.textContent = (i+1) + ' / ' + slides.length;
     stage.scrollTop = 0;
+    document.querySelectorAll('video').forEach(function(v){ v.pause(); });
   }
   document.getElementById('next').onclick = function(){ show(i+1); };
   document.getElementById('prev').onclick = function(){ show(i-1); };
@@ -487,6 +508,7 @@
     else { document.exitFullscreen && document.exitFullscreen(); }
   };
   document.addEventListener('keydown', function(e){
+    if(e.target && e.target.tagName==='VIDEO'){ return; }
     if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ show(i+1); e.preventDefault(); }
     else if(e.key==='ArrowLeft'||e.key==='PageUp'){ show(i-1); e.preventDefault(); }
     else if(e.key==='Home'){ show(0); }
