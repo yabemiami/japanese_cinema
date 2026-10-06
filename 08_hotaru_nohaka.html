@@ -79,6 +79,11 @@
   .twocol .col-img{flex:0 0 26%;display:flex;justify-content:center;align-items:center}
   .twocol .col-img img{max-width:100%;height:auto;border:1px solid #c8b58f;border-radius:3px}
 
+  /* Embedded film clips */
+  figure.clip{margin:12px auto 6px;text-align:center;max-width:640px}
+  figure.clip video{width:100%;height:auto;display:block;background:#000;border:1px solid #c8b58f;border-radius:3px}
+  figure.clip figcaption{font-size:14.5px;color:var(--muted);font-style:italic;margin-top:5px}
+
   blockquote.quote{
     margin:8px 0;padding:6px 14px;
     border-left:4px solid var(--ember-mid);
@@ -247,6 +252,10 @@
             <img src="takahata_item/06.jpg" alt="ghost of Seita 2">
             <img src="takahata_item/03.jpg" alt="ghost of Seita 3">
           </div>
+          <figure class="clip">
+            <video controls preload="metadata" playsinline src="takahata_item/I_died.mp4"></video>
+            <figcaption>Clip: &ldquo;September 21, 1945. That was the night I died.&rdquo; Seita&rsquo;s ghost addresses the audience.</figcaption>
+          </figure>
           <ul class="pts">
             <li>Seita knows he is dead; <span class="hl">he says, &ldquo;I died on 9/21/1945,&rdquo; while gazing at us, the audience.</span></li>
             <li>There are sequences in which <span class="hl">Seita and Setsuko appear in 1980s Kobe</span>, riding modern trains, looking down on a city they never lived to see.</li>
@@ -310,6 +319,10 @@
             <img src="takahata_item/12.jpg" alt="Setsuko as lover">
             <img src="takahata_item/13.jpg" alt="Setsuko as wife">
           </div>
+          <figure class="clip">
+            <video controls preload="metadata" playsinline src="takahata_item/setsuko.mp4"></video>
+            <figcaption>Clip: Setsuko as mother, lover, and wife, the one sequence not seen from Seita&rsquo;s perspective.</figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -334,6 +347,10 @@
             <img src="takahata_item/24.jpg" alt="siblings shining">
             <img src="takahata_item/25.jpg" alt="siblings shining 2">
           </div>
+          <figure class="clip">
+            <video controls preload="metadata" playsinline src="takahata_item/mom_dead.mp4"></video>
+            <figcaption>Clip: the mother&rsquo;s death. Note Seita&rsquo;s lack of visible grief, and the grotesque rendering of her body.</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -423,6 +440,10 @@
             <img src="takahata_item/09.jpg" alt="loop image 1">
             <img src="takahata_item/10.jpg" alt="loop image 2">
           </div>
+          <figure class="clip">
+            <video controls preload="metadata" playsinline src="takahata_item/cannibalism.mp4"></video>
+            <figcaption>Clip: after the cremation, the root vegetable Seita eats dissolves into the candy tin holding Setsuko&rsquo;s remains.</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -484,6 +505,7 @@
   var i = 0;
   function show(n){
     i = Math.max(0, Math.min(slides.length-1, n));
+    document.querySelectorAll('video').forEach(function(v){ v.pause(); });
     slides.forEach(function(s,k){ s.classList.toggle('active', k===i); });
     count.textContent = (i+1) + ' / ' + slides.length;
     stage.scrollTop = 0;
