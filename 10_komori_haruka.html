@@ -79,6 +79,13 @@
   .twocol .col-img{flex:0 0 26%;display:flex;justify-content:center;align-items:center}
   .twocol .col-img img{max-width:100%;height:auto;border:1px solid #c2bda9;border-radius:3px}
 
+  /* Embedded film clips */
+  figure.clip{margin:12px auto 6px;text-align:center;max-width:640px}
+  figure.clip video{width:100%;height:auto;display:block;background:#000;border:1px solid #c2bda9;border-radius:3px}
+  figure.clip figcaption{font-size:14.5px;color:var(--muted);font-style:italic;margin-top:5px}
+  .cliprow{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .cliprow figure.clip{flex:1 1 300px;margin:12px 0 6px}
+
   blockquote.quote{
     margin:8px 0;padding:6px 14px;
     border-left:4px solid var(--tide-mid);
@@ -153,6 +160,16 @@
           <div class="imgrow" style="--imgh:300px">
             <img src="komori_item/35.jpg" alt="Komori intro image 35" style="height:300px">
             <img src="komori_item/36.jpeg" alt="Komori intro image 36" style="height:300px">
+          </div>
+          <div class="cliprow">
+            <figure class="clip">
+              <video controls preload="metadata" playsinline src="komori_item/oofunato_01.mp4"></video>
+              <figcaption>Clip 1: &#332;funato</figcaption>
+            </figure>
+            <figure class="clip">
+              <video controls preload="metadata" playsinline src="komori_item/oofunato_02.mp4"></video>
+              <figcaption>Clip 2: &#332;funato</figcaption>
+            </figure>
           </div>
         </div>
       </div>
@@ -309,6 +326,10 @@
             <img src="komori_item/33.jpg" alt="minute of silence shot 1">
             <img src="komori_item/34.jpg" alt="minute of silence shot 2">
           </div>
+          <figure class="clip">
+            <video controls preload="metadata" playsinline src="komori_item/abe_silence.mp4"></video>
+            <figcaption>Clip: Abe-san&rsquo;s minute of silence. Watch the light in the room during the last fifteen seconds.</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -464,6 +485,7 @@
   var i = 0;
   function show(n){
     i = Math.max(0, Math.min(slides.length-1, n));
+    document.querySelectorAll('video').forEach(function(v){ v.pause(); });
     slides.forEach(function(s,k){ s.classList.toggle('active', k===i); });
     count.textContent = (i+1) + ' / ' + slides.length;
     stage.scrollTop = 0;
