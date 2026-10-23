@@ -78,6 +78,11 @@
   .vidrow.center{justify-content:center}
   .vidrow.center video{flex:0 0 auto;max-width:72%}
 
+  .pairgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;align-items:center}
+  .pairgrid .colhead{font-size:14.5px;color:var(--muted);font-style:italic;text-align:center;border-bottom:1px solid #c8bca3;padding-bottom:3px}
+  .pairgrid img{width:100%;height:auto;display:block;border:1px solid #c8bca3;border-radius:3px;background:#eee}
+  .pairgrid .span2{grid-row:span 2;align-self:center}
+
   .twocol{display:flex;gap:14px;align-items:flex-start}
   .twocol .col-text{flex:1 1 70%;min-width:0}
   .twocol .col-img{flex:0 0 26%;display:flex;justify-content:center;align-items:center}
@@ -235,9 +240,15 @@
             <li><strong>In the frame:</strong> the contrast can be worked through different camera angles and placements, letting Kurosawa <span class="hl">capture space dramatically</span> as the narrative develops within it.</li>
             <li><strong>Movements:</strong> the physical contrast accentuates the action &mdash; climbing a wall, long-legged Tahei races up while short-legged Matashichi struggles; fleeing with stolen rice and a pot, low-geared Matashichi dashes faster even as Tahei hauls the heavy sack.</li>
           </ul>
-          <div class="imgrow">
-            <img src="kurosawa_item/53.jpg" alt="The duo framed in the landscape">
-            <img src="kurosawa_item/57.jpg" alt="The duo in movement at the wall">
+          <div class="pairgrid">
+            <div class="colhead"><em>Star Wars</em> (1977)</div>
+            <div class="colhead"><em>Hidden Fortress</em> (1958)</div>
+            <img src="kurosawa_item/obi_wan.jpeg" alt="Star Wars: a robed figure on the ridge of a rocky canyon">
+            <img class="span2" src="kurosawa_item/53.jpg" alt="Hidden Fortress: the duo in the rocky gorge, a soldier on the ridge above">
+            <img src="kurosawa_item/Obi_R2.jpeg" alt="Star Wars: R2-D2 in the foreground watching Obi-Wan over Luke">
+            <img src="kurosawa_item/R2_C3.jpeg" alt="Star Wars: tall C-3PO and short R2-D2 at the sandcrawler">
+            <img class="span2" src="kurosawa_item/57.jpg" alt="Hidden Fortress: the duo in movement at the wall">
+            <img src="kurosawa_item/R2_C3_2.jpg" alt="Star Wars: R2-D2 in the dark corridor, C-3PO silhouetted against the bright doorway">
           </div>
           <div class="vidrow center">
             <video src="kurosawa_item/typage01.mp4" controls preload="metadata" playsinline></video>
