@@ -258,24 +258,63 @@
     </section>
 
     <section class="slide">
-      <div class="frametitle">What Lucas saw: Kurosawa&rsquo;s visual style</div>
-      <div class="alertblock">
-        <div class="head">&ldquo;Mostly everything is visual&rdquo;</div>
-        <div class="body">
-          <p class="small">Lucas is drawn less to Kurosawa&rsquo;s stories than to his <span class="hl">images</span>. &ldquo;I&rsquo;m not known for my dialogue,&rdquo; Lucas said; Kurosawa&rsquo;s films &ldquo;work because they speak to us at a direct, perhaps more primal, level&hellip; through images&rdquo; <span class="cite">(Kaminski, p.&nbsp;89)</span>. &ldquo;The visual graphics, and the framing and the quality of the images, goes a long way to telling the story and setting the mood&rdquo; <span class="cite">(p.&nbsp;94)</span>.</p>
-        </div>
-      </div>
-      <div class="block">
-        <div class="head">A style forged from lenses and cameras</div>
-        <div class="body">
-          <ul class="pts">
-            <li><strong>Telephoto lenses:</strong> long lenses <span class="hl">flatten space</span> into abstract, graphic patterns, stacking distant planes on top of near ones &mdash; moving the image &ldquo;away from realism&rdquo; toward composition <span class="cite">(Kaminski, pp.&nbsp;91&ndash;92)</span>.</li>
-            <li><strong>Multi-camera shooting:</strong> because the action in <em>Seven Samurai</em> was too large to repeat, Kurosawa filmed with <span class="hl">up to five cameras at once</span>, which in turn required those long lenses &mdash; a technique that became his signature <span class="cite">(p.&nbsp;91)</span>.</li>
-            <li><strong>Roots in silent cinema:</strong> Kurosawa grew up on silent film (his brother Heigo was a <em>benshi</em>), absorbing Eisenstein, Murnau, and above all <span class="hl">John Ford</span> &mdash; the westerns whose &ldquo;grammar&rdquo; he said he learned <span class="cite">(pp.&nbsp;90&ndash;91)</span>.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+  <style>
+    .lensfig{display:block;width:100%;max-width:640px;height:auto;margin:10px auto 4px}
+    .lensfig text{font-family:Georgia,serif;fill:var(--ink)}
+    .lensfig .lbl{font-size:15px;font-weight:600;fill:var(--ink-deep)}
+    .lensfig .cap{font-size:13px;fill:var(--muted);font-style:italic}
+  </style>
+  <div class="frametitle">What Lucas saw: Kurosawa&rsquo;s visual style</div>
+  <div class="alertblock">
+    <div class="head">&ldquo;Mostly everything is visual&rdquo;</div>
+    <div class="body">
+      <p class="small">Lucas is drawn less to Kurosawa&rsquo;s stories than to his <span class="hl">images</span>. &ldquo;I&rsquo;m not known for my dialogue,&rdquo; Lucas said; Kurosawa&rsquo;s films &ldquo;work because they speak to us at a direct, perhaps more primal, level&hellip; through images&rdquo; <span class="cite">(Kaminski, p.&nbsp;89)</span>. &ldquo;The visual graphics, and the framing and the quality of the images, goes a long way to telling the story and setting the mood&rdquo; <span class="cite">(p.&nbsp;94)</span>.</p>
+    </div>
+  </div>
+  <div class="block">
+    <div class="head">A style forged from lenses and cameras</div>
+    <div class="body">
+      <ul class="pts">
+        <li><strong>Telephoto lenses:</strong> long lenses <span class="hl">flatten space</span> into abstract, graphic patterns, stacking distant planes on top of near ones &mdash; moving the image &ldquo;away from realism&rdquo; toward composition <span class="cite">(Kaminski, pp.&nbsp;91&ndash;92)</span>.</li>
+        <li><strong>Multi-camera shooting:</strong> because the action in <em>Seven Samurai</em> was too large to repeat, Kurosawa filmed with <span class="hl">up to five cameras at once</span>, which in turn required those long lenses &mdash; a technique that became his signature <span class="cite">(p.&nbsp;91)</span>.</li>
+        <li><strong>Roots in silent cinema:</strong> Kurosawa grew up on silent film (his brother Heigo was a <em>benshi</em>), absorbing Eisenstein, Murnau, and above all <span class="hl">John Ford</span> &mdash; the westerns whose &ldquo;grammar&rdquo; he said he learned <span class="cite">(pp.&nbsp;90&ndash;91)</span>.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="block">
+    <div class="head">How the long lens flattens space</div>
+    <div class="body">
+      <p class="small"><span class="hl">Distance, not the lens alone, does the flattening.</span> Up close, a figure looms large and the mountain behind looks small and far. From far away, the gap between them barely matters, so both seem almost equally distant. The telephoto lens zooms in from that faraway spot: the figure fills the frame again, but the mountain now looms right behind, as if pasted onto the same flat surface. With the usual depth cues gone (converging lines, shrinking sizes, movement toward the camera), the eye reads <span class="hl">shapes and patterns rather than real space</span>.</p>
+      <svg class="lensfig" viewBox="0 0 680 300" role="img" aria-label="Close up with a normal lens, the mountain looks small and far; from far away with a telephoto lens, the mountain looms right behind the same-sized figure.">
+        <text class="lbl" x="180" y="22" text-anchor="middle">Close up, normal lens</text>
+        <text class="lbl" x="500" y="22" text-anchor="middle">Far away, telephoto lens</text>
+        <rect x="48" y="42" width="16" height="16" rx="3" fill="var(--ink-deep)"/>
+        <line x1="64" y1="50" x2="300" y2="28" stroke="var(--ink-mid)" stroke-dasharray="4 3"/>
+        <line x1="64" y1="50" x2="300" y2="72" stroke="var(--ink-mid)" stroke-dasharray="4 3"/>
+        <circle cx="110" cy="50" r="6" fill="var(--hl)"/>
+        <path d="M270 62 L285 38 L300 62Z" fill="var(--ink-mid)"/>
+        <rect x="368" y="42" width="16" height="16" rx="3" fill="var(--ink-deep)"/>
+        <line x1="384" y1="50" x2="640" y2="41" stroke="var(--ink-mid)" stroke-dasharray="4 3"/>
+        <line x1="384" y1="50" x2="640" y2="59" stroke="var(--ink-mid)" stroke-dasharray="4 3"/>
+        <circle cx="560" cy="50" r="6" fill="var(--hl)"/>
+        <path d="M600 62 L615 38 L630 62Z" fill="var(--ink-mid)"/>
+        <rect x="40" y="94" width="280" height="160" rx="4" fill="var(--ink-body)" stroke="var(--ink-mid)"/>
+        <path d="M215 214 L245 174 L275 214Z" fill="var(--ink-mid)"/>
+        <line x1="40" y1="214" x2="320" y2="214" stroke="var(--ink-mid)"/>
+        <circle cx="180" cy="144" r="16" fill="var(--hl)"/>
+        <rect x="165" y="162" width="30" height="82" rx="6" fill="var(--hl)"/>
+        <rect x="360" y="94" width="280" height="160" rx="4" fill="var(--ink-body)" stroke="var(--ink-mid)"/>
+        <path d="M372 214 L500 110 L628 214Z" fill="var(--ink-mid)"/>
+        <line x1="360" y1="214" x2="640" y2="214" stroke="var(--ink-mid)"/>
+        <circle cx="500" cy="144" r="16" fill="var(--hl)"/>
+        <rect x="485" y="162" width="30" height="82" rx="6" fill="var(--hl)"/>
+        <text class="cap" x="180" y="278" text-anchor="middle">Mountain looks small and far away</text>
+        <text class="cap" x="500" y="278" text-anchor="middle">Mountain looms right behind</text>
+      </svg>
+      <p class="small"><strong>Did Lucas get it from Kurosawa?</strong> Largely, yes: hooked on Kurosawa as a film student, Lucas admired how long-lens framing built intensity, and at times mirrored Kurosawa&rsquo;s lenses shot for shot. But he was one of a whole generation borrowing the look (Peckinpah adopted Kurosawa&rsquo;s long lenses for <em>The Wild Bunch</em>), and his documentary training also favored shooting from a distance. <span class="hl">A major influence, then, but not a single handoff.</span></p>
+    </div>
+  </div>
+</section>
 
     <section class="slide">
       <div class="frametitle">From <em>Hidden Fortress</em> to <em>Star Wars</em>: a scene-by-scene inheritance</div>
